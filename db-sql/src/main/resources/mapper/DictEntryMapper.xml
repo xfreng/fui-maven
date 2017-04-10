@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!--      
+		table information
+		Generate time : 2017-01-12 16:31:34
+   		Version :  1.0.5.V201701121455
+		tableName :${platSchema}.fui_dict_entry 
+	 		id  VARCHAR, 
+	 		dictid  VARCHAR, 
+	 		dictname  VARCHAR, 
+	 		dictsort  VARCHAR
+	-->
+<mapper namespace="com.fui.dao.dict.DictEntryMapper">
+	<select id="query" parameterType="java.util.HashMap" 
+			resultType="com.fui.model.DictEntry">
+		SELECT
+				id	as "id",  
+				dictid	as "dictid",  
+				dictname	as "dictname",  
+				dictsort	as "dictsort" 
+		FROM ${platSchema}.fui_dict_entry WHERE 1=1
+		<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+		<if test="dictid != null and dictid != ''">
+			AND dictid = #{dictid}
+		</if>
+ 		<if test="orderBy != null and orderBy != ''">
+	  		ORDER BY #{orderBy}
+	 	</if>
+	</select>
+
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM ${platSchema}.fui_dict_entry WHERE 1=1
+	</select>
+	
+	<!--  
+		<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+		<if test="dictid != null and dictid != ''">
+			AND dictid = #{dictid}
+		</if>
+		<if test="dictname != null and dictname != ''">
+			AND dictname = #{dictname}
+		</if>
+		<if test="dictsort != null and dictsort != ''">
+			AND dictsort = #{dictsort}
+		</if>
+	-->
+
+	<insert id="insert">
+		INSERT INTO ${platSchema}.fui_dict_entry 
+		(
+			id,
+			dictid,
+			dictname,
+			dictsort
+		)		 
+		VALUES (#{id}, #{dictid}, #{dictname}, #{dictsort})
+	</insert>
+  
+	<delete id="delete">
+		DELETE FROM ${platSchema}.fui_dict_entry 
+		WHERE id = #{id} AND dictid = #{dictid}
+	</delete>
+	
+	<delete id="deleteById">
+		DELETE FROM ${platSchema}.fui_dict_entry 
+		WHERE id = #{id}
+	</delete>
+
+	<update id="update">
+		UPDATE ${platSchema}.fui_dict_entry 
+		SET 
+			id	= #{id}, 
+			dictid	= #{dictid}, 
+			dictname	= #{dictname}, 
+			dictsort	= #{dictsort}
+		WHERE id = #{id} AND dictid = #{dictid}
+	</update>
+  
+</mapper>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<!--      
+		table information
+		Generate time : 2017-01-12 16:31:34
+   		Version :  1.0.5.V201701121455
+		tableName :${platSchema}.fui_dict_type 
+	 		id  VARCHAR, 
+	 		dicttypename  VARCHAR
+	-->
+<mapper namespace="com.fui.dao.dict.DictTypeMapper">
+	<select id="query" parameterType="java.util.HashMap" 
+			resultType="com.fui.model.DictType">
+		SELECT
+				id	as "id",  
+				dicttypename	as "dicttypename" 
+		FROM ${platSchema}.fui_dict_type WHERE 1=1
+		<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+		<if test="dicttypename != null and dicttypename != ''">
+			AND dicttypename like '%$dicttypename$%'
+		</if>
+ 		<if test="orderBy != null and orderBy != ''">
+	  		ORDER BY #{orderBy}
+	 	</if>
+	</select>
+	
+	<select id="queryDictForTree" parameterType="java.util.HashMap" 
+			resultType="java.util.HashMap">
+		select 
+			id AS "id",
+			name AS "name",
+			parentid AS "pid"
+		from (
+					select t.id id, t.dicttypename name, '' parentid
+						from ${platSchema}.fui_dict_type t
+					union all
+					select t.dictid id, t.dictname name, t.id parentid
+						from ${platSchema}.fui_dict_entry t) t
+		where t.id = #{id}
+		or t.parentid = #{id}
+	</select>
+
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM ${platSchema}.fui_dict_type WHERE 1=1
+		<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+		<if test="dicttypename != null and dicttypename != ''">
+			AND dicttypename like '%$dicttypename$%'
+		</if>
+	</select>
+	
+	<!--  
+		<if test="id != null and id != ''">
+			AND id = #{id}
+		</if>
+		<if test="dicttypename != null and dicttypename != ''">
+			AND dicttypename = #{dicttypename}
+		</if>
+	-->
+
+	<insert id="insert">
+		INSERT INTO ${platSchema}.fui_dict_type 
+		(
+			id,
+			dicttypename
+		)		 
+		VALUES (#{id}, #{dicttypename})
+	</insert>
+  
+	<delete id="delete">
+		DELETE FROM ${platSchema}.fui_dict_type 
+		WHERE id = #{id}
+	</delete>
+
+	<update id="update">
+		UPDATE ${platSchema}.fui_dict_type 
+		SET 
+			id	= #{id}, 
+			dicttypename	= #{dicttypename}
+		WHERE id = #{id}
+	</update>
+  
+</mapper>

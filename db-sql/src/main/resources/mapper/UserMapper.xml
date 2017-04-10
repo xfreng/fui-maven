@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fui.dao.user.UserMapper">
+	<select id="findUserByName" resultType="com.fui.model.User">
+		select 
+			id 			AS "id", 
+		    ename 		AS "ename", 
+			cname 		AS "cname",
+			upass 		AS "upass",
+			style 		AS "style",
+			menu_type 	AS "menuType"
+		from fui.fui_user where ename = #{ename}
+	</select>
+</mapper>
