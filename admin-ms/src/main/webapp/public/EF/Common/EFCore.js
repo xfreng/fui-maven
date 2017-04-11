@@ -185,7 +185,7 @@ var EF_CR_IDENTIFIER = "??";
 /** 回车的HTML标识符. */
 var EF_CR_HTML_IDENTIFIER = "&para;&para;";
 /** 图片存放目录. */
-var EF_IMAGES_PATH = CONTEXT_PATH + "/EF/Images/";
+var EF_IMAGES_PATH = CONTEXT_PATH + "/public/EF/Images/";
 
 
 

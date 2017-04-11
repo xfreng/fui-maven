@@ -5,10 +5,10 @@
     <title>欢迎使用 制药MES产品研发[运行环境]</title>
     <%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
-    <link rel="stylesheet" type="text/css" href="${path }/EP/indexReal-<%=iplatStyle %>-3.0.css" />
-    <link rel="stylesheet" type="text/css" href="${path }/EU/Font-Awesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="${path }/EU/Font-Awesome/css/font-awesome-<%=menuStyle %>.css">
-	<link rel="stylesheet" type="text/css" href="${path }/EU/Font-Awesome/css/font-awesome.jquery.css">
+    <link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css" />
+    <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
+	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
     <style type="text/css">
 		html, body {
 			margin: 0;
@@ -25,7 +25,7 @@
 			color:#595959;
 		}
 		.searchbox .fui-buttonedit-icon{
-	        background:url(../images/search.gif) no-repeat 50% 50%;
+	        background:url(/public/mainframe/images/search.gif) no-repeat 50% 50%;
 	    }
 	</style>
 	<script type="text/javascript">
@@ -119,25 +119,25 @@
 	            <div class="nav_menu">
 	                <ul>
 	                	<li style="margin-top:18px;">
-	               			<span class="mg_l_10 font_14" style="top:50px;">欢迎您！<%=user!=null?user.getEname():"游客" %>&nbsp;&nbsp;&nbsp;</span>
+	               			<span class="mg_l_10 font_14" style="top:50px;">欢迎您！${user.ename}&nbsp;&nbsp;&nbsp;</span>
 	                	</li>
 	                	<li>
-	                        <a href="${path }/pact"><img src="${path }/mainframe/images/login/home.png" /><span class="mg_l_10 font_14">首页</span></a>
+	                        <a href="${path }/pact"><img src="${path }/public/mainframe/images/login/home.png" /><span class="mg_l_10 font_14">首页</span></a>
 	                    </li>
 	                	<li>
-	                        <a href="javascript:changeOpenWindow()"><img src="${path }/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
+	                        <a href="javascript:changeOpenWindow()"><img src="${path }/public/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
 	                    </li>
 	                    <li>
-	                    	<a href="${path }/destory"><img src="${path }/mainframe/images/login/logout.png" /><span class="mg_l_10 font_14">注销</span></a>
+	                    	<a href="${path }/destory"><img src="${path }/public/mainframe/images/login/logout.png" /><span class="mg_l_10 font_14">注销</span></a>
 	                    </li>
 	                    <li id="dropdown">
-	                    	<a href="javascript:void(0)"><img src="${path }/mainframe/images/login/skin.png" /><span class="mg_l_10 font_14">皮肤&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+	                    	<a href="javascript:void(0)"><img src="${path }/public/mainframe/images/login/skin.png" /><span class="mg_l_10 font_14">皮肤&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 	                        <ul class="dropdownMenu">
-	                    		<li onclick="updateStyle('default','default')" <%="default".equals(menuStyle)?"class'selected'":"" %>><span class="default color"></span><span class="pd_l_15">默认</span></li>
-	                    		<li onclick="updateStyle('pact','red')" <%="red".equals(menuStyle)?"class'selected'":"" %>><span class="red color"></span><span class="pd_l_15">红色</span></li>
-	                    		<li onclick="updateStyle('pact','black')" <%="black".equals(menuStyle)?"class='selected'":"" %>><span class="black color"></span><span class="pd_l_15">黑色</span></li>
-	                            <li onclick="updateStyle('pact','pact')" <%="pact".equals(menuStyle)?"class='selected'":"" %>><span class="blue color"></span><span class="pd_l_15">蓝色</span></li>
-	                            <li onclick="updateStyle('pact','skyblue')" <%="skyblue".equals(menuStyle)?"class='selected'":"" %>><span class="skyblue color"></span><span class="pd_l_15">青色</span></li>
+	                    		<li onclick="updateStyle('default','default')" ${"default" eq menuStyle?"class'selected'":""}><span class="default color"></span><span class="pd_l_15">默认</span></li>
+	                    		<li onclick="updateStyle('pact','red')" ${"red" eq menuStyle?"class'selected'":""}><span class="red color"></span><span class="pd_l_15">红色</span></li>
+	                    		<li onclick="updateStyle('pact','black')" ${"black" eq menuStyle?"class'selected'":""}><span class="black color"></span><span class="pd_l_15">黑色</span></li>
+	                            <li onclick="updateStyle('pact','pact')" ${"pact" eq menuStyle?"class'selected'":""}><span class="blue color"></span><span class="pd_l_15">蓝色</span></li>
+	                            <li onclick="updateStyle('pact','skyblue')" ${"skyblue" eq menuStyle?"class'selected'":""}><span class="skyblue color"></span><span class="pd_l_15">青色</span></li>
 	                        </ul>
 	                    </li>
 	                </ul>

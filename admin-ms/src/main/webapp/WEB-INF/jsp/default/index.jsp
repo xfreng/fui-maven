@@ -5,8 +5,8 @@
     <title>欢迎使用 制药MES产品研发[运行环境]</title>
 	<%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
-    <link rel="stylesheet" type="text/css" href="${path }/EU/Font-Awesome/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="${path }/EU/Font-Awesome/css/font-awesome.jquery.css">
+    <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
     <style type="text/css">
 	    body{
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;

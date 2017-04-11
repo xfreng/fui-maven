@@ -38,32 +38,32 @@ public class JspController {
 
 	@RequestMapping("/menustate")
 	public String menustate() {
-		return "menumgr/menu-state";
+		return "menu/menu-state";
 	}
 
 	@RequestMapping("/menutree")
 	public String menutree() {
-		return "menumgr/menu-list";
+		return "menu/menu-list";
 	}
 	
 	@RequestMapping("/pageinfo")
 	public String pageinfo() {
-		return "pagemgr/page-list";
+		return "page/page-list";
 	}
 	
 	@RequestMapping("/dictinfo")
 	public String dictinfo() {
-		return "dictmgr/dict_manager_mainframe";
+		return "dict/dict_manager_mainframe";
 	}
 	
 	@RequestMapping("/dictmanager")
 	public String dictmanager() {
-		return "dictmgr/dict_manager";
+		return "dict/dict_manager";
 	}
 	
 	@RequestMapping("/dictimportmanager")
 	public String dictimportmanager() {
-		return "dictmgr/dict_import_manager";
+		return "dict/dict_import_manager";
 	}
 	
 	@RequestMapping("/model-list")

@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <title>日历——展示数据操作</title>
 <meta name="keywords" content="日程安排,日历,JSON,jquery">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/fc-main.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/fullcalendar.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/fancybox.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/fc-main.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/fullcalendar.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/fancybox.css">
 <style type="text/css">
 #calendar{width:850px; margin:20px auto 10px auto}
 .fancy{width:450px; height:auto}
@@ -23,12 +23,12 @@
 .sub_btn{height:32px; line-height:32px; padding-top:6px; border-top:1px solid #f0f0f0; text-align:right; position:relative}
 .sub_btn .del{position:absolute; left:2px}
 </style>
-<script src='<%=request.getContextPath() %>/js/jquery-1.9.1.js'></script>
-<script src='<%=request.getContextPath() %>/js/jquery-ui.js'></script>
-<script src='<%=request.getContextPath() %>/js/jquery-ui.datepicker-zh-CN.js'></script>
-<script src='<%=request.getContextPath() %>/js/fullcalendar.min.js'></script>
-<script src='<%=request.getContextPath() %>/js/jquery.fancybox-1.3.1.pack.js'></script>
-<script src='<%=request.getContextPath() %>/js/jquery.colorpicker.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/jquery-1.9.1.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/jquery-ui.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/jquery-ui.datepicker-zh-CN.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/fullcalendar.min.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/jquery.fancybox-1.3.1.pack.js'></script>
+<script src='<%=request.getContextPath() %>/public/js/jquery.colorpicker.js'></script>
 <script type="text/javascript">
 $(function() {
 	$('#calendar').fullCalendar({
