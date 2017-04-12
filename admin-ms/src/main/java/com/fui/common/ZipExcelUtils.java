@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ZipExcelUtils {
-    private long maxRow = 65533L;
+    private static long maxRow = 65533L;
     private final static int SHEET_LIMIT_ROW = 65533;
     /**
      * 是否设置信息标题栏边框,默认情况不设置边框
@@ -50,19 +50,19 @@ public class ZipExcelUtils {
     private String templateDir;
     private int totalNum;
 
-    public ZipExcelUtils(int totalNum, String templateDir) {
-        new ZipExcelUtils(totalNum, 0, templateDir);
+    private static ThreadLocal<ZipExcelUtils> connThreadLocal = new ThreadLocal<ZipExcelUtils>();
+
+    public static ZipExcelUtils newInstance(int totalNum, String templateDir) {
+        if (connThreadLocal.get() == null) {
+            ZipExcelUtils zipExcelUtils = new ZipExcelUtils(totalNum, maxRow, 0, templateDir);
+            connThreadLocal.set(zipExcelUtils);
+            return zipExcelUtils;
+        } else {
+            return connThreadLocal.get();
+        }
     }
 
-    public ZipExcelUtils(int totalNum, long maxRow, String templateDir) {
-        new ZipExcelUtils(totalNum, maxRow, 0, templateDir);
-    }
-
-    public ZipExcelUtils(int totalNum, int sheetIndex, String templateDir) {
-        new ZipExcelUtils(totalNum, maxRow, sheetIndex, templateDir);
-    }
-
-    public ZipExcelUtils(int totalNum, long maxRow, int sheetIndex, String templateDir) {
+    private ZipExcelUtils(int totalNum, long maxRow, int sheetIndex, String templateDir) {
         this.totalNum = totalNum;
         this.maxRow = maxRow;
         this.sheetIndex = sheetIndex;
