@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
 	   xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -8,16 +8,16 @@
     <mybatis:scan base-package="com.fui.dao"/>
     <!-- import properties file -->
     <context:property-placeholder location="classpath:jdbc.properties,classpath:project.properties"/>
-    <!-- jndi datasource  --> 
-	<!-- 
+    <!-- jndi datasource  -->
+	<!--
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 	    <property name="jndiName" value="java:comp/env/appDS"/>
     </bean>
 	<bean id="cleanDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 	    <property name="jndiName" value="java:comp/env/appDS"/>
     </bean>  
-    --> 
-    <!-- DBCP Basic datasource  --> 
+    -->
+    <!-- DBCP Basic datasource  -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName"><value>${jdbc.driverClassName}</value></property>
         <property name="url"><value>${jdbc.url}</value></property>
@@ -45,7 +45,9 @@
             </list>
         </property>
     </bean>
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory" />
+    </bean>
     <bean id="fuiDao" class="com.fui.dao.FuiDao">
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 </beans>

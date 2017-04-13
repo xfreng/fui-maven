@@ -106,9 +106,6 @@ efError.prototype.getMessage = function() {
 	return this.errorMsg;
 }
 
-//document.write('<link href="./EF/EF.css" rel="stylesheet" type="text/css"/>');
-//document.write('<link href="./EF/Images/tab.css" rel="stylesheet" type="text/css"/>');
-
 //=============================================================================
 /**
  * 为IE添加数组的indexOf函数.

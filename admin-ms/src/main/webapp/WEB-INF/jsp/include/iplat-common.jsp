@@ -34,3 +34,25 @@
 <link rel="stylesheet" type="text/css" href="${path}/public/EF/Themes/styleApple/${iPlatStyle}/jquery-ui.custom.css" />
 <link rel="stylesheet" type="text/css" href="${path}/public/EF/Themes/styleApple/${iPlatStyle}/iplat-ui-theme-2.0.css" />
 <link rel="stylesheet" type="text/css" href="${path}/public/EP/indexReal-${iPlatStyle}-3.0.css" />
+<script type="text/javascript">
+    function closeSonWindow(){
+        var win = window.winMap;
+        for(var index=0;index<winCount;index++){
+            //如果窗口已关闭
+            if(win[index].closed){
+                continue;
+            }
+            //如果窗口没有可以打开的子窗口
+            if(typeof(win[index].openedWindow) == "undefined"){
+                win[index].close();
+                continue;
+            }
+            if(win[index].openedWindow.length == 0){
+                win[index].close();
+            }else{
+                win[index].close();
+                closeSonWindow();
+            }
+        }
+    }
+</script>

@@ -403,16 +403,7 @@
 	}
 	
 	function exportExcel(){
-		$.ajax({
-            url: fui.contextPath + "/export",
-            type: "post",
-            success: function (data) {
-         		data = fui.decode(data);
-            	
-            },
-            error: function () {
-            }
-    	});
+		window.location.href = fui.contextPath + "/export";
 	}
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.fui.common;
 
+import com.fui.model.base.BaseModel;
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
@@ -16,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ZipExcelUtils {
-    private static long maxRow = 65533L;
+    private final static long MAX_ROW = 65533L;
     private final static int SHEET_LIMIT_ROW = 65533;
     /**
      * 是否设置信息标题栏边框,默认情况不设置边框
@@ -54,7 +55,10 @@ public class ZipExcelUtils {
 
     public static ZipExcelUtils newInstance(int totalNum, String templateDir) {
         if (connThreadLocal.get() == null) {
-            ZipExcelUtils zipExcelUtils = new ZipExcelUtils(totalNum, maxRow, 0, templateDir);
+            ZipExcelUtils zipExcelUtils = new ZipExcelUtils();
+            zipExcelUtils.sheetIndex = 0;
+            zipExcelUtils.templateDir = templateDir;
+            zipExcelUtils.totalNum = totalNum;
             connThreadLocal.set(zipExcelUtils);
             return zipExcelUtils;
         } else {
@@ -62,11 +66,8 @@ public class ZipExcelUtils {
         }
     }
 
-    private ZipExcelUtils(int totalNum, long maxRow, int sheetIndex, String templateDir) {
-        this.totalNum = totalNum;
-        this.maxRow = maxRow;
-        this.sheetIndex = sheetIndex;
-        this.templateDir = templateDir;
+    private ZipExcelUtils() {
+
     }
 
     public boolean isTitleCellBold() {
@@ -227,8 +228,8 @@ public class ZipExcelUtils {
         POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(tempFilePath));
 
         List<String> fileNameList = new ArrayList<String>();// 用于存放生成的文件名称List
-        int count = totalNum / (int) maxRow;
-        int num = totalNum % (int) maxRow;
+        int count = totalNum / (int) MAX_ROW;
+        int num = totalNum % (int) MAX_ROW;
         if (num != 0) {
             count += 1;
         }
@@ -249,7 +250,14 @@ public class ZipExcelUtils {
                 }
                 if (fieldNames != null) {
                     for (Iterator<Map<String, Object>> it = resultData.iterator(); it.hasNext(); autoRowId++) {
-                        Map<String, Object> content = it.next();
+                        Object object = it.next();
+                        Map<String, Object> content = new HashMap<String, Object>();
+                        if (object instanceof Map) {
+                            content = (Map<String, Object>) object;
+                        } else if (object instanceof BaseModel) {
+                            BaseModel baseModel = (BaseModel) object;
+                            content = MapUtils.toMap(baseModel);
+                        }
                         int colNamesLen = fieldNames.length;
                         for (int j = 0; j < colNamesLen; j++) {
                             String columnName = fieldNames[j].toString();

@@ -64,22 +64,32 @@ public class FileUtils {
      * @param fileName 导出文件名称
      * @throws IOException
      */
-    public static void exportFile(HttpServletResponse response, String filePath, String fileName)
+    public static void exportFile(HttpServletResponse response, String fileType, String filePath, String fileName)
             throws IOException {
-        response.setContentType("multipart/form-data;charset=GBK");
         response.setHeader("Content-Disposition",
                 "attachment; filename=" + URLEncoder.encode(fileName, "utf-8"));
-
         InputStream in = null;
         try {
-            in = new FileInputStream(filePath);
-            int len;
-            byte[] buffer = new byte[1024];
-            response.setCharacterEncoding("GBK");
-            OutputStream out = response.getOutputStream();
-            while ((len = in.read(buffer)) > 0) {
-                out.write(new byte[]{(byte) 0xEF, (byte) 0xBB, (byte) 0xBF});
-                out.write(buffer, 0, len);
+            if (StringUtils.isNotEmpty(fileType)) {
+                response.setContentType(fileType);
+                in = new BufferedInputStream(new FileInputStream(filePath));
+                int len;
+                byte[] buffer = new byte[1024];
+                OutputStream out = response.getOutputStream();
+                while ((len = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, len);
+                }
+            } else {
+                response.setContentType("multipart/form-data;charset=GBK");
+                response.setCharacterEncoding("GBK");
+                in = new FileInputStream(filePath);
+                int len;
+                byte[] buffer = new byte[1024];
+                OutputStream out = response.getOutputStream();
+                while ((len = in.read(buffer)) > 0) {
+                    out.write(new byte[]{(byte) 0xEF, (byte) 0xBB, (byte) 0xBF});
+                    out.write(buffer, 0, len);
+                }
             }
         } catch (FileNotFoundException e) {
             logger.error(e.getMessage());

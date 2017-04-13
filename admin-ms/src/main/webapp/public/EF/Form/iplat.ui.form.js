@@ -197,7 +197,6 @@ efform.onload = function () {
     /* 禁用右键 */
     //document.oncontextmenu = new Function("return false");
 
-//	if (isIE) // 对于IE：记住Body原clientWidth，检查是否需要resize
     efform._clientWidth = document.body.clientWidth;
 
     efform.__loadSuccessFlag = true;
@@ -324,7 +323,6 @@ efform.RESIZE_SCALE = 1;
  */
 efform.init = function () {
     window.onload = efform.onload;
-    // window.onerror = efform.windowOnError;
 
     window.onresize = function () {
         if (!efform._clientWidth || Math.abs(document.body.clientWidth - efform._clientWidth) < efform.RESIZE_SCALE)
@@ -350,16 +348,6 @@ efform._resize = function () {
     }
 };
 
-/**
- * 状态图标文件的url.
- * @private
- * efform._statusIcon = { "normal":EF_IMAGES_PATH+"efform_status_green.gif",
- * "alert":EF_IMAGES_PATH+"efform_status_yellow.gif",
- * "error":EF_IMAGES_PATH+"efform_status_red.gif",
- * "loading":EF_IMAGES_PATH+"efform_status_loading.gif" }
- */
-
-//维护efform中的状态行个数，用于判断状态行的改变情况。
 //如果初始值不变表明这段时间内没有新的信息提示
 efform._statusInfoCount = 0;
 /**
@@ -645,7 +633,7 @@ efform.setSelectDiv = function (selectID) {
     if ($.browser.msie) {
         try {
             //为解决自定义表单中下拉框后面的必填星号换行，暂时给下拉框所在div增加25px的宽度
-//			var selectWidth = document.getElementById(selectID).style.width + 25;
+            //var selectWidth = document.getElementById(selectID).style.width + 25;
             //去掉默认的25px ,以解决当下拉框未定义宽度后宽度固定为25px,当小于下拉框内容实际宽度而被压缩问题
             var selectWidth = document.getElementById(selectID).style.width;
             var containedDivID = "div_" + selectID;
@@ -1769,7 +1757,6 @@ efform.openNewForm = function (form_ename, para_list, is_maximum) {
     if (_wnd != null) {
         _wnd.winMap[_wnd.winCount] = efform.openForm(form_ename, para_list,
             is_maximum);
-        // alert();
         return _wnd.winMap[_wnd.winCount++];
     }
 };
@@ -1964,20 +1951,6 @@ efform.fillDiv = function (div_id, eiInfo, isAllNode) {
  * @return void.
  */
 efform.fillNode = function (node, eiInfo, isAllNode) {
-    /*
-     * if( !isAvailable( fill_status ) ) { fill_status = true; } if( fill_status ) {
-     * var ei_status = eval( eiInfo.getStatus() ); ef.get( "_eiMsg" ).innerText =
-     * efutils.trimString( eiInfo.getMsg() ); ef.get( "_eiMsgKey" ).innerText =
-     * efutils.trimString( eiInfo.getMsgKey() ); ef.get( "_eiDetailMsg"
-     * ).innerText = efutils.trimString( eiInfo.getDetailMsg() );
-     *
-     * if( ei_status < 0 ) { alert( "调用Service出现异常["+ eiInfo.getMsgKey() + "]:" +
-     * eiInfo.getMsg() ); ef.get( "_eiStatusImg" ).firstChild.src =
-     * EF_IMAGES_PATH + "efform_status_red.gif"; return; }
-     *
-     * ef.get( "_eiStatusImg" ).firstChild.src = EF_IMAGES_PATH + ( ( ei_status ==
-     * 0 )? "efform_status_green.gif" : "efform_status_yellow.gif"); }
-     */
     if (!node.childNodes || node.childNodes.length <= 0) {
         var cell_value = efform._getValue(node, eiInfo, isAllNode);
         if (cell_value === null) {
