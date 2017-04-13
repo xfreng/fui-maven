@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fui.common.JSON;
@@ -16,10 +17,11 @@ import com.fui.common.WebUtils;
 import com.fui.dao.user.UserMapper;
 import com.fui.model.User;
 
-@Service
+@Service("userService")
 public class UserService {
-	private final Logger log = LoggerFactory.getLogger(UserService.class);
-	@Resource
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
 	private UserMapper userMapper;
 
 	/**
@@ -45,13 +47,13 @@ public class UserService {
 					data.put("state", "1");
 					data.put("toIndexURL", user.getMenuType());
 				} else {
-					log.error("用户密码错误");
+					logger.error("用户密码错误");
 					data.put("message", "用户密码错误，请重新输入");
 					data.put("state", "0");
 					data.put("toIndexURL", "login.jsp");
 				}
 			} else {
-				log.info("用户名不存在");
+				logger.info("用户名不存在");
 				data.put("message", "用户名不存在，请重新输入");
 				data.put("state", "0");
 				data.put("toIndexURL", "login.jsp");

@@ -1,16 +1,18 @@
 package com.fui.service;
 
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.fui.dao.style.StyleMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fui.dao.style.StyleMapper;
+import java.util.Map;
 
-@Service
+@Service("styleService")
 public class StyleService{
-	@Resource
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
 	private StyleMapper styleMapper;
 	/**
 	 * @param beanMap

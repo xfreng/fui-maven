@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ page import="com.fui.model.User"%>
+<%@ page import="com.fui.common.MemcachedUtils"%>
+<%@ page import="com.fui.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -19,8 +20,15 @@
 		menuType = user.getMenuType();
 		menuStyle = user.getStyle();
 	}
+	Object projectName = MemcachedUtils.get("projectName");
+	Object logo = MemcachedUtils.get("logo");
+	Object dev = MemcachedUtils.get("dev");
+
 	pageContext.setAttribute("menuType",menuType);
 	pageContext.setAttribute("menuStyle",menuStyle);
+	pageContext.setAttribute("projectName",projectName);
+	pageContext.setAttribute("logo",logo);
+	pageContext.setAttribute("dev",dev);
 %>
 <c:choose>
 	<c:when test="${'pact' eq menuType}">

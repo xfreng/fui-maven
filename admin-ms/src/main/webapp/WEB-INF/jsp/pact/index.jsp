@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>欢迎使用 制药MES产品研发[运行环境]</title>
     <%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
-    <%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
-    <link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css" />
+	<%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
+	<title>欢迎使用 ${projectName}[${dev}]</title>
+	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css" />
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
 	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
@@ -136,7 +136,7 @@
 	                <a href="${path }/pact" class="bak_logo mg_b-4"></a>
 	                <a href="javascript:void(0)" class="title-line mg_t_15 mg_l_10"></a>
 	                <span class="white font_18 font_b pd_l_10" style="position:absolute;top:20px;">
-						制药MES产品研发&nbsp;<span style="font-size:12px;">运行环境 </span>
+						${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
 					</span>
 	            </div>
 	            <!--menu-->

@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>制药MES产品研发[运行环境]登录界面</title>
 	<%@include file="/WEB-INF/jsp/include/fui-common.jsp"%>
+	<title>${projectName}[${dev}]登录界面</title>
 </head>
 <body class="background">
 	<div class="login_body">
       	<form id="loginForm" class="fui-form" method="post">
-	    	<div><img src="${path }/public/mainframe/images/login/login-logo-black.png" width="176px" height="45px" class="pos_rel l_186 t_-31"></div>
+	    	<div><img src="${path }/public/mainframe/images/login/${logo}" class="pos_rel l_186 t_-31"></div>
 	        <div class="mg_0_auto w_510 pos_rel l_255">
 	            <div style="text-align: center;">
-	               	<span style="font-weight:bold;font-size:20px">制药MES产品研发</span>
-	                <span style="font-size:12px">运行环境</span>
+	               	<span style="font-weight:bold;font-size:20px">${projectName}</span>
+	                <span style="font-size:12px">${dev}</span>
 	            </div>
 	            <div class="clear"></div>
 	            <div class="login" style="padding:0px 0px 30px 0px;">

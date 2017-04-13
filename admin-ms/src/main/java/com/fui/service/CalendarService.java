@@ -1,40 +1,42 @@
 package com.fui.service;
 
+import com.fui.dao.calendar.CalendarMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
-import com.fui.dao.calendar.CalendarMapper;
-
-@Service
+@Service("calendarService")
 public class CalendarService {
-	@Resource
-	private CalendarMapper calendarMapper;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	public List<Map<String, Object>> query() {
-		return calendarMapper.query();
-	}
+    @Autowired
+    private CalendarMapper calendarMapper;
 
-	/**
-	 * @param id
-	 * @return
-	 */
-	public Map<String, Object> getCalendarById(String id) {
-		return calendarMapper.getCalendarById(id);
-	}
+    public List<Map<String, Object>> query() {
+        return calendarMapper.query();
+    }
 
-	public boolean addCalendar(Map<String, Object> beanMap) {
-		return calendarMapper.addCalendar(beanMap);
-	}
+    /**
+     * @param id
+     * @return
+     */
+    public Map<String, Object> getCalendarById(String id) {
+        return calendarMapper.getCalendarById(id);
+    }
 
-	public boolean deleteCalendarById(String id) {
-		return calendarMapper.deleteCalendarById(id);
-	}
+    public boolean addCalendar(Map<String, Object> beanMap) {
+        return calendarMapper.addCalendar(beanMap);
+    }
 
-	public boolean updateCalendarById(Map<String, Object> beanMap) {
-		return calendarMapper.updateCalendarById(beanMap);
-	}
+    public boolean deleteCalendarById(String id) {
+        return calendarMapper.deleteCalendarById(id);
+    }
+
+    public boolean updateCalendarById(Map<String, Object> beanMap) {
+        return calendarMapper.updateCalendarById(beanMap);
+    }
 }
