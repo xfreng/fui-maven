@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/fullcalendar.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/fancybox.css">
 <style type="text/css">
-#calendar{width:850px; margin:20px auto 10px auto}
+#calendar{width:99%;height:100%;margin:20px auto 10px auto}
 .fancy{width:450px; height:auto}
 .fancy h3{height:30px; line-height:30px; border-bottom:1px solid #d3d3d3; font-size:14px}
 .fancy form{padding:10px}
@@ -90,7 +90,7 @@ $(function() {
 </head>
 
 <body>
-	<div id="main" style="width:870px">
+	<div id="main" style="width:98%;height:auto;">
 	   <div id='calendar'></div>
 	</div>
 </body>

@@ -94,7 +94,7 @@
 		end_chk = "checked";
 	}
 %>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/jquery-ui.css">
 </head>
 
 <body>
@@ -188,7 +188,7 @@
     </div>
     </form>
 </div>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/jquery.form.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$(".datepicker").datepicker({minDate: -3,maxDate: 3,dateFormat: 'yy-mm-dd'});
