@@ -45,7 +45,7 @@
 </head>
 <body>
 	<div class="logo">
-		制药MES产品研发&nbsp;<span style="font-size:12px;">运行环境 </span>
+        ${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
 	</div>
     <div class="topNav">    
         <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toindex"  plain="true" >&nbsp;首&nbsp;页</a> |
@@ -55,9 +55,9 @@
     <div style="position:absolute;right:12px;bottom:8px;font-size:12px;line-height:25px;font-weight:normal;">
       	  皮肤：
         <select onchange="updateStyle(this.value)" style="width:100px;margin-right:10px;">
-            <option value="default" <%="default".equals(menuStyle)?"selected":"" %>>Default</option>
-            <option value="bootstrap" <%="bootstrap".equals(menuStyle)?"selected":"" %>>Bootstrap</option>
-            <option value="pact" <%="pact".equals(menuStyle)?"selected":"" %>>Pact</option>
+            <option value="default" ${("default" eq menuStyle) ? "selected" : ""}>Default</option>
+            <option value="bootstrap" ${("bootstrap" eq menuStyle) ? "selected" : ""}>Bootstrap</option>
+            <option value="pact" ${("pact" eq menuStyle) ? "selected" : ""}>Pact</option>
         </select>
     </div>
 </body>

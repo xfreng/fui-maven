@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>欢迎使用 制药MES产品研发[运行环境]</title>
 	<%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
-	<%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
+    <%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
+    <title>欢迎使用 ${projectName}[${dev}]</title>
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
     <style type="text/css">
@@ -12,7 +12,7 @@
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
 	    }    
 	    .header{
-	        background:url(${path}/mainframe/images/header.gif) repeat-x 0 -1px;
+	        background:url(${path}/public/mainframe/images/header.gif) repeat-x 0 -1px;
 	    }
     </style>
     <script type="text/javascript">
@@ -77,6 +77,11 @@
 		function changeOpenWindow(){
 			__newForm = !__newForm;
 		}
+        if(window.attachEvent){
+            window.attachEvent('onunload',function(){
+                closeSonWindow();
+            });
+        }
 	</script>
 </head>
 <body id="cache" onload="setCurTime('cy','blue');">
