@@ -24,6 +24,9 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseType" value="mysql"/>
+        <property name="databaseTablePrefix" value="act."/>
+        <property name="databaseCatalog" value="act"/>
+        <property name="databaseSchema" value="act"/>
         <property name="tablePrefixIsSchema" value="true"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <!-- UUID作为主键生成策略-->
