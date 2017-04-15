@@ -1,6 +1,6 @@
 package com.fui.task;
 
-import com.fui.common.MemcachedUtils;
+import com.fui.common.MemCachedUtils;
 import com.fui.dao.system.SystemMapper;
 import com.fui.model.System;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ public class FuiTask {
     public void init() {
         List<System> systemList = systemMapper.selectAll();
         for (System system : systemList) {
-            MemcachedUtils.set(system.getNameDesc(), system.getName());
+            MemCachedUtils.set(system.getNameDesc(), system.getName());
         }
     }
 }

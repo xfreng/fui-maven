@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ page import="com.fui.common.MemcachedUtils" %>
+<%@ page import="com.fui.common.MemCachedUtils" %>
 <%@ page import="com.fui.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="EF" uri="/WEB-INF/framework/tlds/EF-2.0.tld" %>
@@ -27,9 +27,9 @@
 	}else if("black".equals(menuStyle)){
 		iPlatStyle = "ModernBlack";
 	}
-	Object projectName = MemcachedUtils.get("projectName");
-	Object logo = MemcachedUtils.get("logo");
-	Object dev = MemcachedUtils.get("dev");
+	Object projectName = MemCachedUtils.get("projectName");
+	Object logo = MemCachedUtils.get("logo");
+	Object dev = MemCachedUtils.get("dev");
 	pageContext.setAttribute("menuType",menuType);
 	pageContext.setAttribute("menuStyle",menuStyle);
 	pageContext.setAttribute("iPlatStyle",iPlatStyle);

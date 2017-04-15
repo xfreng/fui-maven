@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * Memcached工具类
  */
-public class MemcachedUtils {
+public class MemCachedUtils {
 
     private static MemCachedClient memCachedClient;
 
@@ -39,7 +39,7 @@ public class MemcachedUtils {
         }
     }
 
-    private MemcachedUtils() {
+    private MemCachedUtils() {
     }
 
     /**
