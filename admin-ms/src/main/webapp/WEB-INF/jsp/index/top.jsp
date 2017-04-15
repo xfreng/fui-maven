@@ -7,24 +7,23 @@
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
 	    }
 	
-	    .logo
-	    {
+	    .logo{
 	        font-family:"微软雅黑","Helvetica Neue",Helvetica,Arial,sans-serif;
 	        font-size:28px;
 	        font-weight:bold;        
 	        cursor:default;
-	        position:absolute;top:25px;left:14px;        
+	        position:absolute;
+            top:16px;
+            left:14px;
 	        line-height:28px;
 	        color:#444;
 	    }    
-	    .topNav
-	    {
+	    .topNav{
 	        position:absolute;right:8px;top:12px;        
 	        font-size:12px;
 	        line-height:25px;
 	    }
-	    .topNav a
-	    {
+	    .topNav a{
 	        text-decoration:none;        
 	        font-weight:normal;
 	        font-size:12px;
@@ -33,21 +32,21 @@
 	        margin-right:3px;
 	        color:#333;        
 	    }
-	    .topNav a:hover
-	    {
+	    .topNav a:hover{
 	        text-decoration:underline;        
 	    }   
-	     .fui-layout-region-south img
-	    {
+	     .fui-layout-region-south img{
 	        vertical-align:top;
 	    }
     </style>
 </head>
 <body>
 	<div class="logo">
+        <a href="${path }/default"><img src="${path}/public/mainframe/images/logo.png"></a>&nbsp;
+        <span class="separator"></span>
         ${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
-	</div>
-    <div class="topNav">    
+    </div>
+    <div class="topNav">
         <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toindex"  plain="true" >&nbsp;首&nbsp;页</a> |
         <a id="loginout" title="退出登录" class="fui-button fui-button-iconLeft" iconCls="icon-power-off" onclick="loginout" plain="true" target="_parent">&nbsp;注&nbsp;销</a>
     </div>

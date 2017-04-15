@@ -5,7 +5,7 @@
     <%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
 	<title>欢迎使用 ${projectName}[${dev}]</title>
-	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css" />
+	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
 	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
@@ -25,7 +25,7 @@
 			color:#595959;
 		}
 		.searchbox .fui-buttonedit-icon{
-	        background:url(/public/mainframe/images/search.gif) no-repeat 50% 50%;
+	        background:url('${path }/public/mainframe/images/search.gif') no-repeat 50% 50%;
 	    }
 	</style>
 	<script type="text/javascript">

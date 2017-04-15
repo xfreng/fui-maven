@@ -5,6 +5,7 @@
 	<%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
     <title>欢迎使用 ${projectName}[${dev}]</title>
+    <link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-ModernBlack-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
     <style type="text/css">
@@ -12,8 +13,14 @@
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
 	    }    
 	    .header{
-	        background:url(${path}/public/mainframe/images/header.gif) repeat-x 0 -1px;
+	        background: url('${path}/public/mainframe/images/header.gif') repeat-x 0 -1px;
 	    }
+        #menu .ef-tree-item-node>div.ui-theme>.ui-icon{
+            background-image: url('${path}/public/EF/Themes/base/images/ui-icons_222222_256x240.png');
+        }
+        .ui-widget-content .ui-icon{
+            background-image: url('${path}/public/EF/Themes/styleApple/ModernBlack/images/ui-icons_454545_256x240.png');
+        }
     </style>
     <script type="text/javascript">
 		var __newForm = true;
