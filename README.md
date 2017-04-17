@@ -1,5 +1,5 @@
 # fuiPlat4j框架maven工程介绍
-## 一、安装部署Memcached服务端(工程目录tools下有安装文件)
+## 一、安装部署Memcached服务端(admin-ms工程目录tools下有安装文件)
     1、Windows版
         (1). 首先，去下载Windows版本Memcached服务端，到本地硬盘分区
             根目录，比如D盘下的Memcached文件夹。
