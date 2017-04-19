@@ -1,9 +1,9 @@
 package com.fui.model;
 
+import com.fui.model.base.BaseModel;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.fui.model.base.BaseModel;
 
 /**
  * MenuTree

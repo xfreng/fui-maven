@@ -30,9 +30,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
         log.trace("requestUri:" + requestUri);
 
-        String xrequestedwith = request.getHeader("x-requested-with");
+        String xRequestedWith = request.getHeader("x-requested-with");
 
-        log.trace("xrequestedwith:" + xrequestedwith);
+        log.trace("xRequestedWith:" + xRequestedWith);
 
         for (String url : allowUrls) {
             if (requestUri.endsWith(url)) {
@@ -43,19 +43,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         Object userObject = request.getSession().getAttribute("userObject");
         if (userObject == null) {
             log.trace("Interceptor：跳转到login页面！");
-            if ("XMLHttpRequest".equalsIgnoreCase(xrequestedwith)) {
-                response.sendRedirect(request.getContextPath() + "/timeout");
-                /*BufferedWriter writer = null;
-                response.setContentType("application/json; charset=utf-8");
-                try {
-                    writer = new BufferedWriter(new OutputStreamWriter(response.getOutputStream(), "UTF-8"));
-                    writer.write("登录超时，请重新登录！");
-                    writer.flush();
-                } catch (IOException e) {
-                    log.error("将信息 {} 写入response异常", "登录超时，请重新登录！", e);
-                } finally {
-                    writer.close();
-                }*/
+            if ("XMLHttpRequest".equalsIgnoreCase(xRequestedWith)) {
+                response.getWriter().write("timeout");
             } else {
                 response.sendRedirect(request.getContextPath() + "/timeout");
             }

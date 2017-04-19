@@ -25,7 +25,7 @@
 var bootPATH = __CreateJSPath("fui.js");
 
 //debugger,此变量用来区别ajax请求是否弹出alert来提示交互错误
-fui_debugger = true;
+fui_debugger = false;
 
 document.write('<link rel="icon"  href="app.ico"  type="image/x-icon"/>');
 document.write('<link rel="SHORTCUT ICON"  href="app.ico"  type="image/x-icon"/>');

@@ -55,6 +55,33 @@
         </if>
 		order by tree_ename asc, node_sort_id asc, node_ename asc
 	</select>
+
+	<select id="queryMenuNodeById_page" resultType="com.fui.model.Menu">
+		SELECT
+			rec_creator     as "recCreator",
+			rec_create_time as "recCreateTime",
+			rec_revisor     as "recRevisor",
+			rec_revise_time as "recReviseTime",
+			archive_flag    as "archiveFlag",
+			tree_ename as "pid",
+			node_ename as "id",
+			node_cname as "text",
+			node_type  as "type",
+			node_url   as "url",
+			node_sort_id    as "sortId",
+			node_param	as "param",
+			node_image_path as "image"
+		FROM
+		fui.fui_menu
+		WHERE 1=1
+		<if test="id != null and id != ''">
+			and tree_ename = #{id}
+		</if>
+		<if test="node != null and node != ''">
+			and node_ename = #{node}
+		</if>
+		order by tree_ename asc, node_sort_id asc, node_ename asc
+	</select>
 	
 	<insert id="insertMenuNode" parameterType="com.fui.model.Menu">
 		insert into 

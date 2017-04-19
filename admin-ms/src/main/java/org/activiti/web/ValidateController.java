@@ -1,11 +1,8 @@
 package org.activiti.web;
 
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baosight.iplat4j.logging.Logger;
+import com.baosight.iplat4j.logging.LoggerFactory;
+import com.fui.common.JSON;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Model;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.baosight.iplat4j.logging.Logger;
-import com.baosight.iplat4j.logging.LoggerFactory;
-import com.fui.common.JSON;
+import javax.servlet.http.HttpServletRequest;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class ValidateController {

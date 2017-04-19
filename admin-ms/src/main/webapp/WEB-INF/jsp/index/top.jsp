@@ -1,4 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"%>
+<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
+<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,9 +44,9 @@
 </head>
 <body>
 	<div class="logo">
-        <a href="${path }/default"><img src="${path}/public/mainframe/images/logo.png"></a>&nbsp;
+        <a href="${path }/default"><img src="${path}/public/mainframe/images/${logo eq null ? 'logo.png' : logo}"></a>&nbsp;
         <span class="separator"></span>
-        ${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
+        ${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
     </div>
     <div class="topNav">
         <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toindex"  plain="true" >&nbsp;首&nbsp;页</a> |

@@ -8,9 +8,11 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
     http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
-    <task:annotation-driven/> <!-- 定时器开关-->
+    <task:annotation-driven/>
 
-    <bean id="fuiTask" class="com.fui.task.FuiTask"></bean>
+    <bean id="fuiTask" class="com.fui.task.FuiTask">
+        <property name="open" value="false"/><!-- 定时器是否打开执行功能-->
+    </bean>
 
     <!-- 自动扫描的包名 -->
     <context:component-scan base-package="com.fui.task"/>

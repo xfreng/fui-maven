@@ -125,9 +125,13 @@ eiTreeModel.prototype.getChildren = function(p,tree){
 		 },
          onFail: function(xmlR, status, e){  
 			 host.status(-1);
-			 if (status != -2)
-				 alert("ERROR"); 
-			 } //异常处理待改进
+			 if (status != -2){
+				 console.log("ERROR");
+                 alert("未登录或登录超时!");
+                 var win = window.parent || window;
+                 win.location.href = fui.contextPath + '/login.jsp';
+			 }
+		 } //异常处理待改进
     }; 
     
     var queryMeta = new EiBlockMeta(this.queryBlockName);

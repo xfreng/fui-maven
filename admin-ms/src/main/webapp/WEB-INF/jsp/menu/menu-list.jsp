@@ -37,7 +37,7 @@
 	        <a class="fui-button" iconCls="icon-download" onclick="exportExcel()">导出</a>     
 	    </div>
 	    <div id="grid" class="fui-datagrid" style="width:100%;height:94%;" multiSelect="true"
-	       	url="${path }/loadMenuNodes" idField="id" parentField="pid" pageSize="20"
+	       	url="${path }/loadMenuNodePage" idField="id" parentField="pid" pageSize="20"
 	        textField="text" dataField="treeNodes" showFilterRow="false" allowCellSelect="true" 
 	        allowCellEdit="true" onrowdblclick="toedit" oncellmousedown="onCellBeginEdit">
 	        <div property="columns">

@@ -95,12 +95,12 @@ INSERT INTO `fui_menu` VALUES ('admin', '20120926091948', ' ', ' ', ' ', 'EDOT',
 INSERT INTO `fui_menu` VALUES ('admin', '20110518112122', 'admin', '20170412140406', ' ', 'ED', 'EDPI00', '项目信息管理', '1', 'project', '21', ' ', 'css:icon-cogs');
 INSERT INTO `fui_menu` VALUES ('admin', '20070622161337', 'admin', '20140528154611', ' ', 'ED', 'EDFA', '页面资源管理', '0', ' ', '01', 'aa=12', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20070622161518', 'admin', '20070622161741', ' ', 'ED', 'EDPI', '菜单资源管理', '0', ' ', '02', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20070622161407', 'admin', '20170112155829', '2', 'EDFA', 'EDFA00', '页面信息管理', '1', 'pageinfo', '1', 'aa=1', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20070622161407', 'admin', '20170112155829', '2', 'EDFA', 'EDFA00', '页面信息管理', '1', 'page', '1', 'aa=1', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20070622161407', 'admin', '20070622161811', ' ', 'EDFA', 'EDFA01', '按钮信息管理', '1', ' ', '2', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20070622161533', 'admin', '20070622161828', ' ', 'EDPI', 'EDPI10', '菜单信息管理', '1', 'menutree', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20161225184150', ' ', ' ', ' ', 'root', 'EP', '系统平台', '0', ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20090729174958', 'admin', '20120229113548', ' ', 'ED', 'EDCM', '代码管理', '0', ' ', '20', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20090729175218', 'admin', '20170112174611', ' ', 'EDCM', 'EDCM00', '代码分类管理', '1', 'dictinfo', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20090729175218', 'admin', '20170112174611', ' ', 'EDCM', 'EDCM00', '代码分类管理', '1', 'dict', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20160830162252', ' ', ' ', ' ', '$', 'root', '系统菜单树', '0', ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105150848', ' ', ' ', ' ', 'root', 'ACT', '流程管理', '0', ' ', '6', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', ' ', ' ', ' ', 'ACT', 'RWPE01', '流程执行示例', '1', ' ', '1', ' ', ' ');

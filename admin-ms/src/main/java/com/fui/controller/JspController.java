@@ -26,11 +26,6 @@ public class JspController {
 		return "pact/index";
 	}
 
-	@RequestMapping("/menubar")
-	public String menubar() {
-		return "menubar/index";
-	}
-
 	@RequestMapping("/treegrid")
 	public String treegrid() {
 		return "treegrid/treegrid-demo";
@@ -41,17 +36,17 @@ public class JspController {
 		return "menu/menu-state";
 	}
 
-	@RequestMapping("/menutree")
+	@RequestMapping("/menu")
 	public String menutree() {
 		return "menu/menu-list";
 	}
 	
-	@RequestMapping("/pageinfo")
+	@RequestMapping("/page")
 	public String pageinfo() {
 		return "page/page-list";
 	}
 	
-	@RequestMapping("/dictinfo")
+	@RequestMapping("/dict")
 	public String dictinfo() {
 		return "dict/dict_manager_mainframe";
 	}

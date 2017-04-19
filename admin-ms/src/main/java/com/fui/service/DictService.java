@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,16 +32,26 @@ public class DictService {
         return fuiDao.query(sqlName, param);
     }
 
-    public List<DictType> queryDictType(Map<String, Object> param, int offset, int limit) {
+    public Map<String, Object> queryDictType(Map<String, Object> param, int offset, int limit) {
+        Map<String, Object> jsonData = new HashMap<String, Object>();
         String sqlName = "com.fui.dao.dict.DictTypeMapper.query";
         logger.info(sqlName);
-        return fuiDao.query(sqlName, param, offset, limit);
+        int count = fuiDao.countBySql(sqlName, param);
+        List<DictType> dictTypeList = fuiDao.query(sqlName, param, offset, limit);
+        jsonData.put("total", count);
+        jsonData.put("data", dictTypeList);
+        return jsonData;
     }
 
-    public List<DictEntry> queryLayout(Map<String, Object> param, int offset, int limit) {
+    public Map<String, Object> queryLayout(Map<String, Object> param, int offset, int limit) {
+        Map<String, Object> jsonData = new HashMap<String, Object>();
         String sqlName = "com.fui.dao.dict.DictEntryMapper.query";
         logger.info(sqlName);
-        return fuiDao.query(sqlName, param, offset, limit);
+        int count = fuiDao.countBySql(sqlName, param);
+        List<DictEntry> dictEntryList = fuiDao.query(sqlName, param, offset, limit);
+        jsonData.put("total", count);
+        jsonData.put("data", dictEntryList);
+        return jsonData;
     }
 
     public List<DictEntry> loadDictData(Map<String, Object> param) {

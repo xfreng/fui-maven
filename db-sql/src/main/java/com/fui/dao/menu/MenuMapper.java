@@ -15,6 +15,13 @@ public interface MenuMapper {
 
 	List<Menu> queryMenuNodeById(Map<String, Object> param);
 
+	/**
+	 * 分页查询
+	 * @param param
+	 * @return 当前页
+	 */
+	List<Menu> queryMenuNodeById_page(Map<String, Object> param);
+
 	boolean insertMenuNode(Menu menuTree);
 
 	boolean deleteMenuNodeById(Menu menuTree);

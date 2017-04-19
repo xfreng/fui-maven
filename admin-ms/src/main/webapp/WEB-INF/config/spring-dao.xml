@@ -41,6 +41,10 @@
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
+    <bean id="mybatis.PageInterceptor" class="com.talkyun.apus.mybatis.plugin.PagePlugin">
+        <property name="dialect" value="${mybatis.dbType}"></property>
+    </bean>
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <tx:advice id="fui.default.txAdvice" transaction-manager="transactionManager">
@@ -62,6 +66,7 @@
                 <value>${mybatis.mapperLocation}</value>
             </list>
         </property>
+        <property name="plugins" ref="mybatis.PageInterceptor"/>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory" />

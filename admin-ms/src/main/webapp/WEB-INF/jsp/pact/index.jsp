@@ -4,7 +4,9 @@
 <head>
     <%@include file="/WEB-INF/jsp/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/jsp/include/fui-iplat-common.jsp"%>
-	<title>欢迎使用 ${projectName}[${dev}]</title>
+	<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
+	<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
+	<title>欢迎使用 ${p_name}[${p_dev}]</title>
 	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
@@ -136,7 +138,7 @@
 	                <a href="${path }/pact" class="bak_logo mg_b-4"></a>
 	                <a href="javascript:void(0)" class="title-line mg_t_15 mg_l_10"></a>
 	                <span class="white font_18 font_b pd_l_10" style="position:absolute;top:20px;">
-						${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
+						${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
 					</span>
 	            </div>
 	            <!--menu-->

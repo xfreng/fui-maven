@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class FuiDao {
@@ -43,7 +45,19 @@ public class FuiDao {
             String sql = sqlSession.getConfiguration().getMappedStatement(sqlName).getBoundSql(param).getSql();
             connection = SqlSessionUtils.getSqlSession(sqlSessionTemplate.getSqlSessionFactory(), sqlSessionTemplate.getExecutorType(), sqlSessionTemplate.getPersistenceExceptionTranslator()).getConnection();
             String countSql = String.format("select count(*) from (%s) t", sql);
-            ResultSet rs = connection.prepareStatement(countSql).executeQuery();
+            PreparedStatement pst = connection.prepareStatement(countSql);
+            if (param instanceof Map) {
+                Map params = (Map) param;
+                int index = 1;
+                for (Object key : params.keySet()) {
+                    Object value = params.get(key);
+                    if (value == null) {
+                        continue;
+                    }
+                    pst.setObject(index++, value);
+                }
+            }
+            ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1);
             }

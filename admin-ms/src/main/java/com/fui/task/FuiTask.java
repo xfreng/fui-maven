@@ -23,14 +23,22 @@ public class FuiTask {
     @Autowired
     private SystemMapper systemMapper;
 
+    private boolean open;
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
     /**
      * 启动时执行一次，之后每隔2秒执行一次(缓存项目配置信息)
      */
     @Scheduled(fixedRate = 1000 * 2)
     public void init() {
-        List<System> systemList = systemMapper.selectAll();
-        for (System system : systemList) {
-            MemCachedUtils.set(system.getNameDesc(), system.getName());
+        if(open){
+            List<System> systemList = systemMapper.selectAll();
+            for (System system : systemList) {
+                MemCachedUtils.set(system.getNameDesc(), system.getName());
+            }
         }
     }
 }

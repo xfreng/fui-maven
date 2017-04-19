@@ -1,20 +1,21 @@
 package com.fui.service;
 
 import com.baosight.iplat4j.util.DateUtils;
+import com.fui.common.JsonDateValueProcessor;
 import com.fui.common.MapUtils;
 import com.fui.common.UserUtils;
 import com.fui.dao.menu.MenuMapper;
 import com.fui.model.Menu;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("menuService")
 public class MenuService {
@@ -32,9 +33,12 @@ public class MenuService {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);
         List<Menu> menuTrees = menuMapper.queryMenuNodeById(param);
-        for (Menu menuTree : menuTrees) {
-            Map<String, Object> treeNode = MapUtils.toMap(menuTree);
-            param.put("id", menuTree.getId());
+        JsonConfig jsonConfig = new JsonConfig();
+        jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor("yyyy-MM-dd HH:mm:ss"));
+        JSONArray menuArray = JSONArray.fromObject(menuTrees, jsonConfig);
+        for (Object menuTree : menuArray) {
+            JSONObject treeNode = (JSONObject) menuTree;
+            param.put("id", treeNode.getString("id"));
             List<Menu> nodes = menuMapper.queryMenuNodeById(param);
             if (nodes.size() > 0) {
                 treeNode.put("isLeaf", false);
@@ -43,6 +47,14 @@ public class MenuService {
             menus.add(treeNode);
         }
         return menus;
+    }
+
+    /**
+     * @param param
+     * @return
+     */
+    public List<Menu> queryMenuNodeById_page(Map<String, Object> param) {
+        return menuMapper.queryMenuNodeById_page(param);
     }
 
     /**
