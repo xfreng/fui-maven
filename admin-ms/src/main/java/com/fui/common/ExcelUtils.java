@@ -53,12 +53,9 @@ public class ExcelUtils {
 
     private static ThreadLocal<ExcelUtils> connThreadLocal = new ThreadLocal<ExcelUtils>();
 
-    public static ExcelUtils newExpInstance(int totalNum, String templateDir) {
+    public static ExcelUtils newExportInstance(int totalNum, String templateDir) {
         if (connThreadLocal.get() == null) {
-            ExcelUtils zipExcelUtils = new ExcelUtils();
-            zipExcelUtils.sheetIndex = 0;
-            zipExcelUtils.templateDir = templateDir;
-            zipExcelUtils.totalNum = totalNum;
+            ExcelUtils zipExcelUtils = new ExcelUtils(totalNum, templateDir);
             connThreadLocal.set(zipExcelUtils);
             return zipExcelUtils;
         } else {
@@ -66,8 +63,10 @@ public class ExcelUtils {
         }
     }
 
-    private ExcelUtils() {
-
+    private ExcelUtils(int totalNum, String templateDir) {
+        this.sheetIndex = 0;
+        this.templateDir = templateDir;
+        this.totalNum = totalNum;
     }
 
     public boolean isTitleCellBold() {

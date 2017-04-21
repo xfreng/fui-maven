@@ -99,7 +99,7 @@ public class MenuController extends AbstractSuperController {
         Map<String, Object> exportInfo = new HashMap<String, Object>();
         int totalNum = fuiDao.countBySql(sqlName, parameters);
         List<Map<String, Object>> resultData = fuiDao.query(sqlName, parameters);
-        ExcelUtils zipExcelUtil = ExcelUtils.newExpInstance(totalNum, templateDir);
+        ExcelUtils zipExcelUtil = ExcelUtils.newExportInstance(totalNum, templateDir);
         zipExcelUtil.setTitleCellBold(true);
         String filePath = zipExcelUtil.exportZipExcel(templateFilename, resultData, exportInfo);
         logger.info("导出文件路径文件路径：{}", filePath);
