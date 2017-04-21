@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class ZipExcelUtils {
+public class ExcelUtils {
     private final static long MAX_ROW = 65533L;
     private final static int SHEET_LIMIT_ROW = 65533;
     /**
@@ -51,11 +51,11 @@ public class ZipExcelUtils {
     private String templateDir;
     private int totalNum;
 
-    private static ThreadLocal<ZipExcelUtils> connThreadLocal = new ThreadLocal<ZipExcelUtils>();
+    private static ThreadLocal<ExcelUtils> connThreadLocal = new ThreadLocal<ExcelUtils>();
 
-    public static ZipExcelUtils newInstance(int totalNum, String templateDir) {
+    public static ExcelUtils newExpInstance(int totalNum, String templateDir) {
         if (connThreadLocal.get() == null) {
-            ZipExcelUtils zipExcelUtils = new ZipExcelUtils();
+            ExcelUtils zipExcelUtils = new ExcelUtils();
             zipExcelUtils.sheetIndex = 0;
             zipExcelUtils.templateDir = templateDir;
             zipExcelUtils.totalNum = totalNum;
@@ -66,7 +66,7 @@ public class ZipExcelUtils {
         }
     }
 
-    private ZipExcelUtils() {
+    private ExcelUtils() {
 
     }
 
