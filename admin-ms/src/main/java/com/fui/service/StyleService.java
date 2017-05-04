@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Service("styleService")
 public class StyleService{
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(StyleService.class);
 
 	@Autowired
 	private StyleMapper styleMapper;

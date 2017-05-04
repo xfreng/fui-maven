@@ -12,11 +12,10 @@ import java.util.List;
 /**
  * @Title
  * @Author 熊世凤 on 2017/4/13.
- * @Copyright © 蜂投网 2015 ~ 2017
  */
 @Service("systemService")
 public class SystemService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(SystemService.class);
 
     @Autowired
     private SystemMapper systemMapper;

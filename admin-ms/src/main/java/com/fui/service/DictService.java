@@ -1,6 +1,6 @@
 package com.fui.service;
 
-import com.fui.common.MapUtils;
+import com.fui.common.GsonUtils;
 import com.fui.dao.FuiDao;
 import com.fui.dao.dict.DictEntryMapper;
 import com.fui.dao.dict.DictTypeMapper;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Service("dictService")
 public class DictService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(DictService.class);
 
     @Autowired
     private FuiDao fuiDao;
@@ -60,7 +60,6 @@ public class DictService {
         return fuiDao.query(sqlName, param);
     }
 
-    @SuppressWarnings("unchecked")
     public boolean saveDictType(Object object) {
         boolean bool = true;
         try {
@@ -71,10 +70,10 @@ public class DictService {
             if (object instanceof java.util.List) {
                 List<Object> columns = (List<Object>) object;
                 for (Object column : columns) {
-                    DictType dictType = new DictType();
+                    DictType dictType;
                     if (column instanceof java.util.Map) {
                         Map<String, Object> param = (Map<String, Object>) column;
-                        MapUtils.toBean(param, dictType);
+                        dictType = GsonUtils.fromJson(GsonUtils.toJson(param), DictType.class);
                     } else {
                         dictType = (DictType) column;
                     }
@@ -91,8 +90,7 @@ public class DictService {
                     }
                 }
             } else {
-                DictType dictType = new DictType();
-                MapUtils.toBean((Map<String, Object>) object, dictType);
+                DictType dictType = GsonUtils.fromJson(GsonUtils.toJson(object), DictType.class);
                 String _state = dictType.get_state();
                 if ("added".equals(_state)) {
                     fuiDao.insert(insertSqlName, dictType);
@@ -111,7 +109,6 @@ public class DictService {
         return bool;
     }
 
-    @SuppressWarnings("unchecked")
     public boolean saveDictEntry(Object object) {
         boolean bool = true;
         try {
@@ -121,10 +118,10 @@ public class DictService {
             if (object instanceof java.util.List) {
                 List<Object> columns = (List<Object>) object;
                 for (Object column : columns) {
-                    DictEntry dictEntry = new DictEntry();
+                    DictEntry dictEntry;
                     if (column instanceof java.util.Map) {
                         Map<String, Object> param = (Map<String, Object>) column;
-                        MapUtils.toBean(param, dictEntry);
+                        dictEntry = GsonUtils.fromJson(GsonUtils.toJson(param), DictEntry.class);
                     } else {
                         dictEntry = (DictEntry) column;
                     }
@@ -138,8 +135,7 @@ public class DictService {
                     }
                 }
             } else {
-                DictEntry dictEntry = new DictEntry();
-                MapUtils.toBean((Map<String, Object>) object, dictEntry);
+                DictEntry dictEntry = GsonUtils.fromJson(GsonUtils.toJson(object), DictEntry.class);
                 String _state = dictEntry.get_state();
                 if ("added".equals(_state)) {
                     fuiDao.insert(insertSqlName, dictEntry);

@@ -255,7 +255,7 @@ public class ExcelUtils {
                             content = (Map<String, Object>) object;
                         } else if (object instanceof BaseModel) {
                             BaseModel baseModel = (BaseModel) object;
-                            content = MapUtils.toMap(baseModel);
+                            content = GsonUtils.fromJson(GsonUtils.toJson(baseModel), Map.class);
                         }
                         int colNamesLen = fieldNames.length;
                         for (int j = 0; j < colNamesLen; j++) {

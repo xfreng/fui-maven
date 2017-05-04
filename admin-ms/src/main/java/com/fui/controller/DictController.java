@@ -1,17 +1,17 @@
 package com.fui.controller;
 
 import com.fui.common.AbstractSuperController;
-import com.fui.common.JSON;
+import com.fui.common.Constants;
+import com.fui.common.GsonUtils;
 import com.fui.common.StringUtils;
-import com.fui.dao.FuiDao;
 import com.fui.model.DictEntry;
 import com.fui.model.DictType;
 import com.fui.service.DictService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,84 +20,95 @@ import java.util.Map;
  * Created by sf.xiong on 2017-01-11.
  */
 @Controller
-@RequestMapping(value = "/dict")
+@RequestMapping(value = "/supervisor/dict")
 public class DictController extends AbstractSuperController {
     @Autowired
     private DictService dictService;
-    @Autowired
-    private FuiDao fuiDao;
 
-    @RequestMapping("/queryDictForTree")
-    public void queryDictForTree(HttpServletResponse response) throws Exception {
-        String dicttypeid = request.getParameter("dicttypeid");
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dicttypeid);
-        List<DictType> dictTreeList = dictService.queryDictForTree(param);
-        Map<String, Object> data = new HashMap<String, Object>();
-        data.put("data", dictTreeList);
-        String json = JSON.encode(data);
-        response.getWriter().write(json);
+    @RequestMapping("/index")
+    public String dict() {
+        return "dict/dict_manager_mainframe";
     }
 
-    @RequestMapping("/queryDictType")
-    public void queryDictType(HttpServletResponse response) throws Exception {
+    @RequestMapping("/dictManager")
+    public String dictManager() {
+        return "dict/dict_manager";
+    }
+
+    @RequestMapping("/dictImportManager")
+    public String dictImportManager() {
+        return "dict/dict_import_manager";
+    }
+
+    @RequestMapping(value = "/queryDictForTree", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String queryDictForTree() throws Exception {
+        String dictTypeId = request.getParameter("dictTypeId");
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("id", dictTypeId);
+        List<DictType> dictTreeList = dictService.queryDictForTree(param);
+        return success(dictTreeList, "data");
+    }
+
+    @RequestMapping(value = "/queryDictType", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String queryDictType() throws Exception {
         String pageIndex = request.getParameter("pageIndex");
         int offset = StringUtils.isNotEmpty(pageIndex) ? Integer.parseInt(pageIndex) : 0;
         String pageSize = request.getParameter("pageSize");
         int limit = StringUtils.isNotEmpty(pageSize) ? Integer.parseInt(pageSize) : 0;
-        String dicttypeid = request.getParameter("dicttypeid");
-        String dicttypename = request.getParameter("dicttypename");
+        String dictTypeId = request.getParameter("dictTypeId");
+        String dictTypeName = request.getParameter("dictTypeName");
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dicttypeid);
-        param.put("dicttypename", dicttypename);
+        param.put("id", dictTypeId);
+        param.put("dictTypeName", dictTypeName);
         Map<String, Object> jsonData = dictService.queryDictType(param, offset, limit);
-        String json = JSON.encode(jsonData);
-        response.getWriter().write(json);
+        return success(jsonData);
     }
 
-    @RequestMapping("/saveDictType")
-    public void saveDictType(HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/saveDictType", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String saveDictType() throws Exception {
         String saveJSON = request.getParameter("data");
-        Object object = JSON.decode(saveJSON);
+        Object object = GsonUtils.fromJson(saveJSON, Object.class);
         boolean bool = dictService.saveDictType(object);
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("count", bool ? 0 : 1);
-        response.getWriter().write(JSON.encode(param));
+        return success(param);
     }
 
-    @RequestMapping("/saveDictEntry")
-    public void saveDictEntry(HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/saveDictEntry", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String saveDictEntry() throws Exception {
         String saveJSON = request.getParameter("data");
-        Object object = JSON.decode(saveJSON);
+        Object object = GsonUtils.fromJson(saveJSON, Object.class);
         boolean bool = dictService.saveDictEntry(object);
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("count", bool ? 0 : 1);
-        response.getWriter().write(JSON.encode(param));
+        return success(param);
     }
 
-    @RequestMapping("/getLayout")
-    public void getLayout(HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/getLayout", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String getLayout() throws Exception {
         String pageIndex = request.getParameter("pageIndex");
         int offset = StringUtils.isNotEmpty(pageIndex) ? Integer.parseInt(pageIndex) : 0;
         String pageSize = request.getParameter("pageSize");
         int limit = StringUtils.isNotEmpty(pageSize) ? Integer.parseInt(pageSize) : 0;
-        String dicttypeid = request.getParameter("dicttypeid");
+        String dictTypeId = request.getParameter("dictTypeId");
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dicttypeid);
+        param.put("id", dictTypeId);
         Map<String, Object> jsonData = dictService.queryLayout(param, offset, limit);
-        String json = JSON.encode(jsonData);
-        response.getWriter().write(json);
+        return success(jsonData);
     }
 
-    @RequestMapping("/getDictData")
-    public void getDictData(HttpServletResponse response) throws Exception {
-        String dicttypeid = request.getParameter("dictTypeId");
+    @RequestMapping(value = "/getDictData", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String getDictData() throws Exception {
+        String dictTypeId = request.getParameter("dictTypeId");
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dicttypeid);
+        param.put("id", dictTypeId);
         List<DictEntry> dictList = dictService.loadDictData(param);
-        Map<String, Object> data = new HashMap<String, Object>();
-        data.put("dictList", dictList);
-        String json = JSON.encode(data);
-        response.getWriter().write(json);
+        return success(dictList, "dictList");
     }
 }

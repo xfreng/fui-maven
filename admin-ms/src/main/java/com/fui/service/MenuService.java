@@ -1,8 +1,9 @@
 package com.fui.service;
 
 import com.baosight.iplat4j.util.DateUtils;
+import com.fui.common.GsonUtils;
 import com.fui.common.JsonDateValueProcessor;
-import com.fui.common.MapUtils;
+import com.fui.common.JsonUtils;
 import com.fui.common.UserUtils;
 import com.fui.dao.menu.MenuMapper;
 import com.fui.model.Menu;
@@ -19,7 +20,7 @@ import java.util.*;
 
 @Service("menuService")
 public class MenuService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(MenuService.class);
 
     @Autowired
     private MenuMapper menuMapper;
@@ -33,10 +34,8 @@ public class MenuService {
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);
         List<Menu> menuTrees = menuMapper.queryMenuNodeById(param);
-        JsonConfig jsonConfig = new JsonConfig();
-        jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateValueProcessor("yyyy-MM-dd HH:mm:ss"));
-        JSONArray menuArray = JSONArray.fromObject(menuTrees, jsonConfig);
-        for (Object menuTree : menuArray) {
+        List menuList = JsonUtils.toJsonArray(menuTrees);
+        for (Object menuTree : menuList) {
             JSONObject treeNode = (JSONObject) menuTree;
             param.put("id", treeNode.getString("id"));
             List<Menu> nodes = menuMapper.queryMenuNodeById(param);
@@ -107,32 +106,33 @@ public class MenuService {
         return menuMapper.queryMenuNodeById(param);
     }
 
-    @SuppressWarnings("unchecked")
     public boolean saveMenu(Object object) {
         boolean bool = true;
         try {
             if (object instanceof java.util.List) {
                 List<Object> columns = (List<Object>) object;
                 for (Object column : columns) {
-                    Menu menuTree = new Menu();
-                    if (column instanceof java.util.Map) {
-                        MapUtils.toBean((Map<String, Object>) column, menuTree);
-                        menuTree.setRecCreator(UserUtils.getLoginId());
+                    Menu menuTree;
+                    if (column instanceof Map) {
+                        menuTree = GsonUtils.fromJson(GsonUtils.toJson(column), Menu.class);
+                        menuTree.setRecCreator(UserUtils.getCurrent().getEname());
                         menuTree.setRecCreateTime(DateUtils.curDateTimeStr14());
                     } else {
                         menuTree = (Menu) column;
-                        menuTree.setRecCreator(UserUtils.getLoginId());
+                        menuTree.setRecCreator(UserUtils.getCurrent().getEname());
                         menuTree.setRecCreateTime(DateUtils.curDateTimeStr14());
                     }
                     menuMapper.insertMenuNode(menuTree);
                 }
             } else {
-                Menu menuTree = new Menu();
-                MapUtils.toBean((Map<String, Object>) object, menuTree);
+                Menu menuTree = GsonUtils.fromJson(GsonUtils.toJson(object), Menu.class);
+                menuTree.setRecCreator(UserUtils.getCurrent().getEname());
+                menuTree.setRecCreateTime(DateUtils.curDateTimeStr14());
                 menuMapper.insertMenuNode(menuTree);
             }
         } catch (Exception e) {
             bool = false;
+            logger.error("保存菜单出错 {} ", e);
         }
         return bool;
     }
@@ -141,9 +141,10 @@ public class MenuService {
     public boolean deleteMenu(Object object) {
         boolean bool = true;
         try {
-            if (object instanceof java.util.List) {
-                List<Menu> menuTrees = (List<Menu>) object;
-                for (Menu menuTree : menuTrees) {
+            if (object instanceof List) {
+                List<Object> objectTrees = (List<Object>) object;
+                for (Object objectTree : objectTrees) {
+                    Menu menuTree = GsonUtils.fromJson(GsonUtils.toJson(objectTree), Menu.class);
                     int menuChildCount = query(menuTree.getId()).size();
                     if (menuChildCount > 0) {
                         bool = false;
@@ -152,8 +153,7 @@ public class MenuService {
                     menuMapper.deleteMenuNodeById(menuTree);
                 }
             } else {
-                Menu menuTree = new Menu();
-                MapUtils.toBean((Map<String, Object>) object, menuTree);
+                Menu menuTree = GsonUtils.fromJson(GsonUtils.toJson(object), Menu.class);
                 int menuChildCount = query(menuTree.getId()).size();
                 if (menuChildCount > 0) {
                     bool = false;
@@ -163,26 +163,31 @@ public class MenuService {
             }
         } catch (Exception e) {
             bool = false;
+            logger.error("删除菜单出错 {} ", e);
         }
         return bool;
     }
 
-    @SuppressWarnings("unchecked")
     public boolean updateMenu(Object object) {
         boolean bool = true;
         try {
-            if (object instanceof java.util.List) {
-                List<Menu> menuTrees = (List<Menu>) object;
-                for (Menu menuTree : menuTrees) {
-                    menuTree.setRecRevisor(UserUtils.getLoginId());
+            if (object instanceof List) {
+                List<Object> objectTrees = (List<Object>) object;
+                for (Object objectTree : objectTrees) {
+                    Menu menuTree = GsonUtils.fromJson(GsonUtils.toJson(objectTree), Menu.class);
+                    menuTree.setRecRevisor(UserUtils.getCurrent().getEname());
                     menuTree.setRecReviseTime(DateUtils.curDateTimeStr14());
                     menuMapper.updateMenuNodeById(menuTree);
                 }
             } else {
-                menuMapper.updateMenuNodeById((Menu) object);
+                Menu menuTree = (Menu) object;
+                menuTree.setRecRevisor(UserUtils.getCurrent().getEname());
+                menuTree.setRecReviseTime(DateUtils.curDateTimeStr14());
+                menuMapper.updateMenuNodeById(menuTree);
             }
         } catch (Exception e) {
             bool = false;
+            logger.error("更新菜单出错 {} ", e);
         }
         return bool;
     }

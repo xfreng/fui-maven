@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service("pageService")
 public class PageService {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(PageService.class);
 
 	@Autowired
 	private PageInfoMapper pageInfoMapper;

@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping(value = "/supervisor/menu")
 public class MenuController extends AbstractSuperController {
     private final Logger logger = LoggerFactory.getLogger(MenuController.class);
 
@@ -28,6 +29,16 @@ public class MenuController extends AbstractSuperController {
     private FuiDao fuiDao;
     @Autowired
     private MenuService menuService;
+
+    @RequestMapping("/index")
+    public String menuTree() {
+        return "menu/menu-list";
+    }
+
+    @RequestMapping("/menu-state")
+    public String menuState() {
+        return "menu/menu-state";
+    }
 
     @RequestMapping(value = "/loadMenuNodes", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
@@ -65,7 +76,7 @@ public class MenuController extends AbstractSuperController {
     @ResponseBody
     public String saveMenu() throws Exception {
         String saveJSON = request.getParameter("data");
-        Object object = JSON.decode(saveJSON);
+        Object object = GsonUtils.fromJson(saveJSON, Object.class);
         boolean bool = menuService.saveMenu(object);
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("count", bool ? 0 : 1);
@@ -76,18 +87,22 @@ public class MenuController extends AbstractSuperController {
     @ResponseBody
     public String deleteMenu() throws Exception {
         String deleteJSON = request.getParameter("data");
-        Object object = JSON.decode(deleteJSON);
+        Object object = GsonUtils.fromJson(deleteJSON, Object.class);
         boolean bool = menuService.deleteMenu(object);
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("count", bool ? 0 : 1);
         return success(param);
     }
 
-    @RequestMapping("/updateMenu")
-    public void updateMenu() throws Exception {
+    @RequestMapping(value = "/updateMenu", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String updateMenu() throws Exception {
         String updateJSON = request.getParameter("data");
-        Object object = JSON.decode(updateJSON);
-        menuService.updateMenu(object);
+        Object object = GsonUtils.fromJson(updateJSON, Object.class);
+        boolean bool = menuService.updateMenu(object);
+        Map<String, Object> param = new HashMap<String, Object>();
+        param.put("result", bool ? "0" : "1");
+        return success(param);
     }
 
     @RequestMapping("/export")

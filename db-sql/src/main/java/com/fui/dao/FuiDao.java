@@ -32,7 +32,7 @@ public class FuiDao {
     }
 
     /**
-     * 根据sql语句求总条数
+     * 根据sql语句获取总条数
      *
      * @param sqlName
      * @param param

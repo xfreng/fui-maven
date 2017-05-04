@@ -123,7 +123,7 @@ eiTreeModel.prototype.getChildren = function(p,tree){
 			   host._cache[name] = rows;
 			 }
 		 },
-         onFail: function(xmlR, status, e){  
+         onFail: function(xmlR, status, e){
 			 host.status(-1);
 			 if (status != -2){
 				 console.log("ERROR");

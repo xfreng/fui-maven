@@ -24,8 +24,10 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping(value = "/supervisor")
 public class ServiceController extends AbstractSuperController {
     private static Logger logger = LoggerFactory.getLogger(ServiceController.class);
+
     private EiBlockMeta eiMetadata;
     @Autowired
     private MenuService menuService;
@@ -100,7 +102,7 @@ public class ServiceController extends AbstractSuperController {
         return outInfo;
     }
 
-    public EiBlockMeta initMetaData() {
+    protected EiBlockMeta initMetaData() {
         if (this.eiMetadata == null) {
             this.eiMetadata = new EiBlockMeta();
             EiColumn eiColumn = new EiColumn("label");

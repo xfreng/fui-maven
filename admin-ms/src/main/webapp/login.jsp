@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<%@include file="/WEB-INF/jsp/include/fui-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/fui-common.jsp"%>
 	<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
 	<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
 	<title>${p_name}[${p_dev}]登录界面</title>
@@ -41,7 +41,7 @@
 		                            <div class="box_con f_l">
 		                                <input class="fui-textbox" id="rand" name="rand" requiredErrorText="请输入验证码..." style="width:100%;" onenter="login()" required="true"/>
 		                            </div>
-		                            <img title="单击更换验证码" src="${path }/image" class="f_r color_8a8a8a mg_r_rand" onclick="loadimage(this)" />
+		                            <img title="单击更换验证码" src="${path }/supervisor/image" class="f_r color_8a8a8a mg_r_rand" onclick="loadImage(this)" />
 		                        </div>
 		                    </div>
 		                    <div class="clear"></div>
@@ -71,7 +71,7 @@
         var data = fui.encode(form.getData());
         var messageid = fui.loading("登录中，马上进入系统...", "提示信息");
         $.ajax({
-            url: fui.contextPath + "/login",
+            url: fui.contextPath + "/supervisor/login",
             type: "post",
             data:  {submitData:data},
             success: function (text) {
@@ -87,8 +87,8 @@
         });
 	}
     
-    function loadimage(e){
-    	e.src = fui.contextPath + "/image?"+Math.random();
+    function loadImage(e){
+    	e.src = fui.contextPath + "/supervisor/image?"+Math.random();
     }
 </script>
 </html>

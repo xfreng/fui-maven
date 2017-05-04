@@ -1,5 +1,8 @@
 package com.fui.interceptor;
 
+import com.fui.common.RequestContext;
+import com.fui.common.UserUtils;
+import com.fui.model.ManageToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-    private final Logger log = LoggerFactory.getLogger(LoginInterceptor.class);
+    private final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+
     private String[] allowUrls;
 
     public void setAllowUrls(String[] allowUrls) {
@@ -25,14 +29,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        log.trace("==============执行顺序: 1、preHandle================");
+        logger.trace("==============执行顺序: 1、preHandle================");
         String requestUri = request.getRequestURI();
 
-        log.trace("requestUri:" + requestUri);
+        logger.trace("requestUri:" + requestUri);
 
         String xRequestedWith = request.getHeader("x-requested-with");
 
-        log.trace("xRequestedWith:" + xRequestedWith);
+        logger.trace("xRequestedWith:" + xRequestedWith);
 
         for (String url : allowUrls) {
             if (requestUri.endsWith(url)) {
@@ -40,13 +44,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             }
         }
 
-        Object userObject = request.getSession().getAttribute("userObject");
-        if (userObject == null) {
-            log.trace("Interceptor：跳转到login页面！");
-            if ("XMLHttpRequest".equalsIgnoreCase(xRequestedWith)) {
+        ManageToken manageToken = UserUtils.getManageToken();
+        if (manageToken == null) {
+            logger.trace("Interceptor：跳转到login页面！");
+            if (RequestContext.isAjaxRequest(request)) {
                 response.getWriter().write("timeout");
             } else {
-                response.sendRedirect(request.getContextPath() + "/timeout");
+                response.sendRedirect(request.getContextPath() + "/supervisor/timeout");
             }
             return false;
         } else {
@@ -60,7 +64,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
                            ModelAndView modelAndView) throws Exception {
-        log.trace("==============执行顺序: 2、postHandle================");
+        logger.trace("==============执行顺序: 2、postHandle================");
     }
 
     /**
@@ -71,7 +75,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
-        log.trace("==============执行顺序: 3、afterCompletion================");
+        logger.trace("==============执行顺序: 3、afterCompletion================");
     }
 
 }

@@ -1,4 +1,10 @@
-﻿__CreateJSPath = function (js) {
+﻿getRootPath = function () {
+    var pathName = window.document.location.pathname;
+    var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+    return projectName;
+}
+
+__CreateJSPath = function (js) {
     var scripts = document.getElementsByTagName("script");
     var path = "";
     for (var i = 0, l = scripts.length; i < l; i++) {
@@ -20,15 +26,17 @@
     }
     return path;
 }
+var CONTEXT_PATH = getRootPath();
+if (typeof( CONTEXT_PATH ) == 'undefined') CONTEXT_PATH = ".";
 
-//bootPath
+//fui bootPath
 var bootPATH = __CreateJSPath("fui.js");
 
 //debugger,此变量用来区别ajax请求是否弹出alert来提示交互错误
 fui_debugger = false;
 
-document.write('<link rel="icon"  href="app.ico"  type="image/x-icon"/>');
-document.write('<link rel="SHORTCUT ICON"  href="app.ico"  type="image/x-icon"/>');
+document.write('<link rel="icon"  href="' + CONTEXT_PATH + '/app.ico"  type="image/x-icon"/>');
+document.write('<link rel="SHORTCUT ICON"  href="' + CONTEXT_PATH + '/app.ico"  type="image/x-icon"/>');
 //默认加载min
 document.write('<script src="' + bootPATH + 'fui-min.js" type="text/javascript" ></script>');
 document.write('<script src="' + bootPATH + 'locale/zh_CN.js" type="text/javascript" ></script>');

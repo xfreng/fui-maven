@@ -3,7 +3,7 @@
 <html lang="zh_CN">
 <head>
 	<title>模型设计器</title>
-	<%@include file="/WEB-INF/jsp/include/fui-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/fui-common.jsp"%>
 	<style type="text/css">
 		body{
 	        margin:0;padding:0;border:0;width:100%;height:99%;overflow:hidden;

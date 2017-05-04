@@ -14,11 +14,10 @@ import java.util.List;
 /**
  * @Title 定时任务
  * @Author 熊世凤 on 2017/4/13.
- * @Copyright © 蜂投网 2015 ~ 2017
  */
 @Component("fuiTask")
 public class FuiTask {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(FuiTask.class);
 
     @Autowired
     private SystemMapper systemMapper;

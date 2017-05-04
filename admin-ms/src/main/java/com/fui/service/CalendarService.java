@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Service("calendarService")
 public class CalendarService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(CalendarService.class);
 
     @Autowired
     private CalendarMapper calendarMapper;

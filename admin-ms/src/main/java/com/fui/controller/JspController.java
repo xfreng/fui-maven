@@ -4,65 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/supervisor")
 public class JspController {
 
-	@RequestMapping("/timeout")
-	public String timeout() {
-		return "error/timeout";
-	}
-	
-	@RequestMapping("/calendar")
-	public String calendar() {
-		return "calendar/calopt";
-	}
+    @RequestMapping("/timeout")
+    public String timeout() {
+        return "error/timeout";
+    }
 
-	@RequestMapping("/default")
-	public String index() {
-		return "default/index";
-	}
-
-	@RequestMapping("/pact")
-	public String pact() {
-		return "pact/index";
-	}
-
-	@RequestMapping("/treegrid")
-	public String treegrid() {
-		return "treegrid/treegrid-demo";
-	}
-
-	@RequestMapping("/menustate")
-	public String menustate() {
-		return "menu/menu-state";
-	}
-
-	@RequestMapping("/menu")
-	public String menutree() {
-		return "menu/menu-list";
-	}
-	
-	@RequestMapping("/page")
-	public String pageinfo() {
-		return "page/page-list";
-	}
-	
-	@RequestMapping("/dict")
-	public String dictinfo() {
-		return "dict/dict_manager_mainframe";
-	}
-	
-	@RequestMapping("/dictmanager")
-	public String dictmanager() {
-		return "dict/dict_manager";
-	}
-	
-	@RequestMapping("/dictimportmanager")
-	public String dictimportmanager() {
-		return "dict/dict_import_manager";
-	}
-	
-	@RequestMapping("/model-list")
-	public String modellist() {
-		return "workflow/model-list";
-	}
+    @RequestMapping("/unAuthorized")
+    public String unAuthorized() {
+        return "error/unAuthorized";
+    }
 }

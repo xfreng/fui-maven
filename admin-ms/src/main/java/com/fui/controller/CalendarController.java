@@ -1,50 +1,24 @@
 package com.fui.controller;
 
-import com.fui.common.AbstractSuperController;
-import com.fui.common.DateUtils;
-import com.fui.common.JSON;
-import com.fui.common.StringUtils;
+import com.fui.common.*;
 import com.fui.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
+@RequestMapping(value = "/supervisor")
 public class CalendarController extends AbstractSuperController {
     @Autowired
     private CalendarService calendarService;
 
-    /**
-     * 插入
-     *
-     * @param param
-     * @return
-     */
-    private boolean insertCalendar(Map<String, Object> param) {
-        return calendarService.addCalendar(param);
-    }
-
-    /**
-     * 更新
-     *
-     * @param param
-     * @return
-     */
-    private boolean updateCalendar(Map<String, Object> param) {
-        return calendarService.updateCalendarById(param);
-    }
-
-    /**
-     * 删除
-     *
-     * @param id
-     * @return
-     */
-    private boolean deleteCalendar(String id) {
-        return calendarService.deleteCalendarById(id);
+    @RequestMapping("/calendar")
+    public String calendar() {
+        return "calendar/calopt";
     }
 
     @RequestMapping("/eventopt")
@@ -60,11 +34,12 @@ public class CalendarController extends AbstractSuperController {
      *
      * @return
      */
-    @RequestMapping("/getCalendarJsonData")
-    public void getCalendarJsonData(HttpServletResponse response) throws Exception {
+    @RequestMapping(value = "/getCalendarJsonData", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String getCalendarJsonData() throws Exception {
         List<Map<String, Object>> calList = calendarService.query();
-        String json = JSON.encode(calList);
-        response.getWriter().write(json);
+        String json = GsonUtils.toJson(calList);
+        return success(json);
     }
 
     @RequestMapping("/event")
@@ -108,7 +83,7 @@ public class CalendarController extends AbstractSuperController {
             param.put("allday", isallday);
             param.put("color", color);
 
-            boolean bool = insertCalendar(param);
+            boolean bool = calendarService.addCalendar(param);
             if (bool) {
                 msg = "1";
             } else {
@@ -157,7 +132,7 @@ public class CalendarController extends AbstractSuperController {
                 param.put("allday", isallday);
                 param.put("color", color);
 
-                boolean bool = updateCalendar(param);
+                boolean bool = calendarService.updateCalendarById(param);
                 if (bool) {
                     msg = "1";
                 } else {
@@ -167,7 +142,7 @@ public class CalendarController extends AbstractSuperController {
         } else if ("del".equals(action)) {
             String id = request.getParameter("id");
             if (StringUtils.isNotEmpty(id)) {
-                boolean bool = deleteCalendar(id);
+                boolean bool = calendarService.deleteCalendarById(id);
                 if (bool) {
                     msg = "1";
                 } else {
@@ -217,7 +192,7 @@ public class CalendarController extends AbstractSuperController {
                     row.put("endtime", getDateStr(endtime, cal.getTime()));
                 }
             }
-            boolean bool = updateCalendar(row);
+            boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
                 msg = "1";
             } else {
@@ -245,7 +220,7 @@ public class CalendarController extends AbstractSuperController {
                 row.put("endtime", getDateStr(endtime, cal.getTime()));
             }
             row.put("starttime", starttime);
-            boolean bool = updateCalendar(row);
+            boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
                 msg = "1";
             } else {
