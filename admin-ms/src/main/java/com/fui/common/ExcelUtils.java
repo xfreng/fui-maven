@@ -51,15 +51,15 @@ public class ExcelUtils {
     private String templateDir;
     private int totalNum;
 
-    private static ThreadLocal<ExcelUtils> connThreadLocal = new ThreadLocal<ExcelUtils>();
+    private static ThreadLocal<ExcelUtils> currThreadLocal = new ThreadLocal<ExcelUtils>();
 
     public static ExcelUtils newExportInstance(int totalNum, String templateDir) {
-        if (connThreadLocal.get() == null) {
+        if (currThreadLocal.get() == null) {
             ExcelUtils zipExcelUtils = new ExcelUtils(totalNum, templateDir);
-            connThreadLocal.set(zipExcelUtils);
+            currThreadLocal.set(zipExcelUtils);
             return zipExcelUtils;
         } else {
-            return connThreadLocal.get();
+            return currThreadLocal.get();
         }
     }
 
