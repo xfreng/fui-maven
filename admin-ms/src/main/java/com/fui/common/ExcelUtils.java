@@ -8,6 +8,8 @@ import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +19,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ExcelUtils {
+    private final Logger logger = LoggerFactory.getLogger(ExcelUtils.class);
+
     private final static long MAX_ROW = 65533L;
     private final static int SHEET_LIMIT_ROW = 65533;
     /**
@@ -315,7 +319,7 @@ public class ExcelUtils {
                             }
                         }
                         if (autoRowId >= SHEET_LIMIT_ROW) {
-                            System.out.println("导出超过.xls文件单sheet页限制的最大行数(" + (SHEET_LIMIT_ROW + 2) + ")，超出行数据已忽略。");
+                            logger.error("导出超过.xls文件单sheet页限制的最大行数( {} )，超出行数据已忽略。", SHEET_LIMIT_ROW + 2);
                             break;
                         }
                         // 向下平推一行
@@ -325,7 +329,7 @@ public class ExcelUtils {
                     }
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error("解析excel文件出错 {} ", e);
             }
             String exportExcelFileName = tempDir + generateOutputFile(templateFilename) + "_" + (i + 1) + ".xls";
             fileNameList.add(exportExcelFileName);
@@ -345,6 +349,8 @@ public class ExcelUtils {
             }
             FileUtils.ZipFiles(srcFile, zip);
         }
+        // 操作完后释放当前对象
+        currThreadLocal.remove();
         return outZipFilePath;
     }
 
