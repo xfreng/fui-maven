@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
@@ -22,7 +21,7 @@ public class CalendarController extends AbstractSuperController {
     }
 
     @RequestMapping("/eventopt")
-    public String event() {
+    public String eventopt() {
         String id = request.getParameter("id");
         Map<String, Object> param = calendarService.getCalendarById(id);
         request.setAttribute("param", param);
@@ -42,9 +41,10 @@ public class CalendarController extends AbstractSuperController {
         return success(json);
     }
 
-    @RequestMapping("/event")
-    public void event(HttpServletResponse response) throws Exception {
-        String msg = "";
+    @RequestMapping(value = "/event", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String event() throws Exception {
+        String message = "";
         String action = request.getParameter("action");
         if ("add".equals(action)) {
             String events = request.getParameter("event");
@@ -85,14 +85,14 @@ public class CalendarController extends AbstractSuperController {
 
             boolean bool = calendarService.addCalendar(param);
             if (bool) {
-                msg = "1";
+                message = "1";
             } else {
-                msg = "写入失败！";
+                message = "写入失败！";
             }
         } else if ("edit".equals(action)) {
             String id = request.getParameter("id");
             if ("0".equals(id)) {
-                msg = "事件不存在！";
+                message = "事件不存在！";
             } else {
                 String events = request.getParameter("event");
 
@@ -134,9 +134,9 @@ public class CalendarController extends AbstractSuperController {
 
                 boolean bool = calendarService.updateCalendarById(param);
                 if (bool) {
-                    msg = "1";
+                    message = "1";
                 } else {
-                    msg = "更新出错！";
+                    message = "更新出错！";
                 }
             }
         } else if ("del".equals(action)) {
@@ -144,12 +144,12 @@ public class CalendarController extends AbstractSuperController {
             if (StringUtils.isNotEmpty(id)) {
                 boolean bool = calendarService.deleteCalendarById(id);
                 if (bool) {
-                    msg = "1";
+                    message = "1";
                 } else {
-                    msg = "删除出错！";
+                    message = "删除出错！";
                 }
             } else {
-                msg = "事件不存在！";
+                message = "事件不存在！";
             }
         } else if ("drag".equals(action)) {
             String id = request.getParameter("id");
@@ -194,9 +194,9 @@ public class CalendarController extends AbstractSuperController {
             }
             boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
-                msg = "1";
+                message = "1";
             } else {
-                msg = "更新出错！";
+                message = "更新出错！";
             }
         } else if ("resize".equals(action)) {
             String id = request.getParameter("id");
@@ -222,12 +222,12 @@ public class CalendarController extends AbstractSuperController {
             row.put("starttime", starttime);
             boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
-                msg = "1";
+                message = "1";
             } else {
-                msg = "更新出错！";
+                message = "更新出错！";
             }
         }
-        response.getWriter().write(msg);
+        return success(message);
     }
 
     private Date getDate(String datetime) {

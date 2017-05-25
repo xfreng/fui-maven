@@ -16,13 +16,13 @@
    	</style>
 </head>
 <body>    
-<form id="menustate" method="post">
+<form id="menu-state" method="post">
     <fieldset style="border:solid 1px #aaa;">
         <legend >菜单信息</legend>
         <div style="padding:5px;">
-	        <table>
+	        <table width="100%">
 	            <tr>
-	                <td width="15%" align="right">菜单编号</td>
+	                <td width="15%" align="right">菜单编号：</td>
 	                <td width="20%">    
 	                    <input id="id" name="id" class="fui-textbox" required="true"/>
 	                </td>

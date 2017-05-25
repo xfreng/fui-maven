@@ -170,7 +170,7 @@
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <select id="findUserByName" resultType="com.fui.model.User">
+    <select id="findUserByCode" resultType="com.fui.model.User">
       select
           id 			AS "id",
           ename 		AS "ename",
@@ -180,6 +180,17 @@
           menu_type 	AS "menuType",
           erased 	    AS "erased",
           login_count   AS "loginCount"
-      from fui.fui_user where ename = #{ename}
+      from fui.fui_user where ename = #{userCode}
+  </select>
+  <select id="getUserList_page" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List"/>
+    FROM fui.fui_user WHERE 1 = 1
+    <if test="userCode != null">
+        AND ename = #{userCode,jdbcType=VARCHAR}
+    </if>
+    <if test="userName != null">
+        AND cname LIKE '%$userName$%'
+    </if>
   </select>
 </mapper>

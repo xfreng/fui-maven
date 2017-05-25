@@ -4,7 +4,7 @@
 <head>
 	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-    <title>欢迎使用 ${projectName}[${dev}]</title>
+    <title>欢迎使用 ${p_name}[${p_dev}]</title>
     <link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-ModernBlack-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
@@ -67,7 +67,7 @@
 		}
 		function newForm(label,text,url) {
 			label = (url && $.trim(url) != "") ? url : label;
-			window.open(fui.contextPath + "/" + label);
+			window.open(fui.contextPath + label);
 		}
 		function openForm(label,text,url) {
 			var node = {};
@@ -110,7 +110,7 @@
     <div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
     	<div id="mainTabs" class="fui-tabs" activeIndex="0" style="width:100%;height:100%;"      
              plain="false" onactivechanged="onTabsActiveChanged" contextMenu="#tabsMenu">
-             <div name="first" title="首页" url="${path }/calendar"></div>
+             <div name="first" title="首页" url="${path }/supervisor/calendar"></div>
          </div>
     </div>
 </div>
@@ -189,7 +189,7 @@
 			pageStyle : style
 		};
 		$.ajax({
-			url : fui.contextPath + "/updateMenuTypeAndStyle",
+			url : fui.contextPath + "/supervisor/style/updateMenuTypeAndStyle",
 			type : 'POST',
 			data : data,
 			success : function(text) {

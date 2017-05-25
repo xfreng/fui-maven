@@ -16,6 +16,6 @@ public class PageController extends AbstractSuperController {
 
     @RequestMapping("/index")
     public String page() {
-        return "page/page-list";
+        return "page/list";
     }
 }

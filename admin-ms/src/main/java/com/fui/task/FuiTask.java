@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @Title 定时任务
- * @Author 熊世凤 on 2017/4/13.
+ * @Author sf.xiong on 2017/4/13.
  */
 @Component("fuiTask")
 public class FuiTask {

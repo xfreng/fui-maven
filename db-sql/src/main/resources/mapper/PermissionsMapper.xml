@@ -122,10 +122,40 @@
       url = #{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
-
-  <select id="selectAllPermission" resultMap="BaseResultMap">
+  <select id="selectByKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from fui_permissions
+    where parent_id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAllRight" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List"/>
-    FROM t_permissions
+    FROM fui_permissions
+  </select>
+  <select id="findRightsByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from fui.fui_permissions where code = #{rightCode}
+  </select>
+  <select id="selectRootRight" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from fui_permissions
+    where parent_id = -1
+  </select>
+  <select id="getRightsList_page" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM fui.fui_permissions WHERE 1 = 1
+    <if test="id != null">
+      AND parent_id = #{id,jdbcType=BIGINT}
+    </if>
+    <if test="code != null">
+      AND code = #{code,jdbcType=VARCHAR}
+    </if>
+    <if test="text != null">
+      AND text LIKE '%$text$%'
+    </if>
   </select>
 </mapper>

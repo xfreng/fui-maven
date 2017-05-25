@@ -1,12 +1,15 @@
 package com.fui.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fui.common.AbstractSuperController;
+import com.fui.common.Constants;
 import com.fui.common.UserUtils;
 import com.fui.model.User;
 import com.fui.service.StyleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +21,9 @@ public class StyleController extends AbstractSuperController {
     @Autowired
     private StyleService styleService;
 
-    @RequestMapping("/updateMenuTypeAndStyle")
-    public void updateMenuTypeAndStyle() throws Exception {
+    @RequestMapping(value = "/updateMenuTypeAndStyle", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String updateMenuTypeAndStyle() throws Exception {
         String style = request.getParameter("pageStyle");
         String menuType = request.getParameter("menuType");
         User user = UserUtils.getCurrent();
@@ -30,6 +34,9 @@ public class StyleController extends AbstractSuperController {
         beanMap.put("id", user.getId());
         beanMap.put("style", style);
         beanMap.put("menuType", menuType);
-        styleService.updateMenuTypeAndStyleByUserId(beanMap);
+        boolean bool = styleService.updateMenuTypeAndStyleByUserId(beanMap);
+        JSONObject json = new JSONObject();
+        json.put("result", bool ? "1" : "0");
+        return success(json);
     }
 }

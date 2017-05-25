@@ -32,12 +32,12 @@ public class MenuController extends AbstractSuperController {
 
     @RequestMapping("/index")
     public String menuTree() {
-        return "menu/menu-list";
+        return "menu/list";
     }
 
-    @RequestMapping("/menu-state")
+    @RequestMapping("/state")
     public String menuState() {
-        return "menu/menu-state";
+        return "menu/state";
     }
 
     @RequestMapping(value = "/loadMenuNodes", produces = Constants.MediaType_APPLICATION_JSON)

@@ -1,18 +1,10 @@
 var types = [{id: 1, text: "叶子节点"}, {id: 0, text: "树节点"}];
 fui.parse();
-var layout = fui.get("layout");
 var tree = fui.get("tree");
 var currentNode = null;
 
 $(function () {
-    var pageHeadHeight = $("#ef_form_head").outerHeight();
-    if (self != top) {
-        pageHeadHeight = 0;
-    }
-    layout.setHeight($(window).height() - pageHeadHeight);
-    $(window).resize(function () {
-        layout.setHeight($(window).height() - pageHeadHeight);
-    });
+    autoLayoutSize('layout', 10);
     expandRootNode();
 });
 
@@ -20,6 +12,7 @@ function expandRootNode() {
     tree.setValue(tree.getChildNodes(tree.getRootNode())[0].id);
     var node = tree.getSelectedNode();
     if (node) {
+        currentNode = node;
         refreshNode(node);
     }
 }
@@ -31,7 +24,7 @@ function onBeforeTreeLoad(e) {
     }
 }
 
-var menu_add = {title: '新增菜单', url: fui.contextPath + '/supervisor/menu-state'};
+var menu_add = {title: '新增菜单', url: fui.contextPath + '/supervisor/menu/state'};
 
 var rootMenu = [
     {text: "增加顶级菜单", onclick: "onAddRootMenu", iconCls: "icon-add"},
@@ -200,7 +193,7 @@ function add() {
     var len = grid.getSelecteds().length;
     if (len == 0) {
         fui.open({
-            url: fui.contextPath + "/supervisor/menustate",
+            url: fui.contextPath + "/supervisor/menu/state",
             showMaxButton: true,
             title: "新增菜单",
             width: 540,
@@ -275,7 +268,7 @@ function edit() {
 function toedit(e) {
     var row = grid.getSelected();
     fui.open({
-        url: fui.contextPath + "/supervisor/menustate",
+        url: fui.contextPath + "/supervisor/menu/state",
         showMaxButton: true,
         title: "修改菜单",
         width: 540,

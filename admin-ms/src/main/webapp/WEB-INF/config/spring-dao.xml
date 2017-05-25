@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
-	   xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
@@ -13,33 +13,53 @@
     <!-- import properties file -->
     <context:property-placeholder location="classpath:jdbc.properties,classpath:project.properties"/>
     <!-- jndi datasource  -->
-	<!--
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-	    <property name="jndiName" value="java:comp/env/appDS"/>
+    <!--
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/appDS"/>
     </bean>
-	<bean id="cleanDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-	    <property name="jndiName" value="java:comp/env/appDS"/>
+    <bean id="cleanDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/appDS"/>
     </bean>  
     -->
     <!-- DBCP Basic datasource  -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName"><value>${jdbc.driverClassName}</value></property>
-        <property name="url"><value>${jdbc.url}</value></property>
-        <property name="username"><value>${jdbc.username}</value></property>
-        <property name="password"><value>${jdbc.password}</value></property>
-		<property name="maxActive"><value>${jdbc.maxActive}</value></property>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName">
+            <value>${jdbc.driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbc.url}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc.username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.password}</value>
+        </property>
+        <property name="maxActive">
+            <value>${jdbc.maxActive}</value>
+        </property>
     </bean>
-	<bean id="cleanDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-        <property name="driverClassName"><value>${jdbc.driverClassName}</value></property>
-        <property name="url"><value>${jdbc.url}</value></property>
-        <property name="username"><value>${jdbc.username}</value></property>
-        <property name="password"><value>${jdbc.password}</value></property>
-		<property name="maxActive"><value>${jdbc.maxActive}</value></property>
+    <bean id="cleanDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName">
+            <value>${jdbc.driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${jdbc.url}</value>
+        </property>
+        <property name="username">
+            <value>${jdbc.username}</value>
+        </property>
+        <property name="password">
+            <value>${jdbc.password}</value>
+        </property>
+        <property name="maxActive">
+            <value>${jdbc.maxActive}</value>
+        </property>
     </bean>
     <!-- Transaction manager for Spring JDBC -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
     <bean id="mybatis.PageInterceptor" class="com.talkyun.apus.mybatis.plugin.PagePlugin">
         <property name="dialect" value="${mybatis.dbType}"></property>
@@ -49,12 +69,32 @@
 
     <tx:advice id="fui.default.txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="READ_COMMITTED"/>
+            <tx:method name="upload*" propagation="REQUIRED"/>
+            <tx:method name="merge*" propagation="REQUIRED"/>
+            <tx:method name="del*" propagation="REQUIRED"/>
+            <tx:method name="remove*" propagation="REQUIRED"/>
+            <tx:method name="clear*" propagation="REQUIRED"/>
+            <tx:method name="put*" propagation="REQUIRED"/>
+            <tx:method name="use*" propagation="REQUIRED"/>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="load*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="count*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="after*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="list*" propagation="REQUIRED"/>
+            <tx:method name="pag*" propagation="REQUIRED"/>
+            <tx:method name="query*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:advisor pointcut="within(*..service..*) or within(*..Service..*)"
+        <aop:advisor pointcut="execution(* com.fui.service..*.*(..))"
                      advice-ref="fui.default.txAdvice"/>
     </aop:config>
 
@@ -69,7 +109,7 @@
         <property name="plugins" ref="mybatis.PageInterceptor"/>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSessionFactory" />
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
     <bean id="fuiDao" class="com.fui.dao.FuiDao">
     </bean>

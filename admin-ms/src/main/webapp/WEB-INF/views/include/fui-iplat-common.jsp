@@ -3,6 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="${path}/public/common/fui/fui.js"></script>
+<script type="text/javascript" src="${path}/public/common/fui/fui-ext.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/common.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/json2.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/jquery/jquery.cookies.js"></script>

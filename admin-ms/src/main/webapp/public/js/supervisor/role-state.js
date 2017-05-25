@@ -1,36 +1,15 @@
 fui.parse();
 
-var form = new fui.Form("menu-state");
+var form = new fui.Form("role-state");
 
-function saveMenu() {
-    var o = form.getData();
+function doSaveRole() {
+    var data = form.getData();
     form.validate();
     if (form.isValid() == false) return;
-    var json = fui.encode(o);
     $.ajax({
-        url: fui.contextPath + "/supervisor/menu/saveMenu",
+        url: fui.contextPath + "/supervisor/role/add",
         type: 'post',
-        data: {data: json},
-        cache: false,
-        success: function (text) {
-            CloseWindow("ok");
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
-            CloseWindow();
-        }
-    });
-}
-
-function updateMenu() {
-    var o = form.getData();
-    form.validate();
-    if (form.isValid() == false) return;
-    var json = fui.encode(o);
-    $.ajax({
-        url: fui.contextPath + "/supervisor/menu/updateMenu",
-        type: 'post',
-        data: {data: json},
+        data: data,
         cache: false,
         success: function (text) {
             CloseWindow("ok");
@@ -60,11 +39,7 @@ function setData(data) {
 }
 
 function onOk(e) {
-    saveMenu();
-}
-
-function onUpdate(e) {
-    updateMenu();
+    doSaveRole();
 }
 
 function onCancel(e) {

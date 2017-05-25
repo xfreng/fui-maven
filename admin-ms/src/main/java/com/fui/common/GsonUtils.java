@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @Title 通用转换类
- * @Author 熊世凤 on 2017/4/15.
+ * @Author sf.xiong on 2017/4/15.
  */
 public class GsonUtils {
     private static final Logger logger = LoggerFactory.getLogger(GsonUtils.class);

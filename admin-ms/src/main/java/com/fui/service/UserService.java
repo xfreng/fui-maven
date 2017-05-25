@@ -1,5 +1,6 @@
 package com.fui.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fui.common.*;
 import com.fui.dao.user.UserMapper;
 import com.fui.model.ManageToken;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service("userService")
@@ -114,48 +116,46 @@ public class UserService {
     }
 
     /**
-     * @param ename
-     * @param password
-     * @param rand
-     * @return json
+     * 分页查询用户信息
+     *
+     * @param params 查询条件
+     * @return 用户信息列表
      */
-    public Map<String, String> findUserByName(String ename, String password, String rand) {
-        // 返回处理结果
-        Map<String, String> data = new HashMap<String, String>();
-        try {
-            User user = userMapper.findUserByName(ename);
-            HttpSession session = WebUtils.getCurrentRequest().getSession(false);
-            String sRand = session.getAttribute("SRAND").toString();
-            if (!sRand.equalsIgnoreCase(rand)) {
-                data.put("message", "验证码输入错误");
-                data.put("state", "0");
-                data.put("toIndexURL", "login.jsp");
-            } else {
-                if (user != null) {
-                    if (MD5Utils.generatePassword(password).equals(user.getPassword())) {
-                        session.setAttribute("userObject", user);
-                        data.put("state", "1");
-                        data.put("toIndexURL", "supervisor/" + user.getMenuType());
-                        user.setLoginCount(user.getLoginCount() + 1);
-                        user.setLastLoginTime(new Date(System.currentTimeMillis()));
-                        userMapper.updateByPrimaryKey(user);
-                    } else {
-                        logger.error("用户密码错误");
-                        data.put("message", "用户密码错误，请重新输入");
-                        data.put("state", "0");
-                        data.put("toIndexURL", "login.jsp");
-                    }
-                } else {
-                    logger.info("用户名不存在");
-                    data.put("message", "用户名不存在，请重新输入");
-                    data.put("state", "0");
-                    data.put("toIndexURL", "login.jsp");
-                }
-            }
-        } catch (Exception e) {
-            data.put("state", "0");
-            logger.error("登录异常 {} ", e);
+    public List<User> getUserList_page(Map<String, Object> params) {
+        List<User> userList = userMapper.getUserList_page(params);
+        return userList;
+    }
+
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @param userCode
+     * @return User
+     */
+    public User findUserByCode(String userCode) {
+        return userMapper.findUserByCode(userCode);
+    }
+
+    /**
+     * 新增用户
+     *
+     * @param user
+     * @return
+     */
+    public JSONObject addUser(User user) {
+        JSONObject json = new JSONObject();
+        User oldUser = findUserByCode(user.getEname());
+        if(oldUser != null){
+            json.put("result", "0");
+            json.put("message", "用户名已经存在");
+            return json;
         }
-        return data;
+        user.setPassword(MD5Utils.generatePassword(user.getEname()));
+        user.setErased(false);
+        user.setStyle(Constants.DEFAULT_STYLE);
+        user.setMenuType(Constants.DEFAULT_STYLE);
+        int i = userMapper.insert(user);
+        json.put("result", i > 0 ? "1" : "0");
+        return json;
     }
 }

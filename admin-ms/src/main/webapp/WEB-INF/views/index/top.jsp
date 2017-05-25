@@ -44,7 +44,7 @@
 </head>
 <body>
 	<div class="logo">
-        <a href="${path }/default"><img src="${path}/public/mainframe/images/${logo eq null ? 'logo.png' : logo}"></a>&nbsp;
+        <a href="${path }/supervisor/default"><img src="${path}/public/mainframe/images/${logo eq null ? 'logo.png' : logo}"></a>&nbsp;
         <span class="separator"></span>
         ${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
     </div>
@@ -64,11 +64,11 @@
 </body>
 <script type="text/javascript">
 	function loginout(e) {
-		window.location.href = fui.contextPath+"/destroy";
+		window.location.href = fui.contextPath+"/supervisor/destroy";
 	}
 	
 	function toindex(e) {
-		window.location.href = fui.contextPath+"/default";
+		window.location.href = fui.contextPath+"/supervisor/default";
 	}
 </script>
 </html>

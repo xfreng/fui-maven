@@ -3,8 +3,8 @@ package com.fui.controller;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.StringUtils;
-import com.fui.model.Roles;
-import com.fui.service.RoleService;
+import com.fui.model.User;
+import com.fui.service.UserService;
 import com.talkyun.apus.mybatis.plugin.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,51 +20,52 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by sf.xiong on 2017-01-11.
+ * @Title 用户管理
+ * @Author sf.xiong on 2017/5/5.
  */
 @Controller
-@RequestMapping(value = "/supervisor/role")
-public class RoleController extends AbstractSuperController {
-    private static Logger logger = LoggerFactory.getLogger(RoleController.class);
+@RequestMapping(value = "/supervisor/user")
+public class UserController extends AbstractSuperController {
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private RoleService roleService;
+    private UserService userService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("role/list");
+        ModelAndView mv = new ModelAndView("user/list");
         return mv;
     }
 
     @RequestMapping("/state")
     public ModelAndView state() {
-        ModelAndView mv = new ModelAndView("role/state");
+        ModelAndView mv = new ModelAndView("user/state");
         return mv;
     }
 
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String getRoleList(@RequestParam(value = "page", defaultValue = "1") int currPage,
+    public String getUserList(@RequestParam(value = "page", defaultValue = "1") int currPage,
                               @RequestParam(value = "rows", defaultValue = "10") int pageSize) {
         Page page = createPagination(currPage, pageSize);
         Map<String, Object> params = new HashMap<String, Object>();
         params.put(Constants.PAGE, page);
-        String roleCode = request.getParameter("roleCode");
-        if (StringUtils.isNotEmpty(roleCode)) {
-            params.put("roleCode", roleCode);
+        String userCode = request.getParameter("userCode");
+        if (StringUtils.isNotEmpty(userCode)) {
+            params.put("userCode", userCode);
         }
-        String roleName = request.getParameter("roleName");
-        if (StringUtils.isNotEmpty(roleName)) {
-            params.put("roleName", roleName);
+        String userName = request.getParameter("userName");
+        if (StringUtils.isNotEmpty(userName)) {
+            params.put("userName", userName);
         }
         //分页查询
-        List<Roles> list = roleService.getRolesList_page(params);
-        return success(list, page.getTotalResult(), "roleList");
+        List<User> list = userService.getUserList_page(params);
+        return success(list, page.getTotalResult(), "userList");
     }
 
     @RequestMapping(value = "/add", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String addRole(Roles roles) {
-        return success(roleService.addRoles(roles));
+    public String addUser(User user) {
+        return success(userService.addUser(user));
     }
 }

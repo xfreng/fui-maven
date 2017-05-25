@@ -1,6 +1,7 @@
 package com.fui.controller;
 
 import com.fui.common.AbstractSuperController;
+import com.fui.common.Constants;
 import com.fui.common.QRCodeUtils;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.springframework.stereotype.Controller;
@@ -42,7 +43,7 @@ public class ImageController extends AbstractSuperController {
         }
         String sRand = "";
         for (int i = 0; i < 4; i++) {
-            String rand = String.valueOf((char) (Math.random() * 26 + 'A'));
+            String rand = String.valueOf(Constants.RAND_STRING.charAt(random.nextInt(Constants.RAND_STRING.length())));
             sRand += rand;
             g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
             g.drawString(rand, 13 * i + 6, 16);

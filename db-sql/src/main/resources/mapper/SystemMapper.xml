@@ -117,12 +117,4 @@
         from fui_system
         where 1=1
     </select>
-    <update id="updateMenuTypeAndStyleByUserId" parameterType="java.util.HashMap">
-    update
-        fui.fui_user
-    set
-        style=#{style},
-        menu_type=#{menuType}
-    where id=#{id}
-  </update>
 </mapper>

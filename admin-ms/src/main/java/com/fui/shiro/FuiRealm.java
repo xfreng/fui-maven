@@ -42,9 +42,9 @@ public class FuiRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         logger.info("doGetAuthenticationInfo: {}", authcToken.toString());
-        String username = ((UsernamePasswordToken) authcToken).getUsername();
+        String userCode = ((UsernamePasswordToken) authcToken).getUsername();
         //从DB获取当前用户的认证信息
-        User user = userMapper.findUserByName(username);
+        User user = userMapper.findUserByCode(userCode);
         if (user != null) {
             if (!user.getErased()) {
                 return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
@@ -63,7 +63,7 @@ public class FuiRealm extends AuthorizingRealm {
         List<Permissions> permissionsList;
         //从DB获取当前用户的权限信息
         if (Constants.SUPER_USER_ID.equals(user.getEname())) {  //超级管理员拥有所有权限
-            permissionsList = permissionsMapper.selectAllPermission();
+            permissionsList = permissionsMapper.selectAllRight();
         } else {  //其他用户根据角色获取权限
             permissionsList = new ArrayList<Permissions>();
             List<Long> roleIdList = userRolesMapper.selectRolesByAgentId(user.getId());

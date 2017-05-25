@@ -476,7 +476,7 @@ body a.fui-button-popup, body a:hover.fui-button-popup
     border:solid 1px  #888;    
     padding:0px;
     color:#3C3C3C;
-    background:#DBDDE2 url(images/button/pressed.png) repeat-x 0 0; 
+    background:#DBDDE2 url(images/button/pressed.png) repeat-x 0 0;
     cursor:pointer;   
 }
 
@@ -485,8 +485,8 @@ body a.fui-button-disabled, body a:hover.fui-button-disabled
 {
     border:1px solid #DFDFDF;                                                        
     padding:0px;
-    background:#F8F9FA url(images/button/disabled.png) repeat-x 0 0px;    
-	padding:0 20px;                                                                  
+    background:#F8F9FA url(images/button/disabled.png) repeat-x 0 0px;
+	padding:0 20px;
     cursor:default;
 }
 body .fui-button-disabled *
@@ -2740,7 +2740,7 @@ a:hover.fui-calendar-menu-year
     font-size:9pt;
     font-family:Tahoma, Verdana, "宋体,微软雅黑";
     line-height:22px;                                                     
-    padding:0px;
+    padding:2px;
     padding-top:2px;
     padding-bottom:2px;
     width:100%;

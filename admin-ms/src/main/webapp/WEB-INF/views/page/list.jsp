@@ -3,8 +3,8 @@
 <html>
 <head>
 	<title>画面管理</title>
-	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
-	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 	<style type="text/css">
 		body{
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;

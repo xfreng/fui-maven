@@ -1,139 +1,159 @@
-var currentNode; // 当前点击权限树节点
-var url;// 是保存还是更新权限url
-function doQuery() {
-    var id = '';
-    if (currentNode != null) {//当前点击树节点不为空时获取选中节点的id
-        id = currentNode.id;
+fui.parse();
+
+var rightManagerGrid = fui.get("rightManagerGrid");
+var leftTree = fui.get("leftTree");
+var currentNode = null; // 当前点击权限树节点
+$(function () {
+    autoLayoutSize('layout', 10);
+    expandRootNode();
+    doQuery();
+});
+
+/**
+ * 页面加载展开根目录
+ */
+function expandRootNode() {
+    leftTree.setValue(leftTree.getChildNodes(leftTree.getRootNode())[0].id);
+    var node = leftTree.getSelectedNode();
+    if (node) {
+        currentNode = node;
+        refreshNode(node);
     }
-    var rightName = $('#rightName').val();
-    $("#settingListTable").datagrid('load', {
-        id: id,
-        rightName: rightName
-    });
+}
+
+function onNodeClick(e) {
+    currentNode = e.node;
+    loadGridData();
+}
+
+this.getCurrentNode = function () {
+    return currentNode;
+}
+
+this.getSelectedNode = function () {
+    return leftTree.getSelectedNode();
+}
+
+this.getParentNode = function (node) {
+    node = node || getCurrentNode();
+    return leftTree.getParentNode(node);
+}
+
+this.refreshNode = function (node) {
+    leftTree.loadNode(node);
+}
+
+this.refreshCurrentNode = function () {
+    refreshNode(getCurrentNode());
+}
+
+this.refreshParentNode = function (node) {
+    node = node || getCurrentNode();
+    refreshNode(getParentNode(node));
+}
+
+function onRefreshNode(e) {
+    refreshNode(getSelectedNode());
 }
 
 /**
- * 根据主键id查询对应权限信息
- * @param id
+ * 树加载前
+ * @param e
  */
-function queryByKey(id) {
-    $('#settingListTable').datagrid('load', {
-        id: id
-    });
+function onBeforeTreeLoad(e) {
+    var node = e.node;
+    if (!node.id) {
+        e.params.id = -1;
+    }
 }
 
-$('#leftTree').tree({
-    onClick: function (node) {
-        currentNode = node;
-        queryByKey(node.id);
-    }
-})
-
-// 双击树节点展开/收缩
-$('#leftTree').tree({
-    onDblClick: function (node) {
-        currentNode = node;
-        if (node.state == 'closed') {
-            $('#leftTree').tree('expand', node.target);
-        } else {
-            $('#leftTree').tree('collapse', node.target);
-        }
-    }
-})
-
-$('#leftTree').tree({
-    onExpand: function (node) {
-        currentNode = node;
-        queryByKey(node.id);
-    }
-})
-
 /**
- * 弹出新增权限面板
+ * 加载子节点
  */
-function doAdd() {
-    $('#optionForm').form('clear');//清空原有赋值
-    $("#id").textbox('readonly', false);
-    $('#dialog').dialog('open').dialog('center').dialog('setTitle', '新增权限');
+function loadGridData() {
+    var form = new fui.Form("#queryForm");
+    var data = form.getData(true, false);
     if (currentNode != null) {
-        $("#parentId").textbox('setValue', currentNode.id);
+        data.id = currentNode.id;
+    } else {
+        data.id = -1;
     }
-    url = getHost() + "/supervisor/permissions/addRight";
+    rightManagerGrid.load(data);
 }
 
 /**
- * 弹出修改权限面板
+ * 查询
  */
-function doUpdate() {
-    var selectRowCount = $('#settingListTable').datagrid('getSelections').length;
-    var row = $('#settingListTable').datagrid('getSelected');
-    if (row) {
-        if (selectRowCount > 1) {
-            $.messager.alert("提示", "请先选择一条需要修改的权限");
+function doQuery() {
+    loadGridData();
+}
+
+/**
+ * 弹出新增/修改权限面板
+ */
+function doAdd_update(flag) {
+    var action = flag == 'A' ? 'add' : 'edit';
+    var title = flag == 'A' ? '新增权限' : '修改权限';
+    var row = rightManagerGrid.getSelected();
+    var data = {};
+    if (flag == 'U') {
+        if (row == null) {
+            fui.alert("请先选中需要修改的权限", "提示");
             return;
         }
-        $('#dialog').dialog('open').dialog('center').dialog('setTitle', '修改权限');
-        $("#id").textbox('readonly', true);
-        $('#optionForm').form('load', row);
-        url = getHost() + "/supervisor/permissions/updateRight";
+        var rows = rightManagerGrid.getSelecteds();
+        if (rows.length > 1) {
+            fui.alert("请先选中一条需要修改的权限", "提示");
+            return;
+        }
+        data = row;
     } else {
-        $.messager.alert("提示", "请先选中需要修改的权限");
+        if (currentNode != null) {
+            data.parentId = currentNode.id;
+        } else {
+            data.parentId = "-1";
+        }
     }
+    data.action = action;
+    fui.open({
+        url: fui.contextPath + "/supervisor/right/state",
+        showMaxButton: true,
+        title: title,
+        width: 510,
+        height: 215,
+        onload: function () {
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.setData(data);
+        },
+        ondestroy: function (action) {
+            if (action == "ok") {
+                rightManagerGrid.reload();
+                rightManagerGrid.clearSelect(true);
+                refreshCurrentNode();
+            }
+        }
+    });
 }
-
 
 /**
  * 导出选中数据到sql文件
  */
 function doExport() {
-    var selectRows = $('#settingListTable').datagrid('getSelections');
+    var selectRows = rightManagerGrid.getSelecteds();
     if (selectRows.length == 0) {
-        $.messager.alert("提示", "请选择要导出的权限");
+        fui.alert("请选择要导出的权限", "提示");
         return;
     }
     $.ajax({
         type: "POST",  //提交方式
-        url: getHost() + "/supervisor/permissions/createSqlFile",//路径
+        url: fui.contextPath + "/supervisor/permissions/createSqlFile",//路径
         data: {
             selectRows: JSON.stringify(selectRows)
         },
         success: function (result) {//返回数据根据结果进行相应的处理
             var outputPath = result.outputPath;
             var filePath = result.filePath;
-            window.location.href = getHost() + "/supervisor/permissions/exportSqlFile?outputPath=" + outputPath + "&filePath=" + filePath;
+            window.location.href = fui.contextPath + "/supervisor/permissions/exportSqlFile?outputPath=" + outputPath + "&filePath=" + filePath;
         }
     });
-}
-
-/**
- * 保存权限信息
- */
-function saveRight() {
-    $('#optionForm').form('submit', {
-        url: url,
-        onSubmit: function (param) {
-            console.log(param);
-            return $(this).form('validate');
-        },
-        success: function (result) {
-            var result = eval('(' + result + ')');
-            if (result.code == "success") {
-                $.messager.show({
-                    title: '提示',
-                    msg: "成功"
-                });
-                $('#dialog').dialog('close');
-                doQuery();
-            } else {
-                $.messager.show({
-                    title: '提示',
-                    msg: "失败"
-                });
-            }
-        }
-    });
-}
-
-function cancelOption() {
-    $('#dialog').dialog('close')
 }

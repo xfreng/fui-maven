@@ -16,7 +16,7 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/supervisor")
 public class LoginController extends AbstractSuperController {
-    private final Logger log = LoggerFactory.getLogger(LoginController.class);
+    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserService userService;
@@ -40,7 +40,7 @@ public class LoginController extends AbstractSuperController {
         String password = data.get("upass").toString();
         String rand = data.get("rand").toString();
         Map<String, Object> jsonData = userService.login(ename, password, rand);
-        log.info("登录逻辑处理完成");
+        logger.info("登录逻辑处理完成");
         return success(jsonData);
     }
 }

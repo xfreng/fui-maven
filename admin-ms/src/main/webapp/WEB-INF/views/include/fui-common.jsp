@@ -8,6 +8,7 @@
 <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
 <script type="text/javascript" src="${path}/public/common/fui/jquery/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/fui.js"></script>
+<script type="text/javascript" src="${path}/public/common/fui/fui-ext.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/common.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/json2.js"></script>
 <link rel="stylesheet" type="text/css" href="${path}/public/css/login.css"/>

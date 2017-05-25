@@ -4,6 +4,9 @@ import com.fui.model.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public interface UserMapper {
     /**
@@ -57,8 +60,16 @@ public interface UserMapper {
     /**
      * 根据工号查询用户信息
      *
-     * @param ename
+     * @param userCode
      * @return 用户信息
      */
-    User findUserByName(@Param("ename") String ename);
+    User findUserByCode(@Param("userCode") String userCode);
+
+    /**
+     * 分页查询用户信息
+     *
+     * @param params
+     * @return 用户列表
+     */
+    List<User> getUserList_page(Map<String, Object> params);
 }

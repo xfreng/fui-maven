@@ -4,8 +4,6 @@
 <head>
     <%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-	<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
-	<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
 	<title>欢迎使用 ${p_name}[${p_dev}]</title>
 	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
@@ -72,7 +70,7 @@
 			var text = node.text();
 			var url = node._data.url;
 			if (url && ($.trim(url) != "")) {
-				newForm(label,url);
+				newForm(label,text,url);
 				return;
 			}
 			if (node.leaf()) {
@@ -82,13 +80,13 @@
 
 		function activeForm(label,text,url) {
 			if (__newForm == true) {
-				newForm(label,label);
+				newForm(label,text,url);
 			} else {
 				openForm(label,text,url);
 			}
 		}
 
-		function newForm(label,url) {
+		function newForm(label,text,url) {
 			label = (url && $.trim(url) != "") ? url : label;
             var _wnd = window;
             // 判断打开页面是否是分帧页面，如果是分帧页面，则要找到包含分帧页面的顶级页面
@@ -284,11 +282,13 @@
 			pageStyle : style
 		};
 		$.ajax({
-			url : fui.contextPath + "/supervisor/menu/updateMenuTypeAndStyle",
+			url : fui.contextPath + "/supervisor/style/updateMenuTypeAndStyle",
 			type : 'POST',
 			data : data,
 			success : function(text) {
-				fui.alert("保存成功！");
+			    if(text.result == "1"){
+					fui.alert("保存成功！");
+				}
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
 				fui.alert("保存失败!");

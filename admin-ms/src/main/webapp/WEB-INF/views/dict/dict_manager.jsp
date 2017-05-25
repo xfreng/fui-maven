@@ -131,6 +131,6 @@
   			</TABLE>
 	</div>
 </div>
-<script type="text/javascript" src="${path}/public/js/supervisor/dict.js"></script>
 </body>
+<script type="text/javascript" src="${path}/public/js/supervisor/dict.js"></script>
 </html>

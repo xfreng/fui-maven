@@ -3,8 +3,8 @@
 <html>
 <head>
 	<title>项目信息配置</title>
-	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
-	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
+	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 	<style type="text/css">
 		body{
 	        margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
@@ -34,8 +34,5 @@
 	    </div>
 	</div>
 </body>
-<script type="text/javascript">
-	fui.parse();
-</script>
-<%--<script type="text/javascript" src="${path}/public/js/supervisor/menu.js"></script>--%>
+<script type="text/javascript" src="${path}/public/js/supervisor/system.js"></script>
 </html>

@@ -12,7 +12,7 @@ public class SystemController extends AbstractSuperController {
 
     @RequestMapping("/project")
     public String index() {
-        return "/system/system-list";
+        return "system/list";
     }
 
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
