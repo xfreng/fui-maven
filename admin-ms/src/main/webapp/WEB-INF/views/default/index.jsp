@@ -161,7 +161,7 @@
             tab.name = id;
             tab.title = node.text;
             tab.showCloseButton = true;
-            tab.url = fui.contextPath + "/" + (node.url && $.trim(node.url) != "" ? node.url : node.id);
+            tab.url = fui.contextPath + (node.url && $.trim(node.url) != "" ? node.url : node.id);
             tabs.addTab(tab);
         }
         tabs.activeTab(tab);
@@ -193,10 +193,15 @@
 			type : 'POST',
 			data : data,
 			success : function(text) {
-				fui.alert("保存成功！");
+			    var result = text.result;
+			    if(result == "1"){
+				    window.location.href = fui.contextPath + text.url;
+                }else{
+			        fui.alert("更换失败!", "提示信息");
+                }
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				fui.alert("保存失败!");
+				fui.alert("更换失败!", "提示信息");
 			}
 		});
 	}

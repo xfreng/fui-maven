@@ -286,12 +286,15 @@
 			type : 'POST',
 			data : data,
 			success : function(text) {
-			    if(text.result == "1"){
-					fui.alert("保存成功！");
-				}
+                var result = text.result;
+                if(result == "1"){
+                    window.location.href = fui.contextPath + text.url;
+                }else{
+                    fui.alert("更换失败!", "提示信息");
+                }
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				fui.alert("保存失败!");
+				fui.alert("更换失败!", "提示信息");
 			}
 		});
 	}

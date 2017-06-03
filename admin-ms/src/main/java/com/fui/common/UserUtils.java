@@ -12,6 +12,18 @@ public class UserUtils {
     }
 
     /**
+     * 更换主题后刷新当前用户信息
+     *
+     * @param style
+     * @param menuType
+     */
+    public static void updateCurrent(String style, String menuType) {
+        User user = getCurrent();
+        user.setStyle(style);
+        user.setMenuType(menuType);
+    }
+
+    /**
      * 获取当前用户信息
      *
      * @return 当前用户信息

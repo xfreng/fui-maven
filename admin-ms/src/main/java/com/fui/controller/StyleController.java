@@ -35,8 +35,12 @@ public class StyleController extends AbstractSuperController {
         beanMap.put("style", style);
         beanMap.put("menuType", menuType);
         boolean bool = styleService.updateMenuTypeAndStyleByUserId(beanMap);
+        if (bool) {
+            UserUtils.updateCurrent(style, menuType);
+        }
         JSONObject json = new JSONObject();
         json.put("result", bool ? "1" : "0");
+        json.put("url", "/supervisor/" + menuType);
         return success(json);
     }
 }
