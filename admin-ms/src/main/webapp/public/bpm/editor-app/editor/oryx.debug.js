@@ -19504,7 +19504,7 @@ ORYX.Plugins.Save = Clazz.extend({
 		if(this._hasChanges()) {
     		var tree = parent.tree;// -- edit by sf.xiong
         	if(tree){
-        		tree.tree("reload");
+                tree.load();
         	}
 			return ORYX.I18N.Save.unsavedData;
 		}

@@ -6,6 +6,9 @@
     <%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
     <title>权限配置</title>
     <style type="text/css">
+        html, body{
+            margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
+        }
         #tree .fui-grid-viewport{
             background-color:transparent !important;
         }
@@ -27,35 +30,37 @@
         </ul>
     </div>
     <div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
-        <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="padding: 10px;width: 100%;height: 85px;">
-            <form id="queryForm">
-                <label style="margin-left:20px;" for="rightName">权限名称：</label>
-                <input class="fui-textbox" id="rightName" name="text" prompt="支持模糊查询"/>
-                <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
-            </form>
-        </div>
-        <div class="fui-panel" showHeader="false" bodyStyle="overflow:hidden;" style="padding: 10px;width: 100%;height: 90%;">
-            <div class="fui-toolbar" style="border-top:0;border-left:0;border-right:0;">
-                <a class="fui-button" iconCls="icon-add" onclick="doAdd_update('A')">新增</a>
-                <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
-                <a class="fui-button" iconCls="icon-download" onclick="doExport()">导出sql</a>
+        <div class="fui-fit" style="width:100%;height:100%;">
+            <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="width:100%;">
+                <form id="queryForm">
+                    <label style="margin-left:20px;" for="rightName">权限名称：</label>
+                    <input class="fui-textbox" id="rightName" name="text" prompt="支持模糊查询"/>
+                </form>
             </div>
-            <div id="rightManagerGrid" class="fui-datagrid" style="width:100%;height: 96%;" multiSelect="true"
-                 url="${path }/supervisor/right/list" idField="id" pageSize="20"
-                 dataField="rightList" showFilterRow="false" allowCellSelect="true"
-                 allowCellEdit="true">
-                <div property="columns">
-                    <div type="checkcolumn" ></div>
-                    <div field="id" width="100" headerAlign="center" align="center">权限ID</div>
-                    <div field="parentId" width="100" headerAlign="center" align="center">上级权限ID</div>
-                    <div field="code" width="100" headerAlign="center" align="center">权限编码</div>
-                    <div field="text" width="130" headerAlign="center" align="center">权限名称</div>
-                    <div field="url" width="150" headerAlign="center" align="center">权限配置URL</div>
+            <div class="fui-panel" showHeader="false" bodyStyle="overflow:hidden;" style="width:100%;height:92%;">
+                <div class="fui-toolbar" style="border-top:0;border-left:0;border-right:0;">
+                    <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
+                    <a class="fui-button" iconCls="icon-add" onclick="doAdd_update('A')">新增</a>
+                    <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
+                    <a class="fui-button" iconCls="icon-download" onclick="doExport()">导出sql</a>
+                </div>
+                <div id="rightManagerGrid" class="fui-datagrid" style="width:100%;height:96%;" multiSelect="true"
+                     url="${path }/supervisor/right/list" idField="id" pageSize="20"
+                     dataField="rightList" showFilterRow="false" allowCellSelect="true"
+                     allowCellEdit="true">
+                    <div property="columns">
+                        <div type="checkcolumn" ></div>
+                        <div field="id" width="100" headerAlign="center" align="center">权限ID</div>
+                        <div field="parentId" width="100" headerAlign="center" align="center">上级权限ID</div>
+                        <div field="code" width="100" headerAlign="center" align="center">权限编码</div>
+                        <div field="text" width="130" headerAlign="center" align="center">权限名称</div>
+                        <div field="url" width="150" headerAlign="center" align="center">权限配置URL</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="${path}/public/js/supervisor/right.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/right.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

@@ -38,6 +38,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="${path}/public/js/supervisor/role.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/role.js?v=<%=System.currentTimeMillis()%>"></script>
 </body>
 </html>

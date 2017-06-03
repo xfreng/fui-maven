@@ -11,7 +11,7 @@ $(function () {
  * 查询
  */
 function doQuery() {
-    var form = new fui.Form("#queryForm");
+    var form = new fui.Form("queryForm");
     var data = form.getData(true, false);
     userManagerGrid.load(data);
 }

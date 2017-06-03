@@ -36,7 +36,7 @@
 	        <a class="fui-button" iconCls="icon-remove" onclick="remove()">删除</a>     
 	        <a class="fui-button" iconCls="icon-download" onclick="exportExcel()">导出</a>     
 	    </div>
-	    <div id="grid" class="fui-datagrid" style="width:100%;height:96%;" multiSelect="true"
+	    <div id="grid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="true"
 	       	url="${path }/supervisor/menu/loadMenuNodePage" idField="id" parentField="pid" pageSize="20"
 	        textField="text" dataField="treeNodes" showFilterRow="false" allowCellSelect="true" 
 	        allowCellEdit="true" onrowdblclick="toedit" oncellmousedown="onCellBeginEdit">
@@ -71,5 +71,5 @@
 </div>
 <ul id="treeMenu" class="fui-contextmenu" onbeforeopen="onBeforeOpen"></ul>
 </body>
-<script type="text/javascript" src="${path}/public/js/supervisor/menu.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/menu.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

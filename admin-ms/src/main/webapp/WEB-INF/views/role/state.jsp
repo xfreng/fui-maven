@@ -45,5 +45,5 @@
     </div>
 </form>
 </body>
-<script type="text/javascript" src="${path}/public/js/supervisor/role-state.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/role-state.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

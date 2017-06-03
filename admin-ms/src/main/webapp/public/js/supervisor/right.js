@@ -4,7 +4,7 @@ var rightManagerGrid = fui.get("rightManagerGrid");
 var leftTree = fui.get("leftTree");
 var currentNode = null; // 当前点击权限树节点
 $(function () {
-    autoLayoutSize('layout', 10);
+    autoLayoutSize('layout');
     expandRootNode();
     doQuery();
 });
@@ -71,7 +71,7 @@ function onBeforeTreeLoad(e) {
  * 加载子节点
  */
 function loadGridData() {
-    var form = new fui.Form("#queryForm");
+    var form = new fui.Form("queryForm");
     var data = form.getData(true, false);
     if (currentNode != null) {
         data.id = currentNode.id;

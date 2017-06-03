@@ -1,5 +1,5 @@
 fui.parse();
-var queryForm = new fui.Form("#queryForm");
+var queryForm = new fui.Form("queryForm");
 var dictTypeGrid = fui.get("dictTypeGrid");
 var dictEntryGrid = fui.get("dictEntryGrid");
 var tree = fui.get("tree1");

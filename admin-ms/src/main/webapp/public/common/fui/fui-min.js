@@ -5684,6 +5684,9 @@ fui_unload = function(k) {
 		delete j[fui._WindowID]
 	} catch (m) {
 	}
+    if (!document.body) {
+        return
+    }
 	var g = document.body.getElementsByTagName("iframe");
 	if (g.length > 0) {
 		var f = [];

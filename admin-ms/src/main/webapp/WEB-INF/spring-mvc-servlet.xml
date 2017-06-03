@@ -22,7 +22,9 @@
 
 	<!-- if you use annotation you must configure following setting -->
 	<mvc:annotation-driven />
-	
+
+	<mvc:default-servlet-handler />
+
 	<!-- configure the InternalResourceViewResolver -->
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>

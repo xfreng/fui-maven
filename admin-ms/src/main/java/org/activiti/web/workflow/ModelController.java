@@ -1,12 +1,13 @@
 package org.activiti.web.workflow;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baosight.iplat4j.core.threadlocal.UserSession;
 import com.fasterxml.jackson.core.JsonParser.Feature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fui.common.AbstractSuperController;
-import com.fui.common.GsonUtils;
+import com.fui.common.Constants;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.editor.constants.ModelDataJsonConstants;
@@ -33,7 +34,6 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -58,21 +58,17 @@ public class ModelController extends AbstractSuperController {
 
 
     @RequestMapping("/index")
-    public String modelList() {
+    public String index() {
         return "workflow/model-list";
     }
 
     /**
      * 模型列表
      */
-    @RequestMapping(value = "list", method = RequestMethod.POST)
-    public void modelList(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        // 分页
-        String pageIndexStr = request.getParameter("pageIndex");
-        String pageSizeStr = request.getParameter("pageSize");
-        int pageIndex = StringUtils.isNotBlank(pageIndexStr) ? Integer.parseInt(request.getParameter("pageIndex")) : 0;
-        int pageSize = StringUtils.isNotBlank(pageSizeStr) ? Integer.parseInt(request.getParameter("pageSize")) : 20;
-
+    @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String modelList(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String flowName = request.getParameter("flowName");
         String flowKey = request.getParameter("flowKey");
         String flowCategory = request.getParameter("flowCategory");
@@ -93,23 +89,24 @@ public class ModelController extends AbstractSuperController {
             modelQuery = modelQuery.modelCategory(flowCategory);
         }
         List<Model> models = modelQuery.modelCategoryNotEquals(WorkFlowConstant.CATEGORY_NOT_EQUALS).orderByCreateTime()
-                .desc().listPage(pageIndex, pageSize);
-        Map<String, Object> modelList = new HashMap<String, Object>();
-        modelList.put("modelList", models);
-        modelList.put("total", modelQuery.count());
-        String json = GsonUtils.toJson(modelList);
-        response.setCharacterEncoding("utf-8");
-        response.setContentType("text/html");
-        response.getWriter().write(json);
+                .desc().listPage(currPage, pageSize);
+        JSONObject json = new JSONObject();
+        json.put("modelList", models);
+        json.put("total", modelQuery.count());
+        return success(json);
     }
 
     /**
      * 创建模型
      */
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    public void create(@RequestParam("name") String name, @RequestParam("key") String key,
-                       @RequestParam("description") String description, HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping(value = "/create", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String create() {
+        JSONObject json = new JSONObject();
         try {
+            String name = request.getParameter("name");
+            String key = request.getParameter("key");
+            String description = request.getParameter("description");
             String category = request.getParameter("category");
 
             ObjectMapper objectMapper = new ObjectMapper();
@@ -141,10 +138,11 @@ public class ModelController extends AbstractSuperController {
             repositoryService.saveModel(modelData);
             repositoryService.addModelEditorSource(modelData.getId(), editorNode.toString().getBytes("utf-8"));
 
-            response.sendRedirect(request.getContextPath() + "/bpm/tree-modeler.jsp?modelId=" + modelData.getId());
+            json.put("url", "/supervisor/designer/tree-modeler?modelId=" + modelData.getId());
         } catch (Exception e) {
             logger.error("创建模型失败：", e);
         }
+        return success(json);
     }
 
     /**
@@ -152,7 +150,7 @@ public class ModelController extends AbstractSuperController {
      *
      * @param values
      */
-    @RequestMapping(value = {"/{modelId}/saveas"}, method = {RequestMethod.PUT})
+    @RequestMapping(value = {"/{modelId}/saveas"}, method = {RequestMethod.PUT}, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public String saveAsModel(@RequestBody MultiValueMap<String, String> values) {
@@ -202,28 +200,28 @@ public class ModelController extends AbstractSuperController {
     /**
      * 删除模型
      */
-    @RequestMapping(value = "workflow-model-deleteModel", method = RequestMethod.POST)
+    @RequestMapping(value = "/deleteModel", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String deleteModel() {
-        Map<String, Object> data = new HashMap<String, Object>();
+        JSONObject json = new JSONObject();
         try {
             String modelIdArgs = request.getParameter("modelIdArgs");
             List<String> modelIdList = Arrays.asList(modelIdArgs.split(","));
             for (String modelId : modelIdList) {
                 loopDeleteModel(modelId);
             }
-            data.put("message", "删除成功！");
+            json.put("message", "删除成功！");
         } catch (Exception e) {
-            data.put("message", "Error deleting model！");
+            json.put("message", "Error deleting model！");
             logger.error("Error deleting model", e);
         }
-        return success(data);
+        return success(json);
     }
 
     /**
      * 另存模型(副本)
      */
-    @RequestMapping(value = "workflow-model-copyModel", method = RequestMethod.POST)
+    @RequestMapping(value = "/copyModel", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String copyModel() {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -258,7 +256,7 @@ public class ModelController extends AbstractSuperController {
     /**
      * 另存模型(模板)
      */
-    @RequestMapping(value = "workflow-model-copyModel2Template", method = RequestMethod.POST)
+    @RequestMapping(value = "/copyModel2Template", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String copyModel2Template() {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -480,7 +478,7 @@ public class ModelController extends AbstractSuperController {
      *
      * @param modelId
      */
-    @RequestMapping(value = "deploy/{modelId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/deploy/{modelId}", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String deploy(@PathVariable("modelId") String modelId) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -512,10 +510,10 @@ public class ModelController extends AbstractSuperController {
      * 导出model对象为指定类型
      *
      * @param modelId  模型ID
-     * @param type     导出文件类型(bpmn\json)
+     * @param type     导出文件类型(bpmn/json)
      * @param response
      */
-    @RequestMapping(value = "export/{modelId}/{type}")
+    @RequestMapping(value = "/export/{modelId}/{type}")
     public void export(@PathVariable("modelId") String modelId, @PathVariable("type") String type,
                        HttpServletResponse response) {
         try {
@@ -525,7 +523,6 @@ public class ModelController extends AbstractSuperController {
 
             JsonNode editorNode = new ObjectMapper().readTree(modelEditorSource);
             BpmnModel bpmnModel = jsonConverter.convertToBpmnModel(editorNode);
-
             // 处理异常
             if (bpmnModel.getMainProcess() == null) {
                 response.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
@@ -536,25 +533,17 @@ public class ModelController extends AbstractSuperController {
 
             String filename = "";
             byte[] exportBytes = null;
-
             String mainProcessId = bpmnModel.getMainProcess().getId();
-
             if (type.equals("bpmn")) {
-
                 BpmnXMLConverter xmlConverter = new BpmnXMLConverter();
                 exportBytes = xmlConverter.convertToXML(bpmnModel);
-
                 filename = mainProcessId + ".bpmn20.xml";
             } else if (type.equals("json")) {
-
                 exportBytes = modelEditorSource;
                 filename = mainProcessId + ".json";
-
             }
-
             ByteArrayInputStream in = new ByteArrayInputStream(exportBytes);
             IOUtils.copy(in, response.getOutputStream());
-
             response.setHeader("Content-Disposition", "attachment; filename=" + filename);
             response.flushBuffer();
         } catch (Exception e) {
@@ -567,7 +556,7 @@ public class ModelController extends AbstractSuperController {
      *
      * @param modelId
      */
-    @RequestMapping(value = "delete/{modelId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/{modelId}", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String delete(@PathVariable("modelId") String modelId) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -579,5 +568,4 @@ public class ModelController extends AbstractSuperController {
         }
         return success(data);
     }
-
 }

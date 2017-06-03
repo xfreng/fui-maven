@@ -97,11 +97,11 @@ KISBPM.PROPERTY_CONFIG =
         "writeModeTemplateUrl": "editor-app/configuration/properties/message-property-write-template.html"
     },
     "wendang" : {
-    	"readModeTemplateUrl": "editor-app/configuration/properties/wendang-read.jsp",
-    	"writeModeTemplateUrl": "editor-app/configuration/properties/wendang-write.jsp"
+    	"readModeTemplateUrl": "editor-app/configuration/properties/wendang-read.html",
+    	"writeModeTemplateUrl": "editor-app/configuration/properties/wendang-write.html"
     },
     "callelement" : {
-    	"readModeTemplateUrl": "editor-app/configuration/properties/callelement-read.jsp",
-    	"writeModeTemplateUrl": "editor-app/configuration/properties/callelement-write.jsp"
+    	"readModeTemplateUrl": "editor-app/configuration/properties/callelement-read.html",
+    	"writeModeTemplateUrl": "editor-app/configuration/properties/callelement-write.html"
     }
 };

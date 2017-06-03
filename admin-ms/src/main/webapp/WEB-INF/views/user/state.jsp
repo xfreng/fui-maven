@@ -52,5 +52,5 @@
     </div>
 </form>
 </body>
-<script type="text/javascript" src="${path}/public/js/supervisor/user-state.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/user-state.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

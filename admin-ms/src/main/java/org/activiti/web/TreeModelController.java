@@ -47,7 +47,7 @@ public class TreeModelController extends AbstractSuperController implements Mode
         }
     }
 
-    @RequestMapping(value = "checkModelByModelId", produces = Constants.MediaType_APPLICATION_JSON)
+    @RequestMapping(value = "/checkModelByModelId", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String checkModelByModelId() {
         String modelId = request.getParameter("modelId");
@@ -126,7 +126,6 @@ public class TreeModelController extends AbstractSuperController implements Mode
                                 String childShapesKey = childShapesJsonNodeIterator.next();
                                 JsonNode node = childShapesJsonNode.get(childShapesKey);
                                 if ("properties".equals(childShapesKey)) {
-                                    JsonNode childShapes = childShapesJsonNode.get("childShapes");
                                     JsonNode stencilNode = childShapesJsonNode.get("stencil");
                                     String typeId = stencilNode.get("id").asText();
                                     if (WorkflowUtils.checkTypeShow(typeId)) {
@@ -139,11 +138,11 @@ public class TreeModelController extends AbstractSuperController implements Mode
                                             String modelKey = callactivitycalledelementNode.asText();
                                             Model childModel = getModelByKey(modelKey);
                                             if (childModel != null) {
-                                                nodeModel.setChildren(getModelNodeByModelId(childModel.getId()));
+                                                List<TreeNodeModel> nodeChildren = getModelNodeByModelId(childModel.getId());
+                                                if (nodeChildren.size() > 0) {
+                                                    nodeModel.setChildren(nodeChildren);
+                                                }
                                             }
-                                        }
-                                        if (childShapes != null && childShapes.size() > 0) {
-                                            nodeModel.setChildren(getModelNodeByModelId(childShapes));
                                         }
                                         nodeModel.setId(resourceId);
                                         nodeModel.setText(name);
@@ -155,55 +154,13 @@ public class TreeModelController extends AbstractSuperController implements Mode
                         }
                     }
                 }
-                treeNodeModel.setChildren(children);
+                if (children.size() > 0) {
+                    treeNodeModel.setChildren(children);
+                }
                 treeNodeModels.add(treeNodeModel);
             } catch (Exception e) {
                 LOGGER.error("Error creating model JSON", e);
                 throw new ActivitiException("Error creating model JSON", e);
-            }
-        }
-        return treeNodeModels;
-    }
-
-    /**
-     * 递归所有内嵌子流程节点
-     *
-     * @param childShapes
-     */
-    protected List<TreeNodeModel> getModelNodeByModelId(JsonNode childShapes) {
-        List<TreeNodeModel> treeNodeModels = new ArrayList<TreeNodeModel>();
-        Iterator<JsonNode> jsonNodeIterator = childShapes.elements();
-        while (jsonNodeIterator.hasNext()) {
-            JsonNode childShapesJsonNode = jsonNodeIterator.next();
-            Iterator<String> childShapesJsonNodeIterator = childShapesJsonNode.fieldNames();
-            while (childShapesJsonNodeIterator.hasNext()) {
-                String childShapesKey = childShapesJsonNodeIterator.next();
-                JsonNode node = childShapesJsonNode.get(childShapesKey);
-                if ("properties".equals(childShapesKey)) {
-                    JsonNode exclusivedefinition = node.get("exclusivedefinition");
-                    JsonNode jsonNodeChildShapes = node.get("childShapes");
-                    if (exclusivedefinition != null) {
-                        TreeNodeModel nodeModel = new TreeNodeModel();
-                        String overrideid = node.get("overrideid").asText();
-                        String name = node.get("name").asText();
-                        String resourceId = childShapesJsonNode.get("resourceId").asText();
-                        JsonNode callactivitycalledelementNode = node.get("callactivitycalledelement");
-                        if (callactivitycalledelementNode != null) {
-                            String modelKey = callactivitycalledelementNode.asText();
-                            Model childModel = getModelByKey(modelKey);
-                            if (childModel != null) {
-                                nodeModel.setChildren(getModelNodeByModelId(childModel.getId()));
-                            }
-                        }
-                        if (jsonNodeChildShapes != null && jsonNodeChildShapes.size() > 0) {
-                            nodeModel.setChildren(getModelNodeByModelId(jsonNodeChildShapes));
-                        }
-                        nodeModel.setId(resourceId);
-                        nodeModel.setText(name);
-                        nodeModel.setResourceId(overrideid);
-                        treeNodeModels.add(nodeModel);
-                    }
-                }
             }
         }
         return treeNodeModels;

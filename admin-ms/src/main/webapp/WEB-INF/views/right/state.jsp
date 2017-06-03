@@ -47,5 +47,5 @@
     </div>
 </form>
 </body>
-<script type="text/javascript" src="${path}/public/js/supervisor/right-state.js"></script>
+<script type="text/javascript" src="${path}/public/js/supervisor/right-state.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>
