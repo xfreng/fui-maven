@@ -101,14 +101,14 @@ INSERT INTO `fui_menu` VALUES ('admin', '20161225184150', ' ', ' ', ' ', 'root',
 INSERT INTO `fui_menu` VALUES ('admin', '20090729174958', 'admin', '20120229113548', ' ', 'ED', 'EDCM', '代码管理', '0', ' ', '20', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20090729175218', 'admin', '20170112174611', ' ', 'EDCM', 'EDCM00', '代码分类管理', '1', '/supervisor/dict/index', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'ED', 'EDUM', '系统设置', '0', '', '00', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM01', '用户管理', '1', '/supervisor/user/list', '01', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM02', '角色管理', '1', '/supervisor/role/list', '02', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM03', '权限配置', '1', '/supervisor/right/list', '03', ' ', '');
+INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM01', '用户管理', '1', '/supervisor/user/index', '01', ' ', '');
+INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM02', '角色管理', '1', '/supervisor/role/index', '02', ' ', '');
+INSERT INTO `fui_menu` VALUES (' ', ' ', ' ', ' ', ' ', 'EDUM', 'EDUM03', '权限配置', '1', '/supervisor/right/index', '03', ' ', '');
 INSERT INTO `fui_menu` VALUES ('admin', '20160830162252', ' ', ' ', ' ', '$', 'root', '系统菜单树', '0', ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105150848', ' ', ' ', ' ', 'root', 'ACT', '流程管理', '0', ' ', '6', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', ' ', ' ', ' ', 'ACT', 'RWPE01', '流程执行示例', '1', ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170503131811', ' ', 'ACT', 'RACT01', '模型工作区', '1', '/supervisor/workflow/model/index', '2', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170105151503', ' ', 'ACT', 'RACT02', '流程定义及部署管理', '1', '/supervisor/workflow/process-list', '3', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170105151503', ' ', 'ACT', 'RACT02', '流程定义及部署管理', '1', '/supervisor/workflow/process/index', '3', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170105151503', ' ', 'ACT', 'RACT03', '运行中流程', '1', '/supervisor/workflow/processinstance/running', '4', ' ', ' ');
 
 -- ----------------------------
