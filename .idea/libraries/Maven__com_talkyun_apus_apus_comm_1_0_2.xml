@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.talkyun.apus:apus-comm:1.0.2">
     <CLASSES>
-      <root url="jar://D:/installed/apache-maven-3.3.9/Repository/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://D:/installed/apache-maven-3.3.9/Repository/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://D:/installed/apache-maven-3.3.9/Repository/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/talkyun/apus/apus-comm/1.0.2/apus-comm-1.0.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
