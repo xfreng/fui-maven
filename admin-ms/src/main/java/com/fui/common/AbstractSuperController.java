@@ -1,11 +1,12 @@
 package com.fui.common;
 
-import com.talkyun.apus.mybatis.plugin.Page;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -17,15 +18,12 @@ public abstract class AbstractSuperController {
     /**
      * 分页功能
      *
-     * @param currPage 当前页数
-     * @param pageSize 每页显示数量
+     * @param list 分页结果集
      * @return 分页结果
      */
-    protected Page createPagination(Integer currPage, Integer pageSize) {
-        Page page = new Page();
-        page.setCurrentPage(currPage == 0 ? 1 : currPage);
-        page.setShowCount(pageSize);
-        return page;
+    protected <T> PageInfo createPagination(List<T> list) {
+        PageInfo<T> pageInfo = new PageInfo<T>(list);
+        return pageInfo;
     }
 
     /**
@@ -46,7 +44,7 @@ public abstract class AbstractSuperController {
      * @return 数据集对象的json
      */
     protected String success(Collection list, String key) {
-        return success(list, 0, key);
+        return success(list, 0L, key);
     }
 
     /**
@@ -56,7 +54,7 @@ public abstract class AbstractSuperController {
      * @param totalResult 总条数
      * @return 页面分页展示的json
      */
-    protected String success(Collection list, Integer totalResult) {
+    protected String success(Collection list, Long totalResult) {
         return success(list, totalResult, "data");
     }
 
@@ -68,7 +66,7 @@ public abstract class AbstractSuperController {
      * @param key         json对应的key
      * @return 分页展示的json
      */
-    protected String success(Collection list, Integer totalResult, String key) {
+    protected String success(Collection list, Long totalResult, String key) {
         Map<String, Object> target = new HashMap<String, Object>();
         if (totalResult.intValue() != 0) {
             target.put("total", totalResult);

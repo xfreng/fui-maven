@@ -5,7 +5,8 @@ import com.fui.common.Constants;
 import com.fui.common.StringUtils;
 import com.fui.model.Roles;
 import com.fui.service.RoleService;
-import com.talkyun.apus.mybatis.plugin.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +47,7 @@ public class RoleController extends AbstractSuperController {
     @ResponseBody
     public String getRoleList(@RequestParam(value = "page", defaultValue = "1") int currPage,
                               @RequestParam(value = "rows", defaultValue = "10") int pageSize) {
-        Page page = createPagination(currPage, pageSize);
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put(Constants.PAGE, page);
         String roleCode = request.getParameter("roleCode");
         if (StringUtils.isNotEmpty(roleCode)) {
             params.put("roleCode", roleCode);
@@ -58,8 +57,10 @@ public class RoleController extends AbstractSuperController {
             params.put("roleName", roleName);
         }
         //分页查询
+        PageHelper.startPage(currPage, pageSize);
         List<Roles> list = roleService.getRolesList_page(params);
-        return success(list, page.getTotalResult(), "roleList");
+        PageInfo<Roles> pageInfo = createPagination(list);
+        return success(list, pageInfo.getTotal(), "roleList");
     }
 
     @RequestMapping(value = "/add", produces = Constants.MediaType_APPLICATION_JSON)

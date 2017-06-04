@@ -4,7 +4,8 @@ import com.fui.common.*;
 import com.fui.dao.FuiDao;
 import com.fui.model.Menu;
 import com.fui.service.MenuService;
-import com.talkyun.apus.mybatis.plugin.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,12 +54,12 @@ public class MenuController extends AbstractSuperController {
     public String loadMenuNode_page(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
                                     @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String pid = request.getParameter("id");
-        Page page = createPagination(currPage, pageSize);
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("page", page);
         params.put("id", pid);
-        List<Menu> menus = menuService.queryMenuNodeById_page(params);
-        return success(menus, page.getTotalResult(), "treeNodes");
+        PageHelper.startPage(currPage, pageSize);
+        List<Menu> list = menuService.queryMenuNodeById_page(params);
+        PageInfo<Menu> pageInfo = createPagination(list);
+        return success(list, pageInfo.getTotal(), "treeNodes");
     }
 
     @RequestMapping(value = "/loadOutlookTreeNodes", produces = Constants.MediaType_APPLICATION_JSON)

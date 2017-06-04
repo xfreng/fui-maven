@@ -15,9 +15,6 @@ public interface Constants {
     // 用户session对象ID
     String USER_SESSION_ID = "userObject";
 
-    // 分页对象参数名
-    String PAGE = "page";
-
     // 随机数字符串
     String RAND_STRING = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 

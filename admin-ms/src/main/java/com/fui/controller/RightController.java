@@ -5,7 +5,8 @@ import com.fui.common.Constants;
 import com.fui.common.StringUtils;
 import com.fui.model.Permissions;
 import com.fui.service.RightService;
-import com.talkyun.apus.mybatis.plugin.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,7 @@ public class RightController extends AbstractSuperController {
         String id = request.getParameter("id");
         String rightCode = request.getParameter("rightCode");
         String rightName = request.getParameter("rightName");
-        Page page = createPagination(currPage, pageSize);
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put(Constants.PAGE, page);
         if (StringUtils.isNotEmpty(id)) {
             params.put("id", id);
         }
@@ -63,8 +62,10 @@ public class RightController extends AbstractSuperController {
             params.put("rightName", rightName);
         }
         //分页查询
+        PageHelper.startPage(currPage, pageSize);
         List<Permissions> list = rightService.getRightsList_page(params);
-        return success(list, page.getTotalResult(), "rightList");
+        PageInfo<Permissions> pageInfo = createPagination(list);
+        return success(list, pageInfo.getTotal(), "rightList");
     }
 
     /**

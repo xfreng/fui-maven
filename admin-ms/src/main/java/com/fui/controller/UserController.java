@@ -5,7 +5,8 @@ import com.fui.common.Constants;
 import com.fui.common.StringUtils;
 import com.fui.model.User;
 import com.fui.service.UserService;
-import com.talkyun.apus.mybatis.plugin.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,7 @@ public class UserController extends AbstractSuperController {
     @ResponseBody
     public String getUserList(@RequestParam(value = "page", defaultValue = "1") int currPage,
                               @RequestParam(value = "rows", defaultValue = "10") int pageSize) {
-        Page page = createPagination(currPage, pageSize);
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put(Constants.PAGE, page);
         String userCode = request.getParameter("userCode");
         if (StringUtils.isNotEmpty(userCode)) {
             params.put("userCode", userCode);
@@ -59,8 +58,10 @@ public class UserController extends AbstractSuperController {
             params.put("userName", userName);
         }
         //分页查询
+        PageHelper.startPage(currPage, pageSize);
         List<User> list = userService.getUserList_page(params);
-        return success(list, page.getTotalResult(), "userList");
+        PageInfo<User> pageInfo = createPagination(list);
+        return success(list, pageInfo.getTotal(), "userList");
     }
 
     @RequestMapping(value = "/add", produces = Constants.MediaType_APPLICATION_JSON)
