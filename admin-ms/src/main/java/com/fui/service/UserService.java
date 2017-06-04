@@ -122,8 +122,7 @@ public class UserService {
      * @return 用户信息列表
      */
     public List<User> getUserList_page(Map<String, Object> params) {
-        List<User> userList = userMapper.getUserList_page(params);
-        return userList;
+        return userMapper.getUserList_page(params);
     }
 
     /**

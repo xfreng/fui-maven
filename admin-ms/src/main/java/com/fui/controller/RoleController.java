@@ -45,8 +45,8 @@ public class RoleController extends AbstractSuperController {
 
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String getRoleList(@RequestParam(value = "page", defaultValue = "1") int currPage,
-                              @RequestParam(value = "rows", defaultValue = "10") int pageSize) {
+    public String getRoleList(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                              @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         Map<String, Object> params = new HashMap<String, Object>();
         String roleCode = request.getParameter("roleCode");
         if (StringUtils.isNotEmpty(roleCode)) {

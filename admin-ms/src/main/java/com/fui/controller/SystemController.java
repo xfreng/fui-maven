@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/supervisor/sys")
+@RequestMapping(value = "/supervisor/project")
 public class SystemController extends AbstractSuperController {
 
-    @RequestMapping("/project")
+    @RequestMapping("/index")
     public String index() {
         return "system/list";
     }

@@ -46,8 +46,8 @@ public class RightController extends AbstractSuperController {
 
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String getRightList(@RequestParam(value = "page", defaultValue = "1") int currPage,
-                               @RequestParam(value = "rows", defaultValue = "10") int pageSize) {
+    public String getRightList(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         String id = request.getParameter("id");
         String rightCode = request.getParameter("rightCode");
         String rightName = request.getParameter("rightName");
