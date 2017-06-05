@@ -1,41 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh_CN">
 <head>
-	<%@ include file="/bpm/easyui/easyui-common.jsp"%>
+	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
+	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 	<title>流程定义及部署管理</title>
-
     <script type="text/javascript">
-    $(function() {
-    	var layout = $("#layout");
-		layout.layout("resize",{
-            height: ($(window).height() - 25)
-        });
-		$(window).resize(function(){
+		$(function() {
+			var layout = $("#layout");
 			layout.layout("resize",{
-	            height: ($(window).height() - 25)
-	        });
+				height: ($(window).height() - 25)
+			});
+			$(window).resize(function(){
+				layout.layout("resize",{
+					height: ($(window).height() - 25)
+				});
+			});
+			$('#deploy').linkbutton().click(function() {
+				$('#deployDialog').dialog({
+					modal: true,
+					width: 546,
+					height: 186
+				});
+			});
+			$("#query").linkbutton().click(function(){
+				toPage(1);
+			});
 		});
-    	$('#deploy').linkbutton().click(function() {
-    		$('#deployDialog').dialog({
-    			modal: true,
-    			width: 546,
-    			height: 186
-    		});
-    	});
-    	$("#query").linkbutton().click(function(){
-    		toPage(1);
-    	});
-    });
     </script>
 </head>
 <body>
-<div id="layout" class="easyui-layout" style="width:100%;">
-	<div region="north" title="查询条件" style="width:100%;height:95px;overflow:hidden;">
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
+	<jsp:param value="RACT02" name="efFormEname"/>
+	<jsp:param value="流程定义及部署管理" name="efFormCname"/>
+</jsp:include>
+<div id="layout" class="fui-layout" style="width:100%;">
+	<div region="north" title="查询条件" borderStyle="overflow:hidden;" style="width:100%;height:95px;">
 		<form id="queryForm" method="post">
 			<c:if test="${not empty message}">
-			<div class="ui-widget">
-					<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+				<div class="ui-widget">
+					<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 						<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
 						<strong>提示：</strong>${message}</p>
 					</div>
@@ -47,47 +51,33 @@
 						流程名称:
 					</td>
 					<td width="10%">
-						<input name="flowName" type="text" value="${flow.flowName }"/>
+						<input name="flowName" class="fui-textbox" style="width:155px;"/>
 					</td>
 					<td align="right" width="5%">
 						KEY:
 					</td>
 					<td width="10%">
-						<input name="flowKey" type="text" value="${flow.flowKey }"/>
+						<input name="flowKey" class="fui-textbox" style="width:155px;"/>
 					</td>
 					<td align="right" width="8%">
 						流程类型：
 					</td>
 					<td>
-						<select name="flowCategory" style="width:153px;">
-							<option value="" label="--请选择类型--" />
-							<option value="1" label="处方（流程）" ${flow.flowCategory == "1" ?" selected":"" }/>
-							<option value="2" label="处方过程（子流程）" ${flow.flowCategory == "2" ?" selected":"" } />
-							<option value="3" label="处方工序（子流程）" ${flow.flowCategory == "3" ?" selected":"" } />
-							<option value="4" label="处方操作（子流程）" ${flow.flowCategory == "4" ?" selected":"" } />
-							<option value="5" label="处方步骤（活动）" ${flow.flowCategory == "5" ?" selected":"" } />
-							<option value="6" label="一般工作流" ${flow.flowCategory == "6" ?" selected":"" } />
-							<option value="M1" label="处方模板" ${flow.flowCategory == "M1" ?" selected":"" } />
-							<option value="M2" label="处方过程模板" ${flow.flowCategory == "M2" ?" selected":"" } />
-							<option value="M3" label="处方工序模板" ${flow.flowCategory == "M3" ?" selected":"" } />
-							<option value="M4" label="处方操作模板" ${flow.flowCategory == "M4" ?" selected":"" } />
-							<option value="M5" label="处方步骤模板" ${flow.flowCategory == "M5" ?" selected":"" } />
-							<option value="M6" label="一般工作流模板" ${flow.flowCategory == "M6" ?" selected":"" } />
-						</select>
+						<select name="flowCategory" style="width:155px;" data="types"></select>
 					</td>
 				</tr>
 				<tr>
 					<td align="right" colspan="6">
 						<div id="message" class="info" style="display:inline;"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
-		        		<a id="query" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
-						<a id="deploy" href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-configure'">部署流程</a>
+		        		<a id="query" href="javascript:void(0)" class="fui-button" iconCls="icon-search">查询</a>
+						<a id="deploy" href="javascript:void(0)" class="fui-button" iconCls="icon-deploy">部署流程</a>
 		    		</td>
 		    	</tr>
 		    </table>
 		</form>
 	</div>
-	<div region="center" title="流程定义及部署管理" style="width:100%;height:30%;overflow:hidden;">	
-		<table class="easyui-datagrid" style="width:100%;height:99%;" data-options="singleSelect:true">
+	<div region="center" title="流程定义及部署管理" borderStyle="overflow:hidden;" style="width:100%;height:30%;">
+		<table class="fui-datagrid" style="width:100%;height:99%;" data-options="singleSelect:true">
 			<thead>
 				<tr>
 					<th data-options="field:'ck',checkbox:true"></th>
@@ -146,27 +136,13 @@
 				<tr>
 					<td>类型：</td>
 					<td>
-						<select id="category" name="category" style="width:153px;">
-							<option value="" label="--请选择类型--" />
-							<option value="1" label="处方（流程）" />
-							<option value="2" label="处方过程（子流程）" />
-							<option value="3" label="处方工序（子流程）" />
-							<option value="4" label="处方操作（子流程）" />
-							<option value="5" label="处方步骤（活动）" />
-							<option value="6" label="一般工作流" />
-							<option value="M1" label="处方模板" />
-							<option value="M2" label="处方过程模板" />
-							<option value="M3" label="处方工序模板" />
-							<option value="M4" label="处方操作模板" />
-							<option value="M5" label="处方步骤模板" />
-							<option value="M6" label="一般工作流模板" />
-						</select>
+						<select id="category" name="category" style="width:155px;" data="types"></select>
 						<span class="red-star-normal">*</span>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input name="file" class="easyui-filebox" style="width: 350px;"/>
+						<input name="file" class="fui-filebox" style="width: 350px;"/>
 						<input type="submit" value="Submit" />
 					</td>
 				</tr>

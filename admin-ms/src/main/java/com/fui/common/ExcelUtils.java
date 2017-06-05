@@ -57,7 +57,7 @@ public class ExcelUtils {
 
     private static ThreadLocal<ExcelUtils> currThreadLocal = new ThreadLocal<ExcelUtils>();
 
-    public static ExcelUtils newExportInstance(int totalNum, String templateDir) {
+    public static ExcelUtils getInstance(int totalNum, String templateDir) {
         if (currThreadLocal.get() == null) {
             ExcelUtils zipExcelUtils = new ExcelUtils(totalNum, templateDir);
             currThreadLocal.set(zipExcelUtils);
@@ -319,7 +319,7 @@ public class ExcelUtils {
                             }
                         }
                         if (autoRowId >= SHEET_LIMIT_ROW) {
-                            logger.error("导出超过.xls文件单sheet页限制的最大行数( {} )，超出行数据已忽略。", SHEET_LIMIT_ROW + 2);
+                            logger.error("导出超过.xls文件单sheet页限制的最大行数( {} )，超出行数据已保存到下一个sheet页。", SHEET_LIMIT_ROW + 2);
                             break;
                         }
                         // 向下平推一行

@@ -21,13 +21,13 @@
 							流程名称:
 						</td>
 						<td width="10%">
-							<input name="flowName" class="fui-textbox" value="${flow.flowName }" style="width:155px;"/>
+							<input name="flowName" class="fui-textbox" style="width:155px;"/>
 						</td>
 						<td align="right" width="5%">
 							KEY:
 						</td>
 						<td width="10%">
-							<input name="flowKey" class="fui-textbox" value="${flow.flowKey }" style="width:155px;"/>
+							<input name="flowKey" class="fui-textbox" style="width:155px;"/>
 						</td>
 						<td align="right" width="8%">
 							流程类型：

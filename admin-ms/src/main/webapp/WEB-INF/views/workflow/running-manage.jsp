@@ -1,13 +1,14 @@
-<%@page import="activiti.engine.RepositoryService,org.apache.commons.lang.ObjectUtils,activiti.util.ProcessDefinitionCache"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@page import="org.activiti.engine.RepositoryService,org.apache.commons.lang.ObjectUtils,org.activiti.util.ProcessDefinitionCache"%>
 <%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zh_CN">
 <head>
-	<%@ include file="/bpm/easyui/easyui-common.jsp"%>
+	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
+	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 	<title>管理运行中流程</title>
 	<%
-		RepositoryService repositoryService = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext()).getBean(activiti.engine.RepositoryService.class);
+		RepositoryService repositoryService = WebApplicationContextUtils.getWebApplicationContext(session.getServletContext()).getBean(RepositoryService.class);
 		ProcessDefinitionCache.setRepositoryService(repositoryService);
 	%>
 	<script type="text/javascript">
@@ -27,8 +28,11 @@
 		});
 	</script>
 </head>
-
 <body>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
+	<jsp:param value="RACT03" name="efFormEname"/>
+	<jsp:param value="运行中流程" name="efFormCname"/>
+</jsp:include>
 <div id="layout" class="easyui-layout" style="width:100%;">
 	<div region="north" title="查询条件" style="width:100%;height:95px;overflow:hidden;">
 		<c:if test="${not empty message}">
