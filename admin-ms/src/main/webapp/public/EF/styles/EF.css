@@ -1,4 +1,4 @@
-A:link,A:active {
+A:link, A:active {
     color: #5060b8;
     text-decoration: none;
 }
@@ -9,24 +9,24 @@ A:visited {
 }
 
 A.headerButton {
-    color:#FFF;
-    line-height:18px;
-    font-size:12px;
-    font-family:微软雅黑, 宋体;
-    FILTER: dropshadow(color=#000000,offx=1,offy=1);
-    font-weight:bold;
+    color: #FFF;
+    line-height: 18px;
+    font-size: 12px;
+    font-family: 微软雅黑, 宋体;
+    FILTER: dropshadow(color=#000000, offx=1, offy=1);
+    font-weight: bold;
 }
 
 A.headerButton:link, A.headerButton:visited {
-    color:#FFF
+    color: #FFF
 }
 
 A.headerButton:hover {
-    color:#FC0
+    color: #FC0
 }
 
 img {
-    border:0px;
+    border: 0px;
 }
 
 BODY {
@@ -35,7 +35,7 @@ BODY {
     background-color: #ffffff;
 }
 
-TR,TD {
+TR, TD {
     font-family: verdana, arial, helvetica, sans-serif;
     font-size: 12px;
     color: #505050;
@@ -54,13 +54,13 @@ TEXTAREA {
 
 /*图片*/
 .ef-icon {
-	width:16px;
-	height:16px;
-}
-.ef-icon-popupwindow {
-	background-image:url(Images/ef_pop_up_window.gif);
+    width: 16px;
+    height: 16px;
 }
 
+.ef-icon-popupwindow {
+    background-image: url(Images/ef_pop_up_window.gif);
+}
 
 .bodyText {
     font-size: 12px;
@@ -75,8 +75,9 @@ TEXTAREA {
 .messageBoxBackground {
     background-color: #f7f8fd;
 }
-.show{
-    background-color:#FFCCCC;
+
+.show {
+    background-color: #FFCCCC;
 }
 
 .shadow {
@@ -204,9 +205,9 @@ TEXTAREA {
 .tableColumn DIV {
     HEIGHT: 18px;
     white-space: nowrap;
-    text-overflow:ellipsis;
-    -o-text-overflow:ellipsis;
-    overflow:hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .tableHeader { /**/
@@ -247,7 +248,7 @@ TEXTAREA {
     font-size: 12px;
     color: #505050;
     /* line-height: 150%;*/
-    rowHeight:18px;
+    rowHeight: 18px;
 }
 
 .tableRow1 {
@@ -305,12 +306,28 @@ TEXTAREA {
 
 .buttonRegular { /**/
     background-image: url(Images/btn_bg.gif);
-    background-position:1px 1px repeat-x;
+    background-position: 1px 1px repeat-x;
     color: #444;
 }
 
-.b1,.b2{height:1px; font-size:1px; overflow:hidden; display:block; margin:0 1px;border-top:1px solid;border-bottom:1px solid; border-color:#888;}
-.content {border-right:1px solid;border-left:1px solid;border-color:#888;overflow:hidden;padding:3px 6px 1px 6px;}
+.b1, .b2 {
+    height: 1px;
+    font-size: 1px;
+    overflow: hidden;
+    display: block;
+    margin: 0 1px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #888;
+}
+
+.content {
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-color: #888;
+    overflow: hidden;
+    padding: 3px 6px 1px 6px;
+}
 
 .buttonClass {
     background-color: #ffe695;
@@ -326,7 +343,7 @@ TEXTAREA {
     padding-bottom: 1px;
 }
 
-.buttonRegular A:link,.buttonRegular A:active,.buttonRegular A:visited {
+.buttonRegular A:link, .buttonRegular A:active, .buttonRegular A:visited {
     color: #625804;
     text-decoration: none;
 }
@@ -349,8 +366,7 @@ TEXTAREA {
     display: none;
 }
 
-.buttonDisabled A:link,.buttonDisabled A:active,.buttonDisabled A:visited
-{
+.buttonDisabled A:link, .buttonDisabled A:active, .buttonDisabled A:visited {
     color: #b2b2b2;
     text-decoration: none;
 }
@@ -395,8 +411,7 @@ TEXTAREA {
     border-top: 1px solid #ffffff;
 }
 
-.buttonTextEmphasized A:link,.buttonTextEmphasized A:active,.buttonTextEmphasized A:visited
-{
+.buttonTextEmphasized A:link, .buttonTextEmphasized A:active, .buttonTextEmphasized A:visited {
     color: #505050;
     text-decoration: none;
 }
@@ -411,7 +426,7 @@ TEXTAREA {
 
 .pulldown {
     background-color: #f6f6f6;
-    font-family: Courier New,verdana, arial, helvetica, sans-serif;
+    font-family: Courier New, verdana, arial, helvetica, sans-serif;
     font-size: 12px;
     color: #505050;
     padding-left: 3px;
@@ -432,11 +447,14 @@ TEXTAREA {
 }
 
 .searchField {
-    background:#f4f9ff;
-/*BORDER-BOTTOM: #b4b4b4 1px solid; BORDER-LEFT: #b4b4b4 1px solid; ; BACKGROUND-COLOR: expression((this.readOnly && this.readOnly==true)?"#EaEaEa":"#f6f6f6");*/
-    FONT-FAMILY: Courier New, arial, helvetica, sans-serif; HEIGHT: 18px; COLOR: #2d4368; FONT-SIZE: 12px;
-    border:none;
-/*BORDER: #7b9dc0 1px solid;*/
+    background: #f4f9ff;
+    /*BORDER-BOTTOM: #b4b4b4 1px solid; BORDER-LEFT: #b4b4b4 1px solid; ; BACKGROUND-COLOR: expression((this.readOnly && this.readOnly==true)?"#EaEaEa":"#f6f6f6");*/
+    FONT-FAMILY: Courier New, arial, helvetica, sans-serif;
+    HEIGHT: 18px;
+    COLOR: #2d4368;
+    FONT-SIZE: 12px;
+    border: none;
+    /*BORDER: #7b9dc0 1px solid;*/
 }
 
 .inputField {
@@ -526,7 +544,6 @@ TEXTAREA {
     background-color: #e0e0e0;
 }
 
-
 #squaredivtabspacedivcolor {
     background-image: url(Images/bgline01.gif);
 }
@@ -540,16 +557,16 @@ TEXTAREA {
     BACKGROUND-COLOR: #BDCEDC
 }
 
-.ef-menu a,.ef-menu a:visited {
+.ef-menu a, .ef-menu a:visited {
     display: block;
     width: 100%;
 
     overflow: visible;
     padding: 4px 0px 0px 5px;
 
-    font-family:arial,nsimsun,sans-serif;
+    font-family: arial, nsimsun, sans-serif;
     font-size: 12px;
-    text-align:left;
+    text-align: left;
     text-decoration: none;
 
     color: #293D6B;
@@ -578,18 +595,18 @@ TEXTAREA {
 .ef-menu-bar {
     padding: 1px;
     color: #293D6B;
-    font-family:arial,nsimsun,sans-serif;
+    font-family: arial, nsimsun, sans-serif;
     font-size: 12px;
     font-weight: bold;
 }
 
-.ef-munu-bar-onTextClicked{
-	color:#293D6B;
-	background-color: #8fbedf;
-	font_weight: bold;
+.ef-munu-bar-onTextClicked {
+    color: #293D6B;
+    background-color: #8fbedf;
+    font_weight: bold;
 }
 
-.ef-menu-bar a,.ef-menu-bar a:visited {
+.ef-menu-bar a, .ef-menu-bar a:visited {
     padding: 2px 5px 1px 12px;
     color: #293D6B;
 }
@@ -597,7 +614,7 @@ TEXTAREA {
 .ef-menu-bar a:hover {
     color: #293d6b;
     background-color: #D2EAF6;
-    text-decoration: underline ;
+    text-decoration: underline;
 }
 
 .ef-menu-bar a:active, .ef-menu-bar a:focus {
@@ -628,15 +645,15 @@ TEXTAREA {
     margin-left: 3px;
     padding: 0px 2px 1px 2px;
 
-    font-family:arial,nsimsun,sans-serif;
+    font-family: arial, nsimsun, sans-serif;
     font-size: 12px;
-    text-align:left;
+    text-align: left;
     text-decoration: none;
 
     color: #293D6B;
 }
 
-.ef-tree-item a,.ef-tree-item a:visited {
+.ef-tree-item a, .ef-tree-item a:visited {
     padding: 2px 2px 1px 2px;
     color: #293D6B;
 }
@@ -677,6 +694,7 @@ TEXTAREA {
     font-weight: bold;
     font-family: "锟斤拷锟斤拷";
 }
+
 .efModalWindowMask {
     position: absolute;
     z-index: 500;
@@ -687,7 +705,7 @@ TEXTAREA {
     opacity: .3;
     filter: alpha(opacity=30);
     background-color: #ff3333;
-    display:none;
+    display: none;
 }
 
 .efModalWindowContainer {
@@ -695,17 +713,26 @@ TEXTAREA {
     z-index: 501;
     top: 0px;
     left: 0px;
-    display:none;
+    display: none;
     padding: 0px;
 }
 
-
-
-
 /* Tab */
 
-.tab-div-html{background:url(Images/tag_house_bg.gif);margin:0;margin-top:0px !important;margin-top:7px;width:200px !important;width:197px;float:right;text-align:right}
-.tab-div-content{border: 1px solid #B3B3B3;}
+.tab-div-html {
+    background: url(Images/tag_house_bg.gif);
+    margin: 0;
+    margin-top: 0px !important;
+    margin-top: 7px;
+    width: 200px !important;
+    width: 197px;
+    float: right;
+    text-align: right
+}
+
+.tab-div-content {
+    border: 1px solid #B3B3B3;
+}
 
 .benma_ui_tab {
     margin: 0px;
@@ -720,8 +747,26 @@ TEXTAREA {
     white-space: nowrap;
     overflow: hidden;
 }
-.benma_ui_tab .scroll-left{float:left;position:relative;background:url(Images/btnleft.gif) no-repeat;width:10px;height:25px;cursor:pointer;z-index:5}
-.benma_ui_tab .scroll-right{float:right;position:relative;background:url(Images/btnright.gif) no-repeat;width:10px;height:25px;cursor:pointer;z-index:5}
+
+.benma_ui_tab .scroll-left {
+    float: left;
+    position: relative;
+    background: url(Images/btnleft.gif) no-repeat;
+    width: 10px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 5
+}
+
+.benma_ui_tab .scroll-right {
+    float: right;
+    position: relative;
+    background: url(Images/btnright.gif) no-repeat;
+    width: 10px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 5
+}
 
 .benma_ui_tab .tab_item {
     line-height: 25px;
@@ -745,15 +790,26 @@ TEXTAREA {
     font-size: 9px;
 }
 
-.benma_ui_tab ul{display:block;list-style:none;padding:0;margin:0}
-.benma_ui_tab li{list-style:none;padding:0;float:left;height:25px;margin:0px;margin-left:1px;cursor:pointer}
+.benma_ui_tab ul {
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
 
-
+.benma_ui_tab li {
+    list-style: none;
+    padding: 0;
+    float: left;
+    height: 25px;
+    margin: 0px;
+    margin-left: 1px;
+    cursor: pointer
+}
 
 .benma_ui_tab .tab_item1_mouseover {
     background-position: 0px -42px;
 }
-
 
 .benma_ui_tab .tab_item1_selected {
     background-position: 0px -84px;
@@ -763,18 +819,14 @@ TEXTAREA {
     background-position: 0px -42px;
 }
 
-
-
 .benma_ui_tab .tab_item2_selected {
     background-position: 0px -84px;
     color: #154060;
 }
 
-
 .benma_ui_tab .tab_item3_mouseover {
     background-position: 0px -42px;
 }
-
 
 .benma_ui_tab .tab_item3_selected {
     background-position: 0px -84px;
@@ -802,7 +854,6 @@ TEXTAREA {
     display: none;
 }
 
-
 .benma_ui_tab .tab_item1 {
 
     background-repeat: repeat-x;
@@ -811,14 +862,12 @@ TEXTAREA {
     white-space: nowrap;
 }
 
-
 .benma_ui_tab .tab_item2 {
 
     background-repeat: repeat-x;
     white-space: nowrap;
     z-index: 101;
 }
-
 
 .benma_ui_tab .tab_item3 {
 
@@ -827,24 +876,24 @@ TEXTAREA {
 }
 
 .benma_ui_tab .tab_item1_bottom {
-	/*background-image: url(tab1_bottom.gif)*/;
-	background-repeat: repeat-x;
-	width: 5px;
+    /*background-image: url(tab1_bottom.gif)*/;
+    background-repeat: repeat-x;
+    width: 5px;
 }
 
 .benma_ui_tab .tab_item2_bottom {
-	/*background-image: url(tab2_bottom.gif)*/;
-	background-repeat: repeat-x;
+    /*background-image: url(tab2_bottom.gif)*/;
+    background-repeat: repeat-x;
 }
 
 .benma_ui_tab .tab_item3_bottom {
-	/*background-image: url(tab3_bottom.gif)*/;
-	background-repeat: repeat-x;
-	width: 5px;
+    /*background-image: url(tab3_bottom.gif)*/;
+    background-repeat: repeat-x;
+    width: 5px;
 }
 
 .ef-outLookTree {
-    border:1px solid #9da1a4;
+    border: 1px solid #9da1a4;
     border-left: none;
     border-right: none;
     padding: 2px;
@@ -853,8 +902,8 @@ TEXTAREA {
     white-space: nowrap;
     text-align: center;
     height: 20px;
-    width:100%
-    font-family:arial,nsimsun,sans-serif;
+    width: 100%
+    font-family: arial, nsimsun, sans-serif;
     font-size: 12px;
     font-weight: bold;
     background-image: url(Images/eftree_padBackgroud.png);
@@ -869,6 +918,7 @@ TEXTAREA {
     white-space: nowrap;
     height: 20px;
 }
+
 .ef-outLookTree-current {
     color: highlighttext;
     text-decoration: none;
@@ -886,13 +936,11 @@ TEXTAREA {
     background: #D2EAF6;
 }
 
-.rowGroupHeader
-{
+.rowGroupHeader {
     background: white;
 }
 
-.rowDetail
-{
+.rowDetail {
     Height: auto;
 }
 
@@ -932,99 +980,111 @@ TEXTAREA {
     z-index: 1;
 }
 
-
 /* FlexBox CSS Define By XiaHongzhong */
 /* Input textbox - do not specify a width here, it will be overwritten */
-.ffb-input
-{
-    float:left;
-    color:#000; /* must specify along with watermark color */
-    height:22px; /* required for webkit browsers (Safari, Chrome) */
+.ffb-input {
+    float: left;
+    color: #000; /* must specify along with watermark color */
+    height: 22px; /* required for webkit browsers (Safari, Chrome) */
 }
+
 /* Color of watermark, if present */
 .ffb-input.watermark { /* added and removed dynamically */
-    color:#888; /* must specify along with input color */
+    color: #888; /* must specify along with input color */
 }
+
 /* Drop-down arrow, with sprited image */
-.ffb-arrow
-{
-    float:left;
-    width:17px;
-    height:22px;
-    background-image:url(Images/sel_win7.gif);
+.ffb-arrow {
+    float: left;
+    width: 17px;
+    height: 22px;
+    background-image: url(Images/sel_win7.gif);
 }
+
 .ffb-arrow.out { /* css sprite technique */
-    background-position:0;
+    background-position: 0;
 }
+
 .ffb-arrow.over { /* css sprite technique */
-    background-position:-17px 0;
+    background-position: -17px 0;
 }
+
 .ffb-arrow.active { /* css sprite technique */
-    background-position:-34px 0;
+    background-position: -34px 0;
 }
-.ffb-no-results
-{
-    padding:2px;
-    color:#888;
-    font-style:italic;
-    border-bottom:1px solid #828790;
+
+.ffb-no-results {
+    padding: 2px;
+    color: #888;
+    font-style: italic;
+    border-bottom: 1px solid #828790;
 }
+
 /* Container for dropdown contents */
 .ffb {
-    position:absolute; /* this guy's parent div is hard-coded to position:relative */
-    overflow:hidden;
-    border-left:1px solid #828790; /* #7B9EBD for Vista */
-    border-right:1px solid #828790;
-    background-color:#fff; /* Give it a background-color, so it's not transparent */
+    position: absolute; /* this guy's parent div is hard-coded to position:relative */
+    overflow: hidden;
+    border-left: 1px solid #828790; /* #7B9EBD for Vista */
+    border-right: 1px solid #828790;
+    background-color: #fff; /* Give it a background-color, so it's not transparent */
 }
+
 /* Inner div for dropdown */
 .ffb .content {
-    overflow:auto;
+    overflow: auto;
 }
+
 .ffb .content .row {
-    border-bottom:1px solid #828790;
-    color:#000;
-    height:20px;
-    clear:both;
+    border-bottom: 1px solid #828790;
+    color: #000;
+    height: 20px;
+    clear: both;
 }
+
 .ffb-sel {
-    cursor:pointer;
-    cursor:hand;
-    color:#fff !important;
-    background-color:#39f;
+    cursor: pointer;
+    cursor: hand;
+    color: #fff !important;
+    background-color: #39f;
 }
+
 .ffb-match {
-    font-weight:bold;
-    color:#000;
+    font-weight: bold;
+    color: #000;
 }
 
 /* Paging */
 .ffb .paging {
-    vertical-align:middle;
-    border-bottom:1px solid #828790;
+    vertical-align: middle;
+    border-bottom: 1px solid #828790;
 }
+
 .ffb .page, .ffb a.page {
-    font-size:85%;
-    padding:2px;
-    border:solid 1px #339;
-    background-color:#eef;
-    margin:2px;
+    font-size: 85%;
+    padding: 2px;
+    border: solid 1px #339;
+    background-color: #eef;
+    margin: 2px;
 }
+
 .ffb .box {
-    width:22px;
-    margin:2px;
+    width: 22px;
+    margin: 2px;
 }
+
 .ffb .summary {
-    font-size:85%;
+    font-size: 85%;
 }
 
 font.flexbox_value {
-    font-weight:bold;
+    font-weight: bold;
 }
+
 font.flexbox_detail {
-    font-style:italic;
+    font-style: italic;
     color: #047DEE;
 }
+
 /* FlexBox CSS Define By XiaHongzhong End */
 
 /* alert CSS Define By XiaHongzhong Start */
@@ -1034,13 +1094,14 @@ font.flexbox_detail {
     min-width: 300px; /* Dialog will be no smaller than this */
     max-width: 600px; /* Dialog will wrap after this width */
     background: #E2EEF2;
-/*background: #ffffff;*/
-/*border: solid 5px #999;*/
+    /*background: #ffffff;*/
+    /*border: solid 5px #999;*/
     color: #000;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
+
 /* annotated by tcg */
 /*#popup_title {*/
 /*font-size: 14px;*/
@@ -1093,34 +1154,124 @@ font.flexbox_detail {
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
-#cboxOverlay{position:fixed; width:100%; height:100%;}
-#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
-#cboxContent{position:relative;}
-#cboxLoadedContent{overflow:auto;}
-#cboxTitle{margin:0;}
-#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
-.cboxPhoto{float:left; margin:auto; border:0; display:block;}
-.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxOverlay, #cboxWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#cboxOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+    clear: left;
+}
+
+#cboxContent {
+    position: relative;
+}
+
+#cboxLoadedContent {
+    overflow: auto;
+}
+
+#cboxTitle {
+    margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+    cursor: pointer;
+}
+
+.cboxPhoto {
+    float: left;
+    margin: auto;
+    border: 0;
+    display: block;
+}
+
+.cboxIframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
 
 /*
     User Style:
     Change the following styles to modify the appearance of ColorBox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay{background:url(Images/overlay.png) repeat 0 0;}
-#colorbox{}
-#cboxContent{background:#387EB9; overflow:hidden;}
-#cboxError{padding:50px; border:1px solid #ccc;}
-#cboxLoadedContent{margin-top:28px;}
-#cboxTitle{position:absolute; top:4px; left:0; text-align:center; width:100%; color:#FFFFFF;}
-#cboxCurrent{position:absolute; top:4px; left:58px; color:#949494;}
-#cboxSlideshow{position:absolute; top:4px; right:30px; color:#0092ef;}
-#cboxLoadingOverlay{background:url(Images/loading_background.png) no-repeat center center;}
-#cboxLoadingGraphic{background:url(Images/loading.gif) no-repeat center center;}
-#cboxClose{position:absolute;top:1px; right:0; background:url(Images/close_big.png) no-repeat}
+#cboxOverlay {
+    background: url(Images/overlay.png) repeat 0 0;
+}
 
+#colorbox {
+}
+
+#cboxContent {
+    background: #387EB9;
+    overflow: hidden;
+}
+
+#cboxError {
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+    margin-top: 28px;
+}
+
+#cboxTitle {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+#cboxCurrent {
+    position: absolute;
+    top: 4px;
+    left: 58px;
+    color: #949494;
+}
+
+#cboxSlideshow {
+    position: absolute;
+    top: 4px;
+    right: 30px;
+    color: #0092ef;
+}
+
+#cboxLoadingOverlay {
+    background: url(Images/loading_background.png) no-repeat center center;
+}
+
+#cboxLoadingGraphic {
+    background: url(Images/loading.gif) no-repeat center center;
+}
+
+#cboxClose {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    background: url(Images/close_big.png) no-repeat
+}
 
 /*
   The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
@@ -1134,20 +1285,43 @@ font.flexbox_detail {
 .cboxIE #cboxBottomRight,
 .cboxIE #cboxMiddleLeft,
 .cboxIE #cboxMiddleRight {
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);
 }
 
 /*
   The following provides PNG transparency support for IE6
 */
-.cboxIE6 #cboxTopLeft{background:url(Images/ie6/borderTopLeft.png);}
-.cboxIE6 #cboxTopCenter{background:url(Images/ie6/borderTopCenter.png);}
-.cboxIE6 #cboxTopRight{background:url(Images/ie6/borderTopRight.png);}
-.cboxIE6 #cboxBottomLeft{background:url(Images/ie6/borderBottomLeft.png);}
-.cboxIE6 #cboxBottomCenter{background:url(Images/ie6/borderBottomCenter.png);}
-.cboxIE6 #cboxBottomRight{background:url(Images/ie6/borderBottomRight.png);}
-.cboxIE6 #cboxMiddleLeft{background:url(Images/ie6/borderMiddleLeft.png);}
-.cboxIE6 #cboxMiddleRight{background:url(Images/ie6/borderMiddleRight.png);}
+.cboxIE6 #cboxTopLeft {
+    background: url(Images/ie6/borderTopLeft.png);
+}
+
+.cboxIE6 #cboxTopCenter {
+    background: url(Images/ie6/borderTopCenter.png);
+}
+
+.cboxIE6 #cboxTopRight {
+    background: url(Images/ie6/borderTopRight.png);
+}
+
+.cboxIE6 #cboxBottomLeft {
+    background: url(Images/ie6/borderBottomLeft.png);
+}
+
+.cboxIE6 #cboxBottomCenter {
+    background: url(Images/ie6/borderBottomCenter.png);
+}
+
+.cboxIE6 #cboxBottomRight {
+    background: url(Images/ie6/borderBottomRight.png);
+}
+
+.cboxIE6 #cboxMiddleLeft {
+    background: url(Images/ie6/borderMiddleLeft.png);
+}
+
+.cboxIE6 #cboxMiddleRight {
+    background: url(Images/ie6/borderMiddleRight.png);
+}
 
 .cboxIE6 #cboxTopLeft,
 .cboxIE6 #cboxTopCenter,
@@ -1161,192 +1335,316 @@ font.flexbox_detail {
 }
 
 h1 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
 }
+
 h2 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
 }
+
 h3 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
 }
 
 .g-dialogBox-text {
     font-size: 14px;
 }
+
 .g-dialogBox-hd {
-    background-position: 0px -216px; margin: 0px 2px; padding: 0px 10px; height: 27px; color: rgb(255, 255, 255); line-height: 27px; position: relative; cursor: move;
+    background-position: 0px -216px;
+    margin: 0px 2px;
+    padding: 0px 10px;
+    height: 27px;
+    color: rgb(255, 255, 255);
+    line-height: 27px;
+    position: relative;
+    cursor: move;
 }
+
 .g-dialogBox-hd-rc {
-    top: 0px; width: 2px; height: 27px; position: absolute;
+    top: 0px;
+    width: 2px;
+    height: 27px;
+    position: absolute;
 }
+
 .g-dialogBox-hd-rc-1 {
-    background-position: -256px 0px; left: -2px;
+    background-position: -256px 0px;
+    left: -2px;
 }
+
 .g-dialogBox-hd-rc-2 {
-    background-position: -258px 0px; right: -2px;
+    background-position: -258px 0px;
+    right: -2px;
 }
+
 .g-dialogBox-hd-title {
     font-size: 14px;
 }
+
 .g-dialogBox-hd-ext {
-    top: 3px; right: 3px; line-height: 20px; position: absolute;
+    top: 3px;
+    right: 3px;
+    line-height: 20px;
+    position: absolute;
 }
+
 .g-dialogBox-hd-oprt {
-    width: 20px; height: 20px; float: right;
+    width: 20px;
+    height: 20px;
+    float: right;
 }
+
 .g-dialogBox-hd-oprt-close {
     background-position: 0px -64px;
 }
+
 .g-dialogBox-hd-oprt-close:hover {
     background-position: 0px -96px;
 }
+
 .g-dialogBox-hd-oprt-close:active {
     background-position: 0px -128px;
 }
+
 .g-dialogBox-hd-oprt-max {
     background-position: -32px -64px;
 }
+
 .g-dialogBox-hd-oprt-max:hover {
     background-position: -32px -96px;
 }
+
 .g-dialogBox-hd-oprt-max:active {
     background-position: -32px -128px;
 }
+
 .g-dialogBox-hd-oprt-min {
     background-position: -64px -64px;
 }
+
 .g-dialogBox-hd-oprt-min:hover {
     background-position: -64px -96px;
 }
+
 .g-dialogBox-hd-oprt-min:active {
     background-position: -64px -128px;
 }
+
 .g-dialogBox-hd-oprt-fold {
     background-position: -96px -64px;
 }
+
 .g-dialogBox-hd-oprt-fold:hover {
     background-position: -96px -96px;
 }
+
 .g-dialogBox-hd-oprt-fold:active {
     background-position: -96px -128px;
 }
+
 .g-dialogBox-hd-oprt-unfold {
     background-position: -128px -64px;
 }
+
 .g-dialogBox-hd-oprt-unfold:hover {
     background-position: -128px -96px;
 }
+
 .g-dialogBox-hd-oprt-unfold:active {
     background-position: -128px -128px;
 }
+
 .g-dialogBox-bd {
-    background: rgb(255, 255, 255); border-width: 0px 1px 1px; border-style: solid;
+    background: rgb(255, 255, 255);
+    border-width: 0px 1px 1px;
+    border-style: solid;
 }
+
 .g-dialogBox-scrollArea {
-    height: 138px; overflow: auto; position: relative; overflow-x: hidden;
+    height: 138px;
+    overflow: auto;
+    position: relative;
+    overflow-x: hidden;
 }
+
 .g-dialogBox-iconText {
-    padding: 25px 10px 30px 75px; position: relative; zoom: 1;
+    padding: 25px 10px 30px 75px;
+    position: relative;
+    zoom: 1;
 }
+
 .g-dialogBox-iconText .g-dialogBox-icon {
-    left: 25px; top: 20px; position: absolute;
+    left: 25px;
+    top: 20px;
+    position: absolute;
 }
+
 .g-dialogBox-iconText .g-dialogBox-title {
-    line-height: 24px; font-size: 14px;
+    line-height: 24px;
+    font-size: 14px;
 }
+
 .g-dialogBox-input td {
-    padding: 3px 0px; vertical-align: top;
+    padding: 3px 0px;
+    vertical-align: top;
 }
+
 .g-dialogBox-input .g-ipt {
     margin-right: 5px;
 }
+
 .g-dialogBox-input-label {
-    text-align: left; line-height: 28px; padding-right: 0.5em; font-weight: normal; vertical-align: top;
+    text-align: left;
+    line-height: 28px;
+    padding-right: 0.5em;
+    font-weight: normal;
+    vertical-align: top;
 }
+
 .g-dialogBox-input-tips {
-    font-size: 12px; margin-top: 3px;
+    font-size: 12px;
+    margin-top: 3px;
 }
+
 .g-dialogBox-item {
-    font-size: 12px; margin-bottom: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
 }
+
 .g-dialogBox-simpleText {
-    padding: 15px; text-align: center;
+    padding: 15px;
+    text-align: center;
 }
+
 .g-dialogBox-simpleContent {
     padding: 15px;
 }
+
 .g-dialogBox-ft {
-    border-width: 0px 1px 1px; border-style: solid; padding: 0px 10px; height: 42px;
+    border-width: 0px 1px 1px;
+    border-style: solid;
+    padding: 0px 10px;
+    height: 42px;
 }
+
 .g-dialogBox-ft-oprt {
-    margin: 8px 0px 0px; float: right; display: inline;
+    margin: 8px 0px 0px;
+    float: right;
+    display: inline;
 }
+
 .g-dialogBox-ft-oprt .g-btn {
     margin-left: 10px;
 }
+
 .g-dialogBox-ft-ext {
-    line-height: normal; margin-top: 13px; float: left;
+    line-height: normal;
+    margin-top: 13px;
+    float: left;
 }
+
 .g-dialogBox-ft-ext .g-checkboxLabel {
     -top: 0;
 }
+
 .g-dialogBox-isFixed .g-dialogBox-hd {
     cursor: default;
 }
+
 .g-dialogBox-dict {
     padding: 5px;
 }
+
 .g-dialogBox-dict-search {
     margin-bottom: 5px;
 }
+
 .g-dialogBox-dict-search .g-ipt {
     margin-right: 5px;
 }
+
 .g-dialogBox-dict-search .g-ipt-inner {
     width: 130px;
 }
+
 .g-dialogBox-dict-search .g-checkboxLabel {
     margin: 0px 0px 0px 8px;
 }
+
 .g-dialogBox-dict-result {
-    border-width: 1px; border-style: solid; padding: 5px; height: 145px; overflow: auto; position: relative;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+    height: 145px;
+    overflow: auto;
+    position: relative;
 }
+
 .g-dialogBox-dict-wel {
-    text-align: center; line-height: 145px;
+    text-align: center;
+    line-height: 145px;
 }
+
 .g-dialogBox-dict-loading {
-    left: 50%; top: 50px; width: 100px; margin-left: -50px; position: absolute;
+    left: 50%;
+    top: 50px;
+    width: 100px;
+    margin-left: -50px;
+    position: absolute;
 }
+
 .g-dialogBox-dict-content-title {
-    background: rgb(234, 238, 255); padding: 0px 5px; font-weight: normal; zoom: 1;
+    background: rgb(234, 238, 255);
+    padding: 0px 5px;
+    font-weight: normal;
+    zoom: 1;
 }
+
 .g-dialogBox-dict-keyword {
     margin-right: 8px;
 }
+
 .g-dialogBox-dict-sound {
-    width: 17px; height: 20px; margin-left: 5px; vertical-align: middle;
+    width: 17px;
+    height: 20px;
+    margin-left: 5px;
+    vertical-align: middle;
 }
+
 .g-dialogBox-dict-noResult {
     padding: 25px 5px 0px;
 }
 
 .g-dialogBox-hd-oprt {
-    background-image: url("./Images/bg.png"); background-repeat: no-repeat;
+    background-image: url("./Images/bg.png");
+    background-repeat: no-repeat;
 }
+
 .g-dialogBox-hd-rc {
-    background-image: url("./Images/bg.png"); background-repeat: no-repeat;
+    background-image: url("./Images/bg.png");
+    background-repeat: no-repeat;
 }
 
 .g-dialogBox-hd {
-    background-image: url("./Images/bgx.png"); background-repeat: repeat-x;
+    background-image: url("./Images/bgx.png");
+    background-repeat: repeat-x;
 }
 
 .g-dialogBox-dict-result {
     border-color: rgb(156, 184, 204);
 }
+
 .g-dialogBox-ft {
     border-color: rgb(108, 146, 173);
 }
+
 .g-dialogBox-bd {
     border-color: rgb(108, 146, 173);
 }
@@ -1357,8 +1655,8 @@ h3 {
 
 .progressWrapper {
     width: 357px;
-    max-height:56px;
-    float:left;
+    max-height: 56px;
+    float: left;
 }
 
 .progressContainer {
@@ -1368,6 +1666,7 @@ h3 {
     background-color: #F7F7F7;
 
 }
+
 /* Message */
 .message {
     margin: 1em 0;
@@ -1376,43 +1675,44 @@ h3 {
     background-color: #FFFFCC;
     overflow: hidden;
 }
+
 /* Error */
 .red {
     border: solid 1px #B50000;
     background-color: #FFEBEB;
 }
 
- Current
+Current
 .green {
-border: solid 1px #DDF0DD;
-background-color: #EBFFEB;
+    border: solid 1px #DDF0DD;
+    background-color: #EBFFEB;
 }
 
- Complete
+Complete
 .blue {
-border: solid 0px #ccccff;
-float:left;
-background-color: #cccccc;
+    border: solid 0px #ccccff;
+    float: left;
+    background-color: #cccccc;
 }
 
 .progressName {
-font-size: 8pt;
-font-weight: 700;
-color: #555;
-width: 225px;
-height: 14px;
-text-align: left;
-float:left;
-white-space: nowrap;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #555;
+    width: 225px;
+    height: 14px;
+    text-align: left;
+    float: left;
+    white-space: nowrap;
 }
 
 .fileLoad {
-/*font-size: 7pt;*/
-font-weight: 600;
-color: #555;
-height: 10px;
-text-align: left;
-white-space: nowrap;
+    /*font-size: 7pt;*/
+    font-weight: 600;
+    color: #555;
+    height: 10px;
+    text-align: left;
+    white-space: nowrap;
 }
 
 .progressBarInProgress,
@@ -1447,329 +1747,358 @@ white-space: nowrap;
 }
 
 a.progressCancel {
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/delete.png");
-    background-repeat:no-repeat;
-    overflow:hidden;
-    background-position:-1px -1px;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/delete.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position: -1px -1px;
     float: right;
-    height:12px;
-    width:11px;
+    height: 12px;
+    width: 11px;
 }
 
 a.progressCancel:hover {
     background-position: 0px 0px;
 }
 
-
-/* -- SWFUpload Object Styles ------------------------------- */
-.swfupload {
-    vertical-align: top;
-}
-
 element.style {
-    display:block;
+    display: block;
 }
-
 
 .AttBox {
-    background-color:#F3F7FD;
-    border:1px solid #CCCCCC;
-    margin-bottom:1px;
-/*max-height:56px;*/
-    overflow:auto;
+    background-color: #F3F7FD;
+    border: 1px solid #CCCCCC;
+    margin-bottom: 1px;
+    /*max-height:56px;*/
+    overflow: auto;
 }
-.AttBox  ul {
+
+.AttBox ul {
     font-size: 10pt;
     font-weight: 700;
     color: #0000ff;
-    list-style-type:none;
-    margin:0;
-    padding:0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.AttBox  li {
-    background-color:#F3F7FD;
-    border:1px solid #BBD8FB;
+.AttBox li {
+    background-color: #F3F7FD;
+    border: 1px solid #BBD8FB;
 }
 
-.AttBox  li {
-    float:left;
-    margin:1px;
-    padding:7px 0px 5px 0px;
-    white-space:nowrap;
+.AttBox li {
+    float: left;
+    margin: 1px;
+    padding: 7px 0px 5px 0px;
+    white-space: nowrap;
 }
+
 .AttBox .Remove {
-    cursor:pointer;
-    margin-left:4px;
-}
-.a_remove{
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/delete.png");
-    background-repeat:no-repeat;
-    overflow:hidden;
-}
-.a_remove {
-    background-position:-1px -1px;
-    height:12px;
-    width:11px;
-}
-.panel-header{
-	padding:2px;
-	line-height:15px;
-	color:#15428b;
-	font-weight:bold;
-	font-size:12px;
-	background:url('Images/panel_title.png') repeat-x;
-	position:relative;
-	border:1px solid #99BBE8;
-}
-.panel-title{
-	background:url('Images/blank1.gif') no-repeat;
-}
-.layout-body{
-	overflow:auto;
-	background:#fff;
-}
-.panel-body{
-	overflow:auto;
-	border:1px solid #99BBE8;
-	border-top-width:0px;
-}
-.datagrid-view{
-	position:relative;
-	overflow:hidden;
-}
-.datagrid-view1{
-	position:absolute;
-	overflow:hidden;
-	left:0px;
-	top:0px;
-	border-right1:1px solid #ccc;
+    cursor: pointer;
+    margin-left: 4px;
 }
 
-.datagrid-header-inner{
-	float:left;
-	width:10000px;
+.a_remove {
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/delete.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
-.datagrid-header td{
-	border-right:1px dotted #ccc;
-	font-size:12px;
-	font-weight:normal;
-	background:#fafafa url('Images/datagrid_header_bg.gif') repeat-x left bottom;
-	border-bottom:1px dotted #ccc;
-	border-top:1px dotted #fff;
+
+.a_remove {
+    background-position: -1px -1px;
+    height: 12px;
+    width: 11px;
 }
-.datagrid-header td.datagrid-header-over{
-	background:#EBF3FD;
+
+.panel-header {
+    padding: 2px;
+    line-height: 15px;
+    color: #15428b;
+    font-weight: bold;
+    font-size: 12px;
+    background: url('Images/panel_title.png') repeat-x;
+    position: relative;
+    border: 1px solid #99BBE8;
 }
-.datagrid-header .datagrid-cell{
-	margin:0;
-	padding:3px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
-	overflow:hidden;
-	text-align:center;
+
+.panel-title {
+    background: url('Images/blank1.gif') no-repeat;
 }
-.datagrid-header .datagrid-cell-group{
-	margin:0;
-	padding:4px 2px 4px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
-	overflow:hidden;
-	text-align:center;
+
+.layout-body {
+    overflow: auto;
+    background: #fff;
 }
-.datagrid-header-rownumber{
-	width:25px;
-	text-align:center;
-	margin:0px;
-	padding:3px 0px;
+
+.panel-body {
+    overflow: auto;
+    border: 1px solid #99BBE8;
+    border-top-width: 0px;
 }
-.datagrid-body{
-	margin:0;
-	padding:0;
-	overflow-y:auto;
-	overflow-x:hidden;
-	zoom:1;
+
+.datagrid-view {
+    position: relative;
+    overflow: hidden;
 }
+
+.datagrid-view1 {
+    position: absolute;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    border-right1: 1px solid #ccc;
+}
+
+.datagrid-header-inner {
+    float: left;
+    width: 10000px;
+}
+
+.datagrid-header td {
+    border-right: 1px dotted #ccc;
+    font-size: 12px;
+    font-weight: normal;
+    background: #fafafa url('Images/datagrid_header_bg.gif') repeat-x left bottom;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #fff;
+}
+
+.datagrid-header td.datagrid-header-over {
+    background: #EBF3FD;
+}
+
+.datagrid-header .datagrid-cell {
+    margin: 0;
+    padding: 3px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-align: center;
+}
+
+.datagrid-header .datagrid-cell-group {
+    margin: 0;
+    padding: 4px 2px 4px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-align: center;
+}
+
+.datagrid-header-rownumber {
+    width: 25px;
+    text-align: center;
+    margin: 0px;
+    padding: 3px 0px;
+}
+
+.datagrid-body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    zoom: 1;
+}
+
 .datagrid-body table {
-	width:100%;
+    width: 100%;
 }
-.datagrid-view1 .datagrid-body-inner{
-	padding-bottom:20px;
+
+.datagrid-view1 .datagrid-body-inner {
+    padding-bottom: 20px;
 }
-.datagrid-view1 .datagrid-body{
-	overflow:hidden;
+
+.datagrid-view1 .datagrid-body {
+    overflow: hidden;
 }
-.datagrid-footer{
-	overflow:hidden;
+
+.datagrid-footer {
+    overflow: hidden;
 }
-.datagrid-footer-inner{
-	border-top:1px solid #ccc;
-	width:10000px;
-	float:left;
+
+.datagrid-footer-inner {
+    border-top: 1px solid #ccc;
+    width: 10000px;
+    float: left;
 }
-.datagrid-body td,.datagrid-footer td{
-	font-size:12px;
-	border-right:1px dotted #ccc;
-	border-bottom:1px dotted #ccc;
-	overflow:hidden;
-	padding:0;
-	margin:0;
+
+.datagrid-body td, .datagrid-footer td {
+    font-size: 12px;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
-.datagrid-body .datagrid-cell,.datagrid-footer .datagrid-cell{
-	overflow:hidden;
-	margin:0;
-	padding:3px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
+
+.datagrid-body .datagrid-cell, .datagrid-footer .datagrid-cell {
+    overflow: hidden;
+    margin: 0;
+    padding: 3px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
 }
 
 .totalStyle {
-	width:80%;
-	height:650px;
-	margin:0px;
-	padding:15px;
-	background:#f0f3f4;
-	border:solid 1px #367dbb;
+    width: 80%;
+    height: 650px;
+    margin: 0px;
+    padding: 15px;
+    background: #f0f3f4;
+    border: solid 1px #367dbb;
 }
-.totalStyle tr,td {
-border:1px;
-padding:0px;
-margin:0px;
+
+.totalStyle tr, td {
+    border: 1px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .topStyle {
-	font-family:Calibri, Arial, "微软雅黑", "宋体";
-	font-weight:600;
-	width:80%;
-	text-align:left;
-	padding:5px;
+    font-family: Calibri, Arial, "微软雅黑", "宋体";
+    font-weight: 600;
+    width: 80%;
+    text-align: left;
+    padding: 5px;
 }
-.topStyle td{
-	text-align:left;
-	vertical-align:middle;
+
+.topStyle td {
+    text-align: left;
+    vertical-align: middle;
 }
-.topStyle div{
-	float:left;
+
+.topStyle div {
+    float: left;
 }
 
 .leftStyle {
-	list-style-type:none;
-	text-align:left;
+    list-style-type: none;
+    text-align: left;
 }
+
 .leftStyle li {
-	list-style-type:none;
+    list-style-type: none;
 }
-.txtStyle{
-	width:300px;
-	height:22px;
-	vertical-align:middle;
-	line-height:20px;
-	border:solid 1px #969696;
-	margin:0 10px;
+
+.txtStyle {
+    width: 300px;
+    height: 22px;
+    vertical-align: middle;
+    line-height: 20px;
+    border: solid 1px #969696;
+    margin: 0 10px;
 }
+
 .btnStyle {
-	width:28px;
-	height:27px;
-	background-color: transparent;
-	background:url(./EF/Images/attach/searchButton.png) no-repeat;
-	border:none;
-	cursor:pointer;
-	display:block;
-}
-.btnStyleOver{
-	width:28px;
-	height:27px;
-	background:url(./EF/Images/attach/searchButton-over.png) no-repeat;
-	border:none;
-	cursor:pointer;
+    width: 28px;
+    height: 27px;
+    background-color: transparent;
+    background: url(./EF/Images/attach/searchButton.png) no-repeat;
+    border: none;
+    cursor: pointer;
+    display: block;
 }
 
-.Navigator{
-	/*background:url(../../EF/./EF/Images/attach/demo/navigator-bg.jpg);*/
-	background-repeat:repeat-y;
-	font-size:12px;
-	font-family:Arial, Helvetica, sans-serif,微软雅黑, 宋体;
-	color:#000;
+.btnStyleOver {
+    width: 28px;
+    height: 27px;
+    background: url(./EF/Images/attach/searchButton-over.png) no-repeat;
+    border: none;
+    cursor: pointer;
 }
 
-.scrollBar{
-	height:600px;
-	overflow:auto;
-	overflow-x:hidden;
-	border:solid 1px #367dbb;
-	margin-right:40px;
-}
-.embDiv{
-	border:solid 1px #367dbb;
-	margin-right:10px;
+.Navigator {
+    /*background:url(../../EF/./EF/Images/attach/demo/navigator-bg.jpg);*/
+    background-repeat: repeat-y;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif, 微软雅黑, 宋体;
+    color: #000;
 }
 
-.titleStyle{
-	font-family:Calibri, Arial, "微软雅黑", "宋体";
-	width:100%;
-	height:50px;
-	font-size:16px;
-	text-align:left;
+.scrollBar {
+    height: 600px;
+    overflow: auto;
+    overflow-x: hidden;
+    border: solid 1px #367dbb;
+    margin-right: 40px;
+}
+
+.embDiv {
+    border: solid 1px #367dbb;
+    margin-right: 10px;
+}
+
+.titleStyle {
+    font-family: Calibri, Arial, "微软雅黑", "宋体";
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    text-align: left;
 }
 
 .titleStyle span {
-	font-size:24px;
-	color:#000000;
+    font-size: 24px;
+    color: #000000;
 }
+
 .titleStyle div {
-	font-size:15px;
-	margin-top:2px;
-	margin-bottom:4px;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 .downloadButton {
-	display: block;
-	background-image: url(./EF/Images/attach/downloadButton.png);
-	background-repeat: no-repeat;
-	background-color: transparent;
-	width:180px;
-	height:49px;
-	text-decoration:none;
-/*	line-height: 42px;
-*/}
-.downloadButtonOver {
-	display: block;
-	background-image: url(./EF/Images/attach/downloadButtonOver.png);
-	background-repeat: no-repeat;
-	background-color: transparent;
-	width:180px;
-	height:49px;
-	text-decoration:none;
+    display: block;
+    background-image: url(./EF/Images/attach/downloadButton.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 180px;
+    height: 49px;
+    text-decoration: none;
+    /*	line-height: 42px;
+    */
 }
+
+.downloadButtonOver {
+    display: block;
+    background-image: url(./EF/Images/attach/downloadButtonOver.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 180px;
+    height: 49px;
+    text-decoration: none;
+}
+
 #downloadTop {
-	color: #000000;
-	text-decoration: none;
+    color: #000000;
+    text-decoration: none;
 }
 
 #download {
-	font-size: 10px;
+    font-size: 10px;
 }
 
 .ef-input {
-	display:inline-block;
-	vertical-align:middle;
-	}
-	
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /*--图片按钮--*/
 .ef-icon {
-	background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
-	width: 16px;
-	height: 16px;
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+    width: 16px;
+    height: 16px;
 }
+
 span.ef-icon {
-	float:left;
+    float: left;
 }
 
 /*--日历按钮--*/
 .ef-icon-calendar {
-	background-position: -96px -16px;
+    background-position: -96px -16px;
 }

@@ -1,33 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<title>流程定义及部署管理</title>
 	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-	<title>流程定义及部署管理</title>
-    <script type="text/javascript">
-		$(function() {
-			var layout = $("#layout");
-			layout.layout("resize",{
-				height: ($(window).height() - 25)
-			});
-			$(window).resize(function(){
-				layout.layout("resize",{
-					height: ($(window).height() - 25)
-				});
-			});
-			$('#deploy').linkbutton().click(function() {
-				$('#deployDialog').dialog({
-					modal: true,
-					width: 546,
-					height: 186
-				});
-			});
-			$("#query").linkbutton().click(function(){
-				toPage(1);
-			});
-		});
-    </script>
 </head>
 <body>
 <jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
@@ -35,136 +12,91 @@
 	<jsp:param value="流程定义及部署管理" name="efFormCname"/>
 </jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
-	<div region="north" title="查询条件" borderStyle="overflow:hidden;" style="width:100%;height:95px;">
-		<form id="queryForm" method="post">
-			<c:if test="${not empty message}">
-				<div class="ui-widget">
-					<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-						<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-						<strong>提示：</strong>${message}</p>
-					</div>
-				</div>
-			</c:if>
-			<table style="width:100%">
-				<tr>
-					<td align="right" width="5%">
-						流程名称:
-					</td>
-					<td width="10%">
-						<input name="flowName" class="fui-textbox" style="width:155px;"/>
-					</td>
-					<td align="right" width="5%">
-						KEY:
-					</td>
-					<td width="10%">
-						<input name="flowKey" class="fui-textbox" style="width:155px;"/>
-					</td>
-					<td align="right" width="8%">
-						流程类型：
-					</td>
-					<td>
-						<select name="flowCategory" style="width:155px;" data="types"></select>
-					</td>
-				</tr>
-				<tr>
-					<td align="right" colspan="6">
-						<div id="message" class="info" style="display:inline;"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
-		        		<a id="query" href="javascript:void(0)" class="fui-button" iconCls="icon-search">查询</a>
-						<a id="deploy" href="javascript:void(0)" class="fui-button" iconCls="icon-deploy">部署流程</a>
-		    		</td>
-		    	</tr>
-		    </table>
-		</form>
-	</div>
-	<div region="center" title="流程定义及部署管理" borderStyle="overflow:hidden;" style="width:100%;height:30%;">
-		<table class="fui-datagrid" style="width:100%;height:99%;" data-options="singleSelect:true">
-			<thead>
-				<tr>
-					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'id',width:'10%'">ProcessDefinitionId</th>
-					<th data-options="field:'deploymentId',width:'6%'">DeploymentId</th>
-					<th data-options="field:'name',width:'13%'">流程名称</th>
-					<th data-options="field:'key',width:'8%'">KEY</th>
-					<th data-options="field:'version',width:'4%'">Version</th>
-					<th data-options="field:'xml',width:'16%'">XML</th>
-					<th data-options="field:'image',width:'16%'">图片</th>
-					<th data-options="field:'deploymentTime',width:'10%',formatter:formatDate">部署时间</th>
-					<th data-options="field:'suspended',width:'7%'">是否挂起</th>
-					<th data-options="field:'operate',width:'5%',align:'center'">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${page.result }" var="object">
-					<c:set var="process" value="${object[0] }" />
-					<c:set var="deployment" value="${object[1] }" />
+	<div region="north" showHeader="false" bodyStyle="overflow:hidden;" showSplit="false" showCollapseButton="false" style="border:0;">
+		<div class="fui-panel" title="查询条件" style="width:100%;overflow:hidden;" showCollapseButton="false">
+			<form id="queryForm" method="post">
+				<table style="width:100%">
 					<tr>
-						<td>&nbsp;</td>
-						<td>${process.id }</td>
-						<td>${process.deploymentId }</td>
-						<td>${process.name }</td>
-						<td>${process.key }</td>
-						<td>${process.version }</td>
-						<td><a target="_blank" href='${ctx }/workflow/resource/read?processDefinitionId=${process.id}&resourceType=xml'>${process.resourceName }</a></td>
-						<td><a target="_blank" href='${ctx }/workflow/resource/read?processDefinitionId=${process.id}&resourceType=image'>${process.diagramResourceName }</a></td>
-						<td>${deployment.deploymentTime }</td>
-						<td>${process.suspended} |
-							<c:if test="${process.suspended }">
-								<a href="javascript:void(0)" onclick="operate('/workflow/processdefinition/update/active/${process.id}')">激活</a>
-							</c:if>
-							<c:if test="${!process.suspended }">
-								<a href="javascript:void(0)" onclick="operate('/workflow/processdefinition/update/suspend/${process.id}')">挂起</a>
-							</c:if>
+						<td align="right" width="8%">
+							流程名称:
+						</td>
+						<td width="10%">
+							<input name="flowName" class="fui-textbox" style="width:155px;"/>
+						</td>
+						<td align="right" width="5%">
+							KEY:
+						</td>
+						<td width="10%">
+							<input name="flowKey" class="fui-textbox" style="width:155px;"/>
+						</td>
+						<td align="right" width="8%">
+							流程类型：
 						</td>
 						<td>
-							<a href="javascript:void(0)" onclick="operate('/workflow/process/delete?deploymentId=${process.deploymentId}','','确定要删除此版本部署吗？')">删除</a>
+							<select name="flowCategory" class="fui-combobox" style="width:155px;" data="types" value="6"></select>
 						</td>
 					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+				</table>
+			</form>
+		</div>
 	</div>
-	<div region="south" style="width:100%;height:15%;overflow:hidden;">
-		<tags:pagination page="${page}" paginationSize="${page.pageSize}" />
+	<div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
+		<div class="fui-panel" title="流程定义及部署管理" style="width:100%;height:100%;" bodyStyle="overflow:hidden;" showCollapseButton="true">
+			<div class="fui-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;">
+				<a class="fui-button" iconCls="icon-search" onclick="query()">查询</a>
+				<a class="fui-button" iconCls="icon-remove" onclick="remove()">删除</a>
+				<a class="fui-button" iconCls="icon-deploy" onclick="deploy()">部署流程</a>
+				<div style="float:right;display:inline;color:#cc0000"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
+			</div>
+			<div id="process" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"
+				 url="${path }/supervisor/workflow/process/list" dataField="processList" idField="id" multiSelect="true">
+				<div property="columns">
+					<div type="checkcolumn" ></div>
+					<div field="id" width="185" headerAlign="center" allowSort="false">ProcessDefinitionId</div>
+					<div field="deploymentId" width="185" headerAlign="center" allowSort="false" align="left">DeploymentId</div>
+					<div field="name" width="120" headerAlign="center" allowSort="false">流程名称</div>
+					<div field="key" width="120" headerAlign="center" allowSort="false" align="left">KEY</div>
+					<div field="version" width="60" headerAlign="center" allowSort="false" align="center">Version</div>
+					<div field="resourceName" width="190" headerAlign="center" renderer="resourceRenderer" allowSort="false" align="center">XML</div>
+					<div field="diagramResourceName" width="190" headerAlign="center" renderer="resourceRenderer" allowSort="false" align="center">图片</div>
+					<div field="deploymentTime" width="135" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false" align="center">部署时间</div>
+					<div field="suspended" width="65" headerAlign="center" renderer="suspendedRenderer" allowSort="false" align="center">是否挂起</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-<div id="deployDialog" title="部署流程" style="padding:2px 0em 2px;display:none;">
-	<fieldset>
-		<legend>部署新流程</legend>
-		<div style="font-size: 13px;"><b>支持文件格式：</b>zip、bar、bpmn、bpmn20.xml</div>
-		<form id="deploy-form" action="${ctx }/workflow/deploy" method="post" enctype="multipart/form-data">
-			<table>
+<div id="deployWindow" class="fui-window" title="部署流程" style="width:auto;padding:2px 0em 2px;display:none;"
+	 showModal="true" allowDrag="true">
+	<form id="deployForm" method="post">
+		<fieldset style="-moz-border-radius:8px;">
+			<legend>部署新流程</legend>
+			<div style="font-size: 13px;"><b>支持文件格式：</b>zip、bar、bpmn、bpmn20.xml</div>
+			<table width="100%">
 				<tr>
 					<td>类型：</td>
 					<td>
-						<select id="category" name="category" style="width:155px;" data="types"></select>
-						<span class="red-star-normal">*</span>
+						<select id="category" name="category" class="fui-combobox" style="width:155px;" data="types" value="6"></select>
+						<span style="color:red;">*</span>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input name="file" class="fui-filebox" style="width: 350px;"/>
-						<input type="submit" value="Submit" />
+						<input id="deployFile" class="fui-fileupload" name="file" limitType="*.zip;*.bar;*.xml" style="width: 350px;"
+							   flashUrl="${path }/public/common/fui/swfupload/swfupload.swf"
+							   uploadUrl="${path }/supervisor/workflow/process/deploy"
+							   onuploadsuccess="onUploadSuccess" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="right">
+						<a class="fui-button" iconCls="icon-ok" onclick="startUpload()">确定</a>
 					</td>
 				</tr>
 			</table>
-		</form>
-	</fieldset>
+		</fieldset>
+	</form>
 </div>
 </body>
-<script>
-	function formatDate(val,row){
-		return formatterDate(val,19);
-	}
-	$("#deploy-form").form({
-        success:function(data){
-        	data = $.parseJSON(data);
-        	var state = data.state;
-        	if(state == 1){
-        		toPage(1);
-        	}else{
-        		alert(data.message);	
-        	}
-        }
-    });
-</script>
+<script type="text/javascript" src="${path}/public/js/supervisor/activiti-process.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

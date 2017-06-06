@@ -1,24 +1,26 @@
 @import "styles/iplat-ui-layout.css";
 @import "styles/iplat-ui-tree.css"
+
 /*
 ----通用样式----
 */
 
 /*--标题/工具条类样式--*/
 .ef-header {
-	background: #DFEFFC url(./Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
-	font-weight: Bold;
+    background: #DFEFFC url(./Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
+    font-weight: Bold;
     color: #2E6E9E;
 }
+
 /*旧平台样式*/
 .tableHeader { /**/
 
-    height:30px;
+    height: 30px;
 }
 
 /*--图标按钮样式--*/
 .ef-iconbutton-noborder {
-	border: 1px solid transparent;
+    border: 1px solid transparent;
 }
 
 /*--按钮状态--*/
@@ -29,10 +31,10 @@
 
 /*悬浮状态*/
 .ef-state-hover {
-	/*
-	border:1px solid #79b7e7;
-	background-color:#d0e5f5;
-	*/
+    /*
+    border:1px solid #79b7e7;
+    background-color:#d0e5f5;
+    */
 }
 
 /*按下状态*/
@@ -47,25 +49,27 @@
 
 /*--图片按钮--*/
 .ef-icon {
-	background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
-	width: 16px;
-	height: 16px;
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+    width: 16px;
+    height: 16px;
 }
+
 .ef-icon, .ef-buttonBar-no-background .ef-icon, .ef-state-default > .ef-icon,
-	 .ui-state-default .ef-icon, .ef-grid-funcImgButtonTD span,
-	 .ef-form-configDiv.ef-state-hover > .ef-icon {
-	background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
-	width: 16px;
-	height: 16px;
+.ui-state-default .ef-icon, .ef-grid-funcImgButtonTD span,
+.ef-form-configDiv.ef-state-hover > .ef-icon {
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+    width: 16px;
+    height: 16px;
 }
+
 span.ef-icon {
-	float:left;
+    float: left;
 }
 
 .ef-state-default > .ef-icon {
-	background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
-	width: 16px;
-	height: 16px;
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+    width: 16px;
+    height: 16px;
 }
 
 .ef-state-hover .ef-icon {
@@ -74,19 +78,17 @@ span.ef-icon {
 
 .ef-state-disabled .ef-icon,
 .ui-state-disabled .ef-icon {
-	background-image: url(Themes/Images/icons/ef-icons_888888.png);
-	width: 16px;
-	height: 16px;
+    background-image: url(Themes/Images/icons/ef-icons_888888.png);
+    width: 16px;
+    height: 16px;
 }
 
 .ef-icon-inner {
-	display:inline-block !important;
-	background-color:transparent;
+    display: inline-block !important;
+    background-color: transparent;
 
-	position:relative;
+    position: relative;
 }
-
-
 
 /*--内容--*/
 .ef-content {
@@ -95,44 +97,44 @@ span.ef-icon {
 
 /*--警告栏--*/
 .ef-state-error {
-	background-color:#f3d8d8 !important;
-	color:#c00;
+    background-color: #f3d8d8 !important;
+    color: #c00;
 }
 
 input.ef-state-error {
-	border:1px solid #CD0A0A;
-	color:#CD0A0A;
+    border: 1px solid #CD0A0A;
+    color: #CD0A0A;
 }
 
 .inputField.ef-state-error {
-	color:#CD0A0A;
+    color: #CD0A0A;
 }
+
 /*--弹出窗口背景遮罩--*/
 .ef-widget-overlay {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-	background: #aaaaaa;
-	opacity: .7;
-	filter: Alpha(Opacity=70);
+    background: #aaaaaa;
+    opacity: .7;
+    filter: Alpha(Opacity=70);
 }
 
 #efFormLoadingOverLay {
-	background:transparent;
-	}
+    background: transparent;
+}
 
 .ef-widget {
-    font-family:Consolas, 微软雅黑,宋体,Arial;
+    font-family: Consolas, 微软雅黑, 宋体, Arial;
 }
 
 /*--弹出窗口阴影--*/
 .ef-shadow {
 
 }
-
 
 /*
 ----通用样式结束----
@@ -143,248 +145,246 @@ input.ef-state-error {
 */
 
 /*--返回按钮--*/
-.ef-icon-return{
-	background-position: 0px 0px
+.ef-icon-return {
+    background-position: 0px 0px
 }
 
 /*--关闭按钮--*/
-.ef-icon-close{
-	background-position: -16px 0px;
+.ef-icon-close {
+    background-position: -16px 0px;
 }
 
 /*--全屏按钮--*/
 .ef-icon-normalscreen {
-	background-position: -32px 0px;
+    background-position: -32px 0px;
 }
 
 /*--全屏按钮--*/
 .ef-icon-fullscreen {
-	background-position: -48px 0px;
+    background-position: -48px 0px;
 }
 
 /*--打印按钮--*/
 .ef-icon-print {
-	background-position: -64px 0px;
+    background-position: -64px 0px;
 }
 
 /*--帮助按钮--*/
 .ef-icon-help {
-	background-position: -80px 0px;
+    background-position: -80px 0px;
 }
 
 /*--运行按钮--*/
 .ef-icon-run {
-	background-position: -96px 0px;
+    background-position: -96px 0px;
 }
 
 /*--dev按钮--*/
 .ef-icon-dev {
-	background-position: -112px 0px;
+    background-position: -112px 0px;
 }
 
 /*--图标按钮--*/
 .ef-icon-charts {
-	background-position: -160px 0px;
+    background-position: -160px 0px;
 }
 
 /*--新增行按钮--*/
-.ef-icon-newRecord{
-	background-position: 0px -16px;
+.ef-icon-newRecord {
+    background-position: 0px -16px;
 }
 
 /*--清除按钮--*/
 .ef-icon-clear {
-	background-position: -16px -16px;
+    background-position: -16px -16px;
 }
 
 /*--定制按钮--*/
 .ef-icon-customColumn {
-	background-position: -32px -16px;
+    background-position: -32px -16px;
 }
 
 /*--树按钮--*/
 .ef-icon-treelist {
-	background-position: -48px -16px;
+    background-position: -48px -16px;
 }
-
 
 /*--窗口弹出按钮--*/
 .ef-icon-popupwindow {
-	background-position: -63px -16px;
+    background-position: -63px -16px;
 }
 
 /*--表单弹出按钮--*/
 .ef-icon-newform {
-	background-position: -80px -16px;
+    background-position: -80px -16px;
 }
 
 /*--日历按钮--*/
 .ef-icon-calendar {
-	background-position: -96px -16px;
+    background-position: -96px -16px;
 }
 
 /*--字幕顺序排列按钮--*/
 .ef-icon-frontAsc {
-	background-position: -112px -16px;
+    background-position: -112px -16px;
 }
 
 /*--字幕逆序排列按钮--*/
 .ef-icon-frontDesc {
-	background-position: -128px -16px;
+    background-position: -128px -16px;
 }
 
 /*--跳转按钮--*/
 .ef-icon-goto {
-	background-position: -144px -16px;
+    background-position: -144px -16px;
 }
 
 /*--分组按钮--*/
 .ef-icon-group {
-	background-position: -160px -16px;
+    background-position: -160px -16px;
 }
 
 /*--叠加图标按钮--*/
 .ef-icon-sum {
-	background-position: -176px -16px;
+    background-position: -176px -16px;
 }
 
 /*--导出到Excel按钮--*/
 .ef-icon-exportExcel {
-	background-position: -208px -16px;
+    background-position: -208px -16px;
 }
 
 /*--导出PDF按钮--*/
 .ef-icon-exportPDF {
-	background-position: -224px -16px;
+    background-position: -224px -16px;
 }
 
 /*--按模板导出到xls按钮--*/
 .ef-icon-exportXlsTemplate {
-	background-position: -240px -16px;
+    background-position: -240px -16px;
 }
+
 /*--总计图标按钮--*/
 .ef-icon-total {
-	background-position: -256px -16px;
+    background-position: -256px -16px;
 }
 
 /*--下拉按钮--*/
 .ef-icon-drop {
-	background-position: 0px -48px;
+    background-position: 0px -48px;
 }
 
 /*--第一页页按钮--*/
 .ef-icon-firstpage {
-	background-position: -16px -48px;
+    background-position: -16px -48px;
 }
 
 /*--左翻页按钮--*/
 .ef-icon-left {
-	background-position: -32px -48px;
+    background-position: -32px -48px;
 }
 
 /*--右翻页按钮--*/
 .ef-icon-right {
-	background-position: -48px -48px;
+    background-position: -48px -48px;
 }
 
 /*--最后页按钮--*/
 .ef-icon-lastpage {
-	background-position: -64px -48px;
+    background-position: -64px -48px;
 }
 
 /*--新增按钮--*/
 .ef-icon-add {
-	background-position: -79px -47px;
+    background-position: -79px -47px;
 }
 
 /*--删除按钮--*/
 .ef-icon-remove {
-	background-position: -96px -48px;
+    background-position: -96px -48px;
 }
 
 /*--总列数按钮--*/
 .ef-icon-totalCount {
-	background-position: -112px -48px;
+    background-position: -112px -48px;
 }
-
 
 /*--展开状态按钮--*/
 .ef-icon-expand {
-	background-position: 0px -64px;
+    background-position: 0px -64px;
 }
 
 /*--收缩状态按钮--*/
 .ef-icon-collapse {
-	background-position: -16px -64px;
+    background-position: -16px -64px;
 }
 
 /*--齿轮按钮--*/
 .ef-icon-gear {
-	background-position: -32px -64px;
+    background-position: -32px -64px;
 }
 
 /*--扳手按钮--*/
 .ef-icon-wrench {
-	background-position: -48px -64px;
+    background-position: -48px -64px;
 }
 
 /*--储存按钮--*/
 .ef-icon-save {
-	background-position: -64px -64px;
+    background-position: -64px -64px;
 }
 
 /*--读取按钮--*/
 .ef-icon-load {
-	background-position: -80px -64px;
+    background-position: -80px -64px;
 }
 
 /*--收藏按钮--*/
 .ef-icon-favorites {
-	background-position: -96px -64px;
+    background-position: -96px -64px;
 }
-
 
 /*
 ----图片按钮结束----
 */
 
-A:link,A:active {
-/* color: #5060b8;
-    text-decoration: none; */
+A:link, A:active {
+    /* color: #5060b8;
+        text-decoration: none; */
 }
 
 A:visited {
-/*     color: #9430a3;
-    text-decoration: none; */
+    /*     color: #9430a3;
+        text-decoration: none; */
 }
 
 A.headerButton {
-    color:#FFF;
-    line-height:18px;
-    font-size:12px;
-    font-family:Consolas, 微软雅黑, 宋体;
-    FILTER: dropshadow(color=#000000,offx=1,offy=1);
-    font-weight:bold;
+    color: #FFF;
+    line-height: 18px;
+    font-size: 12px;
+    font-family: Consolas, 微软雅黑, 宋体;
+    FILTER: dropshadow(color=#000000, offx=1, offy=1);
+    font-weight: bold;
 }
 
 A.headerButton:link, A.headerButton:visited {
-    color:#FFF
+    color: #FFF
 }
 
-#userInfo{
-	text-decoration: none;
+#userInfo {
+    text-decoration: none;
 }
 
 A.headerButton:hover {
-    color:#FC0
+    color: #FC0
 }
 
 img {
-    border:0px;
+    border: 0px;
 }
 
 BODY {
-	/*
+    /*
     font-family: verdana, arial, helvetica, sans-serif;
     font-family: Lucida Grande, Lucida Sans, Arial, sans-serif,微软雅黑;
     color: #222222;
@@ -393,17 +393,17 @@ BODY {
     margin:0px;
     */
     background-color: #ffffff;
-    font-family:Consolas, 微软雅黑,宋体,Arial;
+    font-family: Consolas, 微软雅黑, 宋体, Arial;
     color: #222222;
-    font-size:75%;
-    margin:0px;
+    font-size: 75%;
+    margin: 0px;
 }
 
 TEXTAREA {
-	box-sizing: border-box;
+    box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-	/*
+    /*
     border-left: #999999 solid 1px;
     border-right: #999999 solid 1px;
     border-top: #999999 solid 1px;
@@ -415,59 +415,63 @@ TEXTAREA {
      */
 }
 
-#iplat_topDivBg_id{
-	background: #1396ce;
+#iplat_topDivBg_id {
+    background: #1396ce;
 }
-
 
 .indexRealLogo {
-	font-size: 20px;
-	font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
     color: white;
-	height:70px;
-	line-height:42px;
-	width:100%;
-	text-align:right;
-	background:url(Images/ef_logo_iplat.jpg)
+    height: 70px;
+    line-height: 42px;
+    width: 100%;
+    text-align: right;
+    background: url(Images/ef_logo_iplat.jpg)
 }
 
+.bodyBackground {
+    /*    background-color: #f0f3f4;
+       margin-left:auto;
+       margin-right:auto;
+       padding:5px;
 
-.bodyBackground { /*    background-color: #f0f3f4;
-	margin-left:auto;
-	margin-right:auto;
-	padding:5px;
-
-	background-color: white;
-	 margin-top:0px; */
-	padding:5px;
+       background-color: white;
+        margin-top:0px; */
+    padding: 5px;
 }
 
 /*region样式*/
 .ef-region-title {
-	display:table;
-	position:relative;
-	height:26px;
+    display: table;
+    position: relative;
+    height: 26px;
 
     -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
 }
+
 .ef-region-title span {
     display: table-cell;
-	position:relative;
+    position: relative;
     vertical-align: middle;
 }
+
 .ef-region-title .ef-region-title-icon-primary {
-	top:4px;
+    top: 4px;
 }
+
 .ef-region-title .ef-region-title-icon-secondary {
-	display:none;
-	top:7px;
+    display: none;
+    top: 7px;
 }
+
 .ef-region-configMenuDiv {
-	height:25px;
+    height: 25px;
 }
+
 .ef-region-content {
 }
 
@@ -483,42 +487,48 @@ TEXTAREA {
     -khtml-border-radius: 8px;
     border-radius: 8px;
 
-    margin-top:0px;
-    margin-bottom:0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
+
 .ef-state-default.ef-region-border {
-	border: 1px solid #d0e5f5;
-	cursor:default;
+    border: 1px solid #d0e5f5;
+    cursor: default;
 }
+
 .ef-state-hover.ef-region-border {
 }
+
 /*
 *region右上角配置菜单内按钮
 */
 .ef-region-systemButtonBar {
-	white-space: nowrap;
-	display:inline-block;
-	float:right;
-	}
-#efRegionConfigMenu a{
-	width:100%;
-	background:white;
-	}
+    white-space: nowrap;
+    display: inline-block;
+    float: right;
+}
 
-#efRegionConfigMenu .ef-region-configMenuSpan{
-	}
+#efRegionConfigMenu a {
+    width: 100%;
+    background: white;
+}
+
+#efRegionConfigMenu .ef-region-configMenuSpan {
+}
+
 /*
 *region标题内按钮
 */
 .ef-region-headerButton {
-	background:white;
-	}
+    background: white;
+}
+
 /*
 *region右上角配置菜单内按钮
 */
 .ef-region-configMenuSpan {
 
-	}
+}
 
 .contentHeader {
     font-size: 12px;
@@ -527,200 +537,200 @@ TEXTAREA {
 }
 
 #pageTitle {
-	white-space:nowrap;
+    white-space: nowrap;
 }
 
 /* 状态行图标样式 */
 .ef-form-status-content span.ui-icon {
-	margin: 4px;
-	cursor: pointer;
-	float: left;
+    margin: 4px;
+    cursor: pointer;
+    float: left;
 }
 
 .ef-form-status-bar {
-	box-shadow: none !important;
-	padding: 0px !important;
-	position: fixed !important;
-	background: transparent !important;
+    box-shadow: none !important;
+    padding: 0px !important;
+    position: fixed !important;
+    background: transparent !important;
 
-	border: 0px !important;
-	border-radius: 0px !important;
+    border: 0px !important;
+    border-radius: 0px !important;
 
 }
 
 .ef-form-status-content {
-	display: none;
-	padding : 2px !important;
-	text-align: left !important;
+    display: none;
+    padding: 2px !important;
+    text-align: left !important;
 
-	border-top: 0px !important;
+    border-top: 0px !important;
 
-	border-radius: 0px !important;
-	-moz-border-radius: 0px !important;
-	-moz-border-radius-bottomright: 8px !important;
-	-moz-border-radius-bottomleft: 8px !important;
-	border-bottom-right-radius: 8px !important;
-	border-bottom-left-radius: 8px !important;
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -moz-border-radius-bottomright: 8px !important;
+    -moz-border-radius-bottomleft: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
 
 }
 
 .ef-form-head-dummy,
 BODY.ef-form-head-hidden .ef-form-head,
-BODY.ef-form-iframe-body .ef-form-head
-{
-	display: none;
+BODY.ef-form-iframe-body .ef-form-head {
+    display: none;
 }
 
 .ef-form-head > .ef-widget-overlay {
-	background:white;
+    background: white;
 }
 
 .ef-form-guide-dummy,
-BODY.ef-form-iframe-body .ef-form-guide
-{
-	display: none;
+BODY.ef-form-iframe-body .ef-form-guide {
+    display: none;
 }
 
 .ef-form-guide {
-	position: fixed;
+    position: fixed;
 
-	right: 0px;
-	bottom: 10px;
+    right: 0px;
+    bottom: 10px;
 
-	width:25px;
+    width: 25px;
 
-	background-color:transparent;
+    background-color: transparent;
 
-	border-radius: 0px;
-	-moz-border-radius: 0px;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
 
 }
 
-.ef-form-guide  a {
- 	border : 0px;
-	background-color:#f2f2f2;
+.ef-form-guide a {
+    border: 0px;
+    background-color: #f2f2f2;
 }
 
 .ef-form-loading-div {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-left: -100px;
-	padding-top:25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    padding-top: 25px;
 
     width: 200px;
-	height: 108px;
+    height: 108px;
 
-	border-radius:4px;
-	box-shadow: 0 1px 3px black;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px black;
 
-	background: #f6f6f6 !important;
+    background: #f6f6f6 !important;
 
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	text-align: center;
-	border: 0 !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    text-align: center;
+    border: 0 !important;
 }
 
-.ef-form-loading-div  div {
-	height:32px;
+.ef-form-loading-div div {
+    height: 32px;
 
-	vertical-align:middle;
-    line-height:32px;
+    vertical-align: middle;
+    line-height: 32px;
 
-	/*color:white;*/
-    font-size:14px;
-	font-weight:bold;
+    /*color:white;*/
+    font-size: 14px;
+    font-weight: bold;
 
 }
 
-.ef-form-loading-div  span.ui-icon-circle-close {
-	margin:7px;
-	cursor:pointer;
-	/*background-image:url(Themes/styleApple/Grey/images/ui-icons_ffffff_256x240.png);*/
+.ef-form-loading-div span.ui-icon-circle-close {
+    margin: 7px;
+    cursor: pointer;
+    /*background-image:url(Themes/styleApple/Grey/images/ui-icons_ffffff_256x240.png);*/
 }
 
 /*页面右上角按钮*/
 .ef-form-configDiv {
-	background:white;
+    background: white;
 }
 
 .ef-form-config-menu {
-	position:absolute;
-	z-index:10;
+    position: absolute;
+    z-index: 10;
 }
+
 /*页面右上角三角箭头*/
 .ef-form-config-menu .ef-arrow, .ef-form-config-menu .ef-arrow:after {
-	position: absolute;
-	display: block;
-	width: 0;
-	height: 0;
-	border-color: transparent;
-	border-style: solid;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
 }
+
 .ef-form-config-menu .ef-arrow {
-	border-width: 11px;
+    border-width: 11px;
 }
 
 .ef-form-config-menu.ef-right-top-arrow .ef-arrow {
-	top: -11px;
-	right: 10%;
-	margin-left: -11px;
-	border-bottom-color: #999;
-	border-bottom-color: rgba(0, 0, 0, 0.25);
-	border-top-width: 0;
+    top: -11px;
+    right: 10%;
+    margin-left: -11px;
+    border-bottom-color: #999;
+    border-bottom-color: rgba(0, 0, 0, 0.25);
+    border-top-width: 0;
 }
 
 .ef-form-config-menu.ef-right-top-arrow .ef-arrow:after {
-	top: 1px;
-	margin-left: -10px;
-	border-bottom-color: #ffffff;
-	border-top-width: 0;
+    top: 1px;
+    margin-left: -10px;
+    border-bottom-color: #ffffff;
+    border-top-width: 0;
 }
 
 .ef-form-config-menu .ef-arrow:after {
-	border-width: 10px;
-	content: "";
+    border-width: 10px;
+    content: "";
 }
 
 .ef-form-config-menu-title {
-	position:relative;
+    position: relative;
 
-	padding: 7px 7px;
-	margin: 0;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 18px;
-	background-color: #f6f6f6;
-	border-bottom: 1px solid #ebebeb;
+    padding: 7px 7px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 18px;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #ebebeb;
 }
+
 /*配置菜单中的关闭图标*/
 .ef-form-config-menu-title a.ui-button {
-	position:absolute;
-	right:2px;
-	width:16px !important;
-	height:16px !important;
+    position: absolute;
+    right: 2px;
+    width: 16px !important;
+    height: 16px !important;
 }
 
 /*页面右上角功能下拉菜单样式*/
 .ef-form-config-menu span {
-	text-align: left;
+    text-align: left;
 }
+
 /*页面功能下拉菜单样式*/
-.ef-form-config-menu  a,
-.ef-form-config-menu > .ef-form-config-menu-content  a,
-.ef-form-config-menu  .ui-state-default
-{
-	width:100%;
-	background:white;
-	border-color:transparent;
+.ef-form-config-menu a,
+.ef-form-config-menu > .ef-form-config-menu-content a,
+.ef-form-config-menu .ui-state-default {
+    width: 100%;
+    background: white;
+    border-color: transparent;
 }
 
 /*
 **EFForm Part End
 */
-
 
 /*
 **EFRegion Part
@@ -735,128 +745,136 @@ BODY.ef-form-iframe-body .ef-form-guide
 
 }
 
-
 /*EFRegion输入区域*/
 .ef-container-body {
-	background:rgb(248,249,251);
+    background: rgb(248, 249, 251);
 
-    font-family: Consolas,微软雅黑, 宋体;
+    font-family: Consolas, 微软雅黑, 宋体;
     font-size: 12px;
 
-
-    padding-bottom:10px;
-    padding-top:0px;
-    padding-left:0px;
-    padding-right:0px;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 
 }
 
 .ef-query-table TD DIV {
-	display:inline-block;
+    display: inline-block;
 }
+
 .ef-query-table TD DIV.ef-select {
-	min-width:100px;
+    min-width: 100px;
 }
+
 .ef-query-table TABLE,
-TABLE.ef-query-table
-{
-	width:100%;
+TABLE.ef-query-table {
+    width: 100%;
 }
 
 /*EFRegion系统图标条*/
 
 .ef-region-systemBar {
-	width:120px;
+    width: 120px;
     position: absolute;
 
-	padding-bottom: 5px;
-	right: 0px;
-	top: 6px;
-	z-index: 3;
+    padding-bottom: 5px;
+    right: 0px;
+    top: 6px;
+    z-index: 3;
 
-	border:0px solid white;
-	border-radius:0px;
+    border: 0px solid white;
+    border-radius: 0px;
 
-	display:none;
+    display: none;
 
 }
+
 .ef-region-systemBarDiv {
-	height:22px;
-    float:right;
+    height: 22px;
+    float: right;
 
-	padding:2px;
-	background-color: #abaeb7;
+    padding: 2px;
+    background-color: #abaeb7;
 }
-.ef-region-systemBarDiv  a{
-	float:right;
 
-	border:1px solid #abaeb7;
-	border-top:1px solid white;
-	border-left:1px solid white;
-	border-radius:0px;
-}
-.ef-region-systemBarDiv  a:hover {
-	border:1px solid white;
-	border-top:1px solid #abaeb7;
-	border-left:1px solid #abaeb7;
-}
 .ef-region-systemBarDiv a {
-	/*background:#abaeb7;*/
+    float: right;
+
+    border: 1px solid #abaeb7;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-radius: 0px;
 }
+
+.ef-region-systemBarDiv a:hover {
+    border: 1px solid white;
+    border-top: 1px solid #abaeb7;
+    border-left: 1px solid #abaeb7;
+}
+
+.ef-region-systemBarDiv a {
+    /*background:#abaeb7;*/
+}
+
 .ef-region-systemBarDiv a.ui-button-icon-only {
-	width:20px;
-	height:20px;
+    width: 20px;
+    height: 20px;
 }
+
 .ef-region-systemBarDiv a span.ui-button-text {
-	padding:1px;
+    padding: 1px;
 }
+
 .ef-region-systemBar:after {
-	content: "";
-	position: absolute;
-	top: 0px;
-	/*bottom: 1px;*/
+    content: "";
+    position: absolute;
+    top: 0px;
+    /*bottom: 1px;*/
     width: 0;
-	height: 0;
-	right: -5px;
-	border-style: solid;
-	border-color: transparent transparent #565c68 transparent;
-	border-width: 0px 5px 5px 0px;
-	display: block;
+    height: 0;
+    right: -5px;
+    border-style: solid;
+    border-color: transparent transparent #565c68 transparent;
+    border-width: 0px 5px 5px 0px;
+    display: block;
 }
+
 .ef-region-topButtonBar {
-	display:inline-block;
+    display: inline-block;
 }
+
 .ef-region-topButtonBar a {
 }
 
-
 /*EFRegion标题*/
 .ef-region-noTitle-style > .ef-region-head {
-	display:none;
+    display: none;
 }
+
 .ef-region-noTitle-style {
-	padding-top:5px;
+    padding-top: 5px;
 }
 
-.ef-state-default .ef-region-title{
-	/*background:url(Images/effectBg/BgFill-2.png) #f5f8f9;*/
-	color:#2e6e9e;
-	font-size:12px;
-	font-weight:bold;
+.ef-state-default .ef-region-title {
+    /*background:url(Images/effectBg/BgFill-2.png) #f5f8f9;*/
+    color: #2e6e9e;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.ef-state-hover.ef-region-border > DIV >table.ef-container-header .ef-region-title{
-	/*background:url(Images/effectBg/BgFill-2.png) #f5f8f9;*/
-	color:#e17009;
-	font-size:12px;
-	font-weight:bold;
+.ef-state-hover.ef-region-border > DIV > table.ef-container-header .ef-region-title {
+    /*background:url(Images/effectBg/BgFill-2.png) #f5f8f9;*/
+    color: #e17009;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.ef-region-footer{
-	padding-top:4px;
-	padding-bottom:4px;
-	padding-left:0px;
-	padding-right:0px;
+.ef-region-footer {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 /*EFRegion底部按钮区域*/
@@ -873,47 +891,45 @@ TABLE.ef-query-table
 
 /*EFGrid整体*/
 .ef-grid-border {
-    background:white;
-	border: 1px solid #A6C9E2;
+    background: white;
+    border: 1px solid #A6C9E2;
 
 }
 
 .ef-grid-checkbox {
-	margin: 0px !important;
+    margin: 0px !important;
 }
 
 .ef-grid-checkbox:focus {
-	outline:0;
+    outline: 0;
 }
 
 /*checkbox居中对齐*/
 .ef-grid-checkbox,
-.ef-grid-fixTable>TBODY>TR>TD:first-child>.ef-grid-cell
-{
-	text-align:center;
+.ef-grid-fixTable > TBODY > TR > TD:first-child > .ef-grid-cell {
+    text-align: center;
 }
 
 .ef-grid-checkbox,
-.ef-grid-fixTable>TBODY>TR>TD:first-child>.ef-grid-cell>.ef-grid-checkbox {
-	display: inline-block;
-	vertical-align: middle;
+.ef-grid-fixTable > TBODY > TR > TD:first-child > .ef-grid-cell > .ef-grid-checkbox {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-
 /*EFGrid的四个table*/
-.ef-grid-table{
+.ef-grid-table {
 
-	border-spacing:0px;
-	margin-right:0px;
-	width:100%;
-	/*border-right: 1px solid #C5DBEC;
-	border-collapse:collapse;*/
+    border-spacing: 0px;
+    margin-right: 0px;
+    width: 100%;
+    /*border-right: 1px solid #C5DBEC;
+    border-collapse:collapse;*/
 
 }
 
 /*EfGrid固定列与非固定列表头table所在TR*/
 .ef-grid-tableHeader { /**/
-	height:24px;
+    height: 24px;
 
 }
 
@@ -923,7 +939,7 @@ TABLE.ef-query-table
 }
 
 .ef-grid-tableHeader .ef-grid-table {
-	/*background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;*/
+    /*background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;*/
 }
 
 .cascadeSelectHeader {
@@ -935,7 +951,7 @@ TABLE.ef-query-table
 
 /*EfGrid表头table下的TR样式*/
 .ef-grid-tableHeader-tableTR { /* */
-	height:24px;
+    height: 24px;
 
     /*
     background: url(Images/effectBg/HeaderBg.png) #5c9ccc;
@@ -944,164 +960,165 @@ TABLE.ef-query-table
     font-size: 12px;
     color: #2E6E9E;
     line-height: 160%;
-    font-weight:bold;
+    font-weight: bold;
 }
-
-
 
 /*EfGrid鼠标悬浮表头样式*/
 
-.ef-state-hover.ef-grid-tableHeaderColumn ,  .ef-grid-tableHeader-tableTR td.ef-state-hover{
-/*
-	background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
-    color: #1d5987;
-    border-top-width:0px;
-    border-left-width:0px;
-*/
+.ef-state-hover.ef-grid-tableHeaderColumn, .ef-grid-tableHeader-tableTR td.ef-state-hover {
+    /*
+        background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
+        color: #1d5987;
+        border-top-width:0px;
+        border-left-width:0px;
+    */
 }
 
 /*EfGrid表头列样式*/
 .ef-grid-header-column {
-	height:100%;
-	width:100%;
+    height: 100%;
+    width: 100%;
 
-	position:relative;
+    position: relative;
 
-	text-align:center;
+    text-align: center;
 }
+
 .ef-grid-header-column:before {
-	content: '';
-	display: inline-block;
-	vertical-align: middle;
-	height: 100%;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
 }
-.ef-grid-header-column>* {
-  display: inline-block;
-  vertical-align: middle;
+
+.ef-grid-header-column > * {
+    display: inline-block;
+    vertical-align: middle;
 }
-.ef-grid-header-column.sortable{
-	cursor:pointer;
+
+.ef-grid-header-column.sortable {
+    cursor: pointer;
 }
+
 .ef-grid-header-column-label {
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
-.ef-grid-header-column-label>* {
-  display: inline-block;
-  vertical-align: middle;
+
+.ef-grid-header-column-label > * {
+    display: inline-block;
+    vertical-align: middle;
 }
 
 /*EfGrid单元格样式*/
 .ef-grid-cell {
-	width:100%;
-	height:100%;
+    width: 100%;
+    height: 100%;
 
-	position: relative;
+    position: relative;
 }
 
 /*自动换行*/
 .ef-grid-cell-dummy,
-.ef-grid-content.autoHeight .ef-grid-header-column>SPAN,
+.ef-grid-content.autoHeight .ef-grid-header-column > SPAN,
 .ef-grid-content.autoHeight .ef-grid-cell {
-	clear: both; /* 清除左右浮动 */
-	word-break: break-word; /* 文本行的任意字内断开 */
-	word-wrap: break-word; /* IE */
-	white-space: -moz-pre-wrap; /* Mozilla */
-	white-space: -hp-pre-wrap; /* HP printers */
-	white-space: -o-pre-wrap; /* Opera 7 */
-	white-space: -pre-wrap; /* Opera 4-6 */
-	white-space: pre; /* CSS2 */
-	white-space: pre-wrap; /* CSS 2.1 */
-	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+    clear: both; /* 清除左右浮动 */
+    word-break: break-word; /* 文本行的任意字内断开 */
+    word-wrap: break-word; /* IE */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 }
 
 .ef-grid-table DIV {
-    overflow:hidden;
+    overflow: hidden;
 }
 
 /*HTML5中 给该table设置cellpadding 为了对齐默认为0
  *
  *注意tr中每个td都要设置padding为0*/
 .ef-grid-table td {
-	padding: 0px;
+    padding: 0px;
 }
+
 .ef-grid-fixTable td > div, .ef-grid-dataTable td > div {
-	height:24px;
-	}
+    height: 24px;
+}
 
 .ef-grid-fixTable {
- 	padding-right:0px;
-	vertical-align:middle;
-	line-height:2;
-	border-right:0px solid transparent;
-	border-bottom:1px solid transparent;
+    padding-right: 0px;
+    vertical-align: middle;
+    line-height: 2;
+    border-right: 0px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
 .ef-grid-dataTable {
- 	padding-right:1px;
-	vertical-align:middle;
-	line-height:2;
-	border-right:0px solid transparent;
-	border-bottom:1px solid transparent;
+    padding-right: 1px;
+    vertical-align: middle;
+    line-height: 2;
+    border-right: 0px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
 .tableRow0 td, .tableRow1 td, .ef-grid-tableRow-Selected td, .ef-grid-tableRow-CurrentRow td, .ef-grid-tableRow-Highlight td {
-	border-right: 1px solid #A6C9E2;
-	border-bottom: 1px solid #A6C9E2;
-	line-height: 2;
-	margin: 0px;
+    border-right: 1px solid #A6C9E2;
+    border-bottom: 1px solid #A6C9E2;
+    line-height: 2;
+    margin: 0px;
     padding: 0px;
-    padding-right:1px;
+    padding-right: 1px;
     vertical-align: middle;
 }
 
 .ef-grid-dataTable > div.ef-state-error {
 
-	}
-
-.show td {
-	border-right:1px solid #CD0A0A;
-	border-bottom:1px solid #CD0A0A;
-	padding-right:1px;
-	vertical-align:middle;
-	line-height:2;
-
 }
 
+.show td {
+    border-right: 1px solid #CD0A0A;
+    border-bottom: 1px solid #CD0A0A;
+    padding-right: 1px;
+    vertical-align: middle;
+    line-height: 2;
 
-
+}
 
 /*
 ----EFGrid表头单元格---
 *需要放在.ef-grid-table DIV 下面
 */
-.ef-grid-tableHeader-tableTR td, .ef-grid-tableHeader-tableTR th {/*,.columnHighlight td*/
-	HEIGHT: 24px;
+.ef-grid-tableHeader-tableTR td, .ef-grid-tableHeader-tableTR th { /*,.columnHighlight td*/
+    HEIGHT: 24px;
     white-space: nowrap;
-    text-overflow:ellipsis;
-    -o-text-overflow:ellipsis;
-    overflow:hidden;
-	padding-right:1px;
-	vertical-align:middle;
-	line-height:2;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 1px;
+    vertical-align: middle;
+    line-height: 2;
 
-	border-right:1px solid #A6C9E2;
-	border-bottom:1px solid #A6C9E2;
-	/*border-right:1px solid white;*/
+    border-right: 1px solid #A6C9E2;
+    border-bottom: 1px solid #A6C9E2;
+    /*border-right:1px solid white;*/
 }
 
 /*
 ----EFGrid表头单元格拖动区域---
 *需要放在.ef-grid-table DIV 下面
 */
-.ef-grid-tableHeader-tableTR  div.ui-resizable-handle {
-	cursor:e-resize;
-	width:5px;
-	float:right;
-	position: absolute;
-	right: 0px;
-	top: 0px;
+.ef-grid-tableHeader-tableTR div.ui-resizable-handle {
+    cursor: e-resize;
+    width: 5px;
+    float: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
 }
 
 /*EfGrid偶数行样式*/
@@ -1110,7 +1127,7 @@ TABLE.ef-query-table
     font-family: Consolas, 微软雅黑, 宋体, arial;
     font-size: 12px;
     color: black;
-    rowHeight:29px;/*css中没有rowHeight属性 但efgrid会读取并根据此属性设置各div高度*/
+    rowHeight: 29px; /*css中没有rowHeight属性 但efgrid会读取并根据此属性设置各div高度*/
     /* line-height: 150%;*/
 }
 
@@ -1120,51 +1137,49 @@ TABLE.ef-query-table
     font-family: Consolas, 微软雅黑, 宋体, arial;
     font-size: 12px;
     color: black;
-    rowHeight:29px;
+    rowHeight: 29px;
     /* line-height: 150%; */
 }
 
-
-
 /*EfGrid鼠标悬浮行样式*/
 .ef-grid-tableRow-Selected {
-	background: #d0e5f5 ;
-   /* border:1px solid #79b7e7;
-   url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x
-   */
+    background: #d0e5f5;
+    /* border:1px solid #79b7e7;
+    url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x
+    */
 }
 
 /*EfGrid选中行样式*/
 .ef-grid-tableRow-CurrentRow {
     background: #F2F2F2;
-    color:#e17009;
+    color: #e17009;
 }
 
 /*EFGrid勾选行样式*/
 .ef-grid-tableRow-Highlight {
-	background:#fbec88 ;
+    background: #fbec88;
 
 }
+
 /*subgrid*/
-.show{
-    background-color:#FEF1EC !important;
-       font-family:Consolas, 微软雅黑, 宋体, arial !important;
+.show {
+    background-color: #FEF1EC !important;
+    font-family: Consolas, 微软雅黑, 宋体, arial !important;
     font-size: 12px !important;
     color: #CD0A0A !important;
 }
-
 
 /*
 ----EFGrid工具条所在DIV----
 */
 .ef-grid-func { /**/
-	/*background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;*/
+    /*background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;*/
     font-weight: Bold;
     color: #2E6E9E;
     line-height: 1.4;
-    height:30px;
-    border:1px solid #C5DBEC;
-    position:relative;
+    height: 30px;
+    border: 1px solid #C5DBEC;
+    position: relative;
     /*
         font-size: 12px;
 
@@ -1174,275 +1189,277 @@ TABLE.ef-query-table
 
 /*EfGrid工具栏样式*/
 .ef-grid-functable {
-	height:24px;
-	/*border: 1px solid #c5dbec;
-	background:url(Images/effectBg/BgFill-1.png) #dfeffc;
-	margin-left:20px;
-	padding:0px;*/
-	margin-top:1px;
-	margin-bottom:1px;
-	color:#2e6e9e;
+    height: 24px;
+    /*border: 1px solid #c5dbec;
+    background:url(Images/effectBg/BgFill-1.png) #dfeffc;
+    margin-left:20px;
+    padding:0px;*/
+    margin-top: 1px;
+    margin-bottom: 1px;
+    color: #2e6e9e;
 }
 
 /*EfGrid工具栏容器div样式*/
 .ef-grid-funcdiv {
-	width:auto;
-	height:auto;
-	float:left;
-	/*background:#f0f4f5;
-	border-left:1px solid #b3b3b3;*/
+    width: auto;
+    height: auto;
+    float: left;
+    /*background:#f0f4f5;
+    border-left:1px solid #b3b3b3;*/
 }
 
 /*EFPager导航条*/
 .ef-pager .ui-list {
-	margin:0px;
-	padding:0px;
+    margin: 0px;
+    padding: 0px;
 }
+
 .ef-pager .ui-list .ui-page {
-	float: left;
-	list-style: none outside none;
+    float: left;
+    list-style: none outside none;
 
-	border:0px;
-	margin: 1px;
+    border: 0px;
+    margin: 1px;
 
-	height: auto;
-	line-height: 16px;
-	width: auto;
+    height: auto;
+    line-height: 16px;
+    width: auto;
 }
+
 .ef-pager .ef-separator {
-	height: 16px;
-	float: right;
+    height: 16px;
+    float: right;
 }
 
 .ef-pager .ui-list .ui-page.ui-state-default {
-	background:transparent;
+    background: transparent;
 
 }
 
 .ef-pager .ui-list .ui-page SPAN {
-	cursor: pointer;
-	display:inline-block;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .ef-pager-config-window .ui-button-text-only .ui-button-text {
-	padding: 2px;
+    padding: 2px;
 }
 
-.ef-pager-config-window>DIV {
-	padding: 5px 10px 5px 10px;
-	box-sizing:border-box;
+.ef-pager-config-window > DIV {
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
 
-	position:relative;
+    position: relative;
 }
 
 /*EFGrid的导航工具条*/
 .ef-grid-navigationBar {
 
-	margin-right:4px;
+    margin-right: 4px;
 }
+
 .ef-grid-navigationBar td {
-	border: 1px solid transparent;
-	margin: 0px;
-	padding: 0px;
+    border: 1px solid transparent;
+    margin: 0px;
+    padding: 0px;
 }
+
 .ef-grid-navigationBar .ef-state-default {
-	border: 1px solid transparent;
+    border: 1px solid transparent;
 }
+
 .ef-grid-navigationBar .ef-state-hover {
-    border:1px solid #79b7e7;
+    border: 1px solid #79b7e7;
 }
 
 /*EFGrid的导航工具条位置配置*/
 .ef-grid-navigationBarTD {
-	position: absolute;
-	margin-top: 0px;
-	left: 50%;
-	margin-left: -143px;
+    position: absolute;
+    margin-top: 0px;
+    left: 50%;
+    margin-left: -143px;
 }
 
 .ef-grid-navigationBarTD .ef-grid-pager {
 }
 
 .ef-grid-navigationJumpToInputTD {
-	position: absolute;
-	margin-top: 0px;
-	left: 50%;
-	margin-left: -63px;
+    position: absolute;
+    margin-top: 0px;
+    left: 50%;
+    margin-left: -63px;
 }
+
 .ef-grid-navigationJumpToInputTD > div {
-	float:left;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	padding:0px;
-	margin:0px;
+    float: left;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
 
-	height:24px;
+    height: 24px;
 
-	border:1px solid #ccc;
-	border-radius:4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 
-	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-	-moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-	-o-transition: border linear 0.2s, box-shadow linear 0.2s;
-	transition: border linear 0.2s, box-shadow linear 0.2s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
 
-	background:white !important;
+    background: white !important;
 }
+
 .ef-grid-navigationJumpToInputTD > div > input {
-	padding:0px !important;
-	margin:1px !important;
-	margin-left:3px !important;
-	border:0px !important;
+    padding: 0px !important;
+    margin: 1px !important;
+    margin-left: 3px !important;
+    border: 0px !important;
 
-	display:inline-block;
+    display: inline-block;
 
 }
+
 .ef-grid-navigationJumpToInputTD > div > input:focus {
-	outline:0;
+    outline: 0;
 }
+
 .ef-grid-navigationJumpToInputTD > div > a {
-	margin:0px !important;
+    margin: 0px !important;
 
-	padding:2px !important;
-	margin-top:0px !important;
+    padding: 2px !important;
+    margin-top: 0px !important;
 
-	border-top:0px  !important;
-	border-bottom:0px  !important;
-    border-left:1px solid #ccc !important;
-    border-right:0px !important;
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+    border-left: 1px solid #ccc !important;
+    border-right: 0px !important;
 
-	border-radius:0px;
+    border-radius: 0px;
 
-	vertical-align:top;
-	display:inline-block;
+    vertical-align: top;
+    display: inline-block;
 
 }
 
 .ef-grid-resultLimitSelector {
-	position: absolute;
-	margin-top: 0px;
-	left: 50%;
-	margin-left: -8px;
+    position: absolute;
+    margin-top: 0px;
+    left: 50%;
+    margin-left: -8px;
 }
 
 .ef-grid-totalDataButtonTd {
-	position: absolute;
-	margin-top: 2px;
-	left: 50%;
-	margin-left: 55px;
+    position: absolute;
+    margin-top: 2px;
+    left: 50%;
+    margin-left: 55px;
 }
 
 .ef-grid-totalDataNumbersTd {
-	position: absolute;
-	margin-top: 4px;
-	left: 50%;
-	margin-left: 79px;
+    position: absolute;
+    margin-top: 4px;
+    left: 50%;
+    margin-left: 79px;
 }
-/*EFGrid的导航栏按钮*/
-.NavButton  {
-	/*
-	background:#dfeffc;
-	border-right:1px solid #c5dbec;
-	*/
-	margin-right:2px;
-	margin-left:2px;}
 
+/*EFGrid的导航栏按钮*/
+.NavButton {
+    /*
+    background:#dfeffc;
+    border-right:1px solid #c5dbec;
+    */
+    margin-right: 2px;
+    margin-left: 2px;
+}
 
 /*EFGrid的导航按钮禁用样式*/
 .disabledNavButton {
-	/*
-	background:#f6f6f6;
-	border-right:1px solid #e6e6e6;
-	*/
-	margin-right:2px;
-	margin-left:2px;
+    /*
+    background:#f6f6f6;
+    border-right:1px solid #e6e6e6;
+    */
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 /*EFGrid内容高度自适应*/
-.ef-grid-content.autoHeight TR.rowGroupHeader>TD
-{
-	line-height:25px;
-	height:25px  !important;
+.ef-grid-content.autoHeight TR.rowGroupHeader > TD {
+    line-height: 25px;
+    height: 25px !important;
 }
 
-.ef-grid-content.autoHeight .ef-header TABLE.ef-grid-table>TBODY>TR>TD>DIV:first-child,
+.ef-grid-content.autoHeight .ef-header TABLE.ef-grid-table > TBODY > TR > TD > DIV:first-child,
 .ef-grid-content.autoHeight .ef-grid-tableHeader.ef-header,
-.ef-grid-content.autoHeight .ef-grid-tableHeader.ef-header>TD>DIV:first-child,
-.ef-grid-content.autoHeight .ef-grid-fixTable>TBODY>TR>TD,
-.ef-grid-content.autoHeight .ef-grid-fixTable>TBODY>TR>TD>DIV:first-child,
-.ef-grid-content.autoHeight .ef-grid-dataTable>TBODY>TR>TD,
-.ef-grid-content.autoHeight .ef-grid-dataTable>TBODY>TR>TD>DIV:first-child
-{
-	height:auto !important;
-	min-height:25px;
+.ef-grid-content.autoHeight .ef-grid-tableHeader.ef-header > TD > DIV:first-child,
+.ef-grid-content.autoHeight .ef-grid-fixTable > TBODY > TR > TD,
+.ef-grid-content.autoHeight .ef-grid-fixTable > TBODY > TR > TD > DIV:first-child,
+.ef-grid-content.autoHeight .ef-grid-dataTable > TBODY > TR > TD,
+.ef-grid-content.autoHeight .ef-grid-dataTable > TBODY > TR > TD > DIV:first-child {
+    height: auto !important;
+    min-height: 25px;
 }
 
 .ef-grid-content.autoHeight .ef-header TABLE.ef-grid-table TR.dummyRow,
-.ef-grid-content.autoHeight .ef-header TABLE.ef-grid-table TR.dummyRow>TD
-{
-	height:1px !important;
+.ef-grid-content.autoHeight .ef-header TABLE.ef-grid-table TR.dummyRow > TD {
+    height: 1px !important;
 }
 
-.ef-grid-content.autoHeight .ef-grid-fixTable>TBODY>TR:before,
-.ef-grid-content.autoHeight .ef-grid-dataTable>TBODY>TR:before
-{
-     content: '';
-     display: inline-block;
-     vertical-align: middle;
-     height: 100%;
-     width:0px;
+.ef-grid-content.autoHeight .ef-grid-fixTable > TBODY > TR:before,
+.ef-grid-content.autoHeight .ef-grid-dataTable > TBODY > TR:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0px;
 }
 
-.ef-grid-content .rowGroupHeader
-{
+.ef-grid-content .rowGroupHeader {
     background: white;
 }
 
 /*分组行*/
-.ef-grid-content .groupRow > TD
-{
-	font-weight: bold;
-	border-style: solid;
-	border-width: 0px 0px 2px;
-	border-color: rgb(153, 187, 232);
+.ef-grid-content .groupRow > TD {
+    font-weight: bold;
+    border-style: solid;
+    border-width: 0px 0px 2px;
+    border-color: rgb(153, 187, 232);
 }
 
 /*分组行控制图标*/
-.ef-grid-content .groupRow .groupRowIcon
-{
+.ef-grid-content .groupRow .groupRowIcon {
 }
 
-.ef-grid-content .groupRow:hover .groupRowIcon
-{
-	background-image: url(../EF/Themes/base/images/ui-icons_de3e3e_256x240.png);
+.ef-grid-content .groupRow:hover .groupRowIcon {
+    background-image: url(../EF/Themes/base/images/ui-icons_de3e3e_256x240.png);
 }
 
 /*
  *  EFGrid Part End
  */
 
-.ef_tree_grid_class  {
-	border-top:1px solid #A6C9E2;
-	border-left:1px solid #A6C9E2;
+.ef_tree_grid_class {
+    border-top: 1px solid #A6C9E2;
+    border-left: 1px solid #A6C9E2;
 
 }
 
-.ef_tree_grid_class .ef-grid-tableHeader-tableTR{
+.ef_tree_grid_class .ef-grid-tableHeader-tableTR {
 
-		background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
+    background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
 
 }
 
-.ef_tree_grid_class th{
+.ef_tree_grid_class th {
 
-	}
+}
 
 .ef_tree_grid_class td {
-	border:0px;
+    border: 0px;
 }
 
 /*
@@ -1455,60 +1472,70 @@ TABLE.ef-query-table
 .ef-state-default.ef-button {
     /**/
     background: url(Images/effectBg/ef_bg_glass_1x400.png) #dfeffc;
-    background-position:0px 0px;
-    background-repeat:repeat-x;
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
     color: #2e6e9e;
-    height:21px;
-    border:1px solid #c5dbec;
-    line-height:1.4;
-    font-weight:normal;
+    height: 21px;
+    border: 1px solid #c5dbec;
+    line-height: 1.4;
+    font-weight: normal;
     padding: 2px 6px;
 }
 
 /*通常按钮悬停样式*/
-.ef-state-hover.ef-button{
+.ef-state-hover.ef-button {
     /**/
-    background:50% 50% repeat-x url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5;
-    color: #e17009 ;
-    border:1px solid #79b7e7;
+    background: 50% 50% repeat-x url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5;
+    color: #e17009;
+    border: 1px solid #79b7e7;
 }
 
 /*通常按钮按下样式*/
-.ef-state-active.ef-button{
+.ef-state-active.ef-button {
     /*url(Images/effectBg/BgFill-2.png)*/
-    background:  white;
-    color: #e17009 ;
-    border:1px solid #79b7e7;
+    background: white;
+    color: #e17009;
+    border: 1px solid #79b7e7;
 }
 
 /*通常按钮不可用时样式*/
 .ef-state-disabled.ef-button {
-	opacity: .35;
-	filter: Alpha(Opacity=35);
-	background-image: none;
+    opacity: .35;
+    filter: Alpha(Opacity=35);
+    background-image: none;
 }
 
 /*
 ----按钮上下边框样式----
 */
-.b1,.b2{height:0px; font-size:0px; overflow:hidden; display:block; margin:0 0px;border-top:0px solid;border-bottom:0px solid; border-color:#888;}
+.b1, .b2 {
+    height: 0px;
+    font-size: 0px;
+    overflow: hidden;
+    display: block;
+    margin: 0 0px;
+    border-top: 0px solid;
+    border-bottom: 0px solid;
+    border-color: #888;
+}
 
 /*
 ----按钮所在Div样式----
 */
 .content {
-	/*border-right:1px solid;
-	border-left:1px solid;*/
-	border-color:#888;
-	overflow:hidden;
-	padding:0px 6px 0px 6px;}
+    /*border-right:1px solid;
+    border-left:1px solid;*/
+    border-color: #888;
+    overflow: hidden;
+    padding: 0px 6px 0px 6px;
+}
 
 .buttonClass {
     background: #e6e6e6 url(Images/effectBg/ef_bg_glass_1x400.png);
     font-size: 10px;
     font-weight: Bold;
     border: 1px solid #c9c9c9;
-	margin: auto;
+    margin: auto;
     color: #505050;
     font-family: 微软雅黑, 宋体;
     text-align: center;
@@ -1518,7 +1545,7 @@ TABLE.ef-query-table
 
 /*禁用按钮样式*/
 .ef-button-disabled {
-	/*
+    /*
     background:#f6f6f6;
     border:1px solid #e6e6e6;
     font-size: 12px;
@@ -1534,8 +1561,7 @@ TABLE.ef-query-table
     display: none;
 }
 
-.ef-button-disabled A:link,.ef-button-disabled A:active,.ef-button-disabled A:visited
-{
+.ef-button-disabled A:link, .ef-button-disabled A:active, .ef-button-disabled A:visited {
     color: #b2b2b2;
     text-decoration: none;
 }
@@ -1550,10 +1576,11 @@ TABLE.ef-query-table
     font-size: 12px;
     color: #505050;
     border: 1px solid #b4b4b4;
-    height:24px;
-    width:100%;
+    height: 24px;
+    width: 100%;
 }
-.pulldown[disabled='disabled'], .pulldown[disabled]{
+
+.pulldown[disabled='disabled'], .pulldown[disabled] {
     background-color: lightgrey;
 
 }
@@ -1565,8 +1592,8 @@ TABLE.ef-query-table
     color: #505050;
     padding-left: 3px;
     border: 1px solid #B3B3B3;
-    height:21px;
-    margin-left:4px;
+    height: 21px;
+    margin-left: 4px;
 }
 
 #rightAlign {
@@ -1576,7 +1603,7 @@ TABLE.ef-query-table
 INPUT.inputField,
 .ffb-input {
     font-family: Consolas, 微软雅黑, 宋体, arial;
-	/*
+    /*
     font-family: 微软雅黑, 宋体;
     */
     font-size: 12px;
@@ -1592,9 +1619,9 @@ INPUT.inputField,
     border: 2px inset;
         padding-left: 1px;
     */
-    height:24px;
+    height: 24px;
     /*高度为整体高度,减去border 1px * 2,减去padding 2px * 2*/
-    line-height:normal;
+    line-height: normal;
 
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1604,15 +1631,14 @@ INPUT.inputField,
     /*float:left;*/
 }
 
-
 .inputField[readonly="readonly"], .inputField[readonly] {
-	background-color: #EEE;
-	border:1px solid lightgrey;
+    background-color: #EEE;
+    border: 1px solid lightgrey;
 }
 
 /*grid导航栏跳转页面输入框*/
 .smallinputField {
-	/*
+    /*
     font-family: Courier New, arial, helvetica, sans-serif;*/
     font-family: 微软雅黑, 宋体;
     font-size: 12px;
@@ -1620,23 +1646,23 @@ INPUT.inputField,
     background-color: #ffffff;
     height: 19px;
     padding-left: 1px;
-    padding-top:0px;
-    padding-bottom:0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     border: 1px solid #B3B3B3;
 }
 
 /*grid导航栏页面跳转按钮*/
 .ef-grid-navigationJumpToButton {
-	height:20px;
-	margin-right:4px;
-	margin-left:4px;
-	padding:2px;
-	line-height:1.6;
+    height: 20px;
+    margin-right: 4px;
+    margin-left: 4px;
+    padding: 2px;
+    line-height: 1.6;
 }
 
-.ef-grid-navigationJumpToButton-text{
-	padding:3px;
-	white-space:nowrap;
+.ef-grid-navigationJumpToButton-text {
+    padding: 3px;
+    white-space: nowrap;
 }
 
 .ef-grid-navigationJumpToButtonTD {
@@ -1645,39 +1671,40 @@ INPUT.inputField,
 
 /*grid工具栏图片按钮所在TD*/
 .ef-grid-funcImgButtonTD {
-	padding-right:1px;
-	padding-left:3px;
-	width:16px;
+    padding-right: 1px;
+    padding-left: 3px;
+    width: 16px;
 }
 
 /*grid工具栏图片按钮*/
 .ef-state-default.ef-grid-funcImgButtonTD {
-	/**/
-	border:1px solid transparent;
+    /**/
+    border: 1px solid transparent;
 }
+
 .ef-grid-funcImgButtonTD.ef-state-default.ef-state-hover {
-	/**/
-	border:1px solid #79b7e7;
-	background-color:#D0E5F5;
+    /**/
+    border: 1px solid #79b7e7;
+    background-color: #D0E5F5;
 }
 
 .ef-grid-funcImgButtonTD span {
 
-	width:16px;
-	height:16px;
-	background-image:url(Themes/Images/icons/ef-icons_6da8d5.png);
-	background-color:transparent;
-	/*for IE8*/
+    width: 16px;
+    height: 16px;
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+    background-color: transparent;
+    /*for IE8*/
 }
 
 /*subgrid中按钮样式*/
 .ef-subgrid-button {
-	width:45px;
-	margin-right:5px;
-	margin-bottom:5px;
-	font-size:12px;
-	text-align:center;
-	line-height:1.5;
+    width: 45px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.5;
 }
 
 .region {
@@ -1699,10 +1726,10 @@ INPUT.inputField,
 /*--EFConfigMenu样式--*/
 /*分隔条*/
 .ef-menuconfig-sep {
-	border-top: 1px solid #BEBEBE;
-	font-size: 0;
-	margin: 5px 0;
-	padding: 0 5px;
+    border-top: 1px solid #BEBEBE;
+    font-size: 0;
+    margin: 5px 0;
+    padding: 0 5px;
 }
 
 /*二级菜单的大背景*/
@@ -1711,50 +1738,49 @@ INPUT.inputField,
     z-index: 100;
     visibility: hidden;
     min-width: 165px;
-max-width: 205px;
+    max-width: 205px;
     BACKGROUND-COLOR: white;
-    text-align:left;
-    border:solid 1px #A6C9E2;
-	border-radius:5px;
+    text-align: left;
+    border: solid 1px #A6C9E2;
+    border-radius: 5px;
 
-	margin-left:5px;
-	margin-top:-2px;
+    margin-left: 5px;
+    margin-top: -2px;
 
-	padding-top: 2px;
-	padding-bottom: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
-
 /*二级菜单正常状态*/
-.ef-menu a,.ef-menu a:visited {
+.ef-menu a, .ef-menu a:visited {
     display: block;
     width: 95%;
-	margin:0 auto 0 auto;
+    margin: 0 auto 0 auto;
     overflow: visible;
     padding: 4px 2px;
 
-    font-family:微软雅黑;
-    font-size:12px;
-    font-weight:normal;
-    font-style:normal;
-    text-decoration:none;
-    color:#1d5987;
+    font-family: 微软雅黑;
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+    color: #1d5987;
     BACKGROUND-COLOR: white;
-    border:solid 1px transparent;
+    border: solid 1px transparent;
 }
 
 /*二级菜单的悬停状态*/
 .ef-menu a:hover {
-	background: url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5 50% 50% repeat-x;
-	border:1px solid #A6C9E2;
-	color: #E17009;
-	border-radius:5px;
+    background: url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5 50% 50% repeat-x;
+    border: 1px solid #A6C9E2;
+    color: #E17009;
+    border-radius: 5px;
 }
 
 /*二级菜单的点击状态*/
-.ef-menu-item-onclick{
-	background: #626262  50% 50% repeat-x !important;
-	color:white !important;
+.ef-menu-item-onclick {
+    background: #626262 50% 50% repeat-x !important;
+    color: white !important;
 }
 
 /*菜单的小箭头样式 */
@@ -1775,69 +1801,67 @@ max-width: 205px;
 /*一级菜单正常状态*/
 .ef-menu-bar {
 
-	font-size: 14px;
-	font-weight: bold;
-	font-style: normal;
-	text-decoration: none;
-	width:100%;
-	height:25px;
-	text-align:center;
-	background: #DFEFFC url(./Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    background: #DFEFFC url(./Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
     line-height: 1.7;
-	color: #2E6E9E;
+    color: #2E6E9E;
 
-	/*border: 1px solid #C5DBEC;*/
-	border:0px;
+    /*border: 1px solid #C5DBEC;*/
+    border: 0px;
 }
 
 .ef-menu-bar a {
-	float:left;
+    float: left;
 
-	text-decoration: none;
+    text-decoration: none;
 }
 
 /*一级菜单的悬浮状态*/
-.ef-menu-hover{
-	/*
-	background: url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5;
-	color: #1d5987 ;
+.ef-menu-hover {
+    /*
+    background: url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) #d0e5f5;
+    color: #1d5987 ;
     border:1px solid #79b7e7;*/
     color: #E17009;
 }
 
 /*菜单栏所在DIV的样式*/
 .ef-menu-bar-div {
-	width: 98%;
-	height: 25px;
+    width: 98%;
+    height: 25px;
 
-	position:absolute;
+    position: absolute;
 
-	bottom: 0px;
+    bottom: 0px;
     left: 0px;
 
-	vertical-align:bottom;
+    vertical-align: bottom;
 
 }
 
 /*一级菜单点击状态*/
-.ef-menu-bar-onTextClicked{
-	background-color: transparent;
-	font-weight: bold;
+.ef-menu-bar-onTextClicked {
+    background-color: transparent;
+    font-weight: bold;
 }
 
-
-
 /*一级菜单访问离开后的状态*/
-.ef-menu-bar a,.ef-menu-bar a:visited {
-	color:#2E6E9E;
-	padding-left:5px;
-	padding-right:5px;
+.ef-menu-bar a, .ef-menu-bar a:visited {
+    color: #2E6E9E;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /*一级菜单内容（"系统平台"链接）悬停状态*/
 .ef-menu-bar a:hover {
-color: #E17009;
-background-color: #d0e5f5;
+    color: #E17009;
+    background-color: #d0e5f5;
 }
 
 /*一级菜单内容("系统平台")在点击时的样式*/
@@ -1848,7 +1872,7 @@ background-color: #d0e5f5;
 
 .ef-menu-bar a .arrow {
     border: none;
-    display:none;
+    display: none;
 }
 
 .ef-tree-container {
@@ -1864,7 +1888,7 @@ background-color: #d0e5f5;
     /* font: icon; */
     color: WindowText;
     white-space: nowrap;
-    font-family: Consolas,微软雅黑, 宋体,Arial;
+    font-family: Consolas, 微软雅黑, 宋体, Arial;
     font-size: 12px;
 }
 
@@ -1875,76 +1899,78 @@ background-color: #d0e5f5;
 }
 
 .ef-tree-item-node {
-    height:22px;
+    height: 22px;
 
-	color: #707070;
-	background: #f5f5f5;
+    color: #707070;
+    background: #f5f5f5;
 
-	border-bottom: 1px solid #cccccc;
-	-webkit-box-shadow: inset 0 1px 0 #f5f5f5;
-	-webkit-moz-shadow: inset 0 1px 0 #f5f5f5;
-	box-shadow: inset 0 1px 0 #f5f5f5;
-	-webkit-transition: all 0.15s ease-in-out;
-	-moz-transition: all 0.15s ease-in-out;
-	-ms-transition: all 0.15s ease-in-out;
-	-o-transition: all 0.15s ease-in-out;
-	transition: all 0.15s ease-in-out;
+    border-bottom: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 0 #f5f5f5;
+    -webkit-moz-shadow: inset 0 1px 0 #f5f5f5;
+    box-shadow: inset 0 1px 0 #f5f5f5;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+    -ms-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
 }
 
 /*居中对齐*/
 .ef-tree-item .ef-tree-item-node:before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle ;
-  height: 100%;
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
 }
 
-.ef-tree-item .ef-tree-item-node>* {
-  display: inline-block;
-  vertical-align: middle ;
+.ef-tree-item .ef-tree-item-node > * {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.ef-tree-item-node>a {
-	overflow:hidden;
-	text-overflow:ellipsis;
-	word-break:keep-all;
-    white-space:nowrap;
+.ef-tree-item-node > a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
 
-    height:20px;
-    line-height:20px;
+    height: 20px;
+    line-height: 20px;
 
-	margin-left: 1px;
+    margin-left: 1px;
     padding: 0px;
 
     font-size: 12px;
-    text-align:left;
+    text-align: left;
     text-decoration: none;
 
     color: #293D6B;
 
-	display:inline-block;
+    display: inline-block;
 }
 
-.ef-tree-item-node>a,
-.ef-tree-item-node>a:visited {
+.ef-tree-item-node > a,
+.ef-tree-item-node > a:visited {
     color: #293D6B;
 }
 
-.ef-tree-item-node>a:hover {
-}
-.ef-tree-item-node:hover{
-	background: rgb(234, 234, 234);
+.ef-tree-item-node > a:hover {
 }
 
-.ef-tree-item-node>.ui-theme {
-}
-.ef-tree-item-node>.ef-node-arch {
-    width:16px;
-    height:16px;
+.ef-tree-item-node:hover {
+    background: rgb(234, 234, 234);
 }
 
-.ef-tree-item-node.leaf>.ef-node-arch {
-    background:transparent !important;
+.ef-tree-item-node > .ui-theme {
+}
+
+.ef-tree-item-node > .ef-node-arch {
+    width: 16px;
+    height: 16px;
+}
+
+.ef-tree-item-node.leaf > .ef-node-arch {
+    background: transparent !important;
 }
 
 .ef-tree-icon {
@@ -1968,6 +1994,7 @@ background-color: #d0e5f5;
     /*
     font-family: "锟斤拷锟斤拷";*/
 }
+
 .efModalWindowMask {
     position: absolute;
     z-index: 500;
@@ -1978,7 +2005,7 @@ background-color: #d0e5f5;
     opacity: .3;
     filter: alpha(opacity=30);
     background-color: #ff3333;
-    display:none;
+    display: none;
 }
 
 .efModalWindowContainer {
@@ -1986,27 +2013,24 @@ background-color: #d0e5f5;
     z-index: 501;
     top: 0px;
     left: 0px;
-    display:none;
+    display: none;
     padding: 0px;
 }
 
-
-
-
 /* Tab */
 .tab-div-html {
-	background: url(Images/tag_house_bg.gif);
-	margin: 0;
-	margin-top: 0px !important;
-	margin-top: 7px;
-	width: 200px !important;
-	width: 197px;
-	float: right;
-	text-align: right
+    background: url(Images/tag_house_bg.gif);
+    margin: 0;
+    margin-top: 0px !important;
+    margin-top: 7px;
+    width: 200px !important;
+    width: 197px;
+    float: right;
+    text-align: right
 }
 
 .tab-div-content {
-	border: 1px solid #B3B3B3;
+    border: 1px solid #B3B3B3;
 }
 
 .benma_ui_tab {
@@ -2022,28 +2046,29 @@ background-color: #d0e5f5;
     white-space: nowrap;
     overflow: hidden;
 }
+
 .benma_ui_tab .scroll-left {
-	float: left;
-	position: relative;
-	/*background: url(Images/btnleft.gif) no-repeat;*/
-	width: 16px;
-	height: 16px;
-	top:5px;
-	left:2px;
-	cursor: pointer;
-	z-index: 5
+    float: left;
+    position: relative;
+    /*background: url(Images/btnleft.gif) no-repeat;*/
+    width: 16px;
+    height: 16px;
+    top: 5px;
+    left: 2px;
+    cursor: pointer;
+    z-index: 5
 }
 
 .benma_ui_tab .scroll-right {
-	float: right;
-	position: relative;
-	/*background: url(Images/btnright.gif) no-repeat;*/
-	width: 16px;
-	height: 16px;
-	top:5px;
-	right:2px;
-	cursor: pointer;
-	z-index: 5
+    float: right;
+    position: relative;
+    /*background: url(Images/btnright.gif) no-repeat;*/
+    width: 16px;
+    height: 16px;
+    top: 5px;
+    right: 2px;
+    cursor: pointer;
+    z-index: 5
 }
 
 .benma_ui_tab .tab_item {
@@ -2057,42 +2082,42 @@ background-color: #d0e5f5;
     cursor: pointer;
 }
 
-.benma_ui_tab .tab_item1  {
-	-moz-border-radius-topleft: 3px /*{cornerRadius}*/;
-	-webkit-border-top-left-radius: 3px /*{cornerRadius}*/;
-	-khtml-border-top-left-radius: 3px /*{cornerRadius}*/;
-	border-top-left-radius: 3px /*{cornerRadius}*/;
+.benma_ui_tab .tab_item1 {
+    -moz-border-radius-topleft: 3px /*{cornerRadius}*/;
+    -webkit-border-top-left-radius: 3px /*{cornerRadius}*/;
+    -khtml-border-top-left-radius: 3px /*{cornerRadius}*/;
+    border-top-left-radius: 3px /*{cornerRadius}*/;
 
-	background-repeat: repeat-x;
+    background-repeat: repeat-x;
     width: 5px;
     z-index: 100;
     white-space: nowrap;
 
-    padding:0px;
+    padding: 0px;
 }
 
 .benma_ui_tab .tab_item2 {
-	color: #2E6E9E;
+    color: #2E6E9E;
 
-	vertical-align:top;
+    vertical-align: top;
 
-	background-repeat: repeat-x;
+    background-repeat: repeat-x;
     white-space: nowrap;
     z-index: 101;
 
-    padding:0px;
+    padding: 0px;
 }
 
-.benma_ui_tab .tab_item3  {
-	-moz-border-radius-topright: 3px /*{cornerRadius}*/;
-	-webkit-border-top-right-radius: 3px /*{cornerRadius}*/;
-	-khtml-border-top-right-radius: 3px /*{cornerRadius}*/;
-	border-top-right-radius: 3px /*{cornerRadius}*/;
+.benma_ui_tab .tab_item3 {
+    -moz-border-radius-topright: 3px /*{cornerRadius}*/;
+    -webkit-border-top-right-radius: 3px /*{cornerRadius}*/;
+    -khtml-border-top-right-radius: 3px /*{cornerRadius}*/;
+    border-top-right-radius: 3px /*{cornerRadius}*/;
 
-	background-repeat:  repeat-x;
+    background-repeat: repeat-x;
     width: 5px;
 
-    padding:0px;
+    padding: 0px;
 }
 
 .benma_ui_tab .tab_close {
@@ -2107,37 +2132,37 @@ background-color: #d0e5f5;
 }
 
 .benma_ui_tab ul {
-	display: block;
-	list-style: none;
-	padding: 0;
-	margin: 0
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0
 }
 
 .benma_ui_tab li {
-	list-style: none;
-	padding: 0;
-	float: left;
-	height: 28px;
-	margin: 0px;
-	margin-left: 1px;
-	cursor: pointer;
-	border: 1px solid #C5DBEC;
-	background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
-	font-weight: bold;
-	color: #2E6E9E;
-	-moz-border-radius-topleft: 3px /*{cornerRadius}*/;
-	-webkit-border-top-left-radius: 3px /*{cornerRadius}*/;
-	-khtml-border-top-left-radius: 3px /*{cornerRadius}*/;
-	border-top-left-radius: 3px /*{cornerRadius}*/;
-	-moz-border-radius-topright: 3px /*{cornerRadius}*/;
-	-webkit-border-top-right-radius: 3px /*{cornerRadius}*/;
-	-khtml-border-top-right-radius: 3px /*{cornerRadius}*/;
-	border-top-right-radius: 3px /*{cornerRadius}*/
+    list-style: none;
+    padding: 0;
+    float: left;
+    height: 28px;
+    margin: 0px;
+    margin-left: 1px;
+    cursor: pointer;
+    border: 1px solid #C5DBEC;
+    background: #DFEFFC url(Images/effectBg/ef_bg_glass_1x400.png) 50% 50% repeat-x;
+    font-weight: bold;
+    color: #2E6E9E;
+    -moz-border-radius-topleft: 3px /*{cornerRadius}*/;
+    -webkit-border-top-left-radius: 3px /*{cornerRadius}*/;
+    -khtml-border-top-left-radius: 3px /*{cornerRadius}*/;
+    border-top-left-radius: 3px /*{cornerRadius}*/;
+    -moz-border-radius-topright: 3px /*{cornerRadius}*/;
+    -webkit-border-top-right-radius: 3px /*{cornerRadius}*/;
+    -khtml-border-top-right-radius: 3px /*{cornerRadius}*/;
+    border-top-right-radius: 3px /*{cornerRadius}*/
 }
 
 .benma_ui_tab .tab_item1_mouseover {
-	background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
-	color: #E17009;
+    background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
+    color: #E17009;
 }
 
 .benma_ui_tab .tab_item1_selected {
@@ -2146,8 +2171,8 @@ background-color: #d0e5f5;
 }
 
 .benma_ui_tab .tab_item2_mouseover {
-	background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
-	color: #E17009;
+    background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
+    color: #E17009;
 }
 
 .benma_ui_tab .tab_item2_selected {
@@ -2156,8 +2181,8 @@ background-color: #d0e5f5;
 }
 
 .benma_ui_tab .tab_item3_mouseover {
-	background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
-	color: #E17009;
+    background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
+    color: #E17009;
 }
 
 .benma_ui_tab .tab_item3_selected {
@@ -2188,26 +2213,26 @@ background-color: #d0e5f5;
 }
 
 .benma_ui_tab .tab_item1_bottom {
-	/*background-image: url(tab1_bottom.gif)*/
-	background-repeat: repeat-x;
-	width: 5px;
+    /*background-image: url(tab1_bottom.gif)*/
+    background-repeat: repeat-x;
+    width: 5px;
 }
 
 .benma_ui_tab .tab_item2_bottom {
-	/*background-image: url(tab2_bottom.gif)*/
-	background-repeat: repeat-x;
+    /*background-image: url(tab2_bottom.gif)*/
+    background-repeat: repeat-x;
 }
 
 .benma_ui_tab .tab_item3_bottom {
-	/*background-image: url(tab3_bottom.gif)*/
-	background-repeat: repeat-x;
-	width: 5px;
+    /*background-image: url(tab3_bottom.gif)*/
+    background-repeat: repeat-x;
+    width: 5px;
 }
 
 /*-- 原来在代码中设置 现移到css中 --*/
 .benma_ui_tab_iframe {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     border-left: 1px solid #999999;
     border-right: 1px solid #999999;
     border-top: none;
@@ -2215,19 +2240,19 @@ background-color: #d0e5f5;
 }
 
 .benma_ui_tab #jquery_tab_div {
-	margin-top:6px;
-	margin-left:4px;
+    margin-top: 6px;
+    margin-left: 4px;
 }
 
 .benma_ui_tab_label {
-	position:absolute;
-	right:2px;
+    position: absolute;
+    right: 2px;
 
-	top:50%;
-	margin-top:-12px;
+    top: 50%;
+    margin-top: -12px;
 
-	height:24px;
-	color:#2e6e9e;
+    height: 24px;
+    color: #2e6e9e;
 }
 
 .ef-outLookTree {
@@ -2236,22 +2261,23 @@ background-color: #d0e5f5;
 }
 
 .ef-outLookTree-leftImg {
-	margin-top: -4px;
-	/*position: absolute;*/
-	float:left;
-	margin-right:0px;
-	top: 50%;
+    margin-top: -4px;
+    /*position: absolute;*/
+    float: left;
+    margin-right: 0px;
+    top: 50%;
 }
+
 .ef-outLookTree-RightImg {
-	margin-top: -4px;
-	/*position: absolute;*/
-	float:right;
-	margin-right:0px;
-	top: 50%;
+    margin-top: -4px;
+    /*position: absolute;*/
+    float: right;
+    margin-right: 0px;
+    top: 50%;
 }
 
 .ef-outLookTree span {
-padding-left: 10px;
+    padding-left: 10px;
 }
 
 .ef-outLookTree-item {
@@ -2263,6 +2289,7 @@ padding-left: 10px;
     white-space: nowrap;
     height: 20px;
 }
+
 .ef-outLookTree-current {
     color: highlighttext;
     text-decoration: none;
@@ -2280,8 +2307,7 @@ padding-left: 10px;
     background: #D2EAF6;
 }
 
-.rowDetail
-{
+.rowDetail {
     Height: auto;
 }
 
@@ -2324,102 +2350,119 @@ padding-left: 10px;
 /* FlexBox CSS Define By XiaHongzhong */
 /* Input textbox - do not specify a width here, it will be overwritten */
 /*使用统一的input定义*/
-.ffb-input
-{
-    float:left;
+.ffb-input {
+    float: left;
 }
+
 /* Color of watermark, if present */
 .ffb-input.watermark { /* added and removed dynamically */
-    color:#888; /* must specify along with input color */
+    color: #888; /* must specify along with input color */
 }
+
 /* Drop-down arrow, with sprited image */
-.ffb-arrow
-{
-    float:left;
-    width:17px;
-    height:22px;
+.ffb-arrow {
+    float: left;
+    width: 17px;
+    height: 22px;
     background: url(Images/efcalendar_drop1.png) 2px 4px no-repeat;
-    border:1px solid #A6C9E2;
+    border: 1px solid #A6C9E2;
 }
-.ffb-arrow.out { /* css sprite technique
-	background-position:0;*/
+
+.ffb-arrow.out {
+    /* css sprite technique
+       background-position:0;*/
 
 }
-.ffb-arrow.over { /* css sprite technique
-	background-position:-17px 0;*/
-	background-color:#DFEFFC;
+
+.ffb-arrow.over {
+    /* css sprite technique
+       background-position:-17px 0;*/
+    background-color: #DFEFFC;
 }
-.ffb-arrow.active { /* css sprite technique
-    background-position:-34px 0;*/
-    background-color:#D0E5F5;
+
+.ffb-arrow.active {
+    /* css sprite technique
+       background-position:-34px 0;*/
+    background-color: #D0E5F5;
 }
-.ffb-no-results
-{
-    padding:2px;
-    color:#888;
-    font-style:italic;
-    border-bottom:1px solid #828790;
+
+.ffb-no-results {
+    padding: 2px;
+    color: #888;
+    font-style: italic;
+    border-bottom: 1px solid #828790;
 }
+
 /* Container for dropdown contents */
 .ffb {
-    position:absolute; /* this guy's parent div is hard-coded to position:relative */
-    overflow:hidden;
-    border-left:1px solid #828790; /* #7B9EBD for Vista */
-    border-right:1px solid #828790;
-    background-color:#fff; /* Give it a background-color, so it's not transparent */
-    margin-top:25px;margin-left: 0px;
-    width:109px;
-    z-index:1003;
+    position: absolute; /* this guy's parent div is hard-coded to position:relative */
+    overflow: hidden;
+    border-left: 1px solid #828790; /* #7B9EBD for Vista */
+    border-right: 1px solid #828790;
+    background-color: #fff; /* Give it a background-color, so it's not transparent */
+    margin-top: 25px;
+    margin-left: 0px;
+    width: 109px;
+    z-index: 1003;
 }
+
 /* Inner div for dropdown */
 .ffb .content {
-    overflow:auto;
-    padding:0px;
+    overflow: auto;
+    padding: 0px;
 }
+
 .ffb .content .row {
-    border-bottom:1px solid #828790;
-    color:#000;
-    height:35px;
-    clear:both;
+    border-bottom: 1px solid #828790;
+    color: #000;
+    height: 35px;
+    clear: both;
 }
+
 .ffb-sel {
-    cursor:pointer;
-    cursor:hand;
+    cursor: pointer;
+    cursor: hand;
     /*color:#fff !important;*/
-	background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
+    background: #d0e5f5 url(Images/effectBg/ef_bg_glass_state_hover_1x400.png) 50% 50% repeat-x;
 }
+
 .ffb-match {
-    font-weight:bold;
-    color:#000;
+    font-weight: bold;
+    color: #000;
 }
 
 /* Paging */
 .ffb .paging {
-    vertical-align:middle;
-    border-bottom:1px solid #828790;
+    vertical-align: middle;
+    border-bottom: 1px solid #828790;
 }
+
 .ffb .page, .ffb a.page {
-    font-size:85%;
-    padding:2px;
-    border:solid 1px #339;
-    background-color:#DFEFFC;
-    margin:2px;
+    font-size: 85%;
+    padding: 2px;
+    border: solid 1px #339;
+    background-color: #DFEFFC;
+    margin: 2px;
 }
+
 .ffb .box {
-    width:22px;
-    margin:2px;
+    width: 22px;
+    margin: 2px;
 }
+
 .ffb .summary {
-    font-size:85%;
+    font-size: 85%;
 }
 
 font.flexbox_value {
-    font-weight:bold;
+    font-weight: bold;
 }
+
 font.flexbox_detail {
-    font-style:italic;
+    font-style: italic;
     color: #2E6E9E;
 }
+
 /* FlexBox CSS Define By XiaHongzhong End */
 
 /* alert CSS Define By XiaHongzhong Start */
@@ -2429,13 +2472,14 @@ font.flexbox_detail {
     min-width: 300px; /* Dialog will be no smaller than this */
     max-width: 600px; /* Dialog will wrap after this width */
     background: #E2EEF2;
-/*background: #ffffff;*/
-/*border: solid 5px #999;*/
+    /*background: #ffffff;*/
+    /*border: solid 5px #999;*/
     color: #000;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
+
 /* annotated by tcg */
 /*#popup_title {*/
 /*font-size: 14px;*/
@@ -2488,40 +2532,126 @@ font.flexbox_detail {
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
-#cboxOverlay{position:fixed; width:100%; height:100%;}
-#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
-#cboxContent{position:relative;}
-#cboxLoadedContent{overflow:auto;}
-#cboxTitle{margin:0;}
-#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
-.cboxPhoto{float:left; margin:auto; border:0; display:block;}
-.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxOverlay, #cboxWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#cboxOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#cboxMiddleLeft, #cboxBottomLeft {
+    clear: left;
+}
+
+#cboxContent {
+    position: relative;
+}
+
+#cboxLoadedContent {
+    overflow: auto;
+}
+
+#cboxTitle {
+    margin: 0;
+}
+
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+    cursor: pointer;
+}
+
+.cboxPhoto {
+    float: left;
+    margin: auto;
+    border: 0;
+    display: block;
+}
+
+.cboxIframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
 
 /*
     User Style:
     Change the following styles to modify the appearance of ColorBox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay{background:url(Images/overlay.png) repeat 0 0;}
-#colorbox{}
-#cboxContent{background:#387EB9; overflow:hidden;}
-#cboxError{padding:50px; border:1px solid #ccc;}
-#cboxLoadedContent{margin-top:28px;}
-#cboxTitle{position:absolute; top:4px; left:0; text-align:center; width:100%; color:#FFFFFF;}
-#cboxCurrent{position:absolute; top:4px; left:58px; color:#949494;}
-#cboxSlideshow{position:absolute; top:4px; right:30px; color:#0092ef;}
-#cboxLoadingOverlay{background:url(Images/loading_background.png) no-repeat center center;}
-#cboxLoadingGraphic{background:url(Images/loading.gif) no-repeat center center;}
-#cboxClose {
-	position: absolute;
-	top: 1px;
-	right: 0;
-	background: url(Images/close_big.png) no-repeat;
+#cboxOverlay {
+    background: url(Images/overlay.png) repeat 0 0;
+}
 
-	width:27px;
-	height:27px;
+#colorbox {
+}
+
+#cboxContent {
+    background: #387EB9;
+    overflow: hidden;
+}
+
+#cboxError {
+    padding: 50px;
+    border: 1px solid #ccc;
+}
+
+#cboxLoadedContent {
+    margin-top: 28px;
+}
+
+#cboxTitle {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    text-align: center;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+#cboxCurrent {
+    position: absolute;
+    top: 4px;
+    left: 58px;
+    color: #949494;
+}
+
+#cboxSlideshow {
+    position: absolute;
+    top: 4px;
+    right: 30px;
+    color: #0092ef;
+}
+
+#cboxLoadingOverlay {
+    background: url(Images/loading_background.png) no-repeat center center;
+}
+
+#cboxLoadingGraphic {
+    background: url(Images/loading.gif) no-repeat center center;
+}
+
+#cboxClose {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    background: url(Images/close_big.png) no-repeat;
+
+    width: 27px;
+    height: 27px;
 }
 
 /*
@@ -2536,26 +2666,31 @@ font.flexbox_detail {
 .cboxIE #cboxBottomRight,
 .cboxIE #cboxMiddleLeft,
 .cboxIE #cboxMiddleRight {
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);
 }
-
-
 
 h1 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
-}
-h2 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
-}
-h3 {
-    margin: 0px; padding: 0px; border: 0px currentColor;
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
 }
 
+h2 {
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
+}
+
+h3 {
+    margin: 0px;
+    padding: 0px;
+    border: 0px currentColor;
+}
 
 .progressWrapper {
     width: 357px;
-    max-height:56px;
-    float:left;
+    max-height: 56px;
+    float: left;
 }
 
 .progressContainer {
@@ -2565,6 +2700,7 @@ h3 {
     background-color: #F7F7F7;
 
 }
+
 /* Message */
 .message {
     margin: 1em 0;
@@ -2574,38 +2710,37 @@ h3 {
     overflow: hidden;
 }
 
-
- Current
+Current
 .green {
-border: solid 1px #DDF0DD;
-background-color: #EBFFEB;
+    border: solid 1px #DDF0DD;
+    background-color: #EBFFEB;
 }
 
- Complete
+Complete
 .blue {
-border: solid 0px #ccccff;
-float:left;
-background-color: #cccccc;
+    border: solid 0px #ccccff;
+    float: left;
+    background-color: #cccccc;
 }
 
 .progressName {
-font-size: 8pt;
-font-weight: 700;
-color: #555;
-width: 225px;
-height: 14px;
-text-align: left;
-float:left;
-white-space: nowrap;
+    font-size: 8pt;
+    font-weight: 700;
+    color: #555;
+    width: 225px;
+    height: 14px;
+    text-align: left;
+    float: left;
+    white-space: nowrap;
 }
 
 .fileLoad {
-/*font-size: 7pt;*/
-font-weight: 600;
-color: #555;
-height: 10px;
-text-align: left;
-white-space: nowrap;
+    /*font-size: 7pt;*/
+    font-weight: 600;
+    color: #555;
+    height: 10px;
+    text-align: left;
+    white-space: nowrap;
 }
 
 .progressBarInProgress,
@@ -2640,652 +2775,734 @@ white-space: nowrap;
 }
 
 a.progressCancel {
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/delete.png");
-    background-repeat:no-repeat;
-    overflow:hidden;
-    background-position:-1px -1px;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/delete.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position: -1px -1px;
     float: right;
-    height:12px;
-    width:11px;
+    height: 12px;
+    width: 11px;
 }
 
-
 .deleteBtn {
-    display:inline-block;
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/ef_pop_up_delete.gif");
-    background-repeat:no-repeat;
-    overflow:hidden;
+    display: inline-block;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/ef_pop_up_delete.gif");
+    background-repeat: no-repeat;
+    overflow: hidden;
     float: right;
     margin-top: 4px;
-    height:16px;
-    width:16px;
+    height: 16px;
+    width: 16px;
 }
 
 .updateBtn {
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/efregion_load.gif");
-    background-repeat:no-repeat;
-    overflow:hidden;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/efregion_load.gif");
+    background-repeat: no-repeat;
+    overflow: hidden;
     float: right;
     margin-top: 4px;
-    height:16px;
-    width:16px;
+    height: 16px;
+    width: 16px;
 }
 
 a.progressCancel:hover {
     background-position: 0px 0px;
 }
 
-/* -- SWFUpload Object Styles ------------------------------- */
-.swfupload {
-    vertical-align: top;
-}
-
 element.style {
-    display:block;
+    display: block;
 }
 
-.a_remove{
-    background-attachment:scroll;
-    background-color:transparent;
-    background-image:url("Images/delete.png");
-    background-repeat:no-repeat;
-    overflow:hidden;
-}
 .a_remove {
-    background-position:-1px -1px;
-    height:12px;
-    width:11px;
-}
-.panel-header{
-	padding:2px;
-	line-height:15px;
-	color:#15428b;
-	font-weight:bold;
-	font-size:12px;
-	background:url('Images/panel_title.png') repeat-x;
-	position:relative;
-	border:1px solid #99BBE8;
-}
-.panel-title{
-	background:url('Images/blank1.gif') no-repeat;
-}
-.layout-body{
-	overflow:auto;
-	background:#fff;
-}
-.panel-body{
-	overflow:auto;
-	border:1px solid #99BBE8;
-	border-top-width:0px;
-}
-.datagrid-view{
-	position:relative;
-	overflow:hidden;
-}
-.datagrid-view1{
-	position:absolute;
-	overflow:hidden;
-	left:0px;
-	top:0px;
-	border-right:1px solid #ccc;
+    background-attachment: scroll;
+    background-color: transparent;
+    background-image: url("Images/delete.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
-.datagrid-header-inner{
-	float:left;
-	width:10000px;
+.a_remove {
+    background-position: -1px -1px;
+    height: 12px;
+    width: 11px;
 }
-.datagrid-header td{
-	border-right:1px dotted #ccc;
-	font-size:12px;
-	font-weight:normal;
-	background:#fafafa url('Images/datagrid_header_bg.gif') repeat-x left bottom;
-	border-bottom:1px dotted #ccc;
-	border-top:1px dotted #fff;
+
+.panel-header {
+    padding: 2px;
+    line-height: 15px;
+    color: #15428b;
+    font-weight: bold;
+    font-size: 12px;
+    background: url('Images/panel_title.png') repeat-x;
+    position: relative;
+    border: 1px solid #99BBE8;
 }
-.datagrid-header td.datagrid-header-over{
-	background:#EBF3FD;
+
+.panel-title {
+    background: url('Images/blank1.gif') no-repeat;
 }
-.datagrid-header .datagrid-cell{
-	margin:0;
-	padding:3px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
-	overflow:hidden;
-	text-align:center;
+
+.layout-body {
+    overflow: auto;
+    background: #fff;
 }
-.datagrid-header .datagrid-cell-group{
-	margin:0;
-	padding:4px 2px 4px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
-	overflow:hidden;
-	text-align:center;
+
+.panel-body {
+    overflow: auto;
+    border: 1px solid #99BBE8;
+    border-top-width: 0px;
 }
-.datagrid-header-rownumber{
-	width:25px;
-	text-align:center;
-	margin:0px;
-	padding:3px 0px;
+
+.datagrid-view {
+    position: relative;
+    overflow: hidden;
 }
-.datagrid-body{
-	margin:0;
-	padding:0;
-	overflow-y:auto;
-	overflow-x:hidden;
-	zoom:1;
+
+.datagrid-view1 {
+    position: absolute;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    border-right: 1px solid #ccc;
 }
+
+.datagrid-header-inner {
+    float: left;
+    width: 10000px;
+}
+
+.datagrid-header td {
+    border-right: 1px dotted #ccc;
+    font-size: 12px;
+    font-weight: normal;
+    background: #fafafa url('Images/datagrid_header_bg.gif') repeat-x left bottom;
+    border-bottom: 1px dotted #ccc;
+    border-top: 1px dotted #fff;
+}
+
+.datagrid-header td.datagrid-header-over {
+    background: #EBF3FD;
+}
+
+.datagrid-header .datagrid-cell {
+    margin: 0;
+    padding: 3px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-align: center;
+}
+
+.datagrid-header .datagrid-cell-group {
+    margin: 0;
+    padding: 4px 2px 4px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
+    overflow: hidden;
+    text-align: center;
+}
+
+.datagrid-header-rownumber {
+    width: 25px;
+    text-align: center;
+    margin: 0px;
+    padding: 3px 0px;
+}
+
+.datagrid-body {
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    zoom: 1;
+}
+
 .datagrid-body table {
-	width:100%;
-}
-.datagrid-view1 .datagrid-body-inner{
-	padding-bottom:20px;
-}
-.datagrid-view1 .datagrid-body{
-	overflow:hidden;
-}
-.datagrid-footer{
-	overflow:hidden;
-}
-.datagrid-footer-inner{
-	border-top:1px solid #ccc;
-	width:10000px;
-	float:left;
-}
-.datagrid-body td,.datagrid-footer td{
-	font-size:12px;
-	border-right:1px dotted #ccc;
-	border-bottom:1px dotted #ccc;
-	overflow:hidden;
-	padding:0;
-	margin:0;
-}
-.datagrid-body .datagrid-cell,.datagrid-footer .datagrid-cell{
-	overflow:hidden;
-	margin:0;
-	padding:3px 4px;
-	white-space:nowrap;
-	word-wrap:normal;
+    width: 100%;
 }
 
-.Navigator{
-	/*background:url(../../EF/./EF/Images/attach/demo/navigator-bg.jpg);*/
-	background-repeat:repeat-y;
-	font-size:12px;
-	font-family:Arial, Helvetica, sans-serif,微软雅黑, 宋体;
-	color:#000;
+.datagrid-view1 .datagrid-body-inner {
+    padding-bottom: 20px;
 }
 
-.scrollBar{
-	height:600px;
-	overflow:auto;
-	overflow-x:hidden;
-	border:solid 1px #367dbb;
-	margin-right:40px;
+.datagrid-view1 .datagrid-body {
+    overflow: hidden;
 }
 
-.titleStyle{
-	font-family:Calibri, Arial, "微软雅黑", "宋体";
-	width:100%;
-	height:50px;
-	font-size:16px;
-	text-align:left;
+.datagrid-footer {
+    overflow: hidden;
+}
+
+.datagrid-footer-inner {
+    border-top: 1px solid #ccc;
+    width: 10000px;
+    float: left;
+}
+
+.datagrid-body td, .datagrid-footer td {
+    font-size: 12px;
+    border-right: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.datagrid-body .datagrid-cell, .datagrid-footer .datagrid-cell {
+    overflow: hidden;
+    margin: 0;
+    padding: 3px 4px;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+
+.Navigator {
+    /*background:url(../../EF/./EF/Images/attach/demo/navigator-bg.jpg);*/
+    background-repeat: repeat-y;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif, 微软雅黑, 宋体;
+    color: #000;
+}
+
+.scrollBar {
+    height: 600px;
+    overflow: auto;
+    overflow-x: hidden;
+    border: solid 1px #367dbb;
+    margin-right: 40px;
+}
+
+.titleStyle {
+    font-family: Calibri, Arial, "微软雅黑", "宋体";
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    text-align: left;
 }
 
 .titleStyle span {
-	font-size:24px;
-	color:#000000;
+    font-size: 24px;
+    color: #000000;
 }
+
 .titleStyle div {
-	font-size:15px;
-	margin-top:2px;
-	margin-bottom:4px;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 #download {
-	font-size: 10px;
+    font-size: 10px;
 }
-
 
 /* css for dialog */
 .ui-dialog .ui-dialog-content {
-	padding : 0px !important;
+    padding: 0px !important;
 }
 
 /* css for timepicker */
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0;}
+.ui-timepicker-div .ui-widget-header {
+    margin-bottom: 8px;
+}
 
+.ui-timepicker-div dl {
+    text-align: left;
+}
+
+.ui-timepicker-div dl dt {
+    height: 25px;
+    margin-bottom: -25px;
+}
+
+.ui-timepicker-div dl dd {
+    margin: 0 10px 10px 65px;
+}
+
+.ui-timepicker-div td {
+    font-size: 90%;
+}
+
+.ui-tpicker-grid-label {
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
 
 /*styles for jquery ui daterangepicker plugin */
 
 .ui-daterangepickercontain {
-	position: absolute;
-	z-index: 999;
+    position: absolute;
+    z-index: 999;
 }
+
 .ui-daterangepickercontain .ui-daterangepicker {
-	float: left;
-	padding: 5px !important;
-	width: auto;
-	display: inline;
-	background-image: none !important;
-	clear: left;
+    float: left;
+    padding: 5px !important;
+    width: auto;
+    display: inline;
+    background-image: none !important;
+    clear: left;
 }
+
 .ui-daterangepicker ul, .ui-daterangepicker .ranges, .ui-daterangepicker .range-start, .ui-daterangepicker .range-end {
-	float: left;
-	padding: 0;
-	margin: 0;
+    float: left;
+    padding: 0;
+    margin: 0;
 }
+
 .ui-daterangepicker .ranges {
-	width: auto;
-	position: relative;
-	padding: 5px 5px 40px 0;
-	margin-left: 10px;
+    width: auto;
+    position: relative;
+    padding: 5px 5px 40px 0;
+    margin-left: 10px;
 }
+
 .ui-daterangepicker .range-start, .ui-daterangepicker .range-end {
-	margin-left: 5px;
+    margin-left: 5px;
 }
+
 .ui-daterangepicker button.btnDone {
-	margin: 0 5px 5px 0;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	clear: both;
-	cursor: pointer;
-	font-size: 1.1em;
+    margin: 0 5px 5px 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    clear: both;
+    cursor: pointer;
+    font-size: 1.1em;
 }
+
 .ui-daterangepicker ul {
-	width: 17.6em;
-	background: none;
-	border: 0;
+    width: 17.6em;
+    background: none;
+    border: 0;
 }
+
 .ui-daterangepicker li {
-	list-style: none;
-	padding: 1px;
-	cursor: pointer;
-	margin: 1px 0;
+    list-style: none;
+    padding: 1px;
+    cursor: pointer;
+    margin: 1px 0;
 }
+
 .ui-daterangepicker li.ui-state-hover, .ui-daterangepicker li.ui-state-active {
-	padding: 0;
+    padding: 0;
 }
+
 .ui-daterangepicker li.preset_0 {
-	margin-top: 1.5em !important;
+    margin-top: 1.5em !important;
 }
+
 .ui-daterangepicker .ui-widget-content a {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
+
 .ui-daterangepicker li a {
-	font-weight: normal;
-	margin: .3em .5em;
-	display: block;
+    font-weight: normal;
+    margin: .3em .5em;
+    display: block;
 }
+
 .ui-daterangepicker li span {
-	float: right;
-	margin: .3em .2em;
+    float: right;
+    margin: .3em .2em;
 }
+
 .ui-daterangepicker .title-start, .ui-daterangepicker .title-end {
-	display: block;
-	margin: 0 0 .2em;
-	font-size: 1em;
-	padding: 0 4px 2px;
+    display: block;
+    margin: 0 0 .2em;
+    font-size: 1em;
+    padding: 0 4px 2px;
 }
+
 .ui-daterangepicker .ui-datepicker-inline {
-	font-size: 1em;
+    font-size: 1em;
 }
+
 .ui-daterangepicker-arrows {
-	padding: 2px;
-	width: 204px;
-	position: relative;
+    padding: 2px;
+    width: 204px;
+    position: relative;
 }
+
 .ui-daterangepicker-arrows input.ui-rangepicker-input {
-	width: 158px;
-	margin: 0 2px 0 20px;
-	padding: 2px;
-	height: 1.1em;
+    width: 158px;
+    margin: 0 2px 0 20px;
+    padding: 2px;
+    height: 1.1em;
 }
+
 .ui-daterangepicker-arrows .ui-daterangepicker-prev, .ui-daterangepicker-arrows .ui-daterangepicker-next {
-	position: absolute;
-	top: 2px;
-	padding: 1px;
+    position: absolute;
+    top: 2px;
+    padding: 1px;
 }
+
 .ui-daterangepicker-arrows .ui-daterangepicker-prev {
-	left: 2px;
+    left: 2px;
 }
+
 .ui-daterangepicker-arrows .ui-daterangepicker-next {
-	right: 2px;
+    right: 2px;
 }
+
 .ui-daterangepicker-arrows .ui-daterangepicker-prev:hover,
 .ui-daterangepicker-arrows .ui-daterangepicker-next:hover,
 .ui-daterangepicker-arrows .ui-daterangepicker-prev:focus,
 .ui-daterangepicker-arrows .ui-daterangepicker-next:focus {
-	padding: 0;
+    padding: 0;
 }
 
 .ico_att {
-    BORDER-BOTTOM-STYLE: none; PADDING-BOTTOM: 0px; BORDER-LEFT-STYLE: none; PADDING-LEFT: 0px; WIDTH: 16px; PADDING-RIGHT: 0px; BORDER-TOP-STYLE: none; BACKGROUND: url(Images/attach/attr.png) no-repeat 0px 0px; HEIGHT: 15px; BORDER-RIGHT-STYLE: none; PADDING-TOP: 0px
+    BORDER-BOTTOM-STYLE: none;
+    PADDING-BOTTOM: 0px;
+    BORDER-LEFT-STYLE: none;
+    PADDING-LEFT: 0px;
+    WIDTH: 16px;
+    PADDING-RIGHT: 0px;
+    BORDER-TOP-STYLE: none;
+    BACKGROUND: url(Images/attach/attr.png) no-repeat 0px 0px;
+    HEIGHT: 15px;
+    BORDER-RIGHT-STYLE: none;
+    PADDING-TOP: 0px
 }
 
-.rMenu  {
-	position:absolute;
-	visibility:hidden;
-	background-color: #F1F1F1;
-	text-align: center;
-	border: 1px solid #7f7f7f;
-	width:110px;
+.rMenu {
+    position: absolute;
+    visibility: hidden;
+    background-color: #F1F1F1;
+    text-align: center;
+    border: 1px solid #7f7f7f;
+    width: 110px;
 }
 
 .rMenu ul {
-	padding:0px;
-	margin:0px;
+    padding: 0px;
+    margin: 0px;
 }
+
 .rMenu ul li {
-	cursor: pointer;
-	list-style: none outside none;
-	background-color: #F1F1F1;
-	height: 24px;
-    line-height:24px;
-	font-size:10pt;
-	text-align:left;
-	vertical-align:middle;
+    cursor: pointer;
+    list-style: none outside none;
+    background-color: #F1F1F1;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10pt;
+    text-align: left;
+    vertical-align: middle;
 
 }
 
 .rMenu ul li div {
-	margin-left:16px;
+    margin-left: 16px;
 }
 
 .rMenu ul li:hover {
-	background: #D0E5F5 url(./EF/Images/BgFill-1.png);
-	border:#79b7e7;
-    color:#1d5987;
+    background: #D0E5F5 url(./EF/Images/BgFill-1.png);
+    border: #79b7e7;
+    color: #1d5987;
 }
+
 .rMenu ul li:active {
-	background: #F5F8F9 url(./EF/Images/BgFill-2.png);
-	border:1px #79b7e7;
-	color:#E17009;
+    background: #F5F8F9 url(./EF/Images/BgFill-2.png);
+    border: 1px #79b7e7;
+    color: #E17009;
 }
 
 .ef-input-container,
 .ef-select-container {
-	display:inline-block;
+    display: inline-block;
 }
 
 .ef-input-container.hidden,
 .ef-select-container.hidden {
-	display:none !important;
+    display: none !important;
 }
 
-.ef-input-container>.ef-input-label {
-	margin-right:2px;
+.ef-input-container > .ef-input-label {
+    margin-right: 2px;
 }
+
 .ef-input {
-	display:inline-block;
-	}
-.ef-input>div,
-DIV.ef-input-popup
-{
-	display:inline-block;
-	vertical-align:middle;
+    display: inline-block;
 }
 
-.ef-input-required-block{
-	display: inline-block;
+.ef-input > div,
+DIV.ef-input-popup {
+    display: inline-block;
+    vertical-align: middle;
+}
 
-	height: 24px;
-	width:24px;
+.ef-input-required-block {
+    display: inline-block;
 
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
+    height: 24px;
+    width: 24px;
 
-	padding-left:4px;
-	padding-top:4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    padding-left: 4px;
+    padding-top: 4px;
 
 }
+
 .ef-input-required-block span {
-	display: inline-block;
-	color: red;
-	font-weight: bold;
-	height: 17px;
-	line-height: 17px;
-}
-.ef-input-popup span {
-	cursor:point;
+    display: inline-block;
+    color: red;
+    font-weight: bold;
+    height: 17px;
+    line-height: 17px;
 }
 
+.ef-input-popup span {
+    cursor: point;
+}
 
 /*For IE6*/
 * html #efFormLoadingDiv {
-	position:absolute;
-	top:50%;
-	left:50%;
-	}
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
 
 * html .ef-input,
 * html .ef-region-topButtonBar,
-* html .ef-region-systemButtonBar
- {
-	display:inline;
-}
 * html .ef-region-systemButtonBar {
-	float:none;
+    display: inline;
 }
-* html .ef-region-systemButtonBar a span.ef-icon{
-	background-image:url(Themes/Images/icons/ef-icons_6da8d5.png);
-	}
+
+* html .ef-region-systemButtonBar {
+    float: none;
+}
+
+* html .ef-region-systemButtonBar a span.ef-icon {
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+}
+
 * html .ef-form-configDiv .ef-icon {
-	background-image:url(Themes/Images/icons/ef-icons_6da8d5.png);
-	}
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+}
+
 * html .ui-state-default .ef-icon {
-	background-image:url(Themes/Images/icons/ef-icons_6da8d5.png);
-	}
+    background-image: url(Themes/Images/icons/ef-icons_6da8d5.png);
+}
 
 * html .ef-grid-navigationBarTD {
-	left: 20%;
+    left: 20%;
 }
 
 * html .ef-grid-navigationBar {
-		margin-top:5px !important;
-	}
-* html .ef-grid-navigationJumpToInputTD{
-	left:30%;
-	top:3px;
-	}
+    margin-top: 5px !important;
+}
 
-* html .ef-grid-navigationJumpToInputTD input{
- 	height:16px;
- 	top:0px;
- 	line-height: 16px;
- }
+* html .ef-grid-navigationJumpToInputTD {
+    left: 30%;
+    top: 3px;
+}
+
+* html .ef-grid-navigationJumpToInputTD input {
+    height: 16px;
+    top: 0px;
+    line-height: 16px;
+}
 
 * html .ef-grid-navigationJumpToButton {
 
-	}
+}
+
 * html .ef-grid-resultLimitSelector {
-	left: 40%;
+    left: 40%;
 }
 
 * html .ef-grid-totalDataButtonTd {
-	left: 50%;
-	top:7px;
+    left: 50%;
+    top: 7px;
 }
 
 * html .ef-grid-totalDataNumbersTd {
-	left: 60%;
-	top:7px;
+    left: 60%;
+    top: 7px;
 }
 
-* html .ui-button-text,* html .ui-widget{
-	font-size:12px;
-	}
+* html .ui-button-text, * html .ui-widget {
+    font-size: 12px;
+}
 
 * html .ef-form-config-menu {
-	z-index:1001;
-	}
-* html .inputField  {
-	z-index:1;
-	}
-* html .ef-iconbutton-noborder {
-	border:0;
-	}·
+    z-index: 1001;
+}
 
+* html .inputField {
+    z-index: 1;
+}
+
+* html .ef-iconbutton-noborder {
+    border: 0;
+}
+
+·
 * html .ef-grid-tableRow-CurrentRow {
     background: #F2F2F2 !important;
-    color:#e17009 !important;
+    color: #e17009 !important;
 }
 
 * html .ef-grid-tableRow-Highlight {
-	background:#fbec88 !important;
+    background: #fbec88 !important;
 }
+
 * html .ef-grid-checkbox {
-	position : static !important;
-	margin-top: 0px !important;
-	margin-left: 0px !important;
-	}
+    position: static !important;
+    margin-top: 0px !important;
+    margin-left: 0px !important;
+}
+
 * html .ef-grid-tableRow-Selected {
-	background: #d0e5f5 !important;
+    background: #d0e5f5 !important;
 }
-* html .ef-grid-content .ef-grid-tableRow-CurrentRow,* html .ef-grid-content .ef-grid-tableRow-CurrentRow a {
-color: #e17009 !important;
+
+* html .ef-grid-content .ef-grid-tableRow-CurrentRow, * html .ef-grid-content .ef-grid-tableRow-CurrentRow a {
+    color: #e17009 !important;
 }
+
 * html .inputField,
 * html .ffb-input {
-	height:18px !important;
-	border:1px solid black !important;
-	}
-* html .ffb-arrow {
-	height:20px;
-	width:20px;
-	background-position:2px 2px;
-	}
-* html .ffb {
-	margin-top:0px;
+    height: 18px !important;
+    border: 1px solid black !important;
 }
+
+* html .ffb-arrow {
+    height: 20px;
+    width: 20px;
+    background-position: 2px 2px;
+}
+
+* html .ffb {
+    margin-top: 0px;
+}
+
 * html .ef-menu {
-  width:expression((documentElement.clientWidth < 165) ? "165px" : "auto" );
-  _width:expression((documentElement.clientWidth > 205) ? "205px" : "auto" );
+    width: expression((documentElement.clientWidth < 165) ? "165px" : "auto" );
+    _width: expression((documentElement.clientWidth > 205) ? "205px" : "auto" );
 
 }
 
 * html #efFormStatusDialog {
-	position:absolute !important;
-	top:0 !important;
+    position: absolute !important;
+    top: 0 !important;
 
 }
 
-* html .ef-tree-item-node div,* html .ef-tree-item-node span{
-	float:left;
-	}
-
-* html .ef-tree-operateBar{
-	display:inline;
-	margin:0px;
-	float:right !important;
+* html .ef-tree-item-node div, * html .ef-tree-item-node span {
+    float: left;
 }
 
-
-.treeSearch{
-	background-color: #2E6E9E !important;
+* html .ef-tree-operateBar {
+    display: inline;
+    margin: 0px;
+    float: right !important;
 }
 
-.treeSearch a{
-	 color: white;
+.treeSearch {
+    background-color: #2E6E9E !important;
+}
+
+.treeSearch a {
+    color: white;
 }
 
 .treeSearchDiv {
-	min-width: 186px;
-	height: 26px;
-	margin: auto;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	border-radius: 4px;
-	border: 1px solid #bbb;
-	background: white;
-	margin-bottom: 1px;
+    min-width: 186px;
+    height: 26px;
+    margin: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    background: white;
+    margin-bottom: 1px;
 }
 
 .treeSearchDiv .treeSearchInputField:focus {
-	border: 0 !important;
-	-webkit-box-shadow: none !important;
-	-moz-box-shadow: none !important;
-	box-shadow: none !important;
-	color:black;
+    border: 0 !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    color: black;
 }
 
-
-.treeSearchDiv .treeSearchInputField{
-	height: 24px;
-	line-height: 16px;
-	font-size: 12px;
-	width: 100%;
-	float: left;
-	color: #E8E8E8;
-	background-color: transparent;
-	background-image: none;
-	border: 0px !important;
-	-webkit-box-shadow: none !important;
-	-moz-box-shadow: none !important;
-	box-shadow: none !important;
-	vertical-align: middle;
-	transition: 500ms all;
+.treeSearchDiv .treeSearchInputField {
+    height: 24px;
+    line-height: 16px;
+    font-size: 12px;
+    width: 100%;
+    float: left;
+    color: #E8E8E8;
+    background-color: transparent;
+    background-image: none;
+    border: 0px !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    vertical-align: middle;
+    transition: 500ms all;
 }
 
-.searchBarClear{
-	display: none;
-	float: right;
-	cursor: pointer;
-	position: absolute;
-	top: 6px;
-	right:25px;
-	float: right;
-	border-left: 0px solid rgba(7, 7, 7, 0.65);
+.searchBarClear {
+    display: none;
+    float: right;
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 25px;
+    float: right;
+    border-left: 0px solid rgba(7, 7, 7, 0.65);
 
 }
+
 .treeSearchButton {
-	cursor: pointer;
-	position: absolute;
-	right: 5px;
-	top: 5px;
-	}
-
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
 
 .i-pager-textbox {
-  width: 30px;
+    width: 30px;
 }
 
 .i-pager-select {
-  margin-left: 15px;
-  padding: 1px;
-  height: 22px;
-  width: 50px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
-  transition: border linear 0.2s, box-shadow linear 0.2s;
+    margin-left: 15px;
+    padding: 1px;
+    height: 22px;
+    width: 50px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 .i-pager-info {
-  margin-left: 15px;
-  padding: 3px;
+    margin-left: 15px;
+    padding: 3px;
 }
+
 .i-state-disabled {
-	opacity: .35;
+    opacity: .35;
 
 }
 

@@ -1,5 +1,6 @@
 package org.activiti.web.workflow;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baosight.iplat4j.core.FrameworkInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -14,20 +15,20 @@ import org.activiti.engine.*;
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.context.Context;
 import org.activiti.engine.impl.interceptor.Command;
-import org.activiti.engine.repository.Deployment;
-import org.activiti.engine.repository.DeploymentBuilder;
-import org.activiti.engine.repository.Model;
-import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.repository.*;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.image.impl.DefaultProcessDiagramGenerator;
+import org.activiti.model.ProcessDefinitionEntity;
 import org.activiti.service.activiti.WorkflowProcessDefinitionService;
 import org.activiti.service.activiti.WorkflowTraceService;
 import org.activiti.spring.ProcessEngineFactoryBean;
+import org.activiti.util.WorkFlowConstant;
 import org.activiti.util.WorkflowUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,9 +36,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
@@ -54,7 +53,7 @@ import java.util.zip.ZipInputStream;
  * @author sf.xiong
  */
 @Controller
-@RequestMapping(value = "/supervisor/workflow")
+@RequestMapping(value = "/supervisor/workflow/process")
 public class ActivitiController extends AbstractSuperController {
 
     protected Logger logger = LoggerFactory.getLogger(ActivitiController.class);
@@ -72,8 +71,6 @@ public class ActivitiController extends AbstractSuperController {
     @Autowired
     ManagementService managementService;
 
-    protected static Map<String, ProcessDefinition> PROCESS_DEFINITION_CACHE = new HashMap<String, ProcessDefinition>();
-
     @Autowired
     ProcessEngineFactoryBean processEngine;
 
@@ -88,20 +85,50 @@ public class ActivitiController extends AbstractSuperController {
      *
      * @return
      */
-    @RequestMapping(value = "/process-list")
-    public ModelAndView processList(HttpServletRequest request) {
+    @RequestMapping(value = "/index")
+    public String index() {
+        return "workflow/process-list";
+    }
+
+    /**
+     * 流程定义列表
+     *
+     * @return
+     */
+    @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String processList(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                              @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String flowName = request.getParameter("flowName");
         String flowKey = request.getParameter("flowKey");
         String flowCategory = request.getParameter("flowCategory");
 
-        Map<String, Object> flow = new HashMap<String, Object>();
-        flow.put("flowName", flowName);
-        flow.put("flowKey", flowKey);
-        flow.put("flowCategory", flowCategory);
-
-        ModelAndView mav = new ModelAndView("workflow/process-list");
-
-        return mav;
+        ProcessDefinitionQuery processDefinitionQuery = repositoryService.createProcessDefinitionQuery();
+        if (StringUtils.isNotBlank(flowKey)) {
+            processDefinitionQuery = processDefinitionQuery.processDefinitionKeyLike("%" + flowKey + "%");
+        }
+        if (StringUtils.isNotBlank(flowName)) {
+            processDefinitionQuery = processDefinitionQuery.processDefinitionNameLike("%" + flowName + "%");
+        }
+        if (StringUtils.isNotBlank(flowCategory)) {
+            processDefinitionQuery = processDefinitionQuery.processDefinitionCategory(flowCategory);
+        }
+        List<ProcessDefinition> processDefinitionList = processDefinitionQuery
+                .processDefinitionCategoryNotEquals(WorkFlowConstant.CATEGORY_NOT_EQUALS).orderByDeploymentId().desc()
+                .listPage(currPage, pageSize);
+        List<ProcessDefinitionEntity> processDefinitionEntityList = new ArrayList<ProcessDefinitionEntity>();
+        for (ProcessDefinition processDefinition : processDefinitionList) {
+            String deploymentId = processDefinition.getDeploymentId();
+            Deployment deployment = repositoryService.createDeploymentQuery().deploymentId(deploymentId).singleResult();
+            ProcessDefinitionEntity processDefinitionEntity = new ProcessDefinitionEntity();
+            BeanUtils.copyProperties(processDefinition, processDefinitionEntity);
+            processDefinitionEntity.setDeploymentTime(deployment.getDeploymentTime());
+            processDefinitionEntityList.add(processDefinitionEntity);
+        }
+        JSONObject json = new JSONObject();
+        json.put("processList", processDefinitionEntityList);
+        json.put("total", processDefinitionQuery.count());
+        return success(json);
     }
 
     /**
@@ -167,7 +194,7 @@ public class ActivitiController extends AbstractSuperController {
      *
      * @param deploymentId 流程部署ID
      */
-    @RequestMapping(value = "/process/delete", produces = Constants.MediaType_APPLICATION_JSON)
+    @RequestMapping(value = "/delete", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String delete(@RequestParam("deploymentId") String deploymentId) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -187,7 +214,7 @@ public class ActivitiController extends AbstractSuperController {
      * @return
      * @throws Exception
      */
-    @RequestMapping(value = "/process/trace")
+    @RequestMapping(value = "/trace")
     @ResponseBody
     public List<Map<String, Object>> traceProcess(@RequestParam("pid") String processInstanceId) throws Exception {
         List<Map<String, Object>> activityInfos = traceService.traceProcess(processInstanceId);
@@ -197,7 +224,7 @@ public class ActivitiController extends AbstractSuperController {
     /**
      * 读取带跟踪的图片
      */
-    @RequestMapping(value = "/process/trace/auto/{executionId}")
+    @RequestMapping(value = "/trace/auto/{executionId}")
     public void readResource(@PathVariable("executionId") String executionId, HttpServletResponse response)
             throws Exception {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(executionId)
@@ -247,9 +274,8 @@ public class ActivitiController extends AbstractSuperController {
                     WorkflowUtils.exportDiagramToFile(repositoryService, processDefinition, exportDir);
                 }
                 data.put("message", "部署成功。");
-                data.put("state", "1");
             } else {
-                data.put("message", "请选择要部署的流程类型及文件。\r(支持的文件格式：zip、bar、bpmn、bpmn20.xml)");
+                data.put("message", "请选择要部署的流程类型及文件。\n(支持的文件格式：zip、bar、bpmn、bpmn20.xml)");
             }
         } catch (Exception e) {
             logger.error("error on deploy process, because of file input stream", e);
@@ -258,7 +284,7 @@ public class ActivitiController extends AbstractSuperController {
         return success(data);
     }
 
-    @RequestMapping(value = "/process/convert-to-model/{processDefinitionId}", produces = Constants.MediaType_APPLICATION_JSON)
+    @RequestMapping(value = "/convert-to-model/{processDefinitionId}", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String convertToModel(@PathVariable("processDefinitionId") String processDefinitionId) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -304,10 +330,10 @@ public class ActivitiController extends AbstractSuperController {
     public String updateState(@PathVariable("state") String state,
                               @PathVariable("processDefinitionId") String processDefinitionId) {
         Map<String, Object> data = new HashMap<String, Object>();
-        if (state.equals("active")) {
+        if ("active".equals(state)) {
             data.put("message", "已激活ID为[" + processDefinitionId + "]的流程定义。");
             repositoryService.activateProcessDefinitionById(processDefinitionId, true, null);
-        } else if (state.equals("suspend")) {
+        } else if ("suspend".equals(state)) {
             repositoryService.suspendProcessDefinitionById(processDefinitionId, true, null);
             data.put("message", "已挂起ID为[" + processDefinitionId + "]的流程定义。");
         }

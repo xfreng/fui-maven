@@ -6,6 +6,7 @@
 <script type="text/javascript" src="${path}/public/common/fui/fui-ext.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/common.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/json2.js"></script>
+<script type="text/javascript" src="${path}/public/common/fui/swfupload/swfupload.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/jquery/jquery.cookies.js"></script>
 <c:choose>
 	<c:when test="${'pact' eq menuType}">

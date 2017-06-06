@@ -31,7 +31,7 @@ function create() {
 function copy() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
     } else {
         var json = {"modelIdArgs": modelIdArgs.join(',')};
         $.ajax({
@@ -39,8 +39,7 @@ function copy() {
             type: "post",
             data: json,
             success: function (text) {
-                text = fui.encode(text);
-                alert(text.message);
+                fui.alert(text.message,'提示信息');
                 model.reload();
             }
         });
@@ -52,7 +51,7 @@ function copy() {
 function template() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
     } else {
         var json = {"modelIdArgs": modelIdArgs.join(',')};
         $.ajax({
@@ -60,8 +59,7 @@ function template() {
             type: "post",
             data: json,
             success: function (text) {
-                text = fui.encode(text);
-                alert(text.message);
+                fui.alert(text.message),'提示信息';
                 model.reload();
             }
         });
@@ -73,7 +71,7 @@ function template() {
 function remove() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
         return;
     }
     fui.confirm("确定删除此模型及其所有子模型吗？", "提示信息", function (action) {
@@ -85,7 +83,7 @@ function remove() {
                 type: "post",
                 data: json,
                 success: function (text) {
-                    alert(text.message);
+                    fui.alert(text.message,'提示信息');
                     model.reload();
                     model.clearSelect(true);
                 }
@@ -99,7 +97,7 @@ function remove() {
 function edit() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
     } else {
         for (var index = 0; index < modelIdArgs.length; index++) {
             var modelId = modelIdArgs[index];
@@ -113,9 +111,9 @@ function edit() {
 function deploy() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
     } else if (modelIdArgs.length > 1) {
-        alert('请选择一条数据！');
+        fui.alert('请选择一条数据！','提示信息');
     } else {
         fui.confirm("确定部署此模型及其所有子模型吗？", "提示信息", function (action) {
             if (action == "ok") {
@@ -124,7 +122,7 @@ function deploy() {
                     url: fui.contextPath + "/supervisor/workflow/model/deploy/" + modelIdArgs[0],
                     type: "post",
                     success: function (text) {
-                        alert(text.message);
+                        fui.alert(text.message,'提示信息');
                         model.reload();
                         model.clearSelect(true);
                     }
@@ -139,9 +137,9 @@ function deploy() {
 function exportModel() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        alert('请先选择数据！');
+        fui.alert('请先选择数据！','提示信息');
     } else if (modelIdArgs.length > 1) {
-        alert('请选择一条数据！');
+        fui.alert('请选择一条数据！','提示信息');
     } else {
         model.loading("正在导出中...");
         window.open(fui.contextPath + "/supervisor/workflow/model/export/" + modelIdArgs[0] + "/bpmn");
@@ -157,23 +155,23 @@ function ok() {
     var key = fui.get("key").getValue();
     var category = fui.get("category").getValue();
     if (!name) {
-        alert("请填写名称！");
+        fui.alert("请填写名称！",'提示信息');
         fui.get("name").focus();
         return;
     }
     if (!key) {
-        alert("请填写KEY！");
+        fui.alert("请填写KEY！",'提示信息');
         fui.get("key").focus();
         return;
     } else {
         if (!checkModelKey(key)) {
-            alert("输入的key值[" + key + "]已经存在，请重新输入！");
+            fui.alert("输入的key值[" + key + "]已经存在，请重新输入！",'提示信息');
             fui.get("key").focus();
             return;
         }
     }
     if (!category) {
-        alert("请选择流程类型！");
+        fui.alert("请选择流程类型！",'提示信息');
         fui.get("category").focus();
         return;
     }
@@ -214,8 +212,6 @@ function checkModelKey(key) {
             if (state == 1) {
                 bool = false;
             }
-        },
-        error: function () {
         }
     });
     return bool;

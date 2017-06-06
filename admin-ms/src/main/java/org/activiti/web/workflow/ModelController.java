@@ -73,11 +73,6 @@ public class ModelController extends AbstractSuperController {
         String flowKey = request.getParameter("flowKey");
         String flowCategory = request.getParameter("flowCategory");
 
-        Map<String, Object> flow = new HashMap<String, Object>();
-        flow.put("flowName", flowName);
-        flow.put("flowKey", flowKey);
-        flow.put("flowCategory", flowCategory);
-
         ModelQuery modelQuery = repositoryService.createModelQuery();
         if (StringUtils.isNotBlank(flowKey)) {
             modelQuery = modelQuery.modelKey(flowKey);
@@ -88,10 +83,10 @@ public class ModelController extends AbstractSuperController {
         if (StringUtils.isNotBlank(flowCategory)) {
             modelQuery = modelQuery.modelCategory(flowCategory);
         }
-        List<Model> models = modelQuery.modelCategoryNotEquals(WorkFlowConstant.CATEGORY_NOT_EQUALS).orderByCreateTime()
+        List<Model> modelList = modelQuery.modelCategoryNotEquals(WorkFlowConstant.CATEGORY_NOT_EQUALS).orderByCreateTime()
                 .desc().listPage(currPage, pageSize);
         JSONObject json = new JSONObject();
-        json.put("modelList", models);
+        json.put("modelList", modelList);
         json.put("total", modelQuery.count());
         return success(json);
     }

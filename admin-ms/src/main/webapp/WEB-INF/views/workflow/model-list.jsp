@@ -61,8 +61,8 @@
 					<div field="key" width="120" headerAlign="center" allowSort="false" align="left">KEY</div>
 					<div field="name" width="120" headerAlign="center" allowSort="false" align="center">流程名称</div>
 					<div field="version" width="60" headerAlign="center" allowSort="false">Version</div>
-					<div field="createTime" width="75" headerAlign="center" renderer="formatJsonDate" allowSort="false" align="center">创建时间</div>
-					<div field="lastUpdateTime" width="75" headerAlign="center" renderer="formatJsonDate" allowSort="false" align="center">最后更新时间</div>
+					<div field="createTime" width="75" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false" align="center">创建时间</div>
+					<div field="lastUpdateTime" width="75" headerAlign="center" dateFormat="yyyy-MM-dd HH:mm:ss" allowSort="false" align="center">最后更新时间</div>
 					<div field="metaInfo" width="190" headerAlign="center" allowSort="false">元数据</div>
 				</div>
 			</div>

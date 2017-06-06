@@ -62,7 +62,7 @@
 	                <input property="editor" class="fui-textbox" style="width:100%;"/>
 	            </div>
 				<div field="recCreator" width="100" headerAlign="center" allowSort="false" align="center">创建人</div>           
-				<div field="recCreateTime" width="140" headerAlign="center" renderer="formatDate" allowSort="false" align="center">创建日期</div>              
+				<div field="recCreateTime" width="140" headerAlign="center" renderer="formatDate" allowSort="false" align="center">创建日期</div>
 				<div field="recRevisor" width="100" headerAlign="center" allowSort="false" align="center">修改人</div>              
 				<div field="recReviseTime" width="140" headerAlign="center" renderer="formatDate" allowSort="false" align="center">修改日期</div>              
 	        </div>

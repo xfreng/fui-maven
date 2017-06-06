@@ -1,97 +1,125 @@
 package org.activiti.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class ProcessDefinitionEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private String id;
-	private String processInstanceId;
-	private String name;
-	private String key;
-	private int version;
-	private String resourceName;
-	private String diagramResourceName;
-	private String currentName;
-	private String startTime;
-	private String endTime;
+    private static final long serialVersionUID = 1L;
+    private String id;
+    private String deploymentId;
+    private String processInstanceId;
+    private String name;
+    private String key;
+    private int version;
+    private String resourceName;
+    private String diagramResourceName;
+    private String currentName;
+    private Date startTime;
+    private Date endTime;
+    private Date deploymentTime;
+    private boolean suspended;
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getProcessInstanceId() {
-		return processInstanceId;
-	}
+    public String getDeploymentId() {
+        return deploymentId;
+    }
 
-	public void setProcessInstanceId(String processInstanceId) {
-		this.processInstanceId = processInstanceId;
-	}
+    public void setDeploymentId(String deploymentId) {
+        this.deploymentId = deploymentId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getProcessInstanceId() {
+        return processInstanceId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setProcessInstanceId(String processInstanceId) {
+        this.processInstanceId = processInstanceId;
+    }
 
-	public String getKey() {
-		return key;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setKey(String key) {
-		this.key = key;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public int getVersion() {
-		return version;
-	}
+    public String getKey() {
+        return key;
+    }
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
+    public void setKey(String key) {
+        this.key = key;
+    }
 
-	public String getResourceName() {
-		return resourceName;
-	}
+    public int getVersion() {
+        return version;
+    }
 
-	public void setResourceName(String resourceName) {
-		this.resourceName = resourceName;
-	}
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
-	public String getDiagramResourceName() {
-		return diagramResourceName;
-	}
+    public String getResourceName() {
+        return resourceName;
+    }
 
-	public void setDiagramResourceName(String diagramResourceName) {
-		this.diagramResourceName = diagramResourceName;
-	}
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
 
-	public String getCurrentName() {
-		return currentName;
-	}
+    public String getDiagramResourceName() {
+        return diagramResourceName;
+    }
 
-	public void setCurrentName(String currentName) {
-		this.currentName = currentName;
-	}
+    public void setDiagramResourceName(String diagramResourceName) {
+        this.diagramResourceName = diagramResourceName;
+    }
 
-	public String getStartTime() {
-		return startTime;
-	}
+    public String getCurrentName() {
+        return currentName;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+    public void setCurrentName(String currentName) {
+        this.currentName = currentName;
+    }
 
-	public String getEndTime() {
-		return endTime;
-	}
+    public Date getStartTime() {
+        return startTime;
+    }
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public Date getDeploymentTime() {
+        return deploymentTime;
+    }
+
+    public void setDeploymentTime(Date deploymentTime) {
+        this.deploymentTime = deploymentTime;
+    }
+
+    public boolean isSuspended() {
+        return suspended;
+    }
+
+    public void setSuspended(boolean suspended) {
+        this.suspended = suspended;
+    }
 }

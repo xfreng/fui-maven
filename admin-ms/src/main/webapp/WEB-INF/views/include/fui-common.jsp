@@ -11,6 +11,7 @@
 <script type="text/javascript" src="${path}/public/common/fui/fui-ext.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/common.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/json2.js"></script>
+<script type="text/javascript" src="${path}/public/common/fui/swfupload/swfupload.js"></script>
 <link rel="stylesheet" type="text/css" href="${path}/public/css/login.css"/>
 <%
 	User user = UserUtils.getCurrent();
