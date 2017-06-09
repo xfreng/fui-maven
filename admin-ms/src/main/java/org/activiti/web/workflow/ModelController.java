@@ -59,7 +59,7 @@ public class ModelController extends AbstractSuperController {
 
     @RequestMapping("/index")
     public String index() {
-        return "workflow/model-list";
+        return "/workflow/model-list";
     }
 
     /**

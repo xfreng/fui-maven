@@ -26,10 +26,6 @@
     background: url(icons/save.png) no-repeat;
 }
 
-.icon-close {
-    background: url(icons/cancel.png) no-repeat;
-}
-
 .icon-cut {
     background: url(icons/cut.png) no-repeat;
 }
@@ -283,5 +279,10 @@
     background: url(icons/role.png) no-repeat;
 }
 
+.icon-run {
+    background: url(icons/run.png) no-repeat;
+}
 
-
+.icon-reverse {
+    background: url(icons/reverse.png) no-repeat;
+}

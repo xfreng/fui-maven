@@ -53,6 +53,15 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- JSONP -->
+  <filter>
+    <filter-name>JSONPFilter</filter-name>
+    <filter-class>org.activiti.explorer.JsonpCallbackFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>JSONPFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/app.ico</url-pattern>

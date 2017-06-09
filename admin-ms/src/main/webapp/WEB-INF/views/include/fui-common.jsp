@@ -26,11 +26,11 @@
 	Object logo = MemCachedUtils.get("logo");
 	Object dev = MemCachedUtils.get("dev");
 
-	pageContext.setAttribute("menuType",menuType);
-	pageContext.setAttribute("menuStyle",menuStyle);
-	pageContext.setAttribute("projectName",projectName);
-	pageContext.setAttribute("logo",logo);
-	pageContext.setAttribute("dev",dev);
+	request.setAttribute("menuType",menuType);
+	request.setAttribute("menuStyle",menuStyle);
+	request.setAttribute("projectName",projectName);
+	request.setAttribute("logo",logo);
+	request.setAttribute("dev",dev);
 %>
 <c:choose>
 	<c:when test="${'pact' eq menuType}">

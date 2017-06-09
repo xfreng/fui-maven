@@ -1,7 +1,6 @@
 package com.fui.service;
 
 import com.fui.common.GsonUtils;
-import com.fui.dao.FuiDao;
 import com.fui.dao.dict.DictEntryMapper;
 import com.fui.dao.dict.DictTypeMapper;
 import com.fui.model.DictEntry;
@@ -11,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,53 +18,29 @@ public class DictService {
     private final Logger logger = LoggerFactory.getLogger(DictService.class);
 
     @Autowired
-    private FuiDao fuiDao;
-    @Autowired
     private DictTypeMapper dictTypeMapper;
     @Autowired
     private DictEntryMapper dictEntryMapper;
 
     public List<DictType> queryDictForTree(Map<String, Object> param) {
-        String sqlName = "com.fui.dao.dict.DictTypeMapper.queryDictForTree";
-        logger.info(sqlName);
-        return fuiDao.query(sqlName, param);
+        return dictTypeMapper.queryDictForTree(param);
     }
 
-    public Map<String, Object> queryDictType(Map<String, Object> param, int offset, int limit) {
-        Map<String, Object> jsonData = new HashMap<String, Object>();
-        String sqlName = "com.fui.dao.dict.DictTypeMapper.query";
-        logger.info(sqlName);
-        int count = fuiDao.countBySql(sqlName, param);
-        List<DictType> dictTypeList = fuiDao.query(sqlName, param, offset, limit);
-        jsonData.put("total", count);
-        jsonData.put("data", dictTypeList);
-        return jsonData;
+    public List<DictType> queryDictType(Map<String, Object> param) {
+        return dictTypeMapper.query(param);
     }
 
-    public Map<String, Object> queryLayout(Map<String, Object> param, int offset, int limit) {
-        Map<String, Object> jsonData = new HashMap<String, Object>();
-        String sqlName = "com.fui.dao.dict.DictEntryMapper.query";
-        logger.info(sqlName);
-        int count = fuiDao.countBySql(sqlName, param);
-        List<DictEntry> dictEntryList = fuiDao.query(sqlName, param, offset, limit);
-        jsonData.put("total", count);
-        jsonData.put("data", dictEntryList);
-        return jsonData;
+    public List<DictEntry> queryLayout(Map<String, Object> param) {
+        return dictEntryMapper.query(param);
     }
 
     public List<DictEntry> loadDictData(Map<String, Object> param) {
-        String sqlName = "com.fui.dao.dict.DictEntryMapper.query";
-        logger.info(sqlName);
-        return fuiDao.query(sqlName, param);
+        return dictEntryMapper.query(param);
     }
 
     public boolean saveDictType(Object object) {
         boolean bool = true;
         try {
-            String insertSqlName = "com.fui.dao.dict.DictTypeMapper.insert";
-            String deleteSqlName = "com.fui.dao.dict.DictTypeMapper.delete";
-            String deleteDictEntrySqlName = "com.fui.dao.dict.DictEntryMapper.deleteById";
-            String updateSqlName = "com.fui.dao.dict.DictTypeMapper.update";
             if (object instanceof java.util.List) {
                 List<Object> columns = (List<Object>) object;
                 for (Object column : columns) {
@@ -78,30 +52,12 @@ public class DictService {
                         dictType = (DictType) column;
                     }
                     String _state = dictType.get_state();
-                    if ("added".equals(_state)) {
-                        fuiDao.insert(insertSqlName, dictType);
-                    } else if ("removed".equals(_state)) {
-                        DictEntry dictEntry = new DictEntry();
-                        dictEntry.setId(dictType.getId());
-                        fuiDao.delete(deleteDictEntrySqlName, dictEntry);
-                        fuiDao.delete(deleteSqlName, dictType);
-                    } else if ("modified".equals(_state)) {
-                        fuiDao.update(updateSqlName, dictType);
-                    }
+                    doDb(_state, dictType);
                 }
             } else {
                 DictType dictType = GsonUtils.fromJson(GsonUtils.toJson(object), DictType.class);
                 String _state = dictType.get_state();
-                if ("added".equals(_state)) {
-                    fuiDao.insert(insertSqlName, dictType);
-                } else if ("removed".equals(_state)) {
-                    DictEntry dictEntry = new DictEntry();
-                    dictEntry.setId(dictType.getId());
-                    fuiDao.delete(deleteDictEntrySqlName, dictEntry);
-                    fuiDao.delete(deleteSqlName, dictType);
-                } else if ("modified".equals(_state)) {
-                    fuiDao.update(updateSqlName, dictType);
-                }
+                doDb(_state, dictType);
             }
         } catch (Exception e) {
             bool = false;
@@ -109,12 +65,30 @@ public class DictService {
         return bool;
     }
 
+    private void doDb(String _state, DictType dictType) {
+        if ("added".equals(_state)) {
+            dictTypeMapper.insert(dictType);
+        } else if ("removed".equals(_state)) {
+            dictEntryMapper.deleteByPrimaryKey(dictType.getId());
+            dictTypeMapper.deleteByPrimaryKey(dictType.getId());
+        } else if ("modified".equals(_state)) {
+            dictTypeMapper.updateByPrimaryKey(dictType);
+        }
+    }
+
+    private void doDb(String _state, DictEntry dictEntry) {
+        if ("added".equals(_state)) {
+            dictEntryMapper.insert(dictEntry);
+        } else if ("removed".equals(_state)) {
+            dictEntryMapper.deleteByPrimaryKey(dictEntry.getId());
+        } else if ("modified".equals(_state)) {
+            dictEntryMapper.updateByPrimaryKey(dictEntry);
+        }
+    }
+
     public boolean saveDictEntry(Object object) {
         boolean bool = true;
         try {
-            String insertSqlName = "com.fui.dao.dict.DictEntryMapper.insert";
-            String deleteSqlName = "com.fui.dao.dict.DictEntryMapper.delete";
-            String updateSqlName = "com.fui.dao.dict.DictEntryMapper.update";
             if (object instanceof java.util.List) {
                 List<Object> columns = (List<Object>) object;
                 for (Object column : columns) {
@@ -126,24 +100,12 @@ public class DictService {
                         dictEntry = (DictEntry) column;
                     }
                     String _state = dictEntry.get_state();
-                    if ("added".equals(_state)) {
-                        fuiDao.insert(insertSqlName, dictEntry);
-                    } else if ("removed".equals(_state)) {
-                        fuiDao.delete(deleteSqlName, dictEntry);
-                    } else if ("modified".equals(_state)) {
-                        fuiDao.update(updateSqlName, dictEntry);
-                    }
+                    doDb(_state, dictEntry);
                 }
             } else {
                 DictEntry dictEntry = GsonUtils.fromJson(GsonUtils.toJson(object), DictEntry.class);
                 String _state = dictEntry.get_state();
-                if ("added".equals(_state)) {
-                    fuiDao.insert(insertSqlName, dictEntry);
-                } else if ("removed".equals(_state)) {
-                    fuiDao.delete(deleteSqlName, dictEntry);
-                } else if ("modified".equals(_state)) {
-                    fuiDao.update(updateSqlName, dictEntry);
-                }
+                doDb(_state, dictEntry);
             }
         } catch (Exception e) {
             bool = false;

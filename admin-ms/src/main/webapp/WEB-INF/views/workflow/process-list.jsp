@@ -46,6 +46,8 @@
 				<a class="fui-button" iconCls="icon-search" onclick="query()">查询</a>
 				<a class="fui-button" iconCls="icon-remove" onclick="remove()">删除</a>
 				<a class="fui-button" iconCls="icon-deploy" onclick="deploy()">部署流程</a>
+				<a class="fui-button" iconCls="icon-reverse" onclick="convertToModel()">转换为Model</a>
+				<a class="fui-button" iconCls="icon-run" onclick="startRunning()">启动</a>
 				<div style="float:right;display:inline;color:#cc0000"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
 			</div>
 			<div id="process" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"

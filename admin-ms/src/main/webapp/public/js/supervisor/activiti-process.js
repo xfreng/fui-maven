@@ -71,6 +71,58 @@ function deploy() {
     deployWindow.show();
 }
 /**
+ * 转换为模型
+ */
+function convertToModel() {
+    var row = process.getSelected();
+    if (row == null) {
+        fui.alert('请先选择数据！', '提示信息');
+        return;
+    }
+    var rows = process.getSelecteds();
+    if (rows.length > 1) {
+        fui.alert('请选择一条数据！', '提示信息');
+        return;
+    }
+    var id = row.id;
+    $.ajax({
+        url: fui.contextPath + "/supervisor/workflow/process/convert-to-model/" + id,
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            fui.alert(data.message, '提示信息');
+            process.reload();
+            process.clearSelect(true);
+        }
+    });
+}
+/**
+ * 启动流程
+ */
+function startRunning() {
+    var row = process.getSelected();
+    if (row == null) {
+        fui.alert('请先选择数据！', '提示信息');
+        return;
+    }
+    var rows = process.getSelecteds();
+    if (rows.length > 1) {
+        fui.alert('请选择一条数据！', '提示信息');
+        return;
+    }
+    var key = row.key;
+    $.ajax({
+        url: fui.contextPath + "/supervisor/workflow/process/start-running/" + key,
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            fui.alert(data.message, '提示信息');
+            process.reload();
+            process.clearSelect(true);
+        }
+    });
+}
+/**
  * 删除已部署的流程
  */
 function remove() {

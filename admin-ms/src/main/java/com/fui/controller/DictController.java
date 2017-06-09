@@ -3,13 +3,15 @@ package com.fui.controller;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.GsonUtils;
-import com.fui.common.StringUtils;
 import com.fui.model.DictEntry;
 import com.fui.model.DictType;
 import com.fui.service.DictService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -52,18 +54,17 @@ public class DictController extends AbstractSuperController {
 
     @RequestMapping(value = "/queryDictType", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String queryDictType() throws Exception {
-        String pageIndex = request.getParameter("pageIndex");
-        int offset = StringUtils.isNotEmpty(pageIndex) ? Integer.parseInt(pageIndex) : 0;
-        String pageSize = request.getParameter("pageSize");
-        int limit = StringUtils.isNotEmpty(pageSize) ? Integer.parseInt(pageSize) : 0;
+    public String queryDictType(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                                @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String dictTypeId = request.getParameter("dictTypeId");
         String dictTypeName = request.getParameter("dictTypeName");
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", dictTypeId);
         param.put("dictTypeName", dictTypeName);
-        Map<String, Object> jsonData = dictService.queryDictType(param, offset, limit);
-        return success(jsonData);
+        PageHelper.startPage(currPage, pageSize);
+        List<DictType> dictTypeList = dictService.queryDictType(param);
+        PageInfo<DictType> pageInfo = createPagination(dictTypeList);
+        return success(dictTypeList, pageInfo.getTotal());
     }
 
     @RequestMapping(value = "/saveDictType", produces = Constants.MediaType_APPLICATION_JSON)
@@ -90,16 +91,15 @@ public class DictController extends AbstractSuperController {
 
     @RequestMapping(value = "/getLayout", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String getLayout() throws Exception {
-        String pageIndex = request.getParameter("pageIndex");
-        int offset = StringUtils.isNotEmpty(pageIndex) ? Integer.parseInt(pageIndex) : 0;
-        String pageSize = request.getParameter("pageSize");
-        int limit = StringUtils.isNotEmpty(pageSize) ? Integer.parseInt(pageSize) : 0;
+    public String getLayout(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String dictTypeId = request.getParameter("dictTypeId");
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", dictTypeId);
-        Map<String, Object> jsonData = dictService.queryLayout(param, offset, limit);
-        return success(jsonData);
+        PageHelper.startPage(currPage, pageSize);
+        List<DictEntry> dictEntryList = dictService.queryLayout(param);
+        PageInfo<DictEntry> pageInfo = createPagination(dictEntryList);
+        return success(dictEntryList, pageInfo.getTotal());
     }
 
     @RequestMapping(value = "/getDictData", produces = Constants.MediaType_APPLICATION_JSON)

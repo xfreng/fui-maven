@@ -7,7 +7,7 @@ import com.fui.common.UserUtils;
 import com.fui.dao.menu.MenuMapper;
 import com.fui.model.Menu;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

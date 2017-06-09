@@ -20,21 +20,19 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.image.impl.DefaultProcessDiagramGenerator;
 import org.activiti.model.ProcessDefinitionEntity;
 import org.activiti.service.activiti.WorkflowProcessDefinitionService;
+import org.activiti.service.activiti.WorkflowService;
 import org.activiti.service.activiti.WorkflowTraceService;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.util.WorkFlowConstant;
 import org.activiti.util.WorkflowUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -77,17 +75,16 @@ public class ActivitiController extends AbstractSuperController {
     @Autowired
     ProcessEngineConfiguration processEngineConfiguration;
 
+    @Autowired
+    WorkflowService workflowService;
+
     /* 导出目录 */
     protected String exportDir = FrameworkInfo.getInfoGenDir() + File.separator + "fuiPlat4j";
 
-    /**
-     * 流程定义列表
-     *
-     * @return
-     */
+
     @RequestMapping(value = "/index")
     public String index() {
-        return "workflow/process-list";
+        return "/workflow/process-list";
     }
 
     /**
@@ -271,6 +268,7 @@ public class ActivitiController extends AbstractSuperController {
                         .deploymentId(deployment.getId()).list();
 
                 for (ProcessDefinition processDefinition : list) {
+                    repositoryService.setProcessDefinitionCategory(processDefinition.getId(), category);
                     WorkflowUtils.exportDiagramToFile(repositoryService, processDefinition, exportDir);
                 }
                 data.put("message", "部署成功。");
@@ -282,6 +280,17 @@ public class ActivitiController extends AbstractSuperController {
             data.put("message", "error on deploy process, because of file input stream。");
         }
         return success(data);
+    }
+
+    /**
+     * 根据Model部署流程
+     *
+     * @param key
+     */
+    @RequestMapping(value = "/start-running/{key}", method = RequestMethod.POST, produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String deploy(@PathVariable("key") String key) {
+        return success(workflowService.startWorkflowByKey(key, null));
     }
 
     @RequestMapping(value = "/convert-to-model/{processDefinitionId}", produces = Constants.MediaType_APPLICATION_JSON)
@@ -303,7 +312,7 @@ public class ActivitiController extends AbstractSuperController {
             Model modelData = repositoryService.newModel();
             modelData.setKey(processDefinition.getKey());
             modelData.setName(processDefinition.getResourceName());
-            modelData.setCategory(processDefinition.getDeploymentId());
+            modelData.setCategory(processDefinition.getCategory());
 
             ObjectNode modelObjectNode = new ObjectMapper().createObjectNode();
             modelObjectNode.put(ModelDataJsonConstants.MODEL_NAME, processDefinition.getName());

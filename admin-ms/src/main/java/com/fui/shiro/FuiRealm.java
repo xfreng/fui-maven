@@ -7,7 +7,7 @@ import com.fui.dao.shiro.UserRolesMapper;
 import com.fui.dao.user.UserMapper;
 import com.fui.model.Permissions;
 import com.fui.model.User;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;

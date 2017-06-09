@@ -1,7 +1,7 @@
 package com.fui.common;
 
 import com.fui.model.base.BaseModel;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.BorderStyle;
@@ -208,8 +208,8 @@ public class ExcelUtils {
     }
 
     @SuppressWarnings("deprecation")
-    public String exportZipExcel(String templateFilename, List<Map<String, Object>> resultData,
-                                 Map<String, Object> exportInfo) throws Exception {
+    public <T> String exportZipExcel(String templateFilename, List<T> resultData,
+                                     Map<String, Object> exportInfo) throws Exception {
         if (!templateDir.endsWith(File.separator)) {
             templateDir += File.separator;
         }
@@ -252,7 +252,7 @@ public class ExcelUtils {
                     this.generateTitleDatas(exportInfo, wb, sheet);
                 }
                 if (fieldNames != null) {
-                    for (Iterator<Map<String, Object>> it = resultData.iterator(); it.hasNext(); autoRowId++) {
+                    for (Iterator<T> it = resultData.iterator(); it.hasNext(); autoRowId++) {
                         Object object = it.next();
                         Map<String, Object> content = new HashMap<String, Object>();
                         if (object instanceof Map) {

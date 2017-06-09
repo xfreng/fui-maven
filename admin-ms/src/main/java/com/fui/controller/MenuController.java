@@ -1,12 +1,11 @@
 package com.fui.controller;
 
 import com.fui.common.*;
-import com.fui.dao.FuiDao;
 import com.fui.model.Menu;
 import com.fui.service.MenuService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,6 @@ import java.util.Map;
 public class MenuController extends AbstractSuperController {
     private final Logger logger = LoggerFactory.getLogger(MenuController.class);
 
-    @Autowired
-    private FuiDao fuiDao;
     @Autowired
     private MenuService menuService;
 
@@ -57,9 +54,9 @@ public class MenuController extends AbstractSuperController {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id", pid);
         PageHelper.startPage(currPage, pageSize);
-        List<Menu> list = menuService.queryMenuNodeById_page(params);
-        PageInfo<Menu> pageInfo = createPagination(list);
-        return success(list, pageInfo.getTotal(), "treeNodes");
+        List<Menu> menuList = menuService.queryMenuNodeById_page(params);
+        PageInfo<Menu> pageInfo = createPagination(menuList);
+        return success(menuList, pageInfo.getTotal(), "treeNodes");
     }
 
     @RequestMapping(value = "/loadOutlookTreeNodes", produces = Constants.MediaType_APPLICATION_JSON)
@@ -110,12 +107,11 @@ public class MenuController extends AbstractSuperController {
     public void export(HttpServletResponse response) throws Exception {
         String templateDir = request.getSession().getServletContext().getRealPath("templates");
         String templateFilename = "系统菜单";
-        String sqlName = "com.fui.dao.menu.MenuMapper.queryMenuNodeById";
         Map<String, Object> parameters = new HashMap<String, Object>();
         Map<String, Object> exportInfo = new HashMap<String, Object>();
-        int totalNum = fuiDao.countBySql(sqlName, parameters);
-        List<Map<String, Object>> resultData = fuiDao.query(sqlName, parameters);
-        ExcelUtils zipExcelUtil = ExcelUtils.getInstance(totalNum, templateDir);
+
+        List<Menu> resultData = menuService.queryMenuNodeById_page(parameters);
+        ExcelUtils zipExcelUtil = ExcelUtils.getInstance(resultData.size(), templateDir);
         zipExcelUtil.setTitleCellBold(true);
         String filePath = zipExcelUtil.exportZipExcel(templateFilename, resultData, exportInfo);
         logger.info("导出文件路径文件路径：{}", filePath);

@@ -174,3 +174,11 @@
 .icon-deploy {
     background: url(icons/deploy.png) no-repeat;
 }
+
+.icon-run {
+    background: url(icons/run.png) no-repeat;
+}
+
+.icon-reverse {
+    background: url(icons/reverse.png) no-repeat;
+}

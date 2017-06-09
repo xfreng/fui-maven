@@ -5,7 +5,7 @@ import com.fui.common.*;
 import com.fui.dao.user.UserMapper;
 import com.fui.model.ManageToken;
 import com.fui.model.User;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;

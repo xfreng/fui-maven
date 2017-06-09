@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="EF" uri="/WEB-INF/framework/tlds/EF-2.0.tld" %>
 <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
-<script type="text/javascript" src="${path}//public/EF/jQuery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${path}/public/EF/jQuery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="${path}/public/EF/iplat-ui-2.0.js"></script>
 <script type="text/javascript" src="${path}/public/EF/jQuery/iplat.ui.accordionx.js"></script>
 <script type="text/javascript" src="${path}/public/EP/index.menuTree.js"></script>
@@ -30,13 +30,13 @@
     Object projectName = MemCachedUtils.get("projectName");
     Object logo = MemCachedUtils.get("logo");
     Object dev = MemCachedUtils.get("dev");
-    pageContext.setAttribute("menuType", menuType);
-    pageContext.setAttribute("menuStyle", menuStyle);
-    pageContext.setAttribute("iPlatStyle", iPlatStyle);
-    pageContext.setAttribute("user", user);
-    pageContext.setAttribute("projectName", projectName);
-    pageContext.setAttribute("logo", logo);
-    pageContext.setAttribute("dev", dev);
+    request.setAttribute("menuType", menuType);
+    request.setAttribute("menuStyle", menuStyle);
+    request.setAttribute("iPlatStyle", iPlatStyle);
+    request.setAttribute("user", user);
+    request.setAttribute("projectName", projectName);
+    request.setAttribute("logo", logo);
+    request.setAttribute("dev", dev);
 %>
 <c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
 <c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>

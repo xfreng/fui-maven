@@ -5,7 +5,7 @@ import com.fui.common.Constants;
 import com.fui.common.RequestContext;
 import com.fui.common.TokenUtils;
 import com.fui.model.ManageToken;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

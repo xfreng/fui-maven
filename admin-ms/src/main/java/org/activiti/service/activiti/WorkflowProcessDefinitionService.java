@@ -2,7 +2,6 @@ package org.activiti.service.activiti;
 
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.slf4j.Logger;
@@ -18,10 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WorkflowProcessDefinitionService {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass());
-
-    @Autowired
-    protected RuntimeService runtimeService;
+    protected Logger logger = LoggerFactory.getLogger(WorkflowProcessDefinitionService.class);
 
     @Autowired
     protected RepositoryService repositoryService;

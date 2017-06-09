@@ -1,16 +1,15 @@
 package org.activiti.util;
 
-import java.util.List;
-import java.util.Map;
-
+import com.google.common.collect.Maps;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.impl.RepositoryServiceImpl;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.activiti.engine.impl.pvm.process.ActivityImpl;
 import org.activiti.engine.repository.ProcessDefinition;
-import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang3.ObjectUtils;
 
-import com.google.common.collect.Maps;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 流程定义缓存

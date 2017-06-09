@@ -1,16 +1,11 @@
 package org.activiti.service.activiti;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.delegate.Expression;
+import org.activiti.engine.identity.Group;
 import org.activiti.engine.identity.User;
 import org.activiti.engine.impl.RepositoryServiceImpl;
 import org.activiti.engine.impl.bpmn.behavior.UserTaskActivityBehavior;
@@ -30,6 +25,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 /**
  * 工作流跟踪相关Service
  *
@@ -38,7 +35,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Component
 public class WorkflowTraceService {
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+    protected Logger logger = LoggerFactory.getLogger(WorkflowTraceService.class);
 
     @Autowired
     protected RuntimeService runtimeService;
@@ -123,7 +120,7 @@ public class WorkflowTraceService {
             }
 
 			/*
-			 * 当前任务的分配角色
+             * 当前任务的分配角色
 			 */
             UserTaskActivityBehavior userTaskActivityBehavior = (UserTaskActivityBehavior) activityBehavior;
             TaskDefinition taskDefinition = userTaskActivityBehavior.getTaskDefinition();
@@ -154,7 +151,11 @@ public class WorkflowTraceService {
         String roles = "";
         for (Expression expression : candidateGroupIdExpressions) {
             String expressionText = expression.getExpressionText();
-            String roleName = identityService.createGroupQuery().groupId(expressionText).singleResult().getName();
+            Group group = identityService.createGroupQuery().groupId(expressionText).singleResult();
+            if (group == null) {
+                continue;
+            }
+            String roleName = group.getName();
             roles += roleName;
         }
         vars.put("任务所属角色", roles);
