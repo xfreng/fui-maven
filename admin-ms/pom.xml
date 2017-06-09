@@ -55,6 +55,12 @@
         </dependency>
         <!-- activiti -->
         <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin</artifactId>
+            <version>6.8.8</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-engine</artifactId>
             <version>${activiti.version}</version>
