@@ -110,7 +110,15 @@
       "id" : "tasklisteners",
       "type" : "multiplecomplex",
       "title" : "任务监听器",
-      "value" : "",
+      "value" : {"taskListeners": [{
+          "event": "create",
+          "implementation": "org.activiti.listener.GlobalTaskListener",
+          "className": "org.activiti.listener.GlobalTaskListener",
+          "expression": "",
+          "delegateExpression": ""
+        }
+      ]
+      },
       "description" : "人工任务的监听器",
       "popular" : true
     } ]
