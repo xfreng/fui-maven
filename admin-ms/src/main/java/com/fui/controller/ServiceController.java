@@ -11,6 +11,7 @@ import com.baosight.iplat4j.logging.Logger;
 import com.baosight.iplat4j.logging.LoggerFactory;
 import com.baosight.iplat4j.util.StringUtils;
 import com.fui.common.AbstractSuperController;
+import com.fui.common.Constants;
 import com.fui.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -153,7 +154,7 @@ public class ServiceController extends AbstractSuperController {
     protected List<Map<String, Object>> getChildNodes(String p) {
         String node = p;
         if ((!StringUtils.isNotEmpty(node)) || (node.equals("$"))) {
-            node = "root";
+            node = Constants.TREE_ROOT_ID;
         }
         return menuService.query(node);
     }

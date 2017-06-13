@@ -20,7 +20,6 @@
     <fieldset style="border:solid 1px #aaa;">
         <legend>权限信息</legend>
         <div style="padding:5px;">
-            <input type="hidden" name="id">
             <table>
                 <tr>
                     <td>权限ID：</td>
@@ -30,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>权限编码：</td>
-                    <td><input class="fui-textbox" id="code" name="code"/></td>
+                    <td><input class="fui-buttonedit" id="code" name="code" onbuttonclick="onButtonEdit"/></td>
                     <td>权限名称：</td>
                     <td><input class="fui-textbox" id="text" name="text"/></td>
                 </tr>

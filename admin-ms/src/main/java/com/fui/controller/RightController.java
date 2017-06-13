@@ -44,22 +44,24 @@ public class RightController extends AbstractSuperController {
         return mv;
     }
 
+    @RequestMapping("/selectTreeWindow")
+    public ModelAndView tree() {
+        ModelAndView mv = new ModelAndView("right/tree");
+        return mv;
+    }
+
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String getRightList(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
                                @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) {
         String id = request.getParameter("id");
-        String rightCode = request.getParameter("rightCode");
         String rightName = request.getParameter("rightName");
         Map<String, Object> params = new HashMap<String, Object>();
         if (StringUtils.isNotEmpty(id)) {
             params.put("id", id);
         }
-        if (StringUtils.isNotEmpty(rightCode)) {
-            params.put("rightCode", rightCode);
-        }
         if (StringUtils.isNotEmpty(rightName)) {
-            params.put("rightName", rightName);
+            params.put("text", rightName);
         }
         //分页查询
         PageHelper.startPage(currPage, pageSize);
@@ -77,9 +79,10 @@ public class RightController extends AbstractSuperController {
     @ResponseBody
     public String selectRightsByKey() {
         String id = request.getParameter("id");
+        String roleCode = request.getParameter("roleCode");
         Collection rights;
         if (StringUtils.isNotEmpty(id)) {
-            rights = rightService.selectRightByKey(id);
+            rights = rightService.selectRightByKey(id, roleCode);
         } else {
             rights = rightService.selectRootRight();
         }

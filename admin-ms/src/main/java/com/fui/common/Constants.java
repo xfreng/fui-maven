@@ -20,4 +20,7 @@ public interface Constants {
 
     // 默认样式
     String DEFAULT_STYLE = "default";
+
+    // 树根节点id
+    String TREE_ROOT_ID = "root";
 }

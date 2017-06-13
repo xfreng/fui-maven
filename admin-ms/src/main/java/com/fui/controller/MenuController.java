@@ -64,7 +64,7 @@ public class MenuController extends AbstractSuperController {
     public String loadOutlookTreeNodes() throws Exception {
         String pid = request.getParameter("id");
         if (StringUtils.isBlank(pid)) {
-            pid = "root";
+            pid = Constants.TREE_ROOT_ID;
         }
         List<Menu> menus = menuService.queryMenu(pid);
         return success(menus, "treeNodes");

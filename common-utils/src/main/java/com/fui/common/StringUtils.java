@@ -1,18 +1,28 @@
 package com.fui.common;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringUtils {
 
     /**
+     * 字符串转list
+     *
+     * @param str     要转list的字符串
+     * @param pattern 分隔符
+     * @return list
+     */
+    public static List<String> asList(String str, String pattern) {
+        String[] args = str.split(pattern);
+        return Arrays.asList(args);
+    }
+
+    /**
      * 判断字符串是不为空
      *
      * @param str
-     * @return
+     * @return boolean
      */
     public static boolean isNotEmpty(String str) {
         boolean bool = false;
@@ -26,7 +36,7 @@ public class StringUtils {
      * 判断字符串为空
      *
      * @param obj
-     * @return
+     * @return boolean
      */
     public static boolean isNullOrEmpty(Object obj) {
         return obj == null || "".equals(obj.toString());

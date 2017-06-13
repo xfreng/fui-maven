@@ -155,7 +155,7 @@
       AND code = #{code,jdbcType=VARCHAR}
     </if>
     <if test="text != null">
-      AND text LIKE '%$text$%'
+      AND text LIKE '%${text}%'
     </if>
   </select>
 </mapper>

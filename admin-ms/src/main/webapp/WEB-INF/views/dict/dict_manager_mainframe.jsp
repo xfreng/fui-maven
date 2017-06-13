@@ -13,8 +13,8 @@
 	</jsp:include>
 	<div id="fuiTabsBody" class="fui-tabs-body">
 	    <div id="mainTabs" class="fui-tabs" activeIndex="0" style="width:100%;height:100%;">
-		    <div title="业务字典管理" url="${path }/supervisor/dict/dictManager"></div>
-		    <div title="业务字典导入管理" url="${path }/supervisor/dict/dictImportManager"></div>
+		    <div title="业务字典管理" url="${path}/supervisor/dict/dictManager"></div>
+		    <div title="业务字典导入管理" url="${path}/supervisor/dict/dictImportManager"></div>
 		</div>
 	</div>
 </body>

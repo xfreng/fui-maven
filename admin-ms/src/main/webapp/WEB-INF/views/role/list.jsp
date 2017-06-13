@@ -15,19 +15,21 @@
     <div region="north" showHeader="false" bodyStyle="overflow:hidden;" showSplit="false" showCollapseButton="false">
         <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="padding: 10px;width: 100%;">
             <form id="queryForm">
+                <label style="margin-left:20px;" for="roleCode">角色编码：</label>
+                <input class="fui-textbox" id="roleCode" name="roleCode" placeholder="支持模糊查询"/>
                 <label style="margin-left:20px;" for="roleName">角色名称：</label>
-                <input type="text" id="roleName" name="roleName" placeholder="支持模糊查询"/>
-                <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
+                <input class="fui-textbox" id="roleName" name="roleName" placeholder="支持模糊查询"/>
             </form>
         </div>
     </div>
     <div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
         <div class="fui-toolbar" style="border-top:0;border-left:0;border-right:0;">
+            <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
             <a class="fui-button" iconCls="icon-addnew" onclick="doAdd_update('A')">新增</a>
             <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
         </div>
         <div id="roleManagerGrid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="false"
-             url="${path }/supervisor/role/list" idField="id" pageSize="20"
+             url="${path}/supervisor/role/list" idField="id" pageSize="20"
              dataField="roleList" showFilterRow="false" allowCellSelect="true"
              allowCellEdit="true">
             <div property="columns">

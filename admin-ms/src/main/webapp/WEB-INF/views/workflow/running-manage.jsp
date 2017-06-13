@@ -46,7 +46,7 @@
 				<a class="fui-button" iconCls="icon-search" onclick="query()">查询</a>
 			</div>
 			<div id="running" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"
-				 url="${path }/supervisor/workflow/processinstance/list" dataField="runningList" idField="id" multiSelect="true">
+				 url="${path}/supervisor/workflow/processinstance/list" dataField="runningList" idField="id" multiSelect="true">
 				<div property="columns">
 					<div type="checkcolumn" ></div>
 					<div field="id" width="185" headerAlign="center" allowSort="false">执行ID</div>

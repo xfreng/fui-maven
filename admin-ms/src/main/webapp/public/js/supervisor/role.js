@@ -20,27 +20,37 @@ function doQuery() {
  * 弹出新增/修改角色面板
  */
 function doAdd_update(flag) {
+    var action = flag == 'A' ? 'add' : 'edit';
     var title = flag == 'A' ? '新增角色' : '修改角色';
     var row = roleManagerGrid.getSelected();
-    if (flag == 'U' && row == null) {
-        fui.alert("请先选中需要修改的角色", "提示");
-        return;
+    var data = {};
+    if (flag == 'U') {
+        if (row == null) {
+            fui.alert("请先选中需要修改的角色", "提示");
+            return;
+        }
+        var rows = roleManagerGrid.getSelecteds();
+        if (rows.length > 1) {
+            fui.alert("请先选中一条需要修改的角色", "提示");
+            return;
+        }
+        data = row;
     }
+    data.action = action;
     fui.open({
         url: fui.contextPath + "/supervisor/role/state",
         showMaxButton: true,
         title: title,
         width: 510,
-        height: 215,
+        height: 600,
         onload: function () {
-            if(row != null && row.id != undefined){
-                var iframe = this.getIFrameEl();
-                iframe.contentWindow.setData({id: row.id});
-            }
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.setData(data);
         },
         ondestroy: function (action) {
             if (action == "ok") {
                 roleManagerGrid.reload();
+                roleManagerGrid.clearSelect(true);
             }
         }
     });
@@ -52,5 +62,22 @@ function doAdd_update(flag) {
  * @returns {string}
  */
 function operateRender(e) {
-    return "<a href='javascript:void(0)'>查看</a>";
+    return "<a href='javascript:void(0)' onclick='toDetail(" + fui.encode(e.record) + ")'>查看</a>";
+}
+
+/**
+ * 查看角色权限
+ */
+function toDetail(row) {
+    fui.open({
+        url: fui.contextPath + "/supervisor/role/state?showCheckBox=false",
+        showMaxButton: true,
+        title: "查看角色",
+        width: 510,
+        height: 600,
+        onload: function () {
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.setData(row);
+        }
+    });
 }

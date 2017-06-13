@@ -5,10 +5,10 @@
     <%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 	<title>欢迎使用 ${p_name}[${p_dev}]</title>
-	<link rel="stylesheet" type="text/css" href="${path }/public/EP/indexReal-${iPlatStyle }-3.0.css">
-    <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
-	<link rel="stylesheet" type="text/css" href="${path }/public/EU/Font-Awesome/css/font-awesome.jquery.css">
+	<link rel="stylesheet" type="text/css" href="${path}/public/EP/indexReal-${iPlatStyle }-3.0.css">
+    <link rel="stylesheet" type="text/css" href="${path}/public/EU/Font-Awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="${path}/public/EU/Font-Awesome/css/font-awesome-${menuStyle }.css">
+	<link rel="stylesheet" type="text/css" href="${path}/public/EU/Font-Awesome/css/font-awesome.jquery.css">
     <style type="text/css">
 		html, body {
 			margin: 0;
@@ -25,7 +25,7 @@
 			color:#595959;
 		}
 		.searchbox .fui-buttonedit-icon{
-	        background:url('${path }/public/mainframe/images/search.gif') no-repeat 50% 50%;
+	        background:url('${path}/public/mainframe/images/search.gif') no-repeat 50% 50%;
 	    }
 	</style>
 	<script type="text/javascript">
@@ -133,7 +133,7 @@
 	    	<div class="top">
 	        	<!--logo-->
 	            <div class="logo">
-	                <a href="${path }/supervisor/pact" class="bak_logo mg_b-4"></a>
+	                <a href="${path}/supervisor/pact" class="bak_logo mg_b-4"></a>
 	                <a href="javascript:void(0)" class="title-line mg_t_15 mg_l_10"></a>
 	                <span class="white font_18 font_b pd_l_10" style="position:absolute;top:20px;">
 						${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
@@ -146,16 +146,16 @@
 	               			<span class="mg_l_10 font_14" style="top:50px;">欢迎您！${user.ename}&nbsp;&nbsp;&nbsp;</span>
 	                	</li>
 	                	<li>
-	                        <a href="${path }/supervisor/pact"><img src="${path }/public/mainframe/images/login/home.png" /><span class="mg_l_10 font_14">首页</span></a>
+	                        <a href="${path}/supervisor/pact"><img src="${path}/public/mainframe/images/login/home.png" /><span class="mg_l_10 font_14">首页</span></a>
 	                    </li>
 	                	<li>
-	                        <a href="javascript:changeOpenWindow()"><img src="${path }/public/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
+	                        <a href="javascript:changeOpenWindow()"><img src="${path}/public/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
 	                    </li>
 	                    <li>
-	                    	<a href="${path }/supervisor/destroy"><img src="${path }/public/mainframe/images/login/logout.png" /><span class="mg_l_10 font_14">注销</span></a>
+	                    	<a href="${path}/supervisor/destroy"><img src="${path}/public/mainframe/images/login/logout.png" /><span class="mg_l_10 font_14">注销</span></a>
 	                    </li>
 	                    <li id="dropdown">
-	                    	<a href="javascript:void(0)"><img src="${path }/public/mainframe/images/login/skin.png" /><span class="mg_l_10 font_14">皮肤&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+	                    	<a href="javascript:void(0)"><img src="${path}/public/mainframe/images/login/skin.png" /><span class="mg_l_10 font_14">皮肤&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
 	                        <ul class="dropdownMenu">
 	                    		<li onclick="updateStyle('default','default')" ${"default" eq menuStyle?"class'selected'":""}><span class="default color"></span><span class="pd_l_15">默认</span></li>
 	                    		<li onclick="updateStyle('pact','red')" ${"red" eq menuStyle?"class'selected'":""}><span class="red color"></span><span class="pd_l_15">红色</span></li>
@@ -189,7 +189,7 @@
     <div showHeader="false" region="center" style="border:0;margin-top:10px;">
         <div id="mainTabs" class="fui-tabs" activeIndex="0" style="width:100%;height:100%;"
             onactivechanged="onTabsActiveChanged" contextMenu="#tabsMenu">
-            <div name="first" title="每日记事" url="${path }/supervisor/calendar"></div>
+            <div name="first" title="每日记事" url="${path}/supervisor/calendar"></div>
         </div>
     </div>
     <div iconCls="icon-favorite" title="我的收藏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='float:right'><a href='#' class='color_a'><u>更多>></u></a></span>" region="east" style="margin-top:10px;" width="195" showCollapseButton="false" showCloseButton="false" showSplitIcon="true">

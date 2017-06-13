@@ -15,13 +15,13 @@ function doSaveRight() {
         success: function (text) {
             text = fui.decode(text);
             if (text.message != null && text.message != undefined) {
-                alert(text.message);
+                fui.alert(text.message);
                 return;
             }
             CloseWindow("ok");
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            fui.alert(jqXHR.responseText);
             CloseWindow();
         }
     });
@@ -47,4 +47,33 @@ function onOk(e) {
 
 function onCancel(e) {
     CloseWindow("cancel");
+}
+
+/**
+ * 弹出选择权限窗口
+ * @param e
+ */
+function onButtonEdit(e) {
+    var btnEdit = this;
+    fui.open({
+        url: fui.contextPath + "/supervisor/right/selectTreeWindow",
+        showMaxButton: false,
+        title: "选择权限",
+        width: 350,
+        height: 350,
+        ondestroy: function (action) {
+            if (action == "ok") {
+                var iframe = this.getIFrameEl();
+                var data = iframe.contentWindow.getData();
+                data = fui.clone(data);
+                if (data) {
+                    var code = data.pid + "." + data.id;
+                    btnEdit.setValue(code);
+                    btnEdit.setText(code);
+                    fui.get("text").setValue(data.text);
+                    fui.get("url").setValue(data.url);
+                }
+            }
+        }
+    });
 }

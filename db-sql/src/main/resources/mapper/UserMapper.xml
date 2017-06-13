@@ -190,7 +190,7 @@
         AND ename = #{userCode,jdbcType=VARCHAR}
     </if>
     <if test="userName != null">
-        AND cname LIKE '%$userName$%'
+        AND cname LIKE '%${userName}%'
     </if>
   </select>
 </mapper>

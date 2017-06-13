@@ -1,6 +1,7 @@
 package com.fui.service;
 
 import com.baosight.iplat4j.util.DateUtils;
+import com.fui.common.Constants;
 import com.fui.common.GsonUtils;
 import com.fui.common.JsonUtils;
 import com.fui.common.UserUtils;
@@ -99,7 +100,7 @@ public class MenuService {
      */
     protected List<Menu> getChildNodes(String id) {
         if (StringUtils.isEmpty(id)) {
-            id = "root";
+            id = Constants.TREE_ROOT_ID;
         }
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);

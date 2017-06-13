@@ -40,6 +40,12 @@ public class RoleController extends AbstractSuperController {
     @RequestMapping("/state")
     public ModelAndView state() {
         ModelAndView mv = new ModelAndView("role/state");
+        String showCheckBox = request.getParameter("showCheckBox");
+        if (StringUtils.isNotEmpty(showCheckBox)) {
+            mv.addObject("showCheckBox", Boolean.parseBoolean(showCheckBox));
+        } else {
+            mv.addObject("showCheckBox", true);
+        }
         return mv;
     }
 

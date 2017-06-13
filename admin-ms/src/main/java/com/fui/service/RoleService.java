@@ -49,12 +49,11 @@ public class RoleService {
         JSONObject json = new JSONObject();
         Roles oldRoles = findRolesByCode(roles.getRoleCode());
         if (oldRoles != null) {
-            json.put("result", "0");
             json.put("message", "角色编码已经存在");
             return json;
         }
         int i = rolesMapper.insert(roles);
-        json.put("result", i > 0 ? "1" : "0");
+        json.put("message", i > 0 ? "角色添加成功" : "角色添加失败");
         return json;
     }
 }

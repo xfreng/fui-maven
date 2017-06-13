@@ -111,10 +111,10 @@
             AND id = #{id}
         </if>
         <if test="dict_code != null">
-            AND dict_code like '%$dictCode$%'
+            AND dict_code like '%${dictCode}%'
         </if>
         <if test="dict_desc != null">
-            AND dict_desc like '%$dictDesc$%'
+            AND dict_desc like '%${dictDesc}%'
         </if>
         <if test="orderBy != null">
             ORDER BY #{orderBy}

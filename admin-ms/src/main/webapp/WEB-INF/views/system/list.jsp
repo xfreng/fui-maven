@@ -22,7 +22,7 @@
 		    	<a class="fui-button" iconCls="icon-save" onclick="save()">保存</a>
 		    </div>
 			<div id="systemInfo" class="fui-datagrid" style="width:100%;height:92%;" allowResize="true"
-		        url="${path }/supervisor/sys/list" dataField="systemList" idField="id" multiSelect="true">
+		        url="${path}/supervisor/sys/list" dataField="systemList" idField="id" multiSelect="true">
 		        <div property="columns">
 					<div field="desc" width="60" headerAlign="center" allowSort="false">配置项名</div>
 		            <div field="name" width="60" headerAlign="center" allowSort="false">配置内容

@@ -51,7 +51,7 @@
 				<div style="float:right;display:inline;color:#cc0000"><b>提示：</b>点击xml或者png链接可以查看具体内容！</div>
 			</div>
 			<div id="process" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"
-				 url="${path }/supervisor/workflow/process/list" dataField="processList" idField="id" multiSelect="true">
+				 url="${path}/supervisor/workflow/process/list" dataField="processList" idField="id" multiSelect="true">
 				<div property="columns">
 					<div type="checkcolumn" ></div>
 					<div field="id" width="185" headerAlign="center" allowSort="false">ProcessDefinitionId</div>
@@ -85,8 +85,8 @@
 				<tr>
 					<td colspan="2">
 						<input id="deployFile" class="fui-fileupload" name="file" limitType="*.zip;*.bar;*.xml" style="width: 350px;"
-							   flashUrl="${path }/public/common/fui/swfupload/swfupload.swf"
-							   uploadUrl="${path }/supervisor/workflow/process/deploy"
+							   flashUrl="${path}/public/common/fui/swfupload/swfupload.swf"
+							   uploadUrl="${path}/supervisor/workflow/process/deploy"
 							   onuploadsuccess="onUploadSuccess" />
 					</td>
 				</tr>

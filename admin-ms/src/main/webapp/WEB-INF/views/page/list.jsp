@@ -58,7 +58,7 @@
 		        <a class="fui-button" iconCls="icon-remove" onclick="remove()">删除</a>     
 		    </div>
 			<div id="pageInfo" class="fui-datagrid" style="width:100%;height:92%;" allowResize="true"
-		        url="${path }/plist" dataField="pageList" idField="id" multiSelect="true">       	
+		        url="${path}/plist" dataField="pageList" idField="id" multiSelect="true">
 		        <div property="columns">
 					<div type="checkcolumn" ></div>
 		            <div field="formEname" width="60" headerAlign="center" allowSort="false">画面英文名

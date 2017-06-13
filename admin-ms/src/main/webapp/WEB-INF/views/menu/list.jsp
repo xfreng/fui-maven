@@ -21,7 +21,7 @@
 </jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
 	<div region="west" showHeader="false" style="cursor:hand;" bodyStyle="padding-left:0px;" showSplitIcon="true" width="230" maxWidth="530">
-	    <ul id="tree" class="fui-tree" url="${path }/supervisor/menu/loadMenuNodes" style="width:100%;margin-top:5px;"
+	    <ul id="tree" class="fui-tree" url="${path}/supervisor/menu/loadMenuNodes" style="width:100%;margin-top:5px;"
 		    showTreeIcon="true" textField="text" onbeforeload="onBeforeTreeLoad" dataField="treeNodes"
 		    idField="id" parentField="pid" resultAsTree="false" onnodeclick="onNodeClick" 
 		    contextMenu="#treeMenu">       
@@ -37,7 +37,7 @@
 	        <a class="fui-button" iconCls="icon-download" onclick="exportExcel()">导出</a>     
 	    </div>
 	    <div id="grid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="true"
-	       	url="${path }/supervisor/menu/loadMenuNodePage" idField="id" parentField="pid" pageSize="20"
+	       	url="${path}/supervisor/menu/loadMenuNodePage" idField="id" parentField="pid" pageSize="20"
 	        textField="text" dataField="treeNodes" showFilterRow="false" allowCellSelect="true" 
 	        allowCellEdit="true" onrowdblclick="toedit" oncellmousedown="onCellBeginEdit">
 	        <div property="columns">

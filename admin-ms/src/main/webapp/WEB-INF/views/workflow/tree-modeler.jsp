@@ -14,7 +14,7 @@
 	<div class="fui-splitter" style="width:100%;height:100%;">
 		<div size="240" showCollapseButton="true">
 			<div class="fui-panel" title="导航" style="width:100%;height:100%;">
-				<ul id="tree" class="fui-tree" url="${path }/supervisor/treeModel/getModel?modelId=${modelId }" style="width:100%;padding:5px;"
+				<ul id="tree" class="fui-tree" url="${path}/supervisor/treeModel/getModel?modelId=${modelId }" style="width:100%;padding:5px;"
 					showTreeIcon="true" textField="text" idField="id" onnodeclick="onNodeClick">
 				</ul>
 	    	</div>
@@ -23,7 +23,7 @@
 			<div class="fui-fit" style="width:100%;height:100%;">
 	        	<div id="tabs" class="fui-tabs" style="width:100%;height:100%;">
 	        		<div name="designer" title="设计" bodyStyle="overflow:hidden;" style="padding:2px;"
-	        			 url="${path }/public/bpm/modeler.html?modelId=${modelId }"/>
+	        			 url="${path}/public/bpm/modeler.html?modelId=${modelId }"/>
 	        	</div>
 	        </div>
 	    </div>

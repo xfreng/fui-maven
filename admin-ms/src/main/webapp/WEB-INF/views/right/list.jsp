@@ -24,7 +24,7 @@
 </jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
     <div region="west" title="权限配置菜单" showHeader="false" style="cursor:hand;" bodyStyle="padding-left:0px;" showSplitIcon="true" width="230" maxWidth="530">
-        <ul id="leftTree" class="fui-tree" url="${path }/supervisor/right/selectByKey" style="width:100%;margin-top:5px;"
+        <ul id="leftTree" class="fui-tree" url="${path}/supervisor/right/selectByKey" style="width:100%;margin-top:5px;"
             showTreeIcon="true" textField="text" onbeforeload="onBeforeTreeLoad" dataField="rightNodes"
             idField="id" parentField="parentId" resultAsTree="false" onnodeclick="onNodeClick">
         </ul>
@@ -34,7 +34,7 @@
             <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="width:100%;">
                 <form id="queryForm">
                     <label style="margin-left:20px;" for="rightName">权限名称：</label>
-                    <input class="fui-textbox" id="rightName" name="text" prompt="支持模糊查询"/>
+                    <input class="fui-textbox" id="rightName" name="rightName" prompt="支持模糊查询"/>
                 </form>
             </div>
             <div class="fui-panel" showHeader="false" bodyStyle="overflow:hidden;" style="width:100%;height:92%;">
@@ -45,7 +45,7 @@
                     <a class="fui-button" iconCls="icon-download" onclick="doExport()">导出sql</a>
                 </div>
                 <div id="rightManagerGrid" class="fui-datagrid" style="width:100%;height:96%;" multiSelect="true"
-                     url="${path }/supervisor/right/list" idField="id" pageSize="20"
+                     url="${path}/supervisor/right/list" idField="id" pageSize="20"
                      dataField="rightList" showFilterRow="false" allowCellSelect="true"
                      allowCellEdit="true">
                     <div property="columns">

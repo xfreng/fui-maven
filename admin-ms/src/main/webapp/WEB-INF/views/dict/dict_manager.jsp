@@ -60,7 +60,7 @@
 					        </div>
 					    </div>    
 					    <div id="dictTypeGrid" class="fui-datagrid" style="width:100%;height:auto;"
-					        url="${path }/supervisor/dict/queryDictType" idField="id" selectOnLoad="true"
+					        url="${path}/supervisor/dict/queryDictType" idField="id" selectOnLoad="true"
 					        allowResize="true" pageSize="20" oncellmousedown="onCellBeginEdit"
 					        allowCellEdit="true" allowCellSelect="true" multiSelect="true" editNextOnEnterKey="true"
 					        onselectionchanged="onSelectionChanged">
@@ -84,7 +84,7 @@
                      <TD style="width:64%;height:38%" align="left" valign="top">
                          <div id="layout1" class="fui-layout" style="width:100%;height:100%">
 							<div title="数据字典项" width="100%" class="panel" allowResize="false">
-								<ul id="tree1" class="fui-tree" url="${path }/supervisor/dict/queryDictForTree"
+								<ul id="tree1" class="fui-tree" url="${path}/supervisor/dict/queryDictForTree"
 									style="width:100%;height:100%;padding:5px;" expandOnLoad="0"
 								    showTreeIcon="true" textField="dictDesc" dataField="data"
 								    idField="dictCode" parentField="pid" resultAsTree="false">
@@ -111,7 +111,7 @@
 					        </div>
     					</div>
 					    <div id="dictEntryGrid" class="fui-datagrid" style="width:100%;height:auto;"
-					        url="${path }/supervisor/dict/getLayout" idField="id" allowResize="true" pageSize="20"
+					        url="${path}/supervisor/dict/getLayout" idField="id" allowResize="true" pageSize="20"
 					        allowCellEdit="true" allowCellSelect="true" multiSelect="true" editNextOnEnterKey="true">
 					        <div property="columns">
 					        	<div type="checkcolumn" ></div>

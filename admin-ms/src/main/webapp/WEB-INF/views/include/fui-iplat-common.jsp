@@ -25,7 +25,7 @@
 <link rel="stylesheet" type="text/css" href="${path}/public/common/fui/themes/pact/demo.css"/>
 
 <script type="text/javascript">
-	fui.contextPath="${path }";
+	fui.contextPath="${path}";
 	fui.DataTree.prototype.dataField="data";//兼容改造
 	
 	/**

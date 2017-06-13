@@ -29,7 +29,7 @@
             <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
         </div>
         <div id="userManagerGrid" class="fui-datagrid" style="width:100%;height:94%;" multiSelect="false"
-               url="${path }/supervisor/user/list" idField="id" pageSize="20"
+               url="${path}/supervisor/user/list" idField="id" pageSize="20"
                dataField="userList" showFilterRow="false" allowCellSelect="true"
                allowCellEdit="true">
             <div property="columns">

@@ -24,25 +24,33 @@
             <table width="100%">
                 <tr>
                     <td>角色编码：</td>
-                    <td><input name="roleCode" class="fui-textbox" required="true" style="width:100%"/></td>
+                    <td><input id="roleCode" name="roleCode" class="fui-textbox" required="true" allowInput="${showCheckBox}" style="width:100%"/></td>
                 </tr>
                 <tr>
                     <td>角色名称：</td>
-                    <td><input name="roleName" class="fui-textbox" required="true" style="width:100%"/></td>
+                    <td><input name="roleName" class="fui-textbox" required="true" allowInput="${showCheckBox}" style="width:100%"/></td>
                 </tr>
                 <tr>
-                    <td>权限：</td>
+                    <td valign="top">权限选择：</td>
                     <td>
-                        &nbsp;
+                        <div class="fui-panel" showHeader="false" style="width:100%;height:400px;">
+                            <ul id="rightTree" class="fui-tree" style="width:100%;margin-top:5px;"
+                                showTreeIcon="true" textField="text" onbeforeload="onBeforeTreeLoad" dataField="rightNodes"
+                                showCheckBox="${showCheckBox}" checkRecursive="true" allowSelect="false" enableHotTrack="false"
+                                idField="id" parentField="parentId" resultAsTree="false">
+                            </ul>
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
     </fieldset>
-    <div style="text-align:center;padding:10px;">
-        <a class="fui-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>
-        <a class="fui-button" onclick="onCancel" style="width:60px;">取消</a>
-    </div>
+    <c:if test="${showCheckBox}">
+        <div style="text-align:center;padding:10px;">
+            <a class="fui-button" onclick="onOk" style="width:60px;margin-right:20px;">确定</a>
+            <a class="fui-button" onclick="onCancel" style="width:60px;">取消</a>
+        </div>
+    </c:if>
 </form>
 </body>
 <script type="text/javascript" src="${path}/public/js/supervisor/role-state.js?v=<%=System.currentTimeMillis()%>"></script>
