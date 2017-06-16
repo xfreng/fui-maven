@@ -27,15 +27,15 @@ public class FileUtils {
     /**
      * 将多个文件压缩成文件包
      *
-     * @param srcfile 文件名数组
-     * @param zipfile 压缩后文件
+     * @param srcFile 文件名数组
+     * @param zipFile 压缩后文件
      */
-    public static void ZipFiles(File[] srcfile, File zipfile) {
+    public static void ZipFiles(File[] srcFile, File zipFile) {
         byte[] buf = new byte[1024];
         try {
-            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipfile));
-            for (int i = 0, count = srcfile.length; i < count; i++) {
-                File sourceFile = srcfile[i];
+            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile));
+            for (int i = 0, count = srcFile.length; i < count; i++) {
+                File sourceFile = srcFile[i];
                 InputStream in = new FileInputStream(sourceFile);
                 out.putNextEntry(new ZipEntry(sourceFile.getName()));
                 int len;
@@ -47,8 +47,8 @@ public class FileUtils {
             }
             out.close();
             // 删除打包源文件
-            for (int i = 0, count = srcfile.length; i < count; i++) {
-                File sourceFile = srcfile[i];
+            for (int i = 0, count = srcFile.length; i < count; i++) {
+                File sourceFile = srcFile[i];
                 sourceFile.delete();
             }
         } catch (IOException e) {
