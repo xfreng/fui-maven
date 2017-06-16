@@ -66,7 +66,7 @@ public class FuiRealm extends AuthorizingRealm {
             permissionsList = permissionsMapper.selectAllRight();
         } else {  //其他用户根据角色获取权限
             permissionsList = new ArrayList<Permissions>();
-            List<Long> roleIdList = userRolesMapper.selectRolesByAgentId(user.getId());
+            List<Long> roleIdList = userRolesMapper.selectRolesByUserId(user.getId());
             String[] rolePermissions;
             List<String> permissionIdList = new ArrayList<String>();
             Permissions permission;

@@ -19,7 +19,6 @@ function doSaveRole() {
             text = fui.decode(text);
             if (text.message != null && text.message != undefined) {
                 fui.alert(text.message);
-                return;
             }
             CloseWindow("ok");
         },
@@ -42,6 +41,8 @@ function setData(data) {
         treeUrl = fui.contextPath + "/supervisor/right/selectByKey?roleCode=" + data.roleCode;
     } else if (action == "add") {
         fui.get("roleCode").setAllowInput(true);
+    } else {
+        treeUrl = fui.contextPath + "/supervisor/right/selectByKey?roleCode=" + data.roleCode;
     }
     rightTree.load(treeUrl);
 }

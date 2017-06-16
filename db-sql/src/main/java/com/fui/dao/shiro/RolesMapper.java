@@ -69,5 +69,5 @@ public interface RolesMapper {
      * @param params
      * @return 角色列表
      */
-    List<Roles> getRolesList_page(Map<String, Object> params);
+    List<Roles> getRolesList(Map<String, Object> params);
 }

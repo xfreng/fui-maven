@@ -16,7 +16,6 @@ function doSaveRight() {
             text = fui.decode(text);
             if (text.message != null && text.message != undefined) {
                 fui.alert(text.message);
-                return;
             }
             CloseWindow("ok");
         },

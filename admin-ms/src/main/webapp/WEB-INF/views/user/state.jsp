@@ -20,22 +20,24 @@
     <fieldset style="border:solid 1px #aaa;">
         <legend>用户信息</legend>
         <div style="padding:5px;">
-            <input type="hidden" name="id">
+            <input name="id" class="fui-hidden"/>
             <table width="100%">
                 <tr>
                     <td>登录名：</td>
-                    <td><input name="name" class="fui-textbox" required="true" style="width:100%"/></td>
+                    <td><input id="ename" name="ename" class="fui-textbox" required="true" style="width:100%"/></td>
                 </tr>
                 <tr>
                     <td>真实姓名：</td>
-                    <td><input name="realityName" class="fui-textbox" required="true" style="width:100%"/></td>
+                    <td><input name="cname" class="fui-textbox" required="true" style="width:100%"/></td>
                 </tr>
                 <tr>
                     <td>角色(可多选)：</td>
                     <td>
-                        <div id="rolesCombo" class="fui-combobox" style="width:100%;" popupWidth="100%"
-                             textField="roleName" valueField="roleCode"
-                             multiSelect="true" showClose="true" oncloseclick="onCloseClick">
+                        <div id="rolesCombo" class="fui-combobox" required="true" style="width:100%;" popupWidth="100%"
+                             url="${path}/supervisor/user/roleList"
+                             textField="roleName" valueField="id"
+                             showClose="true" oncloseclick="onCloseClick"
+                             multiSelect="true">
                             <div property="columns">
                                 <div header="角色编码" field="roleCode"></div>
                                 <div header="角色名称" field="roleName"></div>

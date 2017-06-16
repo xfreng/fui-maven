@@ -2,9 +2,13 @@ package com.fui.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fui.common.*;
+import com.fui.dao.shiro.RolesMapper;
+import com.fui.dao.shiro.UserRolesMapper;
 import com.fui.dao.user.UserMapper;
 import com.fui.model.ManageToken;
+import com.fui.model.Roles;
 import com.fui.model.User;
+import com.fui.model.UserRoles;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -16,10 +20,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service("userService")
 public class UserService {
@@ -29,6 +30,10 @@ public class UserService {
     private TokenUtils tokenUtils;
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private RolesMapper rolesMapper;
+    @Autowired
+    private UserRolesMapper userRolesMapper;
 
     public Map<String, Object> login(String username, String password, String code) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -121,8 +126,8 @@ public class UserService {
      * @param params 查询条件
      * @return 用户信息列表
      */
-    public List<User> getUserList_page(Map<String, Object> params) {
-        return userMapper.getUserList_page(params);
+    public List<User> getUserList(Map<String, Object> params) {
+        return userMapper.getUserList(params);
     }
 
     /**
@@ -139,13 +144,12 @@ public class UserService {
      * 新增用户
      *
      * @param user
-     * @return
+     * @return 操作信息
      */
-    public JSONObject addUser(User user) {
+    public JSONObject addUser(User user, String roles) {
         JSONObject json = new JSONObject();
         User oldUser = findUserByCode(user.getEname());
-        if(oldUser != null){
-            json.put("result", "0");
+        if (oldUser != null) {
             json.put("message", "用户名已经存在");
             return json;
         }
@@ -154,7 +158,51 @@ public class UserService {
         user.setStyle(Constants.DEFAULT_STYLE);
         user.setMenuType(Constants.DEFAULT_STYLE);
         int i = userMapper.insert(user);
-        json.put("result", i > 0 ? "1" : "0");
+        List<String> userRoleList = com.fui.common.StringUtils.asList(roles, ",");
+        UserRoles userRoles = new UserRoles();
+        userRoles.setUserId(user.getId());
+        for (String roleId : userRoleList) {
+            userRoles.setRoleId(Long.valueOf(roleId));
+            userRolesMapper.insert(userRoles);
+        }
+        json.put("message", i > 0 ? "用户添加成功" : "用户添加失败");
         return json;
+    }
+
+    /**
+     * 修改用户
+     *
+     * @param user
+     * @return 操作信息
+     */
+    public JSONObject updateUser(User user, String roles) {
+        JSONObject json = new JSONObject();
+        int i = userMapper.updateByPrimaryKeySelective(user);
+        userRolesMapper.deleteByUserId(user.getId());// 更新之前，清除用户角色关联信息
+        List<String> userRoleList = com.fui.common.StringUtils.asList(roles, ",");
+        UserRoles userRoles = new UserRoles();
+        userRoles.setUserId(user.getId());
+        for (String roleId : userRoleList) {
+            userRoles.setRoleId(Long.valueOf(roleId));
+            userRolesMapper.insert(userRoles);
+        }
+        json.put("message", i > 0 ? "用户修改成功" : "用户修改失败");
+        return json;
+    }
+
+    /**
+     * 获取用户拥有的角色
+     *
+     * @param userId
+     * @return 角色列表
+     */
+    public List<Roles> getUserRoles(Long userId) {
+        List<Roles> userRoles = new ArrayList<Roles>();
+        List<Long> roleIdList = userRolesMapper.selectRolesByUserId(userId);
+        for (Long roleId : roleIdList) {
+            Roles roles = rolesMapper.selectByPrimaryKey(roleId);
+            userRoles.add(roles);
+        }
+        return userRoles;
     }
 }

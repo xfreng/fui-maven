@@ -48,13 +48,13 @@ public class MenuController extends AbstractSuperController {
 
     @RequestMapping(value = "/loadMenuNodePage", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String loadMenuNode_page(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+    public String loadMenuNode(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
                                     @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String pid = request.getParameter("id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id", pid);
         PageHelper.startPage(currPage, pageSize);
-        List<Menu> menuList = menuService.queryMenuNodeById_page(params);
+        List<Menu> menuList = menuService.queryMenuNodeById(params);
         PageInfo<Menu> pageInfo = createPagination(menuList);
         return success(menuList, pageInfo.getTotal(), "treeNodes");
     }
@@ -110,7 +110,7 @@ public class MenuController extends AbstractSuperController {
         Map<String, Object> parameters = new HashMap<String, Object>();
         Map<String, Object> exportInfo = new HashMap<String, Object>();
 
-        List<Menu> resultData = menuService.queryMenuNodeById_page(parameters);
+        List<Menu> resultData = menuService.queryMenuNodeById(parameters);
         ExcelUtils zipExcelUtil = ExcelUtils.getInstance(resultData.size(), templateDir);
         zipExcelUtil.setTitleCellBold(true);
         String filePath = zipExcelUtil.exportZipExcel(templateFilename, resultData, exportInfo);

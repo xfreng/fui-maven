@@ -59,5 +59,13 @@ public interface UserRolesMapper {
      * @param userId 用户id
      * @return 角色列表
      */
-    List<Long> selectRolesByAgentId(Long userId);
+    List<Long> selectRolesByUserId(Long userId);
+
+    /**
+     * 根据用户id删除对应的角色关联信息
+     *
+     * @param userId 用户id
+     * @return 删除结果
+     */
+    int deleteByUserId(Long userId);
 }

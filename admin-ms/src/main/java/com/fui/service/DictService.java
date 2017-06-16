@@ -72,7 +72,7 @@ public class DictService {
             dictEntryMapper.deleteByPrimaryKey(dictType.getId());
             dictTypeMapper.deleteByPrimaryKey(dictType.getId());
         } else if ("modified".equals(_state)) {
-            dictTypeMapper.updateByPrimaryKey(dictType);
+            dictTypeMapper.updateByPrimaryKeySelective(dictType);
         }
     }
 
@@ -82,7 +82,7 @@ public class DictService {
         } else if ("removed".equals(_state)) {
             dictEntryMapper.deleteByPrimaryKey(dictEntry.getId());
         } else if ("modified".equals(_state)) {
-            dictEntryMapper.updateByPrimaryKey(dictEntry);
+            dictEntryMapper.updateByPrimaryKeySelective(dictEntry);
         }
     }
 

@@ -91,5 +91,5 @@ public interface PermissionsMapper {
      * @param params
      * @return 权限列表
      */
-    List<Permissions> getRightsList_page(Map<String, Object> params);
+    List<Permissions> getRightsList(Map<String, Object> params);
 }

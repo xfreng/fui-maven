@@ -69,5 +69,5 @@ public interface UserMapper {
      * @param params
      * @return 用户列表
      */
-    List<User> getUserList_page(Map<String, Object> params);
+    List<User> getUserList(Map<String, Object> params);
 }

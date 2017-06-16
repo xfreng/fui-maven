@@ -116,7 +116,7 @@
       <include refid="Base_Column_List"/>
     from fui.fui_roles where role_code = #{roleCode}
   </select>
-  <select id="getRolesList_page" parameterType="java.util.Map" resultMap="BaseResultMap">
+  <select id="getRolesList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
       <include refid="Base_Column_List"/>
     FROM fui.fui_roles WHERE 1 = 1

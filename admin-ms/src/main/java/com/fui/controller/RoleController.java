@@ -64,7 +64,7 @@ public class RoleController extends AbstractSuperController {
         }
         //分页查询
         PageHelper.startPage(currPage, pageSize);
-        List<Roles> list = roleService.getRolesList_page(params);
+        List<Roles> list = roleService.getRolesList(params);
         PageInfo<Roles> pageInfo = createPagination(list);
         return success(list, pageInfo.getTotal(), "roleList");
     }
@@ -73,5 +73,11 @@ public class RoleController extends AbstractSuperController {
     @ResponseBody
     public String addRole(Roles roles) {
         return success(roleService.addRoles(roles));
+    }
+
+    @RequestMapping(value = "/update", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String updateRole(Roles roles) {
+        return success(roleService.updateRoles(roles));
     }
 }

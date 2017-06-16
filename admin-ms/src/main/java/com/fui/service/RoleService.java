@@ -24,9 +24,8 @@ public class RoleService {
      * @param params 查询条件
      * @return 角色信息列表
      */
-    public List<Roles> getRolesList_page(Map<String, Object> params) {
-        List<Roles> rolesList = rolesMapper.getRolesList_page(params);
-        return rolesList;
+    public List<Roles> getRolesList(Map<String, Object> params) {
+        return rolesMapper.getRolesList(params);
     }
 
     /**
@@ -43,7 +42,7 @@ public class RoleService {
      * 新增角色
      *
      * @param roles
-     * @return
+     * @return 操作信息
      */
     public JSONObject addRoles(Roles roles) {
         JSONObject json = new JSONObject();
@@ -54,6 +53,19 @@ public class RoleService {
         }
         int i = rolesMapper.insert(roles);
         json.put("message", i > 0 ? "角色添加成功" : "角色添加失败");
+        return json;
+    }
+
+    /**
+     * 修改角色
+     *
+     * @param roles
+     * @return 操作信息
+     */
+    public JSONObject updateRoles(Roles roles) {
+        JSONObject json = new JSONObject();
+        int i = rolesMapper.updateByPrimaryKeySelective(roles);
+        json.put("message", i > 0 ? "角色修改成功" : "角色修改失败");
         return json;
     }
 }

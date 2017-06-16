@@ -52,9 +52,9 @@
                         <div type="checkcolumn" ></div>
                         <div field="id" width="100" headerAlign="center" align="center">权限ID</div>
                         <div field="parentId" width="100" headerAlign="center" align="center">上级权限ID</div>
-                        <div field="code" width="100" headerAlign="center" align="center">权限编码</div>
-                        <div field="text" width="130" headerAlign="center" align="center">权限名称</div>
-                        <div field="url" width="150" headerAlign="center" align="center">权限配置URL</div>
+                        <div field="code" width="100" headerAlign="center">权限编码</div>
+                        <div field="text" width="130" headerAlign="center">权限名称</div>
+                        <div field="url" width="150" headerAlign="center">权限配置URL</div>
                     </div>
                 </div>
             </div>

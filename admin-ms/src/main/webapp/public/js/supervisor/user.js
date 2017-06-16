@@ -20,12 +20,23 @@ function doQuery() {
  * 弹出新增/修改用户面板
  */
 function doAdd_update(flag) {
+    var action = flag == 'A' ? 'add' : 'edit';
     var title = flag == 'A' ? '新增用户' : '修改用户';
     var row = userManagerGrid.getSelected();
-    if (flag == 'U' && row == null) {
-        fui.alert("请先选中需要修改的用户", "提示");
-        return;
+    var data = {};
+    if (flag == 'U') {
+        if (row == null) {
+            fui.alert("请先选中需要修改的用户", "提示");
+            return;
+        }
+        var rows = userManagerGrid.getSelecteds();
+        if (rows.length > 1) {
+            fui.alert("请选中一条需要修改的用户", "提示");
+            return;
+        }
+        data = row;
     }
+    data.action = action;
     fui.open({
         url: fui.contextPath + "/supervisor/user/state",
         showMaxButton: true,
@@ -33,14 +44,13 @@ function doAdd_update(flag) {
         width: 510,
         height: 215,
         onload: function () {
-            if (row != null && row.id != undefined) {
-                var iframe = this.getIFrameEl();
-                iframe.contentWindow.setData({id: row.id});
-            }
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.setData(data);
         },
         ondestroy: function (action) {
             if (action == "ok") {
                 userManagerGrid.reload();
+                userManagerGrid.clearSelect(true);
             }
         }
     });
@@ -53,7 +63,7 @@ function doAdd_update(flag) {
  */
 function roleRender(e) {
     var userId = e.record.id;
-    return "<a href='javascript:void(0)'>查看</a>";
+    return "<a href='javascript:void(0)' onclick='openRoleWindow(" + userId + ")'>查看</a>";
 }
 
 /**
@@ -63,4 +73,16 @@ function roleRender(e) {
  */
 function operateRender(e) {
     return "<a href='javascript:void(0)'>重置密码</a>&nbsp;<a href='javascript:void(0)'>禁用</a>";
+}
+
+/**
+ * 打开查询角色窗口
+ * @param userId
+ */
+function openRoleWindow(userId) {
+    var roleTemplateWindow = fui.get("roleTemplate");
+    roleTemplateWindow.show();
+    var roleGrid = fui.get("roleGrid");
+    roleGrid.setUrl(fui.contextPath + '/supervisor/user/roleList?userId=' + userId);
+    roleGrid.load();
 }

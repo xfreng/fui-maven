@@ -20,7 +20,7 @@
     <fieldset style="border:solid 1px #aaa;">
         <legend>角色信息</legend>
         <div style="padding:5px;">
-            <input type="hidden" name="id">
+            <input name="id" class="fui-hidden"/>
             <table width="100%">
                 <tr>
                     <td>角色编码：</td>

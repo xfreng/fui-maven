@@ -31,8 +31,8 @@ public class RightService {
      * @param params 查询条件
      * @return 权限信息列表
      */
-    public List<Permissions> getRightsList_page(Map<String, Object> params) {
-        List<Permissions> rightsList = rightMapper.getRightsList_page(params);
+    public List<Permissions> getRightsList(Map<String, Object> params) {
+        List<Permissions> rightsList = rightMapper.getRightsList(params);
         return rightsList;
     }
 
@@ -57,6 +57,23 @@ public class RightService {
                             rights.add(net.sf.json.JSONObject.fromObject(right));
                         }
                     }
+                    for (Object rightTree : rights) {
+                        net.sf.json.JSONObject treeNode = (net.sf.json.JSONObject) rightTree;
+                        List<Permissions> nodes = rightMapper.selectByKey(treeNode.getLong("id"));
+                        if (nodes.size() > 0) {
+                            treeNode.put("isLeaf", false);
+                            treeNode.put("expanded", false);
+                            for (Permissions right : nodes) {
+                                net.sf.json.JSONObject node = net.sf.json.JSONObject.fromObject(right);
+                                if (checkHasRole(node.getLong("id"), roleCode)) {
+                                    node.put("checked", true);
+                                }
+                            }
+                        }
+                        if (checkHasRole(treeNode.getLong("id"), roleCode)) {
+                            treeNode.put("checked", true);
+                        }
+                    }
                 }
             }
         } else {
@@ -68,15 +85,6 @@ public class RightService {
                 if (nodes.size() > 0) {
                     treeNode.put("isLeaf", false);
                     treeNode.put("expanded", false);
-                    for (Permissions permissions : nodes) {
-                        net.sf.json.JSONObject node = net.sf.json.JSONObject.fromObject(permissions);
-                        if (checkHasRole(node.getLong("id"), roleCode)) {
-                            node.put("checked", true);
-                        }
-                    }
-                }
-                if (checkHasRole(treeNode.getLong("id"), roleCode)) {
-                    treeNode.put("checked", true);
                 }
                 rights.add(treeNode);
             }
@@ -131,7 +139,7 @@ public class RightService {
      * 新增权限
      *
      * @param rights
-     * @return JSONObject
+     * @return 操作信息
      */
     public JSONObject addRights(Permissions rights) {
         JSONObject json = new JSONObject();
@@ -149,12 +157,12 @@ public class RightService {
      * 修改权限
      *
      * @param rights
-     * @return JSONObject
+     * @return 操作信息
      */
     public JSONObject updateRights(Permissions rights) {
         JSONObject json = new JSONObject();
-        int i = rightMapper.updateByPrimaryKey(rights);
-        json.put("result", i > 0 ? "1" : "0");
+        int i = rightMapper.updateByPrimaryKeySelective(rights);
+        json.put("result", i > 0 ? "权限修改成功" : "权限修改失败");
         return json;
     }
 }

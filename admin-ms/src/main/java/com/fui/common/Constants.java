@@ -23,4 +23,10 @@ public interface Constants {
 
     // 树根节点id
     String TREE_ROOT_ID = "root";
+
+    // 前台分页总条数
+    String PAGE_TOTAL = "total";
+
+    // 前台分页json名
+    String PAGE_KEY_NAME = "data";
 }

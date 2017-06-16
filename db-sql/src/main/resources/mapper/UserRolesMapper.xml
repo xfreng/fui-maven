@@ -100,4 +100,10 @@
       role_id = #{roleId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectRolesByUserId" parameterType="java.lang.Long" resultType="java.lang.Long">
+    SELECT role_id FROM fui_user_roles WHERE user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByUserId" parameterType="java.lang.Long">
+    DELETE FROM fui_user_roles WHERE user_id = #{userId,jdbcType=BIGINT}
+  </delete>
 </mapper>

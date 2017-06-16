@@ -3,7 +3,9 @@ package com.fui.controller;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.StringUtils;
+import com.fui.model.Roles;
 import com.fui.model.User;
+import com.fui.service.RoleService;
 import com.fui.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -31,6 +33,8 @@ public class UserController extends AbstractSuperController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
@@ -59,7 +63,7 @@ public class UserController extends AbstractSuperController {
         }
         //分页查询
         PageHelper.startPage(currPage, pageSize);
-        List<User> list = userService.getUserList_page(params);
+        List<User> list = userService.getUserList(params);
         PageInfo<User> pageInfo = createPagination(list);
         return success(list, pageInfo.getTotal(), "userList");
     }
@@ -67,6 +71,27 @@ public class UserController extends AbstractSuperController {
     @RequestMapping(value = "/add", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String addUser(User user) {
-        return success(userService.addUser(user));
+        String roles = request.getParameter("roles");
+        return success(userService.addUser(user, roles));
+    }
+
+    @RequestMapping(value = "/update", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String updateUser(User user) {
+        String roles = request.getParameter("roles");
+        return success(userService.updateUser(user, roles));
+    }
+
+    @RequestMapping(value = "/roleList", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String getRoles() {
+        String userId = request.getParameter("userId");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userId", userId);
+        List<Roles> roleList = roleService.getRolesList(params);
+        if (StringUtils.isNotEmpty(userId)) {
+            roleList = userService.getUserRoles(Long.valueOf(userId));
+        }
+        return success(roleList);
     }
 }

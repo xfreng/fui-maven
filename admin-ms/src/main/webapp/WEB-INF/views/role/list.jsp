@@ -28,11 +28,12 @@
             <a class="fui-button" iconCls="icon-addnew" onclick="doAdd_update('A')">新增</a>
             <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
         </div>
-        <div id="roleManagerGrid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="false"
+        <div id="roleManagerGrid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="true"
              url="${path}/supervisor/role/list" idField="id" pageSize="20"
              dataField="roleList" showFilterRow="false" allowCellSelect="true"
              allowCellEdit="true">
             <div property="columns">
+                <div type="checkcolumn" ></div>
                 <div field="roleCode" width="100" headerAlign="center" align="center">角色编码</div>
                 <div field="roleName" width="130" headerAlign="center" align="center">角色名称</div>
                 <div field="operate" width="160" headerAlign="center" align="center" renderer="operateRender">操作</div>

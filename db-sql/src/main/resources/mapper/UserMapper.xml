@@ -182,7 +182,7 @@
           login_count   AS "loginCount"
       from fui.fui_user where ename = #{userCode}
   </select>
-  <select id="getUserList_page" parameterType="java.util.Map" resultMap="BaseResultMap">
+  <select id="getUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
       <include refid="Base_Column_List"/>
     FROM fui.fui_user WHERE 1 = 1

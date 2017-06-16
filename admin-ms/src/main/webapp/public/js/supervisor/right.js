@@ -103,7 +103,7 @@ function doAdd_update(flag) {
         }
         var rows = rightManagerGrid.getSelecteds();
         if (rows.length > 1) {
-            fui.alert("请先选中一条需要修改的权限", "提示");
+            fui.alert("请选中一条需要修改的权限", "提示");
             return;
         }
         data = row;

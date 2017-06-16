@@ -65,7 +65,7 @@ public class RightController extends AbstractSuperController {
         }
         //分页查询
         PageHelper.startPage(currPage, pageSize);
-        List<Permissions> list = rightService.getRightsList_page(params);
+        List<Permissions> list = rightService.getRightsList(params);
         PageInfo<Permissions> pageInfo = createPagination(list);
         return success(list, pageInfo.getTotal(), "rightList");
     }

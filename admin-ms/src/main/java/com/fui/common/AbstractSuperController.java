@@ -55,7 +55,7 @@ public abstract class AbstractSuperController {
      * @return 页面分页展示的json
      */
     protected String success(Collection list, Long totalResult) {
-        return success(list, totalResult, "data");
+        return success(list, totalResult, Constants.PAGE_KEY_NAME);
     }
 
     /**
@@ -69,7 +69,7 @@ public abstract class AbstractSuperController {
     protected String success(Collection list, Long totalResult, String key) {
         Map<String, Object> target = new HashMap<String, Object>();
         if (totalResult.intValue() != 0) {
-            target.put("total", totalResult);
+            target.put(Constants.PAGE_TOTAL, totalResult);
         }
         if (StringUtils.isNotEmpty(key)) {
             target.put(key, list);

@@ -53,8 +53,8 @@ public class MenuService {
      * @param param
      * @return
      */
-    public List<Menu> queryMenuNodeById_page(Map<String, Object> param) {
-        return menuMapper.queryMenuNodeById_page(param);
+    public List<Menu> queryMenuNodeById(Map<String, Object> param) {
+        return menuMapper.queryMenuNodeById(param);
     }
 
     /**
