@@ -105,6 +105,11 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
         <!-- LOGGING end -->
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -233,6 +238,7 @@
         <commons-io.version>2.4</commons-io.version>
         <logback.version>0.9.28</logback.version>
         <slf4j.version>1.7.5</slf4j.version>
+        <log4j.version>1.2.17</log4j.version>
         <jetty.version>8.1.15.v20140411</jetty.version>
         <junit.version>4.10</junit.version>
         <mockito.version>1.9.0</mockito.version>
