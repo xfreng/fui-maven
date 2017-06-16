@@ -16,7 +16,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -26,7 +26,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module" module-name="common-utils" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.1" level="project" />
     <orderEntry type="module" module-name="db-sql" />
@@ -209,5 +208,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jetty.orbit:javax.el:2.2.0.v201108011116" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jetty.orbit:com.sun.el:2.2.0.v201108011116" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.eclipse.jetty.orbit:org.eclipse.jdt.core:3.7.1" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
