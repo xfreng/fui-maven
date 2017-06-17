@@ -62,7 +62,7 @@ public class MenuService {
      * @return
      */
     public List<Map<String, Object>> query(String id) {
-        return menuMapper.query(id);
+        return menuMapper.query(UserUtils.getCurrent().getId(), id);
     }
 
     /**

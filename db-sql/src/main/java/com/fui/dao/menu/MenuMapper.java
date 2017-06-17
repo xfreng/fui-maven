@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface MenuMapper {
-    List<Map<String, Object>> query(@Param("node") String node);
-
-    Menu queryMenuNodeById(@Param("node") String node);
+    List<Map<String, Object>> query(@Param("userId") Long userId, @Param("node") String node);
 
     List<Menu> queryMenuNodeById(Map<String, Object> param);
 
