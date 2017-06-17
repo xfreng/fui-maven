@@ -157,6 +157,7 @@ public class UserService {
         user.setErased(false);
         user.setStyle(Constants.DEFAULT_STYLE);
         user.setMenuType(Constants.DEFAULT_STYLE);
+        user.setLoginCount(0L);
         int i = userMapper.insert(user);
         List<String> userRoleList = com.fui.common.StringUtils.asList(roles, ",");
         UserRoles userRoles = new UserRoles();
