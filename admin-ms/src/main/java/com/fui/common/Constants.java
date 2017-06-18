@@ -9,6 +9,9 @@ public interface Constants {
     // 响应JSON格式
     String MediaType_APPLICATION_JSON = "application/json;charset=utf-8";
 
+    // 响应HTML格式
+    String MediaType_APPLICATION_HTML = "text/html;charset=UTF-8";
+
     // 超级管理员用户名
     String SUPER_USER_ID = "admin";
 

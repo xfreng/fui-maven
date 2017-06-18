@@ -87,7 +87,9 @@
 						<input id="deployFile" class="fui-fileupload" name="file" limitType="*.zip;*.bar;*.xml" style="width: 350px;"
 							   flashUrl="${path}/public/common/fui/swfupload/swfupload.swf"
 							   uploadUrl="${path}/supervisor/workflow/process/deploy"
-							   onuploadsuccess="onUploadSuccess" />
+							   onuploadsuccess="onUploadSuccess"
+							   onuploaderror="onUploadError"
+							   onfileselect="onFileSelect"/>
 					</td>
 				</tr>
 				<tr>

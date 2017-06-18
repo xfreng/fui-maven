@@ -150,6 +150,13 @@ function remove() {
     });
 }
 /**
+ * 文件选择后
+ * @param e
+ */
+function onFileSelect(e) {
+    //alert("选择文件");
+}
+/**
  * 文件上传成功后
  * @param e
  */
@@ -162,10 +169,18 @@ function onUploadSuccess(e) {
     });
 }
 /**
+ * 文件上传出错
+ * @param e
+ */
+function onUploadError(e) {
+
+}
+/**
  * 开始上传
  */
 function startUpload() {
     var deployFile = fui.get("deployFile");
-    deployFile.setPostParam(deployForm.getData(true, false));
+    var postParam = {category: fui.get("category").getValue()};
+    deployFile.setPostParam(postParam);
     deployFile.startUpload();
 }

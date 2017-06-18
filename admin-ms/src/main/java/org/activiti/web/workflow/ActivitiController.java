@@ -245,7 +245,7 @@ public class ActivitiController extends AbstractSuperController {
         }
     }
 
-    @RequestMapping(value = "/deploy", produces = Constants.MediaType_APPLICATION_JSON)
+    @RequestMapping(value = "/deploy", produces = Constants.MediaType_APPLICATION_HTML)
     @ResponseBody
     public String deploy(@RequestParam(value = "category", required = false) String category,
                          @RequestParam(value = "file", required = false) MultipartFile file) {
