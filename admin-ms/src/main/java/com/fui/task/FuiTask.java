@@ -33,10 +33,10 @@ public class FuiTask {
      */
     @Scheduled(fixedRate = 1000 * 2)
     public void init() {
-        if(open){
+        if (open) {
             List<System> systemList = systemMapper.selectAll();
             for (System system : systemList) {
-                MemCachedUtils.set(system.getNameDesc(), system.getName());
+                MemCachedUtils.set(system.getName(), system.getNameDesc());
             }
         }
     }

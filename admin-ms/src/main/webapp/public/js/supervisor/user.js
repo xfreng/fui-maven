@@ -72,7 +72,67 @@ function roleRender(e) {
  * @returns {string}
  */
 function operateRender(e) {
-    return "<a href='javascript:void(0)'>重置密码</a>&nbsp;<a href='javascript:void(0)'>禁用</a>";
+    var status = "禁用";
+    if (e.row.erased) {
+        status = "启用";
+    }
+    return "<a href='javascript:void(0)' onclick='resetPwd(" + fui.encode(e.row) + ")'>重置密码</a>&nbsp;&nbsp;<a href='javascript:void(0)' onclick='status(" + fui.encode(e.row) + ")'>" + status + "</a>";
+}
+
+/**
+ * 重置密码
+ * @param row
+ */
+function resetPwd(row) {
+    var msg = "确定重置<span style='color:red;'>" + row.ename + "(" + row.cname + ")</span>的密码？";
+    fui.confirm(msg, '提示信息', function (action) {
+        if (action == "ok") {
+            $.ajax({
+                url: fui.contextPath + "/supervisor/user/resetPwd",
+                type: "POST",
+                data: {
+                    id: row.id,
+                    ename: row.ename
+                },
+                dataType: "json",
+                success: function (text) {
+                    fui.alert(text.message, "提示信息");
+                }
+            });
+        }
+    });
+}
+
+/**
+ * 启用/禁用用户
+ * @param row
+ */
+function status(row) {
+    var status = "禁用";
+    if (row.erased) {
+        status = "启用";
+    }
+    var msg = "确定<span style='color:red;'>" + status + "</span>用户<span style='color:red;'>" + row.ename + "(" + row.cname + ")</span>？";
+    fui.confirm(msg, '提示信息', function (action) {
+        if (action == "ok") {
+            $.ajax({
+                url: fui.contextPath + "/supervisor/user/status",
+                type: "POST",
+                data: {
+                    id: row.id,
+                    ename: row.ename,
+                    erased: row.erased
+                },
+                dataType: "json",
+                success: function (text) {
+                    fui.alert(text.message, "提示信息");
+                    if (text.result == "1") {
+                        doQuery();
+                    }
+                }
+            });
+        }
+    });
 }
 
 /**

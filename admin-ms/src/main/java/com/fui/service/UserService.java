@@ -206,4 +206,98 @@ public class UserService {
         }
         return userRoles;
     }
+
+    /**
+     * 重置用户密码
+     *
+     * @param user 用户对象
+     * @return 重置密码结果
+     */
+    public JSONObject resetPwd(User user) {
+        JSONObject json = new JSONObject();
+        if (Constants.SUPER_USER_ID.equals(user.getEname())) {
+            json.put("message", "超级管理员密码不允许操作");
+        } else {
+            int result = 0;
+            try {
+                user.setPassword(MD5Utils.generatePassword(user.getEname()));
+                result = userMapper.updateByPrimaryKeySelective(user);
+            } catch (Exception e) {
+                logger.error("重置用户密码异常：{}", e);
+            }
+            if (result == 1) {
+                json.put("message", "成功");
+            } else {
+                json.put("message", "失败");
+            }
+        }
+        return json;
+    }
+
+    /**
+     * 启用/禁用用户
+     *
+     * @param user 用户对象
+     * @return 更新结果
+     */
+    public JSONObject status(User user) {
+        JSONObject json = new JSONObject();
+        if (Constants.SUPER_USER_ID.equals(user.getEname())) {
+            json.put("result", "0");
+            json.put("message", "超级管理员状态不允许操作");
+        } else {
+            if (user.getErased()) {
+                user.setErased(false);
+            } else {
+                user.setErased(true);
+            }
+            int result = userMapper.updateByPrimaryKeySelective(user);
+            if (result == 1) {
+                json.put("result", "1");
+                json.put("message", "成功");
+            } else {
+                json.put("result", "0");
+                json.put("message", "失败");
+            }
+        }
+        return json;
+    }
+
+    /**
+     * 更新用户密码
+     *
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @return 更新结果
+     */
+    public JSONObject updatePwd(String oldPassword, String newPassword) {
+        User user = UserUtils.getCurrent();
+        JSONObject json = new JSONObject();
+        try {
+            oldPassword = MD5Utils.encodeByMD5(oldPassword);
+            if (!oldPassword.equals(user.getPassword())) {
+                json.put("result", "0");
+                json.put("message", "原始密码错误！");
+                return json;
+            }
+
+            newPassword = MD5Utils.encodeByMD5(newPassword);
+            User newUser = new User();
+            newUser.setId(user.getId());
+            newUser.setPassword(newPassword);
+            int result = userMapper.updateByPrimaryKeySelective(newUser);
+            if (result == 1) {
+                json.put("result", "1");
+                json.put("message", "密码修改成功，请重新登录！");
+            } else {
+                json.put("result", "0");
+                json.put("message", "密码修改失败！");
+            }
+        } catch (Exception e) {
+            logger.error("修改密码失败：{}", e);
+            json.put("result", "0");
+            json.put("message", "密码修改失败！");
+        }
+        return json;
+    }
 }

@@ -37,7 +37,7 @@
 	    .topNav a:hover{
 	        text-decoration:underline;        
 	    }   
-	     .fui-layout-region-south img{
+        .fui-layout-region-south img{
 	        vertical-align:top;
 	    }
     </style>
@@ -49,8 +49,10 @@
         ${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
     </div>
     <div class="topNav">
-        <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toindex"  plain="true" >&nbsp;首&nbsp;页</a> |
-        <a id="loginout" title="退出登录" class="fui-button fui-button-iconLeft" iconCls="icon-power-off" onclick="loginout" plain="true" target="_parent">&nbsp;注&nbsp;销</a>
+        <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toIndex" plain="true" >&nbsp;首&nbsp;页</a>
+        <a class="fui-button fui-button-iconLeft" iconCls="icon-pop_up_window" onclick="changeOpenWindow" plain="true" >窗口切换</a>
+        <a class="fui-button fui-button-iconLeft" iconCls="icon-change_password" onclick="changePwdWindow" plain="true" >修改密码</a> |
+        <a class="fui-button fui-button-iconLeft" iconCls="icon-power-off" onclick="loginOut" plain="true" target="_parent">&nbsp;注&nbsp;销</a>
     </div>
 
     <div style="position:absolute;right:12px;bottom:8px;font-size:12px;line-height:25px;font-weight:normal;">
@@ -63,11 +65,11 @@
     </div>
 </body>
 <script type="text/javascript">
-	function loginout(e) {
+	function loginOut(e) {
 		window.location.href = fui.contextPath+"/supervisor/destroy";
 	}
 	
-	function toindex(e) {
+	function toIndex(e) {
 		window.location.href = fui.contextPath+"/supervisor/default";
 	}
 </script>

@@ -1,3 +1,4 @@
+<%@ page import="com.fui.model.System" %>
 <%@page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,101 +29,7 @@
 	        background:url('${path}/public/mainframe/images/search.gif') no-repeat 50% 50%;
 	    }
 	</style>
-	<script type="text/javascript">
-		var __newForm = true;
-		var __clickNode = null;
-		var topMenuModel = new eiTreeModel();
-		var leftMenuModel = new eiTreeModel();
-		function configMenu(menu) {
-			menu.depth(9);
-			menu.textClicked = activeFormByMenu;
-			menu.hoverExpand = function(n) {
-				return true;
-			}
-		}
-
-		function configTree(tree){
-		    tree.depth(9);
-		    tree.emptyNodeAsLeaf = true;
-		    tree.activeEmptyJudger = false;
-		    tree.nodeInitializer = treeNodeInitializer;
-		    tree.hideRoot = true;
-		}
-
-		function treeNodeInitializer(node){
-		    node.textClicked = function(){
-		    	activeFormByNode(node);
-		    };
-		}
-
-		function activeFormByNode(node) {
-			loadMenuUrl(node);
-		}
-
-		function activeFormByMenu(node) {
-			__clickNode = node;
-			loadMenuUrl(node);
-		}
-
-		// 新增以下js函数
-		loadMenuUrl = function(node) {
-			var label = node.label();
-			var text = node.text();
-			var url = node._data.url;
-			if (url && ($.trim(url) != "")) {
-				newForm(label,text,url);
-				return;
-			}
-			if (node.leaf()) {
-				activeForm(label,text,url);
-			}
-		}
-
-		function activeForm(label,text,url) {
-			if (__newForm == true) {
-				newForm(label,text,url);
-			} else {
-				openForm(label,text,url);
-			}
-		}
-
-		function newForm(label,text,url) {
-			label = (url && $.trim(url) != "") ? url : label;
-            var _wnd = window;
-            // 判断打开页面是否是分帧页面，如果是分帧页面，则要找到包含分帧页面的顶级页面
-            while (isAvailable(_wnd.top) && _wnd != _wnd.top) {
-                _wnd = _wnd.top;
-            }
-            // 打开新页面，并将新页面存入当前window对象的winMap中去
-            if (_wnd != null) {
-                _wnd.winMap[_wnd.winCount] = window.open(fui.contextPath + label);
-                return _wnd.winMap[_wnd.winCount++];
-            }
-		}
-
-		function openForm(label,text,url) {
-			var node = {};
-			if(__clickNode != null){
-				node.id = __clickNode._data.label;
-				node.text = __clickNode._data.text;
-			}else{
-				node.id = label;
-				node.text = text;
-			}
-			node.url = url;
-			showTab(node);
-		}
-
-		function changeOpenWindow(){
-			__newForm = !__newForm;
-		}
-
-        if(window.attachEvent){
-            window.attachEvent('onunload',function(){
-                closeSonWindow();
-            });
-		}
-	</script>
+	<script type="text/javascript" src="${path}/public/js/supervisor/pact-index.js?v=<%=java.lang.System.currentTimeMillis()%>"></script>
 </head>
 <body id="indexRealBody" onload="setCurTime('cy','');">
 <div class="fui-layout" style="width:100%;height:100%;">
@@ -149,8 +56,11 @@
 	                        <a href="${path}/supervisor/pact"><img src="${path}/public/mainframe/images/login/home.png" /><span class="mg_l_10 font_14">首页</span></a>
 	                    </li>
 	                	<li>
-	                        <a href="javascript:changeOpenWindow()"><img src="${path}/public/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
+	                        <a href="javascript:void(0)" onclick="changeOpenWindow()"><img src="${path}/public/mainframe/images/login/pop_up_window.png" /><span class="mg_l_10 font_14">窗口切换</span></a>
 	                    </li>
+						<li>
+							<a href="javascript:void(0)" onclick="changePwdWindow()"><img src="${path}/public/mainframe/images/login/change_password.png" /><span class="mg_l_10 font_14">修改密码</span></a>
+						</li>
 	                    <li>
 	                    	<a href="${path}/supervisor/destroy"><img src="${path}/public/mainframe/images/login/logout.png" /><span class="mg_l_10 font_14">注销</span></a>
 	                    </li>
@@ -199,12 +109,12 @@
                   	<li><a href="javascript:void(0)" title="我的风格" class="icon_wodefengge" onclick="clickProcess('mystyle')"></a>
                           <br><br>
                           <span>我的风格</span>
-                      </li>
+				  	</li>
                   	<li><a href="javascript:void(0)" title="密码设置" class="icon_mimashezhi" onclick="clickProcess('pwdset')"></a>
                           <br><br>
                           <span>密码设置</span>
-                      </li>
-                  </ul>
+				  	</li>
+			  	</ul>
             </div>
          </div>
     </div>
@@ -215,88 +125,55 @@
     <li class="separator"></li>
     <li onclick="closeAll">关闭所有</li>
 </ul>
+<div id="editPassTemplate" class="fui-window" title="修改密码" closed="true" style="width:400px;"
+	 showModal="true" allowDrag="true">
+	<form id="editPassForm" style="padding:10px 20px 10px 40px;" method="post">
+		<table width="100%">
+			<tr>
+				<td>
+					<label for="oldPassword">原始密码：</label>
+				</td>
+				<td>
+					<input id="oldPassword" name="oldPassword" class="fui-password" style="width:100%" required="true"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="newPassword1">新密码：</label>
+				</td>
+				<td>
+					<input id="newPassword1" name="newPassword1" class="fui-password" style="width:100%" required="true" onvalidation="onNewPassword1Validation"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="newPassword2">确认新密码：</label>
+				</td>
+				<td>
+					<input id="newPassword2" name="newPassword2" class="fui-password" style="width:100%" required="true" onvalidation="onNewPassword2Validation"/>
+				</td>
+			</tr>
+		</table>
+		<div style="padding:5px;text-align:center;">
+			<a class="fui-button" onclick="save" style="width:60px;margin-right:20px;">保存</a>
+			<a class="fui-button" onclick="cancel" style="width:60px;">取消</a>
+        </div>
+	</form>
+</div>
 </body>
 <script type="text/javascript">
-	pageRenderer();
-	function pageRenderer() {
-		$("#dropdown").toggle(function() {
-			$("#dropdown .dropdownMenu").css("display", "block");
-			$("#dropdown a").addClass("hover");
-		}, function() {
-			$("#dropdown .dropdownMenu").css("display", "none");
-			$("#dropdown a").removeClass("hover");
-		});
-	}
-	fui.parse();
-	var tabs = fui.get("mainTabs");
-	var currentTab = null;
-
-    function onBeforeOpen(e) {
-        currentTab = tabs.getTabByEvent(e.htmlEvent);
-        if (!currentTab) {
-            e.cancel = true;
-        }
+    $(function () {
+        pageRenderer();
+    });
+    function pageRenderer() {
+        $("#dropdown").toggle(function() {
+            $("#dropdown .dropdownMenu").css("display", "block");
+            $("#dropdown a").addClass("hover");
+        }, function() {
+            $("#dropdown .dropdownMenu").css("display", "none");
+            $("#dropdown a").removeClass("hover");
+        });
     }
-
-    function closeTab() {
-    	if(currentTab.showCloseButton){
-	        tabs.removeTab(currentTab);
-    	}
-    }
-
-    function closeAllBut() {
-    	var but = [currentTab];
-        but.push(tabs.getTab("first"));
-        tabs.removeAll(but);
-    }
-
-    function closeAll() {
-    	var but = [tabs.getTab("first")];
-        tabs.removeAll(but);
-    }
-
-	function showTab(node) {
-        var id = "tab$" + node.id;
-        var tab = tabs.getTab(id);
-        if (!tab) {
-            tab = {};
-            tab._nodeid = node.id;
-            tab.name = id;
-            tab.title = node.text;
-            tab.url = fui.contextPath + (node.url && $.trim(node.url) != "" ? node.url : node.id);
-            tab.showCloseButton = true;
-	        tabs.addTab(tab);
-        }
-        tabs.activeTab(tab);
-    }
-	function onTabsActiveChanged(e) {
-        var tabs = e.sender;
-        var tab = tabs.getActiveTab();
-        if (tab && tab._nodeid) {
-            // do something
-        }
-    }
-	function updateStyle(type,style) {
-		var data = {
-			menuType : type,
-			pageStyle : style
-		};
-		$.ajax({
-			url : fui.contextPath + "/supervisor/style/updateMenuTypeAndStyle",
-			type : 'POST',
-			data : data,
-			success : function(text) {
-                var result = text.result;
-                if(result == "1"){
-                    window.location.href = fui.contextPath + text.url;
-                }else{
-                    fui.alert("更换失败!", "提示信息");
-                }
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				fui.alert("更换失败!", "提示信息");
-			}
-		});
-	}
 </script>
+<script type="text/javascript" src="${path}/public/js/supervisor/index.js?v=<%=java.lang.System.currentTimeMillis()%>"></script>
 </html>

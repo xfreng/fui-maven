@@ -22,74 +22,7 @@
             background-image: url('${path}/public/EF/Themes/styleApple/ModernBlack/images/ui-icons_454545_256x240.png');
         }
     </style>
-    <script type="text/javascript">
-		var __newForm = true;
-		var __clickNode = null;
-		var leftMenuModel = new eiTreeModel();
-		function configTree(tree){
-		    tree.depth(9);
-		    tree.emptyNodeAsLeaf = true;
-		    tree.activeEmptyJudger = false;
-		    tree.nodeInitializer = treeNodeInitializer;
-		    tree.hideRoot = true;
-		}
-		function treeNodeInitializer(node){
-		    node.textClicked = function(){ 
-		    	activeFormByNode(node); 
-		    };
-		}
-		function activeFormByNode(node) {
-			loadMenuUrl(node);
-		}
-		function activeFormByMenu(node) {
-			__clickNode = node;
-			loadMenuUrl(node);
-		}
-		// 新增以下js函数
-		loadMenuUrl = function(node) {
-			var label = node.label();
-			var text = node.text();
-			var url = node._data.url;
-			if (url && ($.trim(url) != "")) {
-				newForm(label,text,url);
-				return;
-			}
-			if (node.leaf()) {
-				activeForm(label,text,url);
-			}
-		}
-		function activeForm(label,text,url) {
-			if (__newForm == true) {
-				newForm(label,text,label);
-			} else {
-				openForm(label,text,url);
-			}
-		}
-		function newForm(label,text,url) {
-			label = (url && $.trim(url) != "") ? url : label;
-			window.open(fui.contextPath + label);
-		}
-		function openForm(label,text,url) {
-			var node = {};
-			if(__clickNode != null){
-				node.id = __clickNode._data.label;
-				node.text = __clickNode._data.text;
-			}else{
-				node.id = label;
-				node.text = text;
-			}
-			node.url = url;
-			showTab(node);
-		}
-		function changeOpenWindow(){
-			__newForm = !__newForm;
-		}
-        if(window.attachEvent){
-            window.attachEvent('onunload',function(){
-                closeSonWindow();
-            });
-        }
-	</script>
+    <script type="text/javascript" src="${path}/public/js/supervisor/default-index.js?v=<%=java.lang.System.currentTimeMillis()%>"></script>
 </head>
 <body id="cache" onload="setCurTime('cy','blue');">
 <div class="fui-layout" style="width:100%;height:100%;">
@@ -120,89 +53,41 @@
     <li class="separator"></li>
     <li onclick="closeAll">关闭所有</li>        
 </ul>
+<div id="editPassTemplate" class="fui-window" title="修改密码" closed="true" style="width:400px;"
+     showModal="true" allowDrag="true">
+    <form id="editPassForm" style="padding:10px 20px 10px 40px;" method="post">
+        <table width="100%">
+            <tr>
+                <td>
+                    <label for="oldPassword">原始密码：</label>
+                </td>
+                <td>
+                    <input id="oldPassword" name="oldPassword" class="fui-password" style="width:100%" required="true"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="newPassword1">新密码：</label>
+                </td>
+                <td>
+                    <input id="newPassword1" name="newPassword1" class="fui-password" style="width:100%" required="true" onvalidation="onNewPassword1Validation"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="newPassword2">确认新密码：</label>
+                </td>
+                <td>
+                    <input id="newPassword2" name="newPassword2" class="fui-password" style="width:100%" required="true" onvalidation="onNewPassword2Validation"/>
+                </td>
+            </tr>
+        </table>
+        <div style="padding:5px;text-align:center;">
+            <a class="fui-button" onclick="save" style="width:60px;margin-right:20px;">保存</a>
+            <a class="fui-button" onclick="cancel" style="width:60px;">取消</a>
+        </div>
+    </form>
+</div>
 </body>
+<script type="text/javascript" src="${path}/public/js/supervisor/index.js?v=<%=java.lang.System.currentTimeMillis()%>"></script>
 </html>
-<script type="text/javascript">
-    fui.parse();
-    var tabs = fui.get("mainTabs");
-    var leftTree = fui.get("leftTree");
-    var currentTab = null;
-    
-    function onBeforeOpen(e) {
-        currentTab = tabs.getTabByEvent(e.htmlEvent);
-        if (!currentTab) {
-            e.cancel = true;                
-        }
-    }
-    
-    function closeTab() {
-    	if(currentTab.showCloseButton){
-	        tabs.removeTab(currentTab);
-    	}
-    }
-    
-    function closeAllBut() {
-    	var but = [currentTab];            
-        but.push(tabs.getTab("first"));
-        tabs.removeAll(but);
-    }
-    
-    function closeAll() {
-    	var but = [tabs.getTab("first")];
-        tabs.removeAll(but);
-    }
-    
-    function showTab(node) {
-        var id = "tab$" + node.id;
-        var tab = tabs.getTab(id);
-        if (!tab) {
-            tab = {};
-            tab._nodeid = node.id;
-            tab.name = id;
-            tab.title = node.text;
-            tab.showCloseButton = true;
-            tab.url = fui.contextPath + (node.url && $.trim(node.url) != "" ? node.url : node.id);
-            tabs.addTab(tab);
-        }
-        tabs.activeTab(tab);
-    }
-
-    function onNodeSelect(e) {
-        var node = e.node;
-        var isLeaf = e.isLeaf;
-        if (isLeaf) {
-            showTab(node);
-        }
-    }
-    
-    function onTabsActiveChanged(e) {
-        var tabs = e.sender;
-        var tab = tabs.getActiveTab();
-        if (tab && tab._nodeid) {
-        	// do something
-        }
-    }
-    
-    function updateStyle(style) {
-		var data = {
-			menuType : style == "pact" ? "pact" : "default",
-			pageStyle : style
-		};
-		$.ajax({
-			url : fui.contextPath + "/supervisor/style/updateMenuTypeAndStyle",
-			type : 'POST',
-			data : data,
-			success : function(text) {
-			    var result = text.result;
-			    if(result == "1"){
-				    window.location.href = fui.contextPath + text.url;
-                }else{
-			        fui.alert("更换失败!", "提示信息");
-                }
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				fui.alert("更换失败!", "提示信息");
-			}
-		});
-	}
-</script>

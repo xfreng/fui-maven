@@ -66,6 +66,15 @@ function resourceRenderer(e) {
  * 部署选择的流程
  */
 function deploy() {
+    var getFlashPlayer = checkAgentInstalledFlash();
+    if (getFlashPlayer != "") {
+        fui.confirm("您的浏览器没有安装flash，选择确定将跳转到flash安装页面", "提示信息", function (action) {
+            if (action == "ok") {
+                window.open(getFlashPlayer);
+            }
+        });
+        return;
+    }
     deployForm.clear();
     fui.get("category").setValue("6");
     deployWindow.show();
@@ -154,7 +163,7 @@ function remove() {
  * @param e
  */
 function onFileSelect(e) {
-    //alert("选择文件");
+
 }
 /**
  * 文件上传成功后

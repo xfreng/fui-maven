@@ -21,14 +21,15 @@
 		    <div class="fui-toolbar" style="padding:2px;border-top:0;border-left:0;border-right:0;text-align:right;">
 		    	<a class="fui-button" iconCls="icon-save" onclick="save()">保存</a>
 		    </div>
-			<div id="systemInfo" class="fui-datagrid" style="width:100%;height:92%;" allowResize="true"
-		        url="${path}/supervisor/sys/list" dataField="systemList" idField="id" multiSelect="true">
+			<div id="projectManagerGrid" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"
+			 	showPager="false" allowCellEdit="true" allowCellSelect="true" editNextRowCell="true"
+				url="${path}/supervisor/project/list" dataField="systemList" idField="id" multiSelect="true">
 		        <div property="columns">
-					<div field="desc" width="60" headerAlign="center" allowSort="false">配置项名</div>
-		            <div field="name" width="60" headerAlign="center" allowSort="false">配置内容
+					<div field="name" width="60" headerAlign="center" allowSort="false">配置项名</div>
+		            <div field="nameDesc" width="160" headerAlign="center" allowSort="false">配置内容
 						<input property="editor" class="fui-textbox" style="width:100%;"/>
 					</div>
-					<div field="remark" width="60" headerAlign="center" allowSort="false">配置说明</div>
+					<div field="remark" width="260" headerAlign="center" allowSort="false">配置说明</div>
 		        </div>
 		    </div>
 	    </div>

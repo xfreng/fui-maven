@@ -94,4 +94,41 @@ public class UserController extends AbstractSuperController {
         }
         return success(roleList);
     }
+
+    /**
+     * 重新用户密码
+     *
+     * @param user 用户对象
+     * @return 重置密码结果
+     */
+    @RequestMapping(value = "/resetPwd", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String resetPwd(User user) {
+        return success(userService.resetPwd(user));
+    }
+
+    /**
+     * 启用/禁用用户
+     *
+     * @param user 用户对象
+     * @return 操作结果
+     */
+    @RequestMapping(value = "/status", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String status(User user) {
+        return success(userService.status(user));
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param oldPassword  旧密码
+     * @param newPassword1 新密码
+     * @return 修改结果
+     */
+    @RequestMapping(value = "/updatePwd", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String updatePwd(String oldPassword, String newPassword1) {
+        return success(userService.updatePwd(oldPassword, newPassword1));
+    }
 }
