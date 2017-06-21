@@ -112,7 +112,4 @@
         </property>
         <property name="plugins" ref="mybatis.PageInterceptor"/>
     </bean>
-    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg index="0" ref="sqlSessionFactory"/>
-    </bean>
 </beans>
