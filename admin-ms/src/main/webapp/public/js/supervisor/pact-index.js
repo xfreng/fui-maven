@@ -1,4 +1,4 @@
-var __newForm = true;
+var __newForm = "true";
 var __clickNode = null;
 var topMenuModel = new eiTreeModel();
 var leftMenuModel = new eiTreeModel();
@@ -39,7 +39,7 @@ loadMenuUrl = function (node) {
     var text = node.text();
     var url = node._data.url;
     if (url && ($.trim(url) != "")) {
-        newForm(label, text, url);
+        activeForm(label, text, url);
         return;
     }
     if (node.leaf()) {
@@ -48,7 +48,7 @@ loadMenuUrl = function (node) {
 }
 
 function activeForm(label, text, url) {
-    if (__newForm == true) {
+    if (__newForm == "true") {
         newForm(label, text, url);
     } else {
         openForm(label, text, url);

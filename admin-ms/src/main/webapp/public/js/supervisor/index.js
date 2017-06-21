@@ -1,11 +1,19 @@
+var openTypes = [{id: "true", text: "新窗口"}, {id: "false", text: "当前窗口"}];
 fui.parse();
 var tabs = fui.get("mainTabs");
 var editPassTemplateWindow = fui.get("editPassTemplate");
 var editPassForm = new fui.Form("editPassForm");
 var currentTab = null;
 
-function changeOpenWindow() {
-    __newForm = !__newForm;
+function changeOpenWindow(e) {
+    var changeWindowTemplateWindow = fui.get("changeWindowTemplate");
+    if (e && e.value != undefined) {
+        __newForm = e.value;
+        changeWindowTemplateWindow.hide();
+    } else {
+        fui.get("rbl").setValue(__newForm);
+        changeWindowTemplateWindow.show();
+    }
 }
 
 if (window.attachEvent) {
@@ -97,9 +105,6 @@ function onTabsActiveChanged(e) {
 }
 
 function updateStyle(type, style) {
-    if (typeof(style) == "undefined") {
-        style = type == "pact" ? "pact" : "default"
-    }
     var data = {
         menuType: type,
         pageStyle: style
