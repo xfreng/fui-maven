@@ -64,7 +64,7 @@
     <bean id="mybatis.PageInterceptor" class="com.github.pagehelper.PageInterceptor">
         <property name="properties">
             <value>
-                helperDialect=mysql
+                helperDialect=${mybatis.dbType}
             </value>
         </property>
     </bean>

@@ -6,6 +6,9 @@ package com.fui.common;
  */
 public interface Constants {
 
+    // 项目配置文件
+    String CONFIG_FILE_NAME = "project.properties";
+
     // 响应JSON格式
     String MediaType_APPLICATION_JSON = "application/json;charset=utf-8";
 

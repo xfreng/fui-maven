@@ -7,6 +7,16 @@ import java.util.regex.Pattern;
 public class StringUtils {
 
     /**
+     * 获取uuid
+     *
+     * @return uuid
+     */
+    public static String getUUID() {
+        String uuid = UUID.randomUUID().toString();
+        return uuid.replaceAll("-", "");
+    }
+
+    /**
      * 字符串转list
      *
      * @param str     要转list的字符串
