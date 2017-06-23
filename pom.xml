@@ -220,6 +220,13 @@
             <version>${jetty.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ojdbc14</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.3.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/admin-ms/src/main/webapp/WEB-INF/lib/ojdbc14-10.2.0.3.0.jar</systemPath>
+        </dependency>
     </dependencies>
     <properties>
         <project.version>1.0</project.version>
