@@ -25,10 +25,13 @@
         WHERE id = #{id}
   	</select>
   	<insert id="addCalendar" parameterType="java.util.HashMap" 
-        	useGeneratedKeys="true" keyProperty="id"> 
+        	useGeneratedKeys="true">
+ 		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select case when max(id) is null then 1 else max(id)+1 end as "id" from fui.fui_calendar
+		</selectKey>
         insert into 
-        	fui.fui_calendar(title,starttime,endtime,allday,color)  
-        values(#{title},#{starttime},#{endtime},#{allday},#{color})  
+        	fui.fui_calendar(id,title,starttime,endtime,allday,color)
+        values(#{id},#{title},#{starttime},#{endtime},#{allday},#{color})
     </insert>
     <update id="updateCalendarById" parameterType="java.util.HashMap">
         update 

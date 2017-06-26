@@ -1,5 +1,6 @@
 package com.fui.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fui.common.*;
 import com.fui.service.CalendarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,10 @@ public class CalendarController extends AbstractSuperController {
     @RequestMapping("/eventopt")
     public String eventopt() {
         String id = request.getParameter("id");
-        Map<String, Object> param = calendarService.getCalendarById(id);
-        request.setAttribute("param", param);
+        if (StringUtils.isNotEmpty(id)) {
+            Map<String, Object> param = calendarService.getCalendarById(id);
+            request.setAttribute("param", param);
+        }
         return "calendar/event";
     }
 
@@ -38,13 +41,13 @@ public class CalendarController extends AbstractSuperController {
     public String getCalendarJsonData() throws Exception {
         List<Map<String, Object>> calList = calendarService.query();
         String json = GsonUtils.toJson(calList);
-        return success(json);
+        return json;
     }
 
     @RequestMapping(value = "/event", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String event() throws Exception {
-        String message = "";
+        JSONObject json = new JSONObject();
         String action = request.getParameter("action");
         if ("add".equals(action)) {
             String events = request.getParameter("event");
@@ -85,14 +88,14 @@ public class CalendarController extends AbstractSuperController {
 
             boolean bool = calendarService.addCalendar(param);
             if (bool) {
-                message = "1";
+                json.put("message", 1);
             } else {
-                message = "写入失败！";
+                json.put("message", "写入失败！");
             }
         } else if ("edit".equals(action)) {
             String id = request.getParameter("id");
             if ("0".equals(id)) {
-                message = "事件不存在！";
+                json.put("message", "事件不存在！");
             } else {
                 String events = request.getParameter("event");
 
@@ -134,9 +137,9 @@ public class CalendarController extends AbstractSuperController {
 
                 boolean bool = calendarService.updateCalendarById(param);
                 if (bool) {
-                    message = "1";
+                    json.put("message", 1);
                 } else {
-                    message = "更新出错！";
+                    json.put("message", "更新出错！");
                 }
             }
         } else if ("del".equals(action)) {
@@ -144,12 +147,12 @@ public class CalendarController extends AbstractSuperController {
             if (StringUtils.isNotEmpty(id)) {
                 boolean bool = calendarService.deleteCalendarById(id);
                 if (bool) {
-                    message = "1";
+                    json.put("message", 1);
                 } else {
-                    message = "删除出错！";
+                    json.put("message", "删除出错！");
                 }
             } else {
-                message = "事件不存在！";
+                json.put("message", "事件不存在！");
             }
         } else if ("drag".equals(action)) {
             String id = request.getParameter("id");
@@ -194,9 +197,9 @@ public class CalendarController extends AbstractSuperController {
             }
             boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
-                message = "1";
+                json.put("message", 1);
             } else {
-                message = "更新出错！";
+                json.put("message", "更新出错！");
             }
         } else if ("resize".equals(action)) {
             String id = request.getParameter("id");
@@ -222,12 +225,12 @@ public class CalendarController extends AbstractSuperController {
             row.put("starttime", starttime);
             boolean bool = calendarService.updateCalendarById(row);
             if (bool) {
-                message = "1";
+                json.put("message", 1);
             } else {
-                message = "更新出错！";
+                json.put("message", "更新出错！");
             }
         }
-        return success(message);
+        return success(json);
     }
 
     private Date getDate(String datetime) {

@@ -94,12 +94,12 @@
 			end_chk = "checked";
 		}
 	%>
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/public/css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/jquery-ui.css">
 </head>
 <body>
 <div class="fancy">
 	<h3><%=h3_title %></h3>
-    <form id="add_form" action="<%=request.getContextPath() %>/supervisor/event" method="post">
+    <form id="add_form" action="${pageContext.request.contextPath}/supervisor/event" method="post">
     <input type="hidden" name="id" id="eventid" value="<%=id %>"> 
     <input type="hidden" name="action" value="<%=action %>">
     <p>日程内容：<input type="text" class="input" name="event" id="event" style="width:320px" placeholder="记录你将要做的一件事..." value="<%=title %>"></p>
@@ -187,75 +187,75 @@
     </div>
     </form>
 </div>
-<script type="text/javascript" src="<%=request.getContextPath() %>/public/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/js/jquery.form.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$(".datepicker").datepicker({minDate: -3,maxDate: 3,dateFormat: 'yy-mm-dd'});
-	$("#isallday").click(function(){
-		if($("#sel_start").css("display")=="none"){
-			$("#sel_start,#sel_end").show();
-		}else{
-			$("#sel_start,#sel_end").hide();
-		}
-	});
-	
-	$("#isend").click(function(){
-		if($("#p_endtime").css("display")=="none"){
-			$("#p_endtime").show();
-		}else{
-			$("#p_endtime").hide();
-		}
-		$.fancybox.resize();//调整高度自适应
-	});
-	
-	//提交表单
-	$('#add_form').ajaxForm({
-		beforeSubmit: showRequest, //表单验证
-        success: showResponse //成功返回
-    }); 
-	
-	$("#del_event").click(function(){ 
-        if(confirm("您确定要删除吗？")){ 
-            var eventid = $("#eventid").val(); 
-            $.post("<%=request.getContextPath() %>/supervisor/event?action=del",{id:eventid},function(msg){
-                if(msg==1){//删除成功 
-                    $.fancybox.close(); 
-                    $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
-                }else{ 
-                    alert(msg);     
-                } 
-            }); 
-        } 
-    }); 
-});
+	$(function(){
+		$(".datepicker").datepicker({minDate: -3,maxDate: 3,dateFormat: 'yy-mm-dd'});
+		$("#isallday").click(function(){
+			if($("#sel_start").css("display")=="none"){
+				$("#sel_start,#sel_end").show();
+			}else{
+				$("#sel_start,#sel_end").hide();
+			}
+		});
 
-function showRequest(){
-	var events = $("#event").val();
-	if(events==''){
-		alert("请输入日程内容！");
-		$("#event").focus();
-		return false;
-	}
-}
+		$("#isend").click(function(){
+			if($("#p_endtime").css("display")=="none"){
+				$("#p_endtime").show();
+			}else{
+				$("#p_endtime").hide();
+			}
+		});
 
-function showResponse(responseText, statusText, xhr, $form){
-	if(statusText=="success"){	
-		if(responseText==1){
-			$.fancybox.close();
-			$('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据
-		}else{
-			alert(responseText);
+		//提交表单
+		$('#add_form').ajaxForm({
+			beforeSubmit: showRequest, //表单验证
+			success: showResponse //成功返回
+		});
+
+		$("#del_event").click(function(){
+			if(confirm("您确定要删除吗？")){
+				var eventid = $("#eventid").val();
+				$.post("${pageContext.request.contextPath}/supervisor/event?action=del",{id:eventid},function(result){
+					if(result.message == 1){//删除成功
+						$.fancybox.close();
+						$('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据
+					}else{
+						alert(result.message);
+					}
+				});
+			}
+		});
+	});
+
+	function showRequest(){
+		var events = $("#event").val();
+		if(events == ''){
+			alert("请输入日程内容！");
+			$("#event").focus();
+			return false;
 		}
-	}else{
-		alert(statusText);
 	}
-}
-$("#color").colorpicker({
-    fillcolor:true,
-    success:function(o,color){
-        $(o).css("color",color);
-    }
-})
+
+	function showResponse(responseText, statusText, xhr, $form){
+		if(statusText == "success"){
+			if(responseText.message == 1){
+				$.fancybox.close();
+				$('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据
+			}else{
+				alert(responseText.message);
+			}
+		}else{
+			alert(statusText);
+		}
+	}
+
+	$("#color").colorpicker({
+		fillcolor:true,
+		success:function(o,color){
+			$(o).css("color",color);
+		}
+	})
 </script>
 </body>
 </html>
