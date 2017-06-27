@@ -49,6 +49,7 @@
         ${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
     </div>
     <div class="topNav">
+        <span class="mg_l_10 font_14" style="top:50px;">欢迎您！${user.ename}&nbsp;&nbsp;&nbsp;</span>
         <a class="fui-button fui-button-iconLeft" iconCls="icon-home" onclick="toIndex" plain="true" >&nbsp;首&nbsp;页</a>
         <a class="fui-button fui-button-iconLeft" iconCls="icon-pop_up_window" onclick="changeOpenWindow" plain="true" >窗口切换</a>
         <a class="fui-button fui-button-iconLeft" iconCls="icon-change_password" onclick="changePwdWindow" plain="true" >修改密码</a> |
