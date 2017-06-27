@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -29,8 +30,9 @@ public class MenuController extends AbstractSuperController {
     private MenuService menuService;
 
     @RequestMapping("/index")
-    public String menuTree() {
-        return "menu/list";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("menu/list");
+        return init(mv);
     }
 
     @RequestMapping("/state")
@@ -49,12 +51,12 @@ public class MenuController extends AbstractSuperController {
     @RequestMapping(value = "/loadMenuNodePage", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String loadMenuNode(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
-                                    @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
+                               @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
         String pid = request.getParameter("id");
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("id", pid);
         PageHelper.startPage(currPage, pageSize);
-        List<Menu> menuList = menuService.queryMenuNodeById(params);
+        List<Menu> menuList = menuService.queryMenuNodeBySelective(params);
         PageInfo<Menu> pageInfo = createPagination(menuList);
         return success(menuList, pageInfo.getTotal(), "treeNodes");
     }
@@ -110,7 +112,7 @@ public class MenuController extends AbstractSuperController {
         Map<String, Object> parameters = new HashMap<String, Object>();
         Map<String, Object> exportInfo = new HashMap<String, Object>();
 
-        List<Menu> resultData = menuService.queryMenuNodeById(parameters);
+        List<Menu> resultData = menuService.queryMenuNodeBySelective(parameters);
         ExcelUtils zipExcelUtil = ExcelUtils.getInstance(resultData.size(), templateDir);
         zipExcelUtil.setTitleCellBold(true);
         String filePath = zipExcelUtil.exportZipExcel(templateFilename, resultData, exportInfo);

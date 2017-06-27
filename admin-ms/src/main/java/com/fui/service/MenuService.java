@@ -34,12 +34,12 @@ public class MenuService {
         List<Map<String, Object>> menus = new ArrayList<Map<String, Object>>();
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);
-        List<Menu> menuTrees = menuMapper.queryMenuNodeById(param);
+        List<Menu> menuTrees = menuMapper.queryMenuNodeBySelective(param);
         List menuList = JsonUtils.toJsonArray(menuTrees);
         for (Object menuTree : menuList) {
             JSONObject treeNode = (JSONObject) menuTree;
             param.put("id", treeNode.getString("id"));
-            List<Menu> nodes = menuMapper.queryMenuNodeById(param);
+            List<Menu> nodes = menuMapper.queryMenuNodeBySelective(param);
             if (nodes.size() > 0) {
                 treeNode.put("isLeaf", false);
                 treeNode.put("expanded", false);
@@ -53,8 +53,8 @@ public class MenuService {
      * @param param
      * @return
      */
-    public List<Menu> queryMenuNodeById(Map<String, Object> param) {
-        return menuMapper.queryMenuNodeById(param);
+    public List<Menu> queryMenuNodeBySelective(Map<String, Object> param) {
+        return menuMapper.queryMenuNodeBySelective(param);
     }
 
     /**
@@ -104,7 +104,7 @@ public class MenuService {
         }
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("id", id);
-        return menuMapper.queryMenuNodeById(param);
+        return menuMapper.queryMenuNodeBySelective(param);
     }
 
     public boolean saveMenu(Object object) {

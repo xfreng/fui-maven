@@ -2,15 +2,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>流程模型管理</title>
 	<%@ include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@ include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
 </head>
 <body>
-<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
-	<jsp:param value="RACT01" name="efFormEname"/>
-	<jsp:param value="流程模型管理" name="efFormCname"/>
-</jsp:include>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp"></jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
 	<div region="north" showHeader="false" bodyStyle="overflow:hidden;" showSplit="false" showCollapseButton="false" style="border:0;">
 		<div class="fui-panel" title="查询条件" style="width:100%;overflow:hidden;" showCollapseButton="false">

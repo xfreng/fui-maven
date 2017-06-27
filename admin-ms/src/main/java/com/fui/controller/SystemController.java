@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/supervisor/project")
@@ -16,8 +17,9 @@ public class SystemController extends AbstractSuperController {
     private SystemMapper systemMapper;
 
     @RequestMapping("/index")
-    public String index() {
-        return "system/list";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("system/list");
+        return init(mv);
     }
 
     @RequestMapping(value = "/list", produces = Constants.MediaType_APPLICATION_JSON)

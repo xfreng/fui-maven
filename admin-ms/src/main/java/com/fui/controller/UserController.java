@@ -39,7 +39,7 @@ public class UserController extends AbstractSuperController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("user/list");
-        return mv;
+        return init(mv);
     }
 
     @RequestMapping("/state")

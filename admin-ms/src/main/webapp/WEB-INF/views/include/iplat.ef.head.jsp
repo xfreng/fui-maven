@@ -1,15 +1,15 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%
-	String efFormEname = request.getParameter("efFormEname");
-	String efFormCname = request.getParameter("efFormCname");
-	String pageTitle = efFormEname + "/" + efFormCname;
 	String help = "帮助";
 	String favorites = "收藏";
 	String print = "打印当前页面";
 	String close = "关闭当前页面";
 	String fullScreen = "全屏显示当前页面";
 %>
-<script type="text/javascript" src="<%=request.getContextPath() %>/public/EF/Form/iplat.ef.head.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/public/EF/Form/iplat.ef.head.js"></script>
+
+<input type="hidden" id="efFormEname" name="efFormEname" value="${efFormEname}">
+<input type="hidden" id="efFormCname" name="efFormCname" value="${efFormCname}">
 
 <div id="ef_form_head" class="ef-form-head">
     <script type="text/javascript">	  
@@ -25,10 +25,9 @@
 		</colgroup><tbody>
 			<tr>
 				<td class="ef-state-default ef-cornerredius-all ef-iconbutton-noborder">
-					<div style="margin:2px;" id="iplat_efformDev_id" title="<%=efFormEname %>" class="ef-icon ef-icon-dev">
-					</div>
+					<div style="margin:2px;" id="iplat_efformDev_id" title="${efFormEname}" class="ef-icon ef-icon-dev"></div>
 				</td>
-				<td id="pageTitle" class="ef-form-head-title"><%=pageTitle %>&nbsp;</td>
+				<td id="pageTitle" class="ef-form-head-title">${efFormEname}/${efFormCname}&nbsp;</td>
 				<!-- 配置按钮图标 -->
 				<td><div style="margin:2px;"><a id="_efFormConfig" href="#" class="ef-state-default ef-form-configDiv ui-button ui-widget ui-state-default ui-corner-all ui-button-icons-only" role="button" aria-disabled="false" title="" style="height: 20px; margin: 0px; border: none;"><span class="ui-button-icon-primary ui-icon ef-icon ef-icon-gear"></span><span class="ui-button-text"></span><span class="ui-button-icon-secondary ui-icon ef-icon ef-icon-expand"></span></a></div></td>
 			</tr>

@@ -34,7 +34,7 @@ public class RoleController extends AbstractSuperController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("role/list");
-        return mv;
+        return init(mv);
     }
 
     @RequestMapping("/state")

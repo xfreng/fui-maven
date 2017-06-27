@@ -4,7 +4,6 @@
 <head>
 	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-	<title>系统菜单管理</title>
 	<style type="text/css">
 		#tree .fui-grid-viewport{
 			background-color:transparent !important;
@@ -15,10 +14,7 @@
 	</style>
 </head>
 <body>
-<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
-	<jsp:param value="EDPI10" name="efFormEname"/>
-	<jsp:param value="系统菜单管理" name="efFormCname"/>
-</jsp:include>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp"></jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
 	<div region="west" showHeader="false" style="cursor:hand;" bodyStyle="padding-left:0px;" showSplitIcon="true" width="230" maxWidth="530">
 	    <ul id="tree" class="fui-tree" url="${path}/supervisor/menu/loadMenuNodes" style="width:100%;margin-top:5px;"

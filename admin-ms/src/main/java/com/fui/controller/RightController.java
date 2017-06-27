@@ -35,7 +35,7 @@ public class RightController extends AbstractSuperController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("right/list");
-        return mv;
+        return init(mv);
     }
 
     @RequestMapping("/state")

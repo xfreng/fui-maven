@@ -1,7 +1,10 @@
 package com.fui.common;
 
+import com.fui.model.Menu;
+import com.fui.service.MenuService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
@@ -14,6 +17,28 @@ public abstract class AbstractSuperController {
 
     @Autowired
     protected HttpServletRequest request;
+
+    @Autowired
+    private MenuService menuService;
+
+    /**
+     * 页面公用变量设置
+     *
+     * @param mv
+     * @return 跳转到指定页面
+     */
+    protected ModelAndView init(ModelAndView mv) {
+        String servletPath = request.getServletPath();
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("nodeUrl", servletPath);
+        List<Menu> menuList = menuService.queryMenuNodeBySelective(parameters);
+        if (menuList != null && menuList.size() > 0) {
+            Menu menu = menuList.get(0);
+            mv.addObject("efFormEname", menu.getId());
+            mv.addObject("efFormCname", menu.getText());
+        }
+        return mv;
+    }
 
     /**
      * 分页功能

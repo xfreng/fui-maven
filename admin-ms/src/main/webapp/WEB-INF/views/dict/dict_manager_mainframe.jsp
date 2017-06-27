@@ -4,19 +4,15 @@
 <head>
 	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
 	<%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-	<title>业务字典管理</title>
 </head>
 <body>
-	<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
-		<jsp:param value="EDCM00" name="efFormEname"/>
-		<jsp:param value="代码分类管理" name="efFormCname"/>
-	</jsp:include>
-	<div id="fuiTabsBody" class="fui-tabs-body">
-	    <div id="mainTabs" class="fui-tabs" activeIndex="0" style="width:100%;height:100%;">
-		    <div title="业务字典管理" url="${path}/supervisor/dict/dictManager"></div>
-		    <div title="业务字典导入管理" url="${path}/supervisor/dict/dictImportManager"></div>
-		</div>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp"></jsp:include>
+<div id="fuiTabsBody" class="fui-tabs-body">
+	<div id="mainTabs" class="fui-tabs" activeIndex="0" style="width:100%;height:100%;">
+		<div title="业务字典管理" url="${path}/supervisor/dict/dictManager"></div>
+		<div title="业务字典导入管理" url="${path}/supervisor/dict/dictImportManager"></div>
 	</div>
+</div>
 </body>
 <script type="text/javascript">
 	$(function() {

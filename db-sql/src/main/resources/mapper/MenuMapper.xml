@@ -21,10 +21,10 @@
 				select role_id from fui_user_roles where user_id = #{userId}
 			)),(select id from fui_permissions where code = CONCAT(CONCAT(tree_ename,'.'),node_ename))) > 0
         </if>
-	    order by tree_ename asc, node_sort_id asc, node_ename asc 
+	    order by tree_ename asc, node_sort_id asc, node_ename asc
   	</select>
 
-	<select id="queryMenuNodeById" resultType="com.fui.model.Menu">
+	<select id="queryMenuNodeBySelective" resultType="com.fui.model.Menu">
 		SELECT
 			rec_creator     as "recCreator",
 			rec_create_time as "recCreateTime",
@@ -47,6 +47,9 @@
 		</if>
 		<if test="node != null and node != ''">
 			and node_ename = #{node}
+		</if>
+		<if test="nodeUrl != null and nodeUrl != ''">
+			and node_url = #{nodeUrl}
 		</if>
 		order by tree_ename asc, node_sort_id asc, node_ename asc
 	</select>

@@ -4,7 +4,6 @@
 <head>
     <%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-    <title>权限配置</title>
     <style type="text/css">
         html, body{
             margin:0;padding:0;border:0;width:100%;height:100%;overflow:hidden;
@@ -18,10 +17,7 @@
     </style>
 </head>
 <body>
-<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
-    <jsp:param value="EDUM03" name="efFormEname"/>
-    <jsp:param value="权限配置" name="efFormCname"/>
-</jsp:include>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp"></jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
     <div region="west" title="权限配置菜单" showHeader="false" style="cursor:hand;" bodyStyle="padding-left:0px;" showSplitIcon="true" width="230" maxWidth="530">
         <ul id="leftTree" class="fui-tree" url="${path}/supervisor/right/selectByKey" style="width:100%;margin-top:5px;"

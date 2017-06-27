@@ -9,7 +9,7 @@ import java.util.Map;
 public interface MenuMapper {
     List<Map<String, Object>> query(@Param("userId") Long userId, @Param("node") String node);
 
-    List<Menu> queryMenuNodeById(Map<String, Object> param);
+    List<Menu> queryMenuNodeBySelective(Map<String, Object> param);
 
     boolean insertMenuNode(Menu menuTree);
 

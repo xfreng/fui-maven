@@ -4,13 +4,9 @@
 <head>
     <%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-    <title>角色管理</title>
 </head>
 <body>
-<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp">
-    <jsp:param value="EDUM02" name="efFormEname"/>
-    <jsp:param value="角色管理" name="efFormCname"/>
-</jsp:include>
+<jsp:include flush="false" page="/WEB-INF/views/include/iplat.ef.head.jsp"></jsp:include>
 <div id="layout" class="fui-layout" style="width:100%;">
     <div region="north" showHeader="false" bodyStyle="overflow:hidden;" showSplit="false" showCollapseButton="false">
         <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="padding: 10px;width: 100%;">
