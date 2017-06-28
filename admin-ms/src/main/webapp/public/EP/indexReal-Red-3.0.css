@@ -332,7 +332,7 @@
 }
 
 #menu .ui-accordion h3.last { 
-  border-bottom: 0px solid #fff;
+  /*border-bottom: 0px solid #fff;*/
 }
 
 .ui-accordion h3.leaf span { 

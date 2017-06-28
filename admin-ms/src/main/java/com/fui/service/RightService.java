@@ -51,33 +51,16 @@ public class RightService {
                 String permissions = roles.getPermissions();
                 if (StringUtils.isNotEmpty(permissions)) {
                     List<String> permissionList = StringUtils.asList(permissions, ",");
-                    for (String rightId : permissionList) {
-                        Permissions right = rightMapper.selectByPrimaryKey(Long.valueOf(rightId));
-                        if (right != null) {
-                            rights.add(net.sf.json.JSONObject.fromObject(right));
-                        }
-                    }
-                    for (Object rightTree : rights) {
-                        net.sf.json.JSONObject treeNode = (net.sf.json.JSONObject) rightTree;
-                        List<Permissions> nodes = rightMapper.selectByKey(treeNode.getLong("id"));
-                        if (nodes.size() > 0) {
-                            treeNode.put("isLeaf", false);
-                            treeNode.put("expanded", false);
-                            for (Permissions right : nodes) {
-                                net.sf.json.JSONObject node = net.sf.json.JSONObject.fromObject(right);
-                                if (checkHasRole(node.getLong("id"), roleCode)) {
-                                    node.put("checked", true);
-                                }
-                            }
-                        }
-                        if (checkHasRole(treeNode.getLong("id"), roleCode)) {
-                            treeNode.put("checked", true);
-                        }
+                    List<Permissions> rightList = rightMapper.selectAllRight();
+                    for (Permissions rightTree : rightList) {
+                        net.sf.json.JSONObject treeNode = net.sf.json.JSONObject.fromObject(rightTree);
+                        checkHasRole(treeNode, permissionList);
+                        rights.add(treeNode);
                     }
                 }
             }
         } else {
-            List rightTrees = rightMapper.selectByKey(Long.valueOf(id));
+            List<Permissions> rightTrees = rightMapper.selectByKey(Long.valueOf(id));
             List rightList = JsonUtils.toJsonArray(rightTrees);
             for (Object rightTree : rightList) {
                 net.sf.json.JSONObject treeNode = (net.sf.json.JSONObject) rightTree;
@@ -95,25 +78,51 @@ public class RightService {
     /**
      * 检查角色是否已授权角色
      *
-     * @param id
-     * @param roleCode
-     * @return boolean
+     * @param permission
+     * @param permissionList
      */
-    private boolean checkHasRole(Long id, String roleCode) {
-        boolean bool = false;
-        if (StringUtils.isNotEmpty(roleCode)) {
-            Roles roles = roleService.findRolesByCode(roleCode);
-            if (roles != null) {
-                String permissions = roles.getPermissions();
-                if (StringUtils.isNotEmpty(permissions)) {
-                    List<String> permissionList = StringUtils.asList(permissions, ",");
-                    if (permissionList.contains(id.toString())) {
-                        bool = true;
+    private void checkHasRole(net.sf.json.JSONObject permission, List<String> permissionList) {
+        List<Permissions> nodes = rightMapper.selectByKey(permission.getLong("id"));
+        if (nodes.size() > 0) {
+            permission.put("isLeaf", false);
+            permission.put("expanded", true);
+            for (Permissions right : nodes) {
+                net.sf.json.JSONObject node = net.sf.json.JSONObject.fromObject(right);
+                checkHasRole(node, permissionList);
+            }
+        } else {
+            if (permissionList.contains(permission.getString("id"))) {
+                permission.put("checked", true);
+            }
+        }
+    }
+
+    /**
+     * 根据角色编码查询权限
+     *
+     * @param roleCode
+     * @return 相匹配的权限信息
+     */
+    public List<Map<String, Object>> selectRightByRoleCode(String roleCode) {
+        List<Map<String, Object>> rights = new ArrayList<Map<String, Object>>();
+        Roles roles = roleService.findRolesByCode(roleCode);
+        if (roles != null) {
+            String permissions = roles.getPermissions();
+            List<String> permissionList = StringUtils.asList(permissions, ",");
+            for (String rightId : permissionList) {
+                Permissions right = rightMapper.selectByPrimaryKey(Long.valueOf(rightId));
+                if (right != null) {
+                    net.sf.json.JSONObject treeNode = net.sf.json.JSONObject.fromObject(right);
+                    List<Permissions> nodes = rightMapper.selectByKey(treeNode.getLong("id"));
+                    if (nodes.size() > 0) {
+                        treeNode.put("isLeaf", false);
+                        treeNode.put("expanded", true);
                     }
+                    rights.add(treeNode);
                 }
             }
         }
-        return bool;
+        return rights;
     }
 
     /**

@@ -30,7 +30,7 @@
             <div class="fui-panel" title="查询条件" bodyStyle="overflow:hidden;" style="width:100%;">
                 <form id="queryForm">
                     <label style="margin-left:20px;" for="rightName">权限名称：</label>
-                    <input class="fui-textbox" id="rightName" name="rightName" prompt="支持模糊查询"/>
+                    <input class="fui-textbox" id="rightName" name="rightName" emptyText="支持模糊查询"/>
                 </form>
             </div>
             <div class="fui-panel" showHeader="false" bodyStyle="overflow:hidden;" style="width:100%;height:92%;">

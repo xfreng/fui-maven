@@ -58,7 +58,7 @@
 
     <div style="position:absolute;right:12px;bottom:8px;font-size:12px;line-height:25px;font-weight:normal;">
       	  皮肤：
-        <select onchange="updateStyle('default',this.value)" style="width:100px;margin-right:10px;">
+        <select onchange="updateStyle(this.value == 'pact' ? 'pact' : 'default',this.value)" style="width:100px;margin-right:10px;">
             <option value="default" ${("default" eq menuStyle) ? "selected" : ""}>Default</option>
             <option value="bootstrap" ${("bootstrap" eq menuStyle) ? "selected" : ""}>Bootstrap</option>
             <option value="pact" ${("pact" eq menuStyle) ? "selected" : ""}>Pact</option>

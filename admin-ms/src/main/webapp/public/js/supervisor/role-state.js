@@ -42,7 +42,7 @@ function setData(data) {
     } else if (action == "add") {
         fui.get("roleCode").setAllowInput(true);
     } else {
-        treeUrl = fui.contextPath + "/supervisor/right/selectByKey?roleCode=" + data.roleCode;
+        treeUrl = fui.contextPath + "/supervisor/role/showRights?roleCode=" + data.roleCode;
     }
     rightTree.load(treeUrl);
 }

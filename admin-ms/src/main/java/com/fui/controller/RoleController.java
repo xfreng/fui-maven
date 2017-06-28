@@ -4,6 +4,7 @@ import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.StringUtils;
 import com.fui.model.Roles;
+import com.fui.service.RightService;
 import com.fui.service.RoleService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,6 +31,8 @@ public class RoleController extends AbstractSuperController {
 
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private RightService rightService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
@@ -67,6 +70,19 @@ public class RoleController extends AbstractSuperController {
         List<Roles> list = roleService.getRolesList(params);
         PageInfo<Roles> pageInfo = createPagination(list);
         return success(list, pageInfo.getTotal(), "roleList");
+    }
+
+    /**
+     * 根据角色id查询角色对应的权限
+     *
+     * @param roleCode 角色编码
+     * @return 角色权限
+     */
+    @RequestMapping(value = "/showRights", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String showPermissions(String roleCode) {
+        List<Map<String, Object>> rights = rightService.selectRightByRoleCode(roleCode);
+        return success(rights, "rightNodes");
     }
 
     @RequestMapping(value = "/add", produces = Constants.MediaType_APPLICATION_JSON)

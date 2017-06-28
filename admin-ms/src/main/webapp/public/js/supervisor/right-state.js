@@ -33,6 +33,7 @@ function setData(data) {
     form.setData(data);
     if (action == "edit") {
         fui.get("id").setAllowInput(false);
+        fui.get("code").setText(data.code);
         form.setChanged(false);
         url = fui.contextPath + "/supervisor/right/update";
     } else {

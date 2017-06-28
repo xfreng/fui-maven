@@ -127,11 +127,13 @@
     <include refid="Base_Column_List"/>
     from fui_permissions
     where parent_id = #{id,jdbcType=BIGINT}
+    ORDER BY id
   </select>
   <select id="selectAllRight" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List"/>
     FROM fui_permissions
+    ORDER BY id
   </select>
   <select id="findRightsByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
@@ -143,6 +145,7 @@
     <include refid="Base_Column_List"/>
     from fui_permissions
     where parent_id = -1
+    ORDER BY id
   </select>
   <select id="getRightsList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
@@ -157,5 +160,6 @@
     <if test="text != null">
       AND text LIKE '%${text}%'
     </if>
+    ORDER BY id
   </select>
 </mapper>
