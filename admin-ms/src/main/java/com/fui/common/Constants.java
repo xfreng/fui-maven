@@ -18,6 +18,9 @@ public interface Constants {
     // 超级管理员用户名
     String SUPER_USER_ID = "admin";
 
+    // 默认用户密码
+    String DEFAULT_USER_PWD = "888888";
+
     // 用户session对象ID
     String USER_SESSION_ID = "userObject";
 

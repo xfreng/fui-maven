@@ -166,7 +166,7 @@ public class UserService {
             json.put("message", "用户名已经存在");
             return json;
         }
-        user.setPassword(MD5Utils.generatePassword(user.getEname()));
+        user.setPassword(MD5Utils.generatePassword(Constants.DEFAULT_USER_PWD));
         user.setErased(false);
         user.setStyle(Constants.DEFAULT_STYLE);
         user.setMenuType(Constants.DEFAULT_STYLE);
@@ -233,7 +233,7 @@ public class UserService {
         } else {
             int result = 0;
             try {
-                user.setPassword(MD5Utils.generatePassword(user.getEname()));
+                user.setPassword(MD5Utils.generatePassword(Constants.DEFAULT_USER_PWD));
                 result = userMapper.updateByPrimaryKeySelective(user);
             } catch (Exception e) {
                 logger.error("重置用户密码异常：{}", e);

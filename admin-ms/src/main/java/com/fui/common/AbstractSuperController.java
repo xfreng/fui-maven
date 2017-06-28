@@ -32,7 +32,7 @@ public abstract class AbstractSuperController {
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("nodeUrl", servletPath);
         List<Menu> menuList = menuService.queryMenuNodeBySelective(parameters);
-        if (menuList != null && menuList.size() > 0) {
+        if (menuList != null && menuList.size() > 0 && menuList.size() == 1) {
             Menu menu = menuList.get(0);
             mv.addObject("efFormEname", menu.getId());
             mv.addObject("efFormCname", menu.getText());
