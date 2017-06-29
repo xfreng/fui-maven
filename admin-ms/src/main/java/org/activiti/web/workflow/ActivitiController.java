@@ -34,6 +34,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.stream.XMLInputFactory;
@@ -83,8 +84,9 @@ public class ActivitiController extends AbstractSuperController {
 
 
     @RequestMapping(value = "/index")
-    public String index() {
-        return "/workflow/process-list";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("workflow/process-list");
+        return mv;
     }
 
     /**

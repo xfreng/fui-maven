@@ -33,6 +33,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
@@ -58,8 +59,9 @@ public class ModelController extends AbstractSuperController {
 
 
     @RequestMapping("/index")
-    public String index() {
-        return "/workflow/model-list";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("workflow/model-list");
+        return mv;
     }
 
     /**
