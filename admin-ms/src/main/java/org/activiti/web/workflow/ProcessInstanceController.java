@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,8 +35,9 @@ public class ProcessInstanceController extends AbstractSuperController {
     private RuntimeService runtimeService;
 
     @RequestMapping(value = "/index")
-    public String index() {
-        return "/workflow/running-manage";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("workflow/running-manage");
+        return mv;
     }
 
     /**
