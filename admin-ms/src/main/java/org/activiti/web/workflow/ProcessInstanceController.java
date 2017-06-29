@@ -37,7 +37,7 @@ public class ProcessInstanceController extends AbstractSuperController {
     @RequestMapping(value = "/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("workflow/running-manage");
-        return mv;
+        return init(mv);
     }
 
     /**

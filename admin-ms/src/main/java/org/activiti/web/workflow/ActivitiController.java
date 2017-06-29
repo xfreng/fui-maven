@@ -86,7 +86,7 @@ public class ActivitiController extends AbstractSuperController {
     @RequestMapping(value = "/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("workflow/process-list");
-        return mv;
+        return init(mv);
     }
 
     /**

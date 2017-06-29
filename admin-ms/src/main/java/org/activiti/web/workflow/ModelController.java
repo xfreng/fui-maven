@@ -61,7 +61,7 @@ public class ModelController extends AbstractSuperController {
     @RequestMapping("/index")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView("workflow/model-list");
-        return mv;
+        return init(mv);
     }
 
     /**
