@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ page import="com.fui.common.MemCachedUtils"%>
-<%@ page import="com.fui.common.UserUtils" %>
+<%@ page import="com.fui.common.UserUtils"%>
+<%@ page import="com.fui.core.FrameworkInfo" %>
 <%@ page import="com.fui.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -22,9 +22,9 @@
 		menuStyle = user.getStyle();
 	}
 
-	Object projectName = MemCachedUtils.get("projectName");
-	Object logo = MemCachedUtils.get("logo");
-	Object dev = MemCachedUtils.get("dev");
+	Object projectName = FrameworkInfo.getProjectName();
+	Object logo = FrameworkInfo.getLogo();
+	Object dev = FrameworkInfo.getDev();
 
 	request.setAttribute("menuType",menuType);
 	request.setAttribute("menuStyle",menuStyle);

@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8" isELIgnored="false" %>
-<%@ page import="com.fui.common.MemCachedUtils" %>
 <%@ page import="com.fui.common.UserUtils" %>
+<%@ page import="com.fui.core.FrameworkInfo" %>
 <%@ page import="com.fui.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="EF" uri="/WEB-INF/framework/tlds/EF-2.0.tld" %>
@@ -27,9 +27,9 @@
     } else if ("black".equals(menuStyle)) {
         iPlatStyle = "ModernBlack";
     }
-    Object projectName = MemCachedUtils.get("projectName");
-    Object logo = MemCachedUtils.get("logo");
-    Object dev = MemCachedUtils.get("dev");
+    Object projectName = FrameworkInfo.getProjectName();
+    Object logo = FrameworkInfo.getLogo();
+    Object dev = FrameworkInfo.getDev();
     request.setAttribute("menuType", menuType);
     request.setAttribute("menuStyle", menuStyle);
     request.setAttribute("iPlatStyle", iPlatStyle);
@@ -38,8 +38,6 @@
     request.setAttribute("logo", logo);
     request.setAttribute("dev", dev);
 %>
-<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
-<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
 <link rel="stylesheet" type="text/css" href="${path}/public/EF/Themes/styleApple/${iPlatStyle}/jquery-ui.custom.css"/>
 <link rel="stylesheet" type="text/css" href="${path}/public/EF/Themes/styleApple/${iPlatStyle}/iplat-ui-theme-2.0.css"/>
 <link rel="stylesheet" type="text/css" href="${path}/public/EP/indexReal-${iPlatStyle}-3.0.css"/>

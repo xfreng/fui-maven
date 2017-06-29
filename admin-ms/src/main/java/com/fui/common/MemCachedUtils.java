@@ -137,6 +137,24 @@ public class MemCachedUtils {
     }
 
     /**
+     * 根据键获取MemCached内存缓存管理系统中相应的值(返回默认值defaultText)
+     */
+    public static String getText(String key, String defaultText) {
+        Object value = get(key);
+        if (value != null && value.toString().trim().length() > 0) {
+            return value.toString();
+        }
+        return defaultText;
+    }
+
+    /**
+     * 根据键获取MemCached内存缓存管理系统中相应的值(返回默认值key)
+     */
+    public static String getText(String key) {
+        return getText(key, key);
+    }
+
+    /**
      * 根据键删除memCached中的键/值对
      */
     public static boolean delete(String key) {

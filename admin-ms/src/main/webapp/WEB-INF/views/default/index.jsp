@@ -4,7 +4,7 @@
 <head>
 	<%@include file="/WEB-INF/views/include/iplat-common.jsp"%>
     <%@include file="/WEB-INF/views/include/fui-iplat-common.jsp"%>
-    <title>欢迎使用 ${p_name}[${p_dev}]</title>
+    <title>欢迎使用 ${projectName}[${dev}]</title>
     <link rel="stylesheet" type="text/css" href="${path}/public/EP/indexReal-ModernBlack-3.0.css">
     <link rel="stylesheet" type="text/css" href="${path}/public/EU/Font-Awesome/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="${path}/public/EU/Font-Awesome/css/font-awesome.jquery.css">

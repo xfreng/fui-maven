@@ -1,11 +1,11 @@
 package org.activiti.web.workflow;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baosight.iplat4j.core.FrameworkInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
+import com.fui.core.FrameworkInfo;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.cmd.JumpActivityCmd;

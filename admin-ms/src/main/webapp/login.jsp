@@ -4,18 +4,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<%@include file="/WEB-INF/views/include/fui-common.jsp"%>
-	<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
-	<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
-	<title>${p_name}[${p_dev}]登录界面</title>
+	<title>${projectName}[${dev}]登录界面</title>
 </head>
 <body class="background">
 	<div class="login_body">
       	<form id="loginForm" class="fui-form" method="post">
-	    	<div><img src="${path}/public/mainframe/images/login/${logo eq null ? 'logo.png' : logo}" class="pos_rel l_186 t_-31"></div>
+	    	<div><img src="${path}/public/mainframe/images/login/${logo}" class="pos_rel l_186 t_-31"></div>
 	        <div class="mg_0_auto w_510 pos_rel l_255">
 	            <div style="text-align: center;">
-	               	<span style="font-weight:bold;font-size:20px">${p_name}</span>
-	                <span style="font-size:12px">${p_dev}</span>
+	               	<span style="font-weight:bold;font-size:20px">${projectName}</span>
+	                <span style="font-size:12px">${dev}</span>
 	            </div>
 	            <div class="clear"></div>
 	            <div class="login" style="padding:0px 0px 30px 0px;">

@@ -1,6 +1,4 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"%>
-<c:set value="${projectName eq null ? 'fuiPlat4j' : projectName}" var="p_name" scope="page"/>
-<c:set value="${dev eq null ? '框架研发' : dev}" var="p_dev" scope="page"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +42,9 @@
 </head>
 <body>
 	<div class="logo">
-        <a href="${path}/supervisor/default"><img src="${path}/public/mainframe/images/${logo eq null ? 'logo.png' : logo}"></a>&nbsp;
+        <a href="${path}/supervisor/default"><img src="${path}/public/mainframe/images/${logo}"></a>&nbsp;
         <span class="separator"></span>
-        ${p_name}&nbsp;<span style="font-size:12px;">${p_dev} </span>
+        ${projectName}&nbsp;<span style="font-size:12px;">${dev} </span>
     </div>
     <div class="topNav">
         <span class="mg_l_10 font_14" style="top:50px;">欢迎您！${user.ename}&nbsp;&nbsp;&nbsp;</span>
