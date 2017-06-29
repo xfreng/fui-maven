@@ -32,6 +32,7 @@
                 <div type="checkcolumn" ></div>
                 <div field="ename" width="100" headerAlign="center" align="center">登录名</div>
                 <div field="cname" width="130" headerAlign="center" align="center">真实姓名</div>
+                <div field="createTime" width="150" headerAlign="center" align="center" dateFormat="yyyy-MM-dd HH:mm:ss">创建时间</div>
                 <div field="lastLoginTime" width="150" headerAlign="center" align="center" dateFormat="yyyy-MM-dd HH:mm:ss">最后一次登录时间</div>
                 <div field="showRoles" width="200" headerAlign="center" align="center" renderer="roleRender">拥有角色</div>
                 <div field="operate" width="160" headerAlign="center" align="center" renderer="operateRender">操作</div>
