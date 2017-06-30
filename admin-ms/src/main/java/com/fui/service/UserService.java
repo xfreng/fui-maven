@@ -163,6 +163,7 @@ public class UserService {
         JSONObject json = new JSONObject();
         User oldUser = findUserByCode(user.getEname());
         if (oldUser != null) {
+            json.put("result", "0");
             json.put("message", "用户名已经存在");
             return json;
         }

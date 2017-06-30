@@ -14,6 +14,10 @@
     background: url(icons/edit.png) no-repeat;
 }
 
+.icon-editnew {
+    background: url(icons/editnew.png) no-repeat;
+}
+
 .icon-remove {
     background: url(icons/remove.png) no-repeat;
 }

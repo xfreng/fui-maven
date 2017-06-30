@@ -103,4 +103,7 @@
       organization_id = #{organizationId,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <delete id="deleteByOrgId" parameterType="java.lang.Long">
+    DELETE FROM fui_user_organizations WHERE organization_id = #{orgId,jdbcType=BIGINT}
+  </delete>
 </mapper>

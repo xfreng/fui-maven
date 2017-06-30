@@ -26,19 +26,25 @@ function onBeforeTreeLoad(e) {
 
 var menu_add = {title: '新增菜单', url: fui.contextPath + '/supervisor/menu/state'};
 
+var menuTypeFlag = (fui.menuType == "default");
+var iconAdd = menuTypeFlag ? "icon-add" : "icon-and";
+var iconRemove = menuTypeFlag ? "icon-remove" : "icon-removenew";
+var iconReload = menuTypeFlag ? "icon-reload" : "icon-reloadnew";
+
 var rootMenu = [
-    {text: "增加顶级菜单", onclick: "onAddRootMenu", iconCls: "icon-add"},
-    {text: "刷新", onclick: "onRefreshNode", iconCls: "icon-reload"}
+    {text: "增加顶级菜单", onclick: "onAddRootMenu", iconCls: iconAdd},
+    {text: "增加下级菜单", onclick: "onAddMenuOfMenu", iconCls: iconAdd},
+    {text: "刷新", onclick: "onRefreshNode", iconCls: iconReload}
 ];
 
 var menu = [
-    {text: "增加下级菜单", onclick: "onAddMenuOfMenu", iconCls: "icon-add"},
-    {text: "删除本级菜单", onclick: "onRemoveMenu", iconCls: "icon-remove"},
-    {text: "刷新", onclick: "onRefreshNode", iconCls: "icon-reload"}
+    {text: "增加下级菜单", onclick: "onAddMenuOfMenu", iconCls: iconAdd},
+    {text: "删除本级菜单", onclick: "onRemoveMenu", iconCls: iconRemove},
+    {text: "刷新", onclick: "onRefreshNode", iconCls: iconReload}
 ];
 
 var menu_map = {
-    Root: rootMenu,
+    root: rootMenu,
     menu: menu
 };
 
@@ -81,10 +87,10 @@ function onBeforeOpen(e) {
     var node = tree.getSelectedNode();
     var menu = e.sender;
     var menuList = {};
-    if (node.id && node.id != "root") {
+    if (node && node.id && node.id != "root") {
         menuList = menu_map["menu"];
     } else {
-        menuList = menu_map["Root"];
+        menuList = menu_map["root"];
     }
 
     if (!menuList || menuList.length == 0) {
@@ -103,46 +109,25 @@ function alertTip(message, title, timeout) {
     }, timeout);
 }
 
-function openDialog(params) {
-    var openParams = fui.clone(params);
-
-    openParams.onload || (openParams.onload = function () {
-        var iframe = this.getIFrameEl();
-        var contentWindow = iframe.contentWindow;
-
-        if (contentWindow.setData) {
-            contentWindow.setData(openParams.data);
-        }
-    });
-    openParams.ondestroy || (openParams.ondestroy = function (action) {
-        if (action == "ok") {
-            grid.reload();
-            refreshNode(getSelectedNode());
-        }
-    });
-    fui.open(openParams);
-}
-
 function onAddRootMenu(e) {
-    var rootNode = tree.getChildNodes(tree.getRootNode())[0];
     openDialog({
-        title: "新增顶级菜单",
+        title: menu_add.title,
         url: menu_add.url,
-        data: {pid: rootNode.id},
+        data: {pid: "$"},
         width: 540,
         height: 255
-    });
+    }, grid);
 }
 
 function onAddMenuOfMenu(e) {
     var selectedNode = getSelectedNode();
     openDialog({
-        title: "新增下级菜单",
+        title: menu_add.title,
         url: menu_add.url,
         data: {pid: selectedNode.id},
         width: 540,
         height: 255
-    });
+    }, grid);
 }
 
 function onRemoveMenu(e) {
@@ -160,12 +145,14 @@ function onRemoveMenu(e) {
                     var count = text.count;
                     if (count && parseInt(count) > 0) {
                         fui.alert("选择的菜单中有子菜单，不可删除！", "提示信息", function (action) {
-                            fui.hideMessageBox(messageid);
+                            if (action == "ok") {
+                                fui.hideMessageBox(messageid);
+                            }
                         });
                     } else {
                         if (!text.exception) {
                             fui.hideMessageBox(messageid);
-                            refreshCurrentNode();
+                            refreshParentNode();
                         }
                     }
                 },
@@ -193,9 +180,9 @@ function add() {
     var len = grid.getSelecteds().length;
     if (len == 0) {
         fui.open({
-            url: fui.contextPath + "/supervisor/menu/state",
+            url: menu_add.url,
             showMaxButton: true,
-            title: "新增菜单",
+            title: menu_add.title,
             width: 540,
             height: 255,
             onload: function () {
@@ -223,7 +210,9 @@ function add() {
                 var count = text.count;
                 if (count && parseInt(count) > 0) {
                     fui.alert("新增失败，菜单重复！", "提示信息", function (action) {
-                        grid.reload();
+                        if (action == "ok") {
+                            grid.reload();
+                        }
                     });
                 } else {
                     if (!text.exception) {
@@ -304,7 +293,9 @@ function remove() {
                         var count = text.count;
                         if (count && parseInt(count) > 0) {
                             fui.alert("选择的菜单中有子菜单，不可删除！", "提示信息", function (action) {
-                                grid.reload();
+                                if (action == "ok") {
+                                    grid.reload();
+                                }
                             });
                         } else {
                             if (!text.exception) {

@@ -21,8 +21,9 @@
 <div id="layout" class="fui-layout" style="width:100%;">
     <div region="west" title="组织机构树" showHeader="false" style="cursor:hand;" bodyStyle="padding-left:0px;" showSplitIcon="true" width="230" maxWidth="530">
         <ul id="leftTree" class="fui-tree" url="${path}/supervisor/organization/selectByKey" style="width:100%;margin-top:5px;"
-            showTreeIcon="true" textField="text" onbeforeload="onBeforeTreeLoad" dataField="organizationNodes"
-            idField="id" parentField="parentId" resultAsTree="false" onnodeclick="onNodeClick">
+            showTreeIcon="true" textField="name" onbeforeload="onBeforeTreeLoad" dataField="organizationNodes"
+            idField="id" parentField="parentId" resultAsTree="false" onnodeclick="onNodeClick"
+            contextMenu="#treeMenu">
         </ul>
     </div>
     <div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
@@ -38,8 +39,6 @@
             <div class="fui-panel" showHeader="false" bodyStyle="overflow:hidden;" style="width:100%;height:92%;">
                 <div class="fui-toolbar" style="border-top:0;border-left:0;border-:0;">
                     <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
-                    <a class="fui-button" iconCls="icon-add" onclick="doAdd_update('A')">新增</a>
-                    <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
                 </div>
                 <div id="userManagerGrid" class="fui-datagrid" style="width:100%;height:96%;" multiSelect="true"
                      url="${path}/supervisor/user/list" idField="id" pageSize="20"
@@ -56,6 +55,7 @@
         </div>
     </div>
 </div>
+<ul id="treeMenu" class="fui-contextmenu" onbeforeopen="onBeforeOpen"></ul>
 </body>
 <script type="text/javascript" src="${path}/public/js/supervisor/organization.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>

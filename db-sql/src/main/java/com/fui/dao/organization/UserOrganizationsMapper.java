@@ -50,4 +50,12 @@ public interface UserOrganizationsMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UserOrganizations record);
+
+    /**
+     * 根据机构id删除对应的用户机构关联信息
+     *
+     * @param orgId 机构id
+     * @return 删除结果
+     */
+    int deleteByOrgId(Long orgId);
 }

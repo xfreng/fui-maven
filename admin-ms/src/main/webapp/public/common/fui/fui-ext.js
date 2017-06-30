@@ -1,4 +1,28 @@
 ﻿/**
+ * 打开弹出框(适用于tree和grid联动时)
+ * @param params
+ */
+function openDialog(params, grid) {
+    var openParams = fui.clone(params);
+
+    openParams.onload || (openParams.onload = function () {
+        var iframe = this.getIFrameEl();
+        var contentWindow = iframe.contentWindow;
+
+        if (contentWindow.setData) {
+            contentWindow.setData(openParams.data);
+        }
+    });
+    openParams.ondestroy || (openParams.ondestroy = function (action) {
+        if (action == "ok") {
+            grid.reload();
+            refreshNode(getSelectedNode());
+        }
+    });
+    fui.open(openParams);
+}
+
+/**
  * 关闭弹出窗口
  * @param action 关闭标记(close,cancel)
  * @param validateForm 表单数据变更验证

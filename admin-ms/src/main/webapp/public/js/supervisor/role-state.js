@@ -18,9 +18,15 @@ function doSaveRole() {
         success: function (text) {
             text = fui.decode(text);
             if (text.message != null && text.message != undefined) {
-                fui.alert(text.message);
+                fui.alert(text.message, "提示信息", function (action) {
+                    if (action == "ok") {
+                        if (text.result == "0") {
+                            return;
+                        }
+                        CloseWindow("ok");
+                    }
+                });
             }
-            CloseWindow("ok");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             fui.alert(jqXHR.responseText);

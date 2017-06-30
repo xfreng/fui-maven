@@ -26,6 +26,7 @@
 
 <script type="text/javascript">
 	fui.contextPath="${path}";
+	fui.menuType="${menuType}";
 	fui.DataTree.prototype.dataField="data";//兼容改造
 	
 	/**

@@ -1,6 +1,7 @@
 package com.fui.dao.organization;
 
 import com.fui.model.Organization;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -60,4 +61,12 @@ public interface OrganizationMapper {
      * @return 相匹配的机构信息
      */
     List<Organization> selectByKey(Long id);
+
+    /**
+     * 根据机构编码查询机构信息
+     *
+     * @param orgCode
+     * @return 机构信息
+     */
+    Organization findOrganizationByCode(@Param("orgCode") String orgCode);
 }

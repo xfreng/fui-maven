@@ -31,11 +31,11 @@
                     <td>组织机构编码：</td>
                     <td><input class="fui-textbox" id="code" name="code" required="true"/></td>
                     <td>组织机构名称：</td>
-                    <td><input class="fui-textbox" id="text" name="text" required="true"/></td>
+                    <td><input class="fui-textbox" id="name" name="name" required="true"/></td>
                 </tr>
                 <tr>
                     <td>添加机构人员：</td>
-                    <td colspan="3"><input class="fui-buttonedit" id="users" name="users" onbuttonclick="onButtonEdit" style="width: 100%;"/></td>
+                    <td colspan="3"><input class="fui-buttonedit" id="users" name="users" allowInput="false" onbuttonclick="onButtonEdit" style="width: 100%;"/></td>
                 </tr>
             </table>
         </div>

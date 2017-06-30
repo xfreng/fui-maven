@@ -48,6 +48,7 @@ public class RoleService {
         JSONObject json = new JSONObject();
         Roles oldRoles = findRolesByCode(roles.getRoleCode());
         if (oldRoles != null) {
+            json.put("result", "0");
             json.put("message", "角色编码已经存在");
             return json;
         }

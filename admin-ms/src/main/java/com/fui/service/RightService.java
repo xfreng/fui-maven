@@ -154,6 +154,7 @@ public class RightService {
         JSONObject json = new JSONObject();
         Permissions oldRights = findRightsByCode(rights.getCode());
         if (oldRights != null) {
+            json.put("result", "0");
             json.put("message", "权限编码已经存在");
             return json;
         }
@@ -171,7 +172,7 @@ public class RightService {
     public JSONObject updateRights(Permissions rights) {
         JSONObject json = new JSONObject();
         int i = rightMapper.updateByPrimaryKeySelective(rights);
-        json.put("result", i > 0 ? "权限修改成功" : "权限修改失败");
+        json.put("message", i > 0 ? "权限修改成功" : "权限修改失败");
         return json;
     }
 }
