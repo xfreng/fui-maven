@@ -1,8 +1,8 @@
 package com.fui.task;
 
 import com.fui.common.MemCachedUtils;
-import com.fui.dao.system.SystemMapper;
-import com.fui.model.System;
+import com.fui.dao.project.ProjectMapper;
+import com.fui.model.Project;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -23,16 +23,16 @@ public class FuiTask implements Job {
     private final Logger logger = LoggerFactory.getLogger(FuiTask.class);
 
     @Autowired
-    private SystemMapper systemMapper;
+    private ProjectMapper projectMapper;
 
     /**
      * 启动时执行一次，之后每隔2秒执行一次(缓存项目配置信息)
      */
     public void run(String key, String group) {
         logger.info("缓存任务key：{},group：{}启动...", key, group);
-        List<System> systemList = systemMapper.selectAll();
-        for (System system : systemList) {
-            MemCachedUtils.set(system.getName(), system.getNameDesc());
+        List<Project> projectList = projectMapper.selectAll();
+        for (Project project : projectList) {
+            MemCachedUtils.set(project.getName(), project.getNameDesc());
         }
     }
 

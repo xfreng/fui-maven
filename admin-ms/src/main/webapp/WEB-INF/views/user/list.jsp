@@ -20,7 +20,7 @@
     </div>
     <div showHeader="false" region="center" bodyStyle="overflow:hidden;" style="border:0;">
         <div class="fui-toolbar" style="border-top:0;border-left:0;border-right:0;">
-            <a class="fui-button"  iconCls="icon-search" onclick="doQuery()">查询</a>
+            <a class="fui-button" iconCls="icon-search" onclick="doQuery()">查询</a>
             <a class="fui-button" iconCls="icon-addnew" onclick="doAdd_update('A')">新增</a>
             <a class="fui-button" iconCls="icon-edit" onclick="doAdd_update('U')">修改</a>
         </div>
