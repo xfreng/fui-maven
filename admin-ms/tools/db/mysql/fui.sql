@@ -27,7 +27,7 @@ CREATE TABLE `fui_calendar` (
   `allday` varchar(1) NOT NULL DEFAULT '0' COMMENT '是否全天',
   `color` varchar(20) DEFAULT '' COMMENT '颜色',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='日程安排表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='日程安排表';
 
 -- ----------------------------
 -- Records of fui_calendar
@@ -44,7 +44,7 @@ CREATE TABLE `fui_dict_entry` (
   `dict_entry_desc` varchar(255) DEFAULT NULL COMMENT '字典明细描述',
   `dict_entry_sort` bigint(4) DEFAULT NULL COMMENT '排序标识',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='字典详细表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='字典详细表';
 
 -- ----------------------------
 -- Records of fui_dict_entry
@@ -59,7 +59,7 @@ CREATE TABLE `fui_dict_type` (
   `dict_code` varchar(125) DEFAULT '' COMMENT '字典类型名称',
   `dict_desc` varchar(255) DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='字典主表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='字典主表';
 
 -- ----------------------------
 -- Records of fui_dict_type
@@ -169,7 +169,7 @@ CREATE TABLE `fui_roles` (
   `role_name` varchar(50) DEFAULT NULL COMMENT '角色名称',
   `permissions` varchar(5000) DEFAULT NULL COMMENT '权限',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
 
 -- ----------------------------
 -- Records of fui_roles
@@ -187,7 +187,7 @@ CREATE TABLE `fui_system` (
   `name_desc` varchar(125) DEFAULT NULL,
   `remark` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of fui_system
@@ -211,7 +211,7 @@ CREATE TABLE `fui_user` (
   `login_count` bigint(20) DEFAULT '0',
   `last_login_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of fui_user
@@ -248,7 +248,7 @@ CREATE TABLE `fui_user_roles` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='后台用户角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='后台用户角色关联表';
 
 -- ----------------------------
 -- Records of fui_user_roles
@@ -266,7 +266,7 @@ CREATE TABLE `fui_user_type` (
   `user_type` varchar(15) DEFAULT NULL,
   `type_desc` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='计算类型表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='计算类型表';
 
 -- ----------------------------
 -- Records of fui_user_type
