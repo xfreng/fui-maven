@@ -11,7 +11,7 @@
             行：memcached -d start。
         (5). 卸载memcached步骤：
             a. 停止服务，memcached -d stop；
-            b.卸载服务，memcached -d uninstall。
+            b. 卸载服务，memcached -d uninstall。
         (6). 测试连接：首先用系统盘安装Telnet服务端和客户端组件，在命令
             行窗口输入：telnet 127.0.0.1 11211，如果进入telnet命令窗口，则表示安装成功。
     2、Linux版
