@@ -36,7 +36,7 @@
     方法二、sql脚本编辑器中执行
         先执行fui_user.sql再执行fui.sql
 ## 2）、功能介绍
-    j-coffee是基于spring+springmvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
+    j-coffee是基于spring+spring-mvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
 ### j-coffee有如下主要特点
 - 组织机构、用户灵活配置
 - fui.js快速开发web页面(包括jsp、html等)
