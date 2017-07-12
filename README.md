@@ -21,15 +21,15 @@
         (3). ./configure --prefix=/usr/local/memcached
         (4). make && make test && sudo make install
 ### 1.2、运行数据库脚本文件
-#### 1.2.1、mysql数据库
-#### 1.2.2、oracle数据库
-#### 方法一、代码执行
-    在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType在jdbc.properties中
-    <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="databaseType" value="${mybatis.dbType}"/>
-        <property name="databaseSchemaUpdate" value="true"/>
-    </bean>
-#### 方法二、sql脚本编辑器中执行
-    先执行fui_user.sql再执行fui.sql
+    1.2.1、mysql数据库
+    1.2.2、oracle数据库
+    方法一、代码执行
+        在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType在jdbc.properties中
+        <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
+            <property name="dataSource" ref="dataSource"/>
+            <property name="databaseType" value="${mybatis.dbType}"/>
+            <property name="databaseSchemaUpdate" value="true"/>
+        </bean>
+    方法二、sql脚本编辑器中执行
+        先执行fui_user.sql再执行fui.sql
 ## 2）、功能介绍
