@@ -38,6 +38,7 @@
 ## 2）、功能介绍
     j-coffee是基于spring+spring-mvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
 ### j-coffee有如下主要特点
+- Shiro细粒度权限体系
 - 组织机构、用户灵活配置
 - fui.js快速开发web页面(包括jsp、html等)
-- 集成activiti工作流引擎，轻松开发工作流系统
+- 集成Activiti工作流引擎，轻松开发业务作流
