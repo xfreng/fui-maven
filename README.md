@@ -1,6 +1,7 @@
 # fuiPlat4j框架maven工程介绍
-## 一、安装部署Memcached服务端(admin-ms工程目录tools下有安装文件)
-    1、Windows版
+## 1）、安装部署
+### 1.1、安装部署Memcached服务端(admin-ms工程目录tools下有安装文件)
+    1.1.1、Windows版
         (1). 首先，去下载Windows版本Memcached服务端，到本地硬盘分区
             根目录，比如D盘下的Memcached文件夹。
         (2). 假设已经把服务端文件解压在了Memcached目录，运行CMD打开命
@@ -14,11 +15,21 @@
             b. 卸载服务，memcached -d uninstall。
         (6). 测试连接：首先用系统盘安装Telnet服务端和客户端组件，在命令
             行窗口输入：telnet 127.0.0.1 11211，如果进入telnet命令窗口，则表示安装成功。
-    2、Linux版
+    1.1.2、Linux版
         (1). tar -zxf memcached-1.x.x.tar.gz
         (2). cd memcached-1.x.x
         (3). ./configure --prefix=/usr/local/memcached
         (4). make && make test && sudo make install
-## 二、运行数据库脚本文件
-    1、mysql数据库
-    2、oracle数据库
+### 1.2、运行数据库脚本文件
+#### 1、mysql数据库
+#### 2、oracle数据库
+#### 方法一、代码执行
+    在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType在jdbc.properties中
+    <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseType" value="${mybatis.dbType}"/>
+        <property name="databaseSchemaUpdate" value="true"/>
+    </bean>
+#### 方法二、sql脚本编辑器中执行
+    先执行fui_user.sql再执行fui.sql
+## 2）、功能介绍
