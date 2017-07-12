@@ -56,6 +56,12 @@
             <value>${jdbc.maxActive}</value>
         </property>
     </bean>
+    <!-- databaseSchemaUpdate value is true then init the database tables -->
+    <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseType" value="${mybatis.dbType}"/>
+        <property name="databaseSchemaUpdate" value="false"/>
+    </bean>
     <!-- Transaction manager for Spring JDBC -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
