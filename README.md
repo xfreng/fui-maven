@@ -1,4 +1,4 @@
-# fuiPlat4j框架maven工程介绍
+# j-coffee开源框架介绍(maven工程)
 ## 1）、安装部署
 ### 1.1、安装部署Memcached服务端(admin-ms工程目录tools下有安装文件)
     1.1.1、Windows版
@@ -20,16 +20,24 @@
         (2). cd memcached-1.x.x
         (3). ./configure --prefix=/usr/local/memcached
         (4). make && make test && sudo make install
-### 1.2、运行数据库脚本文件
+### 1.2、运行数据库脚本文件(初始数据库)
     1.2.1、mysql数据库
     1.2.2、oracle数据库
-    方法一、代码执行
+    方法一、代码执行(要求数据库实例先创建)
         在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType在jdbc.properties中
-        <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
-            <property name="dataSource" ref="dataSource"/>
-            <property name="databaseType" value="${mybatis.dbType}"/>
-            <property name="databaseSchemaUpdate" value="true"/>
-        </bean>
+        databaseSchemaUpdate为true则会初始数据库实例
+```xml
+<bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="databaseType" value="${mybatis.dbType}"/>
+    <property name="databaseSchemaUpdate" value="true"/>
+</bean>
+```
     方法二、sql脚本编辑器中执行
         先执行fui_user.sql再执行fui.sql
 ## 2）、功能介绍
+    j-coffee是基于spring+springmvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
+### j-coffee有如下主要特点
+- 组织机构、用户灵活配置
+- fui.js快速开发web页面(包括jsp、html等)
+- 集成activiti工作流引擎，轻松开发工作流系统
