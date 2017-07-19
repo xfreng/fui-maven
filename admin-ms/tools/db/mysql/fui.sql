@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2017-06-17 16:58:16
+Date: 2017-07-19 17:59:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `fui_calendar` (
   `allday` varchar(1) NOT NULL DEFAULT '0' COMMENT '是否全天',
   `color` varchar(20) DEFAULT '' COMMENT '颜色',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='日程安排表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='日程安排表';
 
 -- ----------------------------
 -- Records of fui_calendar
@@ -44,7 +44,7 @@ CREATE TABLE `fui_dict_entry` (
   `dict_entry_desc` varchar(255) DEFAULT NULL COMMENT '字典明细描述',
   `dict_entry_sort` bigint(4) DEFAULT NULL COMMENT '排序标识',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='字典详细表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='字典详细表';
 
 -- ----------------------------
 -- Records of fui_dict_entry
@@ -59,7 +59,7 @@ CREATE TABLE `fui_dict_type` (
   `dict_code` varchar(125) DEFAULT '' COMMENT '字典类型名称',
   `dict_desc` varchar(255) DEFAULT NULL COMMENT '字典类型描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='字典主表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='字典主表';
 
 -- ----------------------------
 -- Records of fui_dict_type
@@ -89,24 +89,24 @@ CREATE TABLE `fui_menu` (
 -- ----------------------------
 -- Records of fui_menu
 -- ----------------------------
-INSERT INTO `fui_menu` VALUES ('admin', '20130422143551', 'admin', '20170617165541', ' ', 'EP', 'ED', '元数据管理', '0', ' ', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20120926091948', ' ', ' ', ' ', 'EDOT', 'EDFB06', '请假流程入口', '1', ' ', ' ', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20110518112122', 'admin', '20170617165439', ' ', 'ED', 'EDPI00', '项目信息管理', '1', '/supervisor/project/index', '4', ' ', 'css:icon-cogs');
-INSERT INTO `fui_menu` VALUES ('admin', '20070622161518', 'admin', '20170617165439', ' ', 'ED', 'EDPI', '菜单资源管理', '0', ' ', '2', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20070622161533', 'admin', '20070622161828', ' ', 'EDPI', 'EDPI10', '菜单信息管理', '1', '/supervisor/menu/index', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20161225184150', 'admin', '20170524153632', ' ', 'root', 'EP', '系统平台', '0', ' ', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20090729174958', 'admin', '20170617165439', ' ', 'ED', 'EDCM', '代码管理', '0', ' ', '3', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20090729175218', 'admin', '20170112174611', ' ', 'EDCM', 'EDCM00', '代码分类管理', '1', '/supervisor/dict/index', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165439', ' ', 'ED', 'EDUM', '系统设置', '0', '', '1', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM01', '用户管理', '1', '/supervisor/user/index', '1', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM02', '角色管理', '1', '/supervisor/role/index', '2', ' ', '');
-INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM03', '权限配置', '1', '/supervisor/right/index', '3', ' ', '');
 INSERT INTO `fui_menu` VALUES ('admin', '20160830162252', ' ', ' ', ' ', '$', 'root', '系统菜单树', '0', ' ', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20170105150848', ' ', ' ', ' ', 'root', 'ACT', '流程管理', '0', ' ', '6', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', ' ', ' ', ' ', 'ACT', 'RWPE01', '流程执行示例', '1', ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170503131811', ' ', 'ACT', 'RACT01', '模型工作区', '1', '/supervisor/workflow/model/index', '2', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170605161921', ' ', 'ACT', 'RACT02', '流程定义及部署管理', '1', '/supervisor/workflow/process/index', '3', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170605161921', ' ', 'ACT', 'RACT03', '运行中流程', '1', '/supervisor/workflow/processinstance/index', '4', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', ' ', ' ', ' ', 'ACT', 'RWPE01', '流程执行示例', '1', ' ', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20090729174958', 'admin', '20170617165439', ' ', 'ED', 'EDCM', '代码管理', '0', ' ', '3', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20070622161518', 'admin', '20170617165439', ' ', 'ED', 'EDPI', '菜单资源管理', '0', ' ', '2', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20110518112122', 'admin', '20170617165439', ' ', 'ED', 'EDPI00', '项目信息管理', '1', '/supervisor/project/index', '4', ' ', 'css:icon-cogs');
+INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165439', ' ', 'ED', 'EDUM', '系统设置', '0', '', '1', ' ', '');
+INSERT INTO `fui_menu` VALUES ('admin', '20090729175218', 'admin', '20170112174611', ' ', 'EDCM', 'EDCM00', '代码分类管理', '1', '/supervisor/dict/index', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20120926091948', ' ', ' ', ' ', 'EDOT', 'EDFB06', '请假流程入口', '1', ' ', ' ', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20070622161533', 'admin', '20070622161828', ' ', 'EDPI', 'EDPI10', '菜单信息管理', '1', '/supervisor/menu/index', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM01', '用户管理', '1', '/supervisor/user/index', '1', ' ', '');
+INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM02', '角色管理', '1', '/supervisor/role/index', '2', ' ', '');
+INSERT INTO `fui_menu` VALUES (' ', ' ', 'admin', '20170617165525', ' ', 'EDUM', 'EDUM03', '权限配置', '1', '/supervisor/right/index', '3', ' ', '');
+INSERT INTO `fui_menu` VALUES ('admin', '20130422143551', 'admin', '20170617165541', ' ', 'EP', 'ED', '元数据管理', '0', ' ', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20170105150848', ' ', ' ', ' ', 'root', 'ACT', '流程管理', '0', ' ', '6', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20161225184150', 'admin', '20170524153632', ' ', 'root', 'EP', '系统平台', '0', ' ', '1', ' ', ' ');
 
 -- ----------------------------
 -- Table structure for fui_menu_shortcut
@@ -124,6 +124,26 @@ CREATE TABLE `fui_menu_shortcut` (
 -- ----------------------------
 -- Records of fui_menu_shortcut
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for fui_organization
+-- ----------------------------
+DROP TABLE IF EXISTS `fui_organization`;
+CREATE TABLE `fui_organization` (
+  `id` bigint(20) NOT NULL COMMENT '主键（组织机构编码）',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT '上级组织机构编码',
+  `code` varchar(50) DEFAULT NULL COMMENT '组织机构编码',
+  `name` varchar(100) DEFAULT NULL,
+  `users` varchar(5000) DEFAULT NULL COMMENT '机构用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of fui_organization
+-- ----------------------------
+INSERT INTO `fui_organization` VALUES ('1', '-1', 'root', '组织结构树', '1');
+INSERT INTO `fui_organization` VALUES ('1001', '1', 'mintech', '技术部', '5');
+INSERT INTO `fui_organization` VALUES ('1002', '1', 'test', '测试部', '6,7');
 
 -- ----------------------------
 -- Table structure for fui_permissions
@@ -144,20 +164,40 @@ CREATE TABLE `fui_permissions` (
 INSERT INTO `fui_permissions` VALUES ('1001', '-1', 'root.EP', '系统平台', '');
 INSERT INTO `fui_permissions` VALUES ('1002', '-1', 'root.ACT', '流程管理', '');
 INSERT INTO `fui_permissions` VALUES ('100101', '1001', 'EP.ED', '元数据管理', '');
-INSERT INTO `fui_permissions` VALUES ('10010101', '100101', 'ED.EDUM', '系统设置', '');
-INSERT INTO `fui_permissions` VALUES ('1001010101', '10010101', 'EDUM.EDUM01', '用户管理', '/supervisor/user/index');
-INSERT INTO `fui_permissions` VALUES ('1001010102', '10010101', 'EDUM.EDUM02', '角色管理', '/supervisor/role/index');
-INSERT INTO `fui_permissions` VALUES ('1001010103', '10010101', 'EDUM.EDUM03', '权限配置', '/supervisor/right/index');
 INSERT INTO `fui_permissions` VALUES ('100201', '1002', 'ACT.RWPE01', '流程执行示例', '');
 INSERT INTO `fui_permissions` VALUES ('100202', '1002', 'ACT.RACT01', '模型工作区', '/supervisor/workflow/model/index');
 INSERT INTO `fui_permissions` VALUES ('100203', '1002', 'ACT.RACT02', '流程定义及部署管理', '/supervisor/workflow/process/index');
 INSERT INTO `fui_permissions` VALUES ('100204', '1002', 'ACT.RACT03', '运行中流程', '/supervisor/workflow/processinstance/index');
+INSERT INTO `fui_permissions` VALUES ('10010101', '100101', 'ED.EDUM', '系统设置', '');
 INSERT INTO `fui_permissions` VALUES ('10010102', '100101', 'ED.EDFA', '页面资源管理', '');
 INSERT INTO `fui_permissions` VALUES ('10010103', '100101', 'ED.EDPI', '菜单资源管理', '');
 INSERT INTO `fui_permissions` VALUES ('10010104', '100101', 'ED.EDCM', '代码管理', '');
 INSERT INTO `fui_permissions` VALUES ('10010105', '100101', 'ED.EDPI00', '项目信息管理', '/supervisor/sys/project');
+INSERT INTO `fui_permissions` VALUES ('1001010101', '10010101', 'EDUM.EDUM01', '用户管理', '/supervisor/user/index');
+INSERT INTO `fui_permissions` VALUES ('1001010102', '10010101', 'EDUM.EDUM02', '角色管理', '/supervisor/role/index');
+INSERT INTO `fui_permissions` VALUES ('1001010103', '10010101', 'EDUM.EDUM03', '权限配置', '/supervisor/right/index');
 INSERT INTO `fui_permissions` VALUES ('1001010301', '10010103', 'EDPI.EDPI10', '菜单信息管理', '/supervisor/menu/index');
 INSERT INTO `fui_permissions` VALUES ('1001010401', '10010104', 'EDCM.EDCM00', '代码分类管理', '/supervisor/dict/index');
+
+-- ----------------------------
+-- Table structure for fui_project
+-- ----------------------------
+DROP TABLE IF EXISTS `fui_project`;
+CREATE TABLE `fui_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `name_desc` varchar(125) DEFAULT NULL,
+  `remark` varchar(225) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of fui_project
+-- ----------------------------
+INSERT INTO `fui_project` VALUES ('1', 'projectName', 'fuiPlat4j Demo', '输入项目的中文名');
+INSERT INTO `fui_project` VALUES ('2', 'logo', 'logo.png', '输入项目的logo文件名或地址');
+INSERT INTO `fui_project` VALUES ('3', 'dev', '测试环境', '测试环境，正式环境');
+INSERT INTO `fui_project` VALUES ('4', 'infogen.dir', 'c:/infogen', '信息输出目录');
 
 -- ----------------------------
 -- Table structure for fui_roles
@@ -169,7 +209,7 @@ CREATE TABLE `fui_roles` (
   `role_name` varchar(50) DEFAULT NULL COMMENT '角色名称',
   `permissions` varchar(5000) DEFAULT NULL COMMENT '权限',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='后台用户角色表';
 
 -- ----------------------------
 -- Records of fui_roles
@@ -187,7 +227,7 @@ CREATE TABLE `fui_system` (
   `name_desc` varchar(125) DEFAULT NULL,
   `remark` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of fui_system
@@ -212,14 +252,14 @@ CREATE TABLE `fui_user` (
   `last_login_time` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of fui_user
 -- ----------------------------
-INSERT INTO `fui_user` VALUES ('1', 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', '\0', '272', '2017-06-17 16:52:53', '2017-05-17 11:22:33');
-INSERT INTO `fui_user` VALUES ('5', 'xfreng', '熊世凤', '392FFAFA49FDE96C848704EBF013E7E8', 'default', 'default', '\0', '2', '2017-06-17 13:08:09', '2017-05-12 16:52:13');
-INSERT INTO `fui_user` VALUES ('6', 'zhangsan', '张三', '01D7F40760960E7BD9443513F22AB9AF', 'default', 'default', '\0', '1', '2017-06-17 13:08:59', '2017-05-12 11:52:33');
+INSERT INTO `fui_user` VALUES ('1', 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', '\0', '272', '2017-06-17 16:52:53', null);
+INSERT INTO `fui_user` VALUES ('5', 'xfreng', '熊世凤', '392FFAFA49FDE96C848704EBF013E7E8', 'default', 'default', '\0', '2', '2017-06-17 13:08:09', null);
+INSERT INTO `fui_user` VALUES ('6', 'zhangsan', '张三', '01D7F40760960E7BD9443513F22AB9AF', 'default', 'default', '\0', '1', '2017-06-17 13:08:59', null);
 
 -- ----------------------------
 -- Table structure for fui_user_money
@@ -241,6 +281,25 @@ CREATE TABLE `fui_user_money` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for fui_user_organizations
+-- ----------------------------
+DROP TABLE IF EXISTS `fui_user_organizations`;
+CREATE TABLE `fui_user_organizations` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
+  `organization_id` bigint(20) DEFAULT NULL COMMENT '组织机构id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='后台用户角色关联表';
+
+-- ----------------------------
+-- Records of fui_user_organizations
+-- ----------------------------
+INSERT INTO `fui_user_organizations` VALUES ('7', '1', '1');
+INSERT INTO `fui_user_organizations` VALUES ('8', '5', '1001');
+INSERT INTO `fui_user_organizations` VALUES ('9', '6', '1002');
+INSERT INTO `fui_user_organizations` VALUES ('10', '7', '1002');
+
+-- ----------------------------
 -- Table structure for fui_user_roles
 -- ----------------------------
 DROP TABLE IF EXISTS `fui_user_roles`;
@@ -249,7 +308,7 @@ CREATE TABLE `fui_user_roles` (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='后台用户角色关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='后台用户角色关联表';
 
 -- ----------------------------
 -- Records of fui_user_roles
@@ -267,7 +326,7 @@ CREATE TABLE `fui_user_type` (
   `user_type` varchar(15) DEFAULT NULL,
   `type_desc` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='计算类型表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='计算类型表';
 
 -- ----------------------------
 -- Records of fui_user_type
