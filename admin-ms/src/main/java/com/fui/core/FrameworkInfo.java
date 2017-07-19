@@ -18,8 +18,12 @@ public class FrameworkInfo {
         return MemCachedUtils.getText("infogen.dir", System.getProperty("user.home") + File.separator + "infogen");
     }
 
+    public static String getLoginBackground() {
+        return MemCachedUtils.getText("login.background", "background");
+    }
+
     public static String getProjectName() {
-        return MemCachedUtils.getText("projectName", "fuiPlat4j");
+        return MemCachedUtils.getText("projectName", "jcoffee");
     }
 
     public static String getLogo() {

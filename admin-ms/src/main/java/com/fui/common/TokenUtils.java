@@ -16,7 +16,7 @@ import java.util.Random;
  */
 @Component
 public class TokenUtils {
-    private final static String manageKey = "fuiPlat4j*789";
+    private final static String manageKey = "jcoffee*789";
     private final static Integer manageTokenTime = 1200000;
     private static Map<String, ManageToken> manageTokenMap = new HashMap<String, ManageToken>();
 

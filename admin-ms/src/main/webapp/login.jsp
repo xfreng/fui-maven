@@ -6,7 +6,7 @@
 	<%@include file="/WEB-INF/views/include/fui-common.jsp"%>
 	<title>${projectName}[${dev}]登录界面</title>
 </head>
-<body class="background">
+<body class="${background}">
 	<div class="login_body">
       	<form id="loginForm" class="fui-form" method="post">
 	    	<div><img src="${path}/public/mainframe/images/login/${logo}" class="pos_rel l_186 t_-31"></div>

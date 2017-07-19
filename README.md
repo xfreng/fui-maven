@@ -1,4 +1,4 @@
-# j-coffee开源框架介绍(maven工程)
+# jcoffee开源框架介绍(maven工程)
 ## 1）、安装部署
 ### 1.1、安装部署Memcached服务端(admin-ms工程目录tools下有安装文件)
     1.1.1、Windows版
@@ -36,8 +36,8 @@
     方法二、sql脚本编辑器中执行
         先执行fui_user.sql再执行fui.sql
 ## 2）、功能介绍
-    j-coffee是基于spring+spring-mvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
-### j-coffee有如下主要特点
+    jcoffee是基于spring+spring-mvc开发的一套web框架，其目的是为了集开发、授权等于一体的快速开发平台。
+### jcoffee有如下主要特点
 - Shiro细粒度权限体系
 - 组织机构、用户灵活配置
 - fui.js快速开发web页面(包括jsp、html等)

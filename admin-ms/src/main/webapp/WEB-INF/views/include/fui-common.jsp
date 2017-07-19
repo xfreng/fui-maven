@@ -23,12 +23,14 @@
 	}
 
 	Object projectName = FrameworkInfo.getProjectName();
+	Object background = FrameworkInfo.getLoginBackground();
 	Object logo = FrameworkInfo.getLogo();
 	Object dev = FrameworkInfo.getDev();
 
 	request.setAttribute("menuType",menuType);
 	request.setAttribute("menuStyle",menuStyle);
 	request.setAttribute("projectName",projectName);
+	request.setAttribute("background",background);
 	request.setAttribute("logo",logo);
 	request.setAttribute("dev",dev);
 %>

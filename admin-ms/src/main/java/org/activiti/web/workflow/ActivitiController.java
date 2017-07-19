@@ -80,7 +80,7 @@ public class ActivitiController extends AbstractSuperController {
     WorkflowService workflowService;
 
     /* 导出目录 */
-    protected String exportDir = FrameworkInfo.getInfoGenDir() + File.separator + "fuiPlat4j";
+    protected String exportDir = FrameworkInfo.getInfoGenDir() + File.separator + "jcoffee";
 
 
     @RequestMapping(value = "/index")
