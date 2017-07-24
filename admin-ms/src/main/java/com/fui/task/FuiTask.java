@@ -28,8 +28,7 @@ public class FuiTask implements Job {
     /**
      * 启动时执行一次，之后每隔2秒执行一次(缓存项目配置信息)
      */
-    public void run(String key, String group) {
-        logger.info("缓存任务key：{},group：{}启动...", key, group);
+    public void run() {
         List<Project> projectList = projectMapper.selectAll();
         for (Project project : projectList) {
             MemCachedUtils.set(project.getName(), project.getNameDesc());
@@ -41,6 +40,7 @@ public class FuiTask implements Job {
         JobKey jobKey = context.getJobDetail().getKey();
         String key = jobKey.getName();
         String group = jobKey.getGroup();
-        run(key, group);
+        run();
+        logger.info("缓存任务key：{},group：{}启动...", key, group);
     }
 }

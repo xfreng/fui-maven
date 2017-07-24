@@ -5,8 +5,10 @@ import com.fui.common.*;
 import com.fui.dao.shiro.RolesMapper;
 import com.fui.dao.shiro.UserRolesMapper;
 import com.fui.dao.user.UserMapper;
-import com.fui.model.*;
-import com.fui.task.FuiTask;
+import com.fui.model.ManageToken;
+import com.fui.model.Roles;
+import com.fui.model.User;
+import com.fui.model.UserRoles;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -14,12 +16,10 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.System;
 import java.util.*;
 
 @Service("userService")
@@ -34,8 +34,6 @@ public class UserService {
     private RolesMapper rolesMapper;
     @Autowired
     private UserRolesMapper userRolesMapper;
-    @Autowired
-    private SchedulerFactoryBean schedulerFactoryBean;
 
     public Map<String, Object> login(String username, String password, String code) {
         Map<String, Object> data = new HashMap<String, Object>();
@@ -91,17 +89,6 @@ public class UserService {
         //验证是否登录成功
         if (currentUser.isAuthenticated()) {
             logger.info("用户 {} 登录认证通过", username);
-            String quartzSwitch = CommonConfiguration.getValue("quartz.switch");
-            if ("1".equals(quartzSwitch)) {
-                ScheduleJob scheduleJob = new ScheduleJob();
-                scheduleJob.setJobId(com.fui.common.StringUtils.getUUID());
-                scheduleJob.setJobName("memcached");
-                scheduleJob.setJobGroup("cachedWork");
-                scheduleJob.setJobStatus("1");
-                scheduleJob.setCronExpression("0/2 * * * * ?");
-                scheduleJob.setDesc("缓存项目配置信息任务");
-                QuartzManager.addJob(schedulerFactoryBean, scheduleJob, FuiTask.class);
-            }
         } else {
             token.clear();
             return data;

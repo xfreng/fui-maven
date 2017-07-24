@@ -218,25 +218,6 @@ INSERT INTO `fui_roles` VALUES ('1', 'supervisor', '超级管理员', '1,1001,10
 INSERT INTO `fui_roles` VALUES ('3', 'flower', '流程管理员', '1002,100201,100202,100203,100204');
 
 -- ----------------------------
--- Table structure for fui_system
--- ----------------------------
-DROP TABLE IF EXISTS `fui_system`;
-CREATE TABLE `fui_system` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `name_desc` varchar(125) DEFAULT NULL,
-  `remark` varchar(225) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of fui_system
--- ----------------------------
-INSERT INTO `fui_system` VALUES ('1', 'fuiPlat4j Demo', 'projectName', '输入项目的中文名');
-INSERT INTO `fui_system` VALUES ('2', 'logo.png', 'logo', '输入项目的logo文件名或地址');
-INSERT INTO `fui_system` VALUES ('3', '测试环境', 'dev', '测试环境，正式环境');
-
--- ----------------------------
 -- Table structure for fui_user
 -- ----------------------------
 DROP TABLE IF EXISTS `fui_user`;
