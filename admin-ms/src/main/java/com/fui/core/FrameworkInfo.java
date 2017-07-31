@@ -23,7 +23,7 @@ public class FrameworkInfo {
     }
 
     public static String getProjectName() {
-        return MemCachedUtils.getText("projectName", "jcoffee");
+        return MemCachedUtils.getText("projectName", "jcoffee Demo");
     }
 
     public static String getLogo() {
