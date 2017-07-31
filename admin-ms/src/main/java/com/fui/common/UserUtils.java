@@ -48,7 +48,7 @@ public class UserUtils {
      * @return ManageToken
      */
     public static ManageToken getManageToken() {
-        Object manageTokenObject = WebUtils.getCurrentRequest().getSession(false).getAttribute(Constants.USER_SESSION_ID);
+        Object manageTokenObject = WebUtils.getCurrentRequest().getSession().getAttribute(Constants.USER_SESSION_ID);
         return manageTokenObject == null ? null : (ManageToken) manageTokenObject;
     }
 }

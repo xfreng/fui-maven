@@ -38,8 +38,8 @@ public class UserService {
     public Map<String, Object> login(String username, String password, String code) {
         Map<String, Object> data = new HashMap<String, Object>();
 
-        HttpSession session = WebUtils.getCurrentRequest().getSession(false);
-        String sRand = session.getAttribute("SRAND").toString();
+        HttpSession session = WebUtils.getCurrentRequest().getSession();
+        String sRand = (String) session.getAttribute("SRAND");
         //校验验证码
         if (StringUtils.isBlank(sRand)) { //session超时
             data.put("state", "0");
@@ -104,7 +104,7 @@ public class UserService {
             logger.info("设置token出错 {}", e);
         }
         //存入session
-        WebUtils.getCurrentRequest().getSession(false).setAttribute(Constants.USER_SESSION_ID, manageToken);
+        WebUtils.getCurrentRequest().getSession().setAttribute(Constants.USER_SESSION_ID, manageToken);
         data.put("data", manageToken);
         return data;
     }
