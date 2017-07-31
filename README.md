@@ -16,10 +16,17 @@
         (6). 测试连接：首先用系统盘安装Telnet服务端和客户端组件，在命令
             行窗口输入：telnet 127.0.0.1 11211，如果进入telnet命令窗口，则表示安装成功。
     1.1.2、Linux版
-        (1). tar -zxf memcached-1.x.x.tar.gz
-        (2). cd memcached-1.x.x
-        (3). ./configure --prefix=/usr/local/memcached
-        (4). make && make test && sudo make install
+        1、下载（最新版）libevent-2.1.8-stable安装
+        (1). cd libevent-2.1.8-stable
+        (2). ./configure --prefix=/usr/local/libevent
+        (3). make
+        (4). make install
+        2、下载（最新版）memcached-1.5.0安装
+        (1). cd memcached-1.5.0
+        (2). ./configure --with-libevent=/usr/local/libevent
+        (3). make
+        (4). make install
+        (5). ./memcached -d -m 1024 -u root -p 11211 -P /tmp/memcached.pid
 ### 1.2、运行数据库脚本文件(初始数据库)
     1.2.1、mysql数据库
     1.2.2、oracle数据库
