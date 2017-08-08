@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="false"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+    <context:component-scan base-package="com.fui.portal"/>
+    <context:annotation-config/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <property name="writeAcceptCharset" value="false"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=utf-8</value>
+                        <value>text/html;charset=utf-8</value>
+                        <value>application/json;charset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:default-servlet-handler />
+    <!--拦截器配置-->
+    <mvc:interceptors>
+        <!--APP接口服务拦截器-->
+        <mvc:interceptor>
+            <mvc:mapping path="/service/appservice"/>
+            <bean id="appServiceInterceptor" class="com.fui.portal.interceptors.APPServiceInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 配置线程池 -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池维护线程的最少数量 -->
+        <property name="corePoolSize" value="2"/>
+        <!-- 线程池维护线程所允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="1800"/>
+        <!-- 线程池维护线程的最大数量 -->
+        <property name="maxPoolSize" value="4"/>
+        <!-- 线程池所使用的缓冲队列 -->
+        <property name="queueCapacity" value="30"/>
+    </bean>
+
+    <!-- App接口服务注册 -->
+    <bean id="serviceConfig" class="com.fui.portal.service.AppServiceProvider">
+        <property name="serviceConfig">
+            <map>
+                <entry key="1001"> <!-- 登录 -->
+                    <bean class="com.fui.portal.service.appservice.UserLoginService"/>
+                </entry>
+                <entry key="1002"> <!-- 注册 -->
+                    <bean class="com.fui.portal.service.appservice.UserRegisterService"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
