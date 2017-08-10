@@ -19,7 +19,7 @@ import java.nio.charset.Charset;
 public class FuiEngineConfiguration {
 
     protected String databaseType;
-    protected String databaseSchemaUpdate;
+    protected boolean databaseSchemaUpdate = false;
     protected DataSource dataSource;
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
@@ -31,7 +31,7 @@ public class FuiEngineConfiguration {
     }
 
     public void init() throws Exception {
-        if (Boolean.parseBoolean(databaseSchemaUpdate)) {
+        if (databaseSchemaUpdate) {
             ScriptRunner runner = new ScriptRunner(dataSource.getConnection());
             Resources.setCharset(Charset.forName("utf-8"));
             runner.runScript(Resources.getResourceAsReader("db/" + databaseType + "/fui_user.sql"));
@@ -57,7 +57,7 @@ public class FuiEngineConfiguration {
         this.databaseType = databaseType;
     }
 
-    public void setDatabaseSchemaUpdate(String databaseSchemaUpdate) {
+    public void setDatabaseSchemaUpdate(boolean databaseSchemaUpdate) {
         this.databaseSchemaUpdate = databaseSchemaUpdate;
     }
 
