@@ -7,6 +7,11 @@ $(function () {
     autoLayoutSize('layout');
     expandRootNode();
     doQuery();
+    $("#leftTree").parent().bind("contextmenu", function (e) {
+        var menu = fui.get("contextMenu");
+        menu.showAtPos(e.pageX, e.pageY);
+        return false;
+    });
 });
 
 /**
@@ -86,6 +91,46 @@ function loadGridData() {
  */
 function doQuery() {
     loadGridData();
+}
+
+function onRefreshNode(e) {
+    if (currentNode != null) {
+        refreshParentNode(currentNode);
+    } else {
+        leftTree.load();
+    }
+    rightManagerGrid.reload();
+}
+
+/**
+ * 新增顶级权限
+ */
+function doAddRoot() {
+    var data = {};
+    data.action = "add";
+    data.parentId = "-1";
+    fui.open({
+        url: fui.contextPath + "/supervisor/right/state",
+        showMaxButton: true,
+        title: "新增顶级权限",
+        width: 510,
+        height: 215,
+        onload: function () {
+            var iframe = this.getIFrameEl();
+            iframe.contentWindow.setData(data);
+        },
+        ondestroy: function (action) {
+            if (action == "ok") {
+                rightManagerGrid.reload();
+                rightManagerGrid.clearSelect(true);
+                if (currentNode != null) {
+                    refreshParentNode(currentNode);
+                } else {
+                    leftTree.load();
+                }
+            }
+        }
+    });
 }
 
 /**

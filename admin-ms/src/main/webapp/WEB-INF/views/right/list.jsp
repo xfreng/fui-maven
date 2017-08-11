@@ -57,6 +57,18 @@
         </div>
     </div>
 </div>
+<ul id="contextMenu" class="fui-contextmenu">
+    <c:choose>
+        <c:when test="${menuType eq 'default'}">
+            <li iconCls="icon-add" onclick="doAddRoot">新增顶级权限</li>
+            <li iconCls="icon-reload" onclick="onRefreshNode">刷新</li>
+        </c:when>
+        <c:otherwise>
+            <li iconCls="icon-and" onclick="doAddRoot">新增顶级权限</li>
+            <li iconCls="icon-reloadnew" onclick="onRefreshNode">刷新</li>
+        </c:otherwise>
+    </c:choose>
+</ul>
 </body>
 <script type="text/javascript" src="${path}/public/js/supervisor/right.js?v=<%=System.currentTimeMillis()%>"></script>
 </html>
