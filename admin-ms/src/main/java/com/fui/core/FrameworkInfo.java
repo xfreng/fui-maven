@@ -12,6 +12,7 @@ public class FrameworkInfo {
     private static final Logger logger = Logger.getLogger(FrameworkInfo.class);
 
     private FrameworkInfo() {
+        logger.info("********框架配置类********");
     }
 
     public static String getInfoGenDir() {
@@ -23,7 +24,7 @@ public class FrameworkInfo {
     }
 
     public static String getProjectName() {
-        return MemCachedUtils.getText("projectName", "jcoffee Demo");
+        return MemCachedUtils.getText("project.name", "jcoffee Demo");
     }
 
     public static String getLogo() {
