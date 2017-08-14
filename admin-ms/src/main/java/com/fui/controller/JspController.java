@@ -16,4 +16,14 @@ public class JspController {
     public String unAuthorized() {
         return "error/unAuthorized";
     }
+
+    @RequestMapping("/404")
+    public String notFound() {
+        return "error/404";
+    }
+
+    @RequestMapping("/500")
+    public String serverError() {
+        return "error/500";
+    }
 }

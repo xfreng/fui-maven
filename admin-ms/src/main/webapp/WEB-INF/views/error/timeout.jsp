@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<%@ include file="/WEB-INF/views/include/fui-common.jsp" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <script type="text/javascript">
     getTopWinow().location.href = fui.contextPath + "/login.jsp";
     function getTopWinow() {
