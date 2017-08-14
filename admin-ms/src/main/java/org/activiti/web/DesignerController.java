@@ -7,10 +7,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Title web设计器所需jsp配置类
- * @Author 熊世凤 on 2017/5/31.
- * @Copyright © 蜂投网 2015 ~ 2017
+ * @Author sf.xiong on 2017/5/31.
  */
-@Controller("DesignerController")
+@Controller("designerController")
 @RequestMapping("/supervisor/designer")
 public class DesignerController extends AbstractSuperController {
 

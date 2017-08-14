@@ -1,9 +1,8 @@
 package com.fui.portal.service.appservice.common;
 
 /**
- * @Title
- * @Author 覃忠君 on 2016/10/26.
- * @Copyright © 蜂投网
+ * @Title 前段常量
+ * @Author sf.xiong on 2016/10/26.
  */
 public interface PortalConstants {
 
