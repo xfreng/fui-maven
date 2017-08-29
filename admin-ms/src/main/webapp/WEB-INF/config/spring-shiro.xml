@@ -53,12 +53,12 @@
             <value>
                 /supervisor/image = anon
                 /supervisor/login = anon
-                /supervisor/calendar = anon
-                /supervisor/default = anon
-                /supervisor/pact = anon
+                /supervisor/calendar = fuiAuthc
+                /supervisor/default = fuiAuthc
+                /supervisor/pact = fuiAuthc
                 /supervisor/timeout = anon
                 /supervisor/unAuthorized = anon
-                /supervisor/EiService = anon
+                /supervisor/EiService = fuiAuthc
                 /supervisor/destroy = logout
                 /supervisor/** = fuiAuthc, fuiPerms
             </value>
