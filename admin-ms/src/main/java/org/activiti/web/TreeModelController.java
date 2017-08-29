@@ -1,7 +1,5 @@
 package org.activiti.web;
 
-import com.baosight.iplat4j.logging.Logger;
-import com.baosight.iplat4j.logging.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -25,7 +23,6 @@ import java.util.*;
 @Controller("treeModelController")
 @RequestMapping("/supervisor/treeModel")
 public class TreeModelController extends AbstractSuperController implements ModelDataJsonConstants {
-    protected static final Logger LOGGER = LoggerFactory.getLogger(TreeModelController.class);
 
     @Autowired
     private RepositoryService repositoryService;
@@ -42,7 +39,7 @@ public class TreeModelController extends AbstractSuperController implements Mode
             String json = GsonUtils.toJson(treeNodeModels);
             return success(json);
         } catch (Exception e) {
-            LOGGER.error("Error creating model JSON", e);
+            logger.error("Error creating model JSON", e);
             throw new ActivitiException("Error creating model JSON", e);
         }
     }
@@ -62,7 +59,7 @@ public class TreeModelController extends AbstractSuperController implements Mode
             String json = GsonUtils.toJson(data);
             return success(json);
         } catch (Exception e) {
-            LOGGER.error("Error creating model JSON", e);
+            logger.error("Error creating model JSON", e);
             throw new ActivitiException("Error creating model JSON", e);
         }
     }
@@ -159,7 +156,7 @@ public class TreeModelController extends AbstractSuperController implements Mode
                 }
                 treeNodeModels.add(treeNodeModel);
             } catch (Exception e) {
-                LOGGER.error("Error creating model JSON", e);
+                logger.error("Error creating model JSON", e);
                 throw new ActivitiException("Error creating model JSON", e);
             }
         }

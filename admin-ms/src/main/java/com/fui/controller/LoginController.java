@@ -4,8 +4,6 @@ import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.GsonUtils;
 import com.fui.service.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +14,6 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/supervisor")
 public class LoginController extends AbstractSuperController {
-    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserService userService;

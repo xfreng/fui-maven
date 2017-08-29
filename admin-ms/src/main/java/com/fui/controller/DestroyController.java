@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping(value = "/supervisor")
 public class DestroyController extends AbstractSuperController {
+
     /**
      * @return login.jsp
      * @throws Exception

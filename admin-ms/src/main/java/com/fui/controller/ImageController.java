@@ -18,6 +18,7 @@ import java.util.Random;
 @Controller
 @RequestMapping(value = "/supervisor")
 public class ImageController extends AbstractSuperController {
+
     @RequestMapping("/image")
     public void image(HttpServletResponse response, HttpSession session) {
         int width = 65;

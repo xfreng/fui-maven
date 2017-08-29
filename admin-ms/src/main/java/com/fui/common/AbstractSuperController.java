@@ -3,6 +3,8 @@ package com.fui.common;
 import com.fui.model.Menu;
 import com.fui.service.MenuService;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +16,7 @@ import java.util.Map;
 
 
 public abstract class AbstractSuperController {
+    protected static Logger logger = LoggerFactory.getLogger(AbstractSuperController.class);
 
     @Autowired
     protected HttpServletRequest request;

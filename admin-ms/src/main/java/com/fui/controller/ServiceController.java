@@ -7,8 +7,6 @@ import com.baosight.iplat4j.core.ei.json.Json2EiInfo;
 import com.baosight.iplat4j.core.exception.PlatException;
 import com.baosight.iplat4j.core.resource.I18nMessages;
 import com.baosight.iplat4j.ep.QueryMap;
-import com.baosight.iplat4j.logging.Logger;
-import com.baosight.iplat4j.logging.LoggerFactory;
 import com.baosight.iplat4j.util.StringUtils;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
@@ -27,7 +25,6 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/supervisor")
 public class ServiceController extends AbstractSuperController {
-    private static Logger logger = LoggerFactory.getLogger(ServiceController.class);
 
     private EiBlockMeta eiMetadata;
     @Autowired

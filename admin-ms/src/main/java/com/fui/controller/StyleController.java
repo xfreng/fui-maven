@@ -18,6 +18,7 @@ import java.util.Map;
 @Controller
 @RequestMapping(value = "/supervisor/style")
 public class StyleController extends AbstractSuperController {
+
     @Autowired
     private StyleService styleService;
 

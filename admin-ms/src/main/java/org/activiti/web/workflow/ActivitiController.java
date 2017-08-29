@@ -27,8 +27,6 @@ import org.activiti.util.WorkFlowConstant;
 import org.activiti.util.WorkflowUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,8 +52,6 @@ import java.util.zip.ZipInputStream;
 @Controller
 @RequestMapping(value = "/supervisor/workflow/process")
 public class ActivitiController extends AbstractSuperController {
-
-    protected Logger logger = LoggerFactory.getLogger(ActivitiController.class);
 
     protected WorkflowProcessDefinitionService workflowProcessDefinitionService;
 

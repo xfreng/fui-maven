@@ -4,8 +4,6 @@ import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.model.Organization;
 import com.fui.service.OrganizationService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +18,6 @@ import java.util.Collection;
 @Controller
 @RequestMapping(value = "/supervisor/organization")
 public class OrganizationController extends AbstractSuperController {
-    private static Logger logger = LoggerFactory.getLogger(RightController.class);
 
     @Autowired
     private OrganizationService organizationService;
