@@ -51,6 +51,7 @@
                         <div field="code" width="100" headerAlign="center">权限编码</div>
                         <div field="text" width="130" headerAlign="center">权限名称</div>
                         <div field="url" width="150" headerAlign="center">权限配置URL</div>
+                        <div field="nodeType" width="100" headerAlign="center" renderer="nodeTypeRender">权限类型</div>
                     </div>
                 </div>
             </div>

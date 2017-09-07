@@ -101,15 +101,16 @@
             <div name="first" title="每日记事" url="${path}/supervisor/calendar"></div>
         </div>
     </div>
-    <div iconCls="icon-favorite" title="我的收藏&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style='float:right'><a href='#' class='color_a'><u>更多>></u></a></span>" region="east" style="margin-top:10px;" width="195" showCollapseButton="false" showCloseButton="false" showSplitIcon="true">
+    <div showHeader="false" region="east" width="195" showCollapseButton="false" showCloseButton="false" showSplitIcon="true">
     	<div class="business">
+			<div class="mg_b_10"><strong><a href="javascript:void(0)" class="font_14 color_595959 icon-favorite" onclick="activeForm('','','/supervisor/menu/shortcut')"><span class="mg_l_7">我的收藏</span></a></strong></div>
             <div class="bd_t_e4">
               	<ul id="shortcut_item">
-                  	<li><a href="javascript:void(0)" title="我的风格" class="icon_wodefengge" onclick="clickProcess('mystyle')"></a>
+                  	<li><a href="javascript:void(0)" title="我的风格" class="icon_wodefengge" onclick="activeForm('','','/supervisor/style/index')"></a>
                           <br><br>
                           <span>我的风格</span>
 				  	</li>
-                  	<li><a href="javascript:void(0)" title="密码设置" class="icon_mimashezhi" onclick="clickProcess('pwdset')"></a>
+                  	<li><a href="javascript:void(0)" title="密码设置" class="icon_mimashezhi" onclick="changePwdWindow()"></a>
                           <br><br>
                           <span>密码设置</span>
 				  	</li>

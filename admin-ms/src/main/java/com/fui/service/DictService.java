@@ -22,8 +22,8 @@ public class DictService {
     @Autowired
     private DictEntryMapper dictEntryMapper;
 
-    public List<DictType> queryDictForTree(Map<String, Object> param) {
-        return dictTypeMapper.queryDictForTree(param);
+    public List<DictType> queryDictForTree(String dictCode) {
+        return dictTypeMapper.queryDictForTree(dictCode);
     }
 
     public List<DictType> queryDictType(Map<String, Object> param) {
@@ -61,6 +61,7 @@ public class DictService {
             }
         } catch (Exception e) {
             bool = false;
+            logger.error("新增异常：{}", e.getMessage());
         }
         return bool;
     }
@@ -86,7 +87,7 @@ public class DictService {
         }
     }
 
-    public boolean saveDictEntry(Object object) {
+    public boolean saveDictEntry(String dictCode, Object object) {
         boolean bool = true;
         try {
             if (object instanceof java.util.List) {
@@ -99,16 +100,19 @@ public class DictService {
                     } else {
                         dictEntry = (DictEntry) column;
                     }
+                    dictEntry.setDictCode(dictCode);
                     String _state = dictEntry.get_state();
                     doDb(_state, dictEntry);
                 }
             } else {
                 DictEntry dictEntry = GsonUtils.fromJson(GsonUtils.toJson(object), DictEntry.class);
+                dictEntry.setDictCode(dictCode);
                 String _state = dictEntry.get_state();
                 doDb(_state, dictEntry);
             }
         } catch (Exception e) {
             bool = false;
+            logger.error("新增异常：{}", e.getMessage());
         }
         return bool;
     }

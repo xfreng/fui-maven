@@ -5,6 +5,8 @@ package com.fui.common;
  * @Author sf.xiong on 2017/08/04.
  */
 public interface CommonConstants {
+    // 项目配置文件
+    String CONFIG_FILE_NAME = "project.properties";
     /**
      * 日期格式
      */

@@ -11,21 +11,13 @@ tree.load();
 dictEntryGrid.load();
 
 $(function () {
-    var layout = fui.get("layout");
-    var pageHeadHeight = $("#ef_form_head").outerHeight();
-    if (self != top) {
-        pageHeadHeight = 0;
-    }
-    layout.setHeight($(window).height() - pageHeadHeight);
-    $(window).resize(function () {
-        layout.setHeight($(window).height() - pageHeadHeight);
-    });
+    autoLayoutSize('layout', 10);
 });
 
 function onCellBeginEdit(e) {
     var editor = dictTypeGrid.getCellEditor(e.column, e.record);
     if (editor) {
-        if (e.field == 'dictName' && e.record._state != 'added') {
+        if (e.field == 'dictCode' && e.record._state != 'added') {
             editor.disable();
         } else {
             editor.enable();
@@ -37,8 +29,8 @@ function onSelectionChanged(e) {
     var grid = e.sender;
     var record = grid.getSelected();
     if (record) {
-        tree.load({dictTypeId: record.id});
-        dictEntryGrid.load({dictTypeId: record.id});
+        tree.load({dictCode: record.dictCode});
+        dictEntryGrid.load({dictCode: record.dictCode});
     }
 }
 
@@ -92,15 +84,15 @@ function saveData() {
     var data = dictTypeGrid.getChanges();
     var len = data.length;
     if (len == 0) {
-        fui.alert("请填写一条信息！");
+        fui.alert("请填写一条信息！", '提示信息');
         return;
     }
     for (var i = 0; i < len; i++) {
         var item = data[i];
-        var dictTypeId = item.id;
-        var dicttypename = item.dicttypename;
-        if (!dictTypeId || !dicttypename) {
-            fui.alert("请将信息填写完整！");
+        var dictCode = item.dictCode;
+        var dictDesc = item.dictDesc;
+        if (!dictCode || !dictDesc) {
+            fui.alert("请将信息填写完整！", '提示信息');
             return;
         }
     }
@@ -116,7 +108,7 @@ function saveData() {
             dictEntryGrid.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            fui.alert(jqXHR.responseText);
+            fui.alert(jqXHR.responseText, '提示信息');
         }
     });
 }
@@ -126,15 +118,15 @@ function saveEntryData() {
     var data = dictEntryGrid.getChanges();
     var len = data.length;
     if (len == 0) {
-        fui.alert("请填写一条信息！");
+        fui.alert("请填写一条信息！", '提示信息');
         return;
     }
     for (var i = 0; i < len; i++) {
         var item = data[i];
-        var dictId = item.dictId;
-        var dictName = item.dictName;
-        if (!dictId || !dictName) {
-            fui.alert("请将信息填写完整！");
+        var dictEntryCode = item.dictEntryCode;
+        var dictEntryDesc = item.dictEntryDesc;
+        if (!dictEntryCode || !dictEntryDesc) {
+            fui.alert("请将信息填写完整！", '提示信息');
             return;
         }
     }
@@ -143,13 +135,13 @@ function saveEntryData() {
     fui.ajax({
         url: fui.contextPath + "/supervisor/dict/saveDictEntry",
         type: 'POST',
-        data: {data: json, dictTypeId: record.dictTypeId},
+        data: {data: json, dictCode: record.dictCode},
         success: function (text) {
             tree.reload();
             dictEntryGrid.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            fui.alert(jqXHR.responseText);
+            fui.alert(jqXHR.responseText, '提示信息');
         }
     });
 }

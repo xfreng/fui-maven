@@ -70,4 +70,12 @@ public interface RolesMapper {
      * @return 角色列表
      */
     List<Roles> getRolesList(Map<String, Object> params);
+
+    /**
+     * 获取用户权限
+     *
+     * @param userId
+     * @return 用户权限
+     */
+    String getUserRights(Long userId);
 }

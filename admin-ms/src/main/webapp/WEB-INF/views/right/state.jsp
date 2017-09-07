@@ -37,6 +37,14 @@
                     <td>权限配置URL：</td>
                     <td colspan="3"><input class="fui-textbox" id="url" name="url" style="width: 100%;"/></td>
                 </tr>
+                <tr>
+                    <td>权限类型：</td>
+                    <td colspan="3">
+                        <div id="rbl" name="nodeType" class="fui-radiobuttonlist" repeatItems="2" repeatLayout="table" repeatDirection="horizontal"
+                             textField="text" valueField="id" value="0"
+                             data="[{'id':'0','text':'菜单'},{'id':'1','text':'权限'}]" ></div>
+                    </td>
+                </tr>
             </table>
         </div>
     </fieldset>

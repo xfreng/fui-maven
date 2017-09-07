@@ -23,10 +23,12 @@
 </c:choose>
 
 <link rel="stylesheet" type="text/css" href="${path}/public/common/fui/themes/pact/demo.css"/>
+<link rel="stylesheet" type="text/css" href="${path}/public/common/fui/themes/default/fui-ext-style.css"/>
 
 <script type="text/javascript">
 	fui.contextPath="${path}";
 	fui.menuType="${menuType}";
+	fui.menuStyle="${menuStyle}";
 	fui.DataTree.prototype.dataField="data";//兼容改造
 	
 	/**

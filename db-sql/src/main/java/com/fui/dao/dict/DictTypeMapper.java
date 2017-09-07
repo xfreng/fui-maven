@@ -56,5 +56,5 @@ public interface DictTypeMapper {
 
     List<DictType> query(Map<String, Object> param);
 
-    List<DictType> queryDictForTree(Map<String, Object> param);
+    List<DictType> queryDictForTree(String dictCode);
 }

@@ -3,25 +3,21 @@
 <mapper namespace="com.fui.dao.menu.MenuMapper">
 	<select id="query" resultType="java.util.HashMap">
 	    SELECT 
-	      tree_ename      as "parent", 
-	      node_ename      as "label", 
-	      node_cname      as "text",
-	      node_image_path as "imagePath",
-	      node_type       as "leaf",
-	      node_url 		  as "url"
+	      m.tree_ename      as "parent",
+	      m.node_ename      as "label",
+	      m.node_cname      as "text",
+	      m.node_image_path as "imagePath",
+	      m.node_type       as "leaf",
+	      m.node_url 		as "url",
+		  p.id              as "id"
 	    FROM 
-	    fui.fui_menu
+	    fui.fui_menu m
+		left join fui.fui_permissions p on CONCAT( CONCAT( m.tree_ename, '.' ), m.node_ename ) = p.code
 	    WHERE 1=1
       	<if test="node != null and node != ''">
-        	and tree_ename = #{node}
+        	and m.tree_ename = #{node}
         </if>
-		<if test="userId != null and userId != ''">
-			and INSTR((select permissions from fui_roles where
-			id in(
-				select role_id from fui_user_roles where user_id = #{userId}
-			)),(select id from fui_permissions where code = CONCAT(CONCAT(tree_ename,'.'),node_ename))) > 0
-        </if>
-	    order by tree_ename asc, node_sort_id asc, node_ename asc
+	    order by m.tree_ename asc, m.node_sort_id asc, m.node_ename asc
   	</select>
 
 	<select id="queryMenuNodeBySelective" resultType="com.fui.model.Menu">

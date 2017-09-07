@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
-<script type="text/javascript" src="${path}/public/common/fui/jquery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="${path}/public/common/fui/jquery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/fui.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/fui-ext.js"></script>
 <script type="text/javascript" src="${path}/public/common/fui/common.js"></script>
@@ -51,5 +51,7 @@
 
 <script type="text/javascript">
 	fui.contextPath="${path}";
+    fui.menuType="${menuType}";
+    fui.menuStyle="${menuStyle}";
 	fui.DataTree.prototype.dataField="data";//兼容改造
 </script>

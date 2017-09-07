@@ -69,4 +69,14 @@ public class RoleService {
         json.put("message", i > 0 ? "角色修改成功" : "角色修改失败");
         return json;
     }
+
+    /**
+     * 获取用户权限
+     *
+     * @param userId
+     * @return 用户权限
+     */
+    public String getUserRights(Long userId) {
+        return rolesMapper.getUserRights(userId);
+    }
 }

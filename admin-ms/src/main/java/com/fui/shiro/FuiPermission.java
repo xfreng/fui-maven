@@ -1,5 +1,6 @@
 package com.fui.shiro;
 
+import com.fui.common.StringUtils;
 import org.apache.shiro.authz.Permission;
 
 /**
@@ -38,6 +39,12 @@ public class FuiPermission implements Permission {
             return false;
         }
         FuiPermission mp = (FuiPermission) permission;
+        if (StringUtils.isNullOrEmpty(mp.code)) {// 解决oracle下会报npe异常
+            mp = new FuiPermission("", mp.url);
+        }
+        if (StringUtils.isNullOrEmpty(url)) {// 解决oracle下会报npe异常
+            this.url = "";
+        }
         //编码及url匹配其一，即认为成功
         if (code.equals(mp.code) || url.equals(mp.url)) {
             return true;

@@ -6,10 +6,12 @@ import com.fui.common.Constants;
 import com.fui.common.UserUtils;
 import com.fui.model.User;
 import com.fui.service.StyleService;
+import com.fui.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +23,14 @@ public class StyleController extends AbstractSuperController {
 
     @Autowired
     private StyleService styleService;
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("/index")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("style/style_manager");
+        return init(mv);
+    }
 
     @RequestMapping(value = "/updateMenuTypeAndStyle", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody

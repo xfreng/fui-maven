@@ -10,7 +10,9 @@ import com.baosight.iplat4j.ep.QueryMap;
 import com.baosight.iplat4j.util.StringUtils;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
+import com.fui.common.UserUtils;
 import com.fui.service.MenuService;
+import com.fui.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,8 @@ public class ServiceController extends AbstractSuperController {
     private EiBlockMeta eiMetadata;
     @Autowired
     private MenuService menuService;
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping("/EiService")
     public void doPost(HttpServletResponse response) throws ServletException, IOException {
@@ -144,7 +148,11 @@ public class ServiceController extends AbstractSuperController {
 
         List<Map<String, Object>> all = new ArrayList<Map<String, Object>>();
         all.addAll(projectNodes);
-        all.addAll(rootNodes);
+        for (Map<String, Object> rootNode : rootNodes) {
+            if (checkUserRights(rootNode.get("id").toString())) {
+                all.add(rootNode);
+            }
+        }
         return all;
     }
 
@@ -153,6 +161,29 @@ public class ServiceController extends AbstractSuperController {
         if ((!StringUtils.isNotEmpty(node)) || (node.equals("$"))) {
             node = Constants.TREE_ROOT_ID;
         }
-        return menuService.query(node);
+        List<Map<String, Object>> childNodes = menuService.query(node);
+
+        List<Map<String, Object>> all = new ArrayList<Map<String, Object>>();
+        for (Map<String, Object> childNode : childNodes) {
+            if (checkUserRights(childNode.get("id").toString())) {
+                all.add(childNode);
+            }
+        }
+        return all;
+    }
+
+    protected boolean checkUserRights(String id) {
+        boolean bool = false;
+        String rights = roleService.getUserRights(UserUtils.getCurrent().getId());
+        if (StringUtils.isNotEmpty(rights)) {
+            String[] args = rights.split(",");
+            for (String rightId : args) {
+                if (rightId.equals(id)) {
+                    bool = true;
+                    break;
+                }
+            }
+        }
+        return bool;
     }
 }

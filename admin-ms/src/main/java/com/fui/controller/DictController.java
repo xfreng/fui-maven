@@ -3,6 +3,7 @@ package com.fui.controller;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
 import com.fui.common.GsonUtils;
+import com.fui.common.StringUtils;
 import com.fui.model.DictEntry;
 import com.fui.model.DictType;
 import com.fui.service.DictService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,8 +30,9 @@ public class DictController extends AbstractSuperController {
     private DictService dictService;
 
     @RequestMapping("/index")
-    public String dict() {
-        return "dict/dict_manager_mainframe";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("dict/dict_manager_mainframe");
+        return init(mv);
     }
 
     @RequestMapping("/dictManager")
@@ -45,10 +48,8 @@ public class DictController extends AbstractSuperController {
     @RequestMapping(value = "/queryDictForTree", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String queryDictForTree() throws Exception {
-        String dictTypeId = request.getParameter("dictTypeId");
-        Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dictTypeId);
-        List<DictType> dictTreeList = dictService.queryDictForTree(param);
+        String dictCode = request.getParameter("dictCode");
+        List<DictType> dictTreeList = dictService.queryDictForTree(dictCode);
         return success(dictTreeList, "data");
     }
 
@@ -80,10 +81,10 @@ public class DictController extends AbstractSuperController {
 
     @RequestMapping(value = "/saveDictEntry", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
-    public String saveDictEntry() throws Exception {
+    public String saveDictEntry(String dictCode) throws Exception {
         String saveJSON = request.getParameter("data");
         Object object = GsonUtils.fromJson(saveJSON, Object.class);
-        boolean bool = dictService.saveDictEntry(object);
+        boolean bool = dictService.saveDictEntry(dictCode, object);
         Map<String, Object> param = new HashMap<String, Object>();
         param.put("count", bool ? 0 : 1);
         return success(param);
@@ -93,9 +94,10 @@ public class DictController extends AbstractSuperController {
     @ResponseBody
     public String getLayout(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
                             @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
-        String dictTypeId = request.getParameter("dictTypeId");
+        String dictCode = request.getParameter("dictCode");
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dictTypeId);
+        param.put("dictCode", dictCode);
+        param.put("orderBy", "dict_entry_sort");
         PageHelper.startPage(currPage, pageSize);
         List<DictEntry> dictEntryList = dictService.queryLayout(param);
         PageInfo<DictEntry> pageInfo = createPagination(dictEntryList);
@@ -105,9 +107,14 @@ public class DictController extends AbstractSuperController {
     @RequestMapping(value = "/getDictData", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String getDictData() throws Exception {
-        String dictTypeId = request.getParameter("dictTypeId");
+        String dictCode = request.getParameter("dictCode");
+        String dictEntryCodeArgs = request.getParameter("dictEntryCodeArgs");
         Map<String, Object> param = new HashMap<String, Object>();
-        param.put("id", dictTypeId);
+        param.put("dictCode", dictCode);
+        if (StringUtils.isNotEmpty(dictEntryCodeArgs)) {
+            param.put("dictEntryCodeArgs", dictEntryCodeArgs);
+        }
+        param.put("orderBy", "dict_entry_sort");
         List<DictEntry> dictList = dictService.loadDictData(param);
         return success(dictList, "dictList");
     }

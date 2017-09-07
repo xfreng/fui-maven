@@ -114,7 +114,7 @@ function doAddRoot() {
         showMaxButton: true,
         title: "新增顶级权限",
         width: 510,
-        height: 215,
+        height: 255,
         onload: function () {
             var iframe = this.getIFrameEl();
             iframe.contentWindow.setData(data);
@@ -165,7 +165,7 @@ function doAdd_update(flag) {
         showMaxButton: true,
         title: title,
         width: 510,
-        height: 215,
+        height: 255,
         onload: function () {
             var iframe = this.getIFrameEl();
             iframe.contentWindow.setData(data);
@@ -201,4 +201,17 @@ function doExport() {
             window.location.href = fui.contextPath + "/supervisor/permissions/exportSqlFile?outputPath=" + outputPath + "&filePath=" + filePath;
         }
     });
+}
+
+/**
+ * 权限类型列渲染
+ * @param e
+ * @returns {*}
+ */
+function nodeTypeRender(e) {
+    var val = e.row.nodeType;
+    if (typeof(val) == "undefined") {
+        return val;
+    }
+    return val == "0" ? "菜单" : "权限";
 }

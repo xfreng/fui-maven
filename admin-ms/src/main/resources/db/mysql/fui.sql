@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : 65001
 
- Date: 05/09/2017 09:09:50
+ Date: 05/09/2017 11:28:22
 */
 
 SET NAMES utf8mb4;
@@ -259,7 +259,7 @@ CREATE TABLE `fui_project`  (
   `name_desc` varchar(125) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `remark` varchar(225) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fui_project
@@ -280,7 +280,7 @@ CREATE TABLE `fui_roles`  (
   `role_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '角色名称',
   `permissions` varchar(5000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '权限',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fui_roles
@@ -304,12 +304,12 @@ CREATE TABLE `fui_user`  (
   `last_login_time` datetime(0) DEFAULT NULL,
   `create_time` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fui_user
 -- ----------------------------
-INSERT INTO `fui_user` VALUES (1, 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', b'0', 283, '2017-09-04 17:48:37', NULL);
+INSERT INTO `fui_user` VALUES (1, 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', b'0', 284, '2017-09-05 09:50:00', NULL);
 INSERT INTO `fui_user` VALUES (5, 'ls', '李四', '392FFAFA49FDE96C848704EBF013E7E8', 'default', 'default', b'0', 2, '2017-06-17 13:08:09', NULL);
 INSERT INTO `fui_user` VALUES (6, 'zhangsan', '张三', '01D7F40760960E7BD9443513F22AB9AF', 'default', 'default', b'0', 15, '2017-09-04 18:04:58', NULL);
 
@@ -322,7 +322,7 @@ CREATE TABLE `fui_user_organizations`  (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `organization_id` bigint(20) DEFAULT NULL COMMENT '组织机构id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色关联表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色关联表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fui_user_organizations
@@ -341,7 +341,7 @@ CREATE TABLE `fui_user_roles`  (
   `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色关联表' ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '后台用户角色关联表' ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of fui_user_roles
@@ -349,16 +349,5 @@ CREATE TABLE `fui_user_roles`  (
 INSERT INTO `fui_user_roles` VALUES (1, 1, 1);
 INSERT INTO `fui_user_roles` VALUES (4, 5, 3);
 INSERT INTO `fui_user_roles` VALUES (5, 6, 3);
-
--- ----------------------------
--- Table structure for fui_user_type
--- ----------------------------
-DROP TABLE IF EXISTS `fui_user_type`;
-CREATE TABLE `fui_user_type`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_type` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `type_desc` varchar(25) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '计算类型表' ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
