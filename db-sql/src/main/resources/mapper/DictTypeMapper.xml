@@ -136,8 +136,8 @@
             select t.dict_entry_code, t.dict_entry_desc dict_desc, t.dict_code parent_code
                 from fui.fui_dict_entry t
         ) t
-		where t.dict_code = #{dictCode}
-		or t.parent_code = #{dictCode}
+		where t.dict_code = #{dictCode,jdbcType=VARCHAR}
+		or t.parent_code = #{dictCode,jdbcType=VARCHAR}
 	</select>
   
 </mapper>
