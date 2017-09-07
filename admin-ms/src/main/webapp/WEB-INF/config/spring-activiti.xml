@@ -21,7 +21,7 @@
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource"/>
         <property name="transactionManager" ref="transactionManager"/>
-        <property name="databaseType" value="${mybatis.dbType}"/>
+        <property name="databaseType" value="${mybatis.activiti.dbType}"/>
         <property name="tablePrefixIsSchema" value="true"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <!-- UUID作为主键生成策略-->

@@ -117,12 +117,12 @@
   <select id="findRolesByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
       <include refid="Base_Column_List"/>
-    from fui.fui_roles where role_code = #{roleCode}
+    from fui_roles where role_code = #{roleCode}
   </select>
   <select id="getRolesList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
       <include refid="Base_Column_List"/>
-    FROM fui.fui_roles WHERE 1 = 1
+    FROM fui_roles WHERE 1 = 1
     <if test="roleCode != null">
       AND role_code LIKE '%${roleCode}%'
     </if>

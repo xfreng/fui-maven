@@ -195,12 +195,12 @@
           menu_type 	AS "menuType",
           erased 	    AS "erased",
           login_count   AS "loginCount"
-      from fui.fui_user where ename = #{userCode}
+      from fui_user where ename = #{userCode}
   </select>
   <select id="getUserList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
       <include refid="Base_Column_List" />
-    FROM fui.fui_user WHERE 1 = 1
+    FROM fui_user WHERE 1 = 1
     <if test="userCode != null">
         AND ename = #{userCode,jdbcType=VARCHAR}
     </if>

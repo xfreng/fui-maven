@@ -109,7 +109,7 @@
                 id	as "id",
                 dict_code as "dictCode",
                 dict_desc	as "dictDesc"
-        FROM fui.fui_dict_type WHERE 1=1
+        FROM fui_dict_type WHERE 1=1
         <if test="id != null">
             AND id = #{id}
         </if>
@@ -131,10 +131,10 @@
 			parent_code AS "pid"
 		from (
             select t.dict_code, t.dict_desc, '' parent_code
-                from fui.fui_dict_type t
+                from fui_dict_type t
             union all
             select t.dict_entry_code, t.dict_entry_desc dict_desc, t.dict_code parent_code
-                from fui.fui_dict_entry t
+                from fui_dict_entry t
         ) t
 		where t.dict_code = #{dictCode,jdbcType=VARCHAR}
 		or t.parent_code = #{dictCode,jdbcType=VARCHAR}

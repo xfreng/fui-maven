@@ -11,8 +11,8 @@
 	      m.node_url 		as "url",
 		  p.id              as "id"
 	    FROM 
-	    fui.fui_menu m
-		left join fui.fui_permissions p on CONCAT( CONCAT( m.tree_ename, '.' ), m.node_ename ) = p.code
+	    fui_menu m
+		left join fui_permissions p on CONCAT( CONCAT( m.tree_ename, '.' ), m.node_ename ) = p.code
 	    WHERE 1=1
       	<if test="node != null and node != ''">
         	and m.tree_ename = #{node}
@@ -36,7 +36,7 @@
 			node_param	as "param",
 			node_image_path as "image"
 		FROM
-		fui.fui_menu
+		fui_menu
 		WHERE 1=1
 		<if test="id != null and id != ''">
 			and tree_ename = #{id}
@@ -52,7 +52,7 @@
 	
 	<insert id="insertMenuNode" parameterType="com.fui.model.Menu">
 		insert into 
-			fui.fui_menu
+			fui_menu
 		(
 			rec_creator,
 			rec_create_time,
@@ -88,13 +88,13 @@
 	
 	<update id="deleteMenuNodeById" parameterType="com.fui.model.Menu">
         delete from
-        	fui.fui_menu 
+        	fui_menu
        	where tree_ename=#{pid} and node_ename=#{id}
     </update>
     
 	<update id="updateMenuNodeById" parameterType="com.fui.model.Menu">
         update 
-        	fui.fui_menu 
+        	fui_menu
        	set 
 	       	rec_revisor=#{recRevisor},
 	       	rec_revise_time=#{recReviseTime},

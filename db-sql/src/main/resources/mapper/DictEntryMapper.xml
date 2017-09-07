@@ -132,7 +132,7 @@
           dict_entry_code	as "dictEntryCode",
           dict_entry_desc	as "dictEntryDesc",
           dict_entry_sort	as "dictEntrySort"
-      FROM fui.fui_dict_entry WHERE 1=1
+      FROM fui_dict_entry WHERE 1=1
       <if test="id != null">
           AND id = #{id}
       </if>
@@ -147,11 +147,11 @@
       </if>
   </select>
   <delete id="delete">
-      DELETE FROM fui.fui_dict_entry
+      DELETE FROM fui_dict_entry
       WHERE id = #{id} AND dict_code = #{dictCode}
   </delete>
   <update id="update">
-      UPDATE fui.fui_dict_entry
+      UPDATE fui_dict_entry
       SET
           dict_code	= #{dictCode},
           dict_entry_code	= #{dictEntryCode},

@@ -151,7 +151,7 @@
   <select id="findRightsByCode" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from fui.fui_permissions where code = #{rightCode}
+    from fui_permissions where code = #{rightCode}
   </select>
   <select id="selectRootRight" resultMap="BaseResultMap">
     select
@@ -163,7 +163,7 @@
   <select id="getRightsList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
-    FROM fui.fui_permissions WHERE 1 = 1
+    FROM fui_permissions WHERE 1 = 1
     <if test="id != null">
       AND parent_id = #{id,jdbcType=BIGINT}
     </if>
