@@ -31,8 +31,8 @@
     1.2.1、mysql数据库
     1.2.2、oracle数据库
     方法一、代码执行(要求数据库实例先创建)
-        在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType、mybatis.databaseSchemaUpdate在jdbc.properties中
-        databaseSchemaUpdate为true则会初始数据库实例
+        在spring-dao.xml中找到此配置修改databaseType为对应数据库类型,mybatis.dbType、mybatis.databaseSchemaUpdate
+        在jdbc.properties中,databaseSchemaUpdate为true则会初始数据库实例
 ```xml
 <bean id="fuiEngineConfiguration" class="com.fui.spring.FuiEngineConfiguration" init-method="init">
     <property name="dataSource" ref="dataSource"/>
