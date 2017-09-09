@@ -149,7 +149,8 @@ public class ServiceController extends AbstractSuperController {
         List<Map<String, Object>> all = new ArrayList<Map<String, Object>>();
         all.addAll(projectNodes);
         for (Map<String, Object> rootNode : rootNodes) {
-            if (checkUserRights(rootNode.get("id").toString())) {
+            Object id = rootNode.get("id");
+            if (id != null && checkUserRights(id.toString())) {
                 all.add(rootNode);
             }
         }
@@ -165,7 +166,8 @@ public class ServiceController extends AbstractSuperController {
 
         List<Map<String, Object>> all = new ArrayList<Map<String, Object>>();
         for (Map<String, Object> childNode : childNodes) {
-            if (checkUserRights(childNode.get("id").toString())) {
+            Object id = childNode.get("id");
+            if (id != null && checkUserRights(id.toString())) {
                 all.add(childNode);
             }
         }

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"%>
+﻿<%@ page language="java" pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 		}
    	</style>
 </head>
-<body>    
+<body>
 <form id="menu-state" method="post">
     <fieldset style="border:solid 1px #aaa;">
         <legend >菜单信息</legend>

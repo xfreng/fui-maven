@@ -170,6 +170,7 @@
 <script type="text/javascript">
     $(function () {
         pageRenderer();
+        loadShortcut();
     });
     function pageRenderer() {
         $("#dropdown").toggle(function() {

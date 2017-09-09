@@ -2,6 +2,7 @@ var __newForm = "true";
 var __clickNode = null;
 var topMenuModel = new eiTreeModel();
 var leftMenuModel = new eiTreeModel();
+
 function configMenu(menu) {
     menu.depth(9);
     menu.textClicked = activeFormByMenu;
@@ -80,4 +81,36 @@ function openForm(label, text, url) {
     }
     node.url = url;
     showTab(node);
+}
+
+/**
+ * 加载自定义菜单
+ */
+function loadShortcut() {
+    $.ajax({
+        url: fui.contextPath + "/supervisor/menu/queryShortcut",
+        type: 'POST',
+        cache: false,
+        contentType: 'text/json',
+        success: function (text) {
+            text = fui.decode(text);
+            var noticeList = text.items;
+            if (typeof(noticeList) == 'undefined' || noticeList == null || noticeList.length == 0) {
+                $("#shortcut_item").append("<div class='clear'></div>");
+            } else {
+                for (var i = 0; i < noticeList.length; i++) {
+                    var notice = noticeList[i];
+                    var src = notice.funcAction;
+                    var imagePath = 'icon_' + notice.imagePath;
+                    if (notice.imagePath == "" || notice.imagePath == null || notice.imagePath == "null") {
+                        imagePath = "icon_noimage";
+                    }
+                    var html = "<li ><a title='" + notice.funcName + "' href='javascript:void(0);' onclick='activeForm(\"\",\"\",\"" + src + "\")' class=\"" + imagePath + "\"></a><br><br><span>" + notice.funcName + "</span></li>"
+                    $("#shortcut_item").append(html);
+                }
+                $("#shortcut_item").append("<div class='clear'></div>");
+
+            }
+        }
+    });
 }

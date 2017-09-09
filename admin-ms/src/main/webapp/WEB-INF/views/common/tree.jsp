@@ -3,10 +3,9 @@
 <html>
 <head>
     <%@include file="/WEB-INF/views/include/fui-common.jsp" %>
-    <title>权限选择</title>
+    <title>菜单选择</title>
     <style type="text/css">
-        html,body
-        {
+        html,body {
             padding:0;
             margin:0;
             border:0;
@@ -57,6 +56,7 @@
         var node = tree.getSelectedNode();
         return node;
     }
+
     function search() {
         var key = fui.get("key").getValue();
         if(key == ""){
@@ -71,20 +71,29 @@
             });
         }
     }
+
     function onKeyEnter(e) {
         search();
     }
+
     function onNodeDblClick(e) {
         onOk();
     }
+
     function onOk() {
         var node = tree.getSelectedNode();
         if (node == null) {
-            fui.alert("请选择权限","提示信息");
+            fui.alert("请选择菜单", "提示信息");
             return;
+        } else {
+            if (typeof(node.isLeaf) != "undefined") {
+                fui.alert("请选择叶子节点菜单", "提示信息");
+                return;
+            }
         }
         CloseWindow("ok");
     }
+
     function onCancel() {
         CloseWindow("cancel");
     }

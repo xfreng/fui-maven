@@ -11,6 +11,8 @@ public interface MenuMapper {
 
     List<Menu> queryMenuNodeBySelective(Map<String, Object> param);
 
+    List queryShortcutBySelective(Map<String, Object> param);
+
     boolean insertMenuNode(Menu menuTree);
 
     boolean deleteMenuNodeById(Menu menuTree);

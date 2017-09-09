@@ -105,4 +105,22 @@
 	       	node_image_path=#{image}
        	where tree_ename=#{pid} and node_ename=#{id}
     </update>
+
+	<select id="queryShortcutBySelective" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			s.id AS "id",
+			s.order_no AS "orderNo",
+			s.menu_id AS "menuId",
+			s.menu_image_path AS "menuImagePath",
+			m.NODE_CNAME AS "funcName",
+			m.NODE_URL AS "funcAction"
+		FROM
+			fui_menu_shortcut s
+			LEFT JOIN fui_menu m ON s.menu_id = CONCAT( CONCAT( m.TREE_ENAME, '.' ), m.NODE_ENAME )
+			LEFT JOIN fui_user u ON s.user_id = u.id
+		WHERE
+			s.user_id = #{userId}
+		ORDER BY
+			s.order_no
+	</select>
 </mapper>

@@ -1,12 +1,16 @@
 package com.fui.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baosight.iplat4j.util.DateUtils;
 import com.fui.common.Constants;
 import com.fui.common.GsonUtils;
 import com.fui.common.JsonUtils;
 import com.fui.common.UserUtils;
 import com.fui.dao.menu.MenuMapper;
+import com.fui.dao.menu.MenuShortcutMapper;
 import com.fui.model.Menu;
+import com.fui.model.MenuShortcut;
+import com.fui.model.User;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,6 +29,8 @@ public class MenuService {
 
     @Autowired
     private MenuMapper menuMapper;
+    @Autowired
+    private MenuShortcutMapper menuShortcutMapper;
 
     /**
      * @param id
@@ -55,6 +61,14 @@ public class MenuService {
      */
     public List<Menu> queryMenuNodeBySelective(Map<String, Object> param) {
         return menuMapper.queryMenuNodeBySelective(param);
+    }
+
+    /**
+     * @param param
+     * @return
+     */
+    public List queryShortcutBySelective(Map<String, Object> param) {
+        return menuMapper.queryShortcutBySelective(param);
     }
 
     /**
@@ -191,5 +205,46 @@ public class MenuService {
             logger.error("更新菜单出错 {} ", e);
         }
         return bool;
+    }
+
+    public JSONObject saveShortcut(String submitData) {
+        JSONObject json = new JSONObject();
+        User user = UserUtils.getCurrent();
+        List columnsList = GsonUtils.fromJson(submitData, JSONArray.class);
+        int size = columnsList.size();
+        try {
+            Long userId = user.getId();
+            for (int i = 0; i < size; i++) {
+                Map item = (Map) columnsList.get(i);
+                String state = (String) item.get("_state");
+                MenuShortcut menuShortcut = GsonUtils.fromJson(GsonUtils.toJson(columnsList.get(i)), MenuShortcut.class);
+                menuShortcut.setUserId(userId);
+                if ("added".equals(state)) {
+                    menuShortcutMapper.insert(menuShortcut);
+                } else if ("modified".equals(state)) {
+                    menuShortcutMapper.updateByPrimaryKeySelective(menuShortcut);
+                }
+            }
+            json.put("message", "保存成功！");
+        } catch (Exception e) {
+            json.put("message", "保存出错！");
+            logger.error("保存出错：{}", e);
+        }
+        return json;
+    }
+
+    public JSONObject deleteShortcut(String ids) {
+        JSONObject json = new JSONObject();
+        String[] idArgs = ids.split(",");
+        try {
+            for (String id : idArgs) {
+                menuShortcutMapper.deleteByPrimaryKey(Long.valueOf(id));
+            }
+            json.put("message", "删除成功！");
+        } catch (Exception e) {
+            json.put("message", "删除出错！");
+            logger.error("删除出错：{}", e);
+        }
+        return json;
     }
 }

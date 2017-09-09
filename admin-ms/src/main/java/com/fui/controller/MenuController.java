@@ -37,6 +37,17 @@ public class MenuController extends AbstractSuperController {
         return "menu/state";
     }
 
+    @RequestMapping("/shortcut")
+    public ModelAndView shortcut() {
+        ModelAndView mv = new ModelAndView("menu/shortcut_manager");
+        return init(mv);
+    }
+
+    @RequestMapping("/tree")
+    public String menuShortcut() {
+        return "common/tree";
+    }
+
     @RequestMapping(value = "/loadMenuNodes", produces = Constants.MediaType_APPLICATION_JSON)
     @ResponseBody
     public String loadMenuNodes() throws Exception {
@@ -56,6 +67,18 @@ public class MenuController extends AbstractSuperController {
         List<Menu> menuList = menuService.queryMenuNodeBySelective(params);
         PageInfo<Menu> pageInfo = createPagination(menuList);
         return success(menuList, pageInfo.getTotal(), "treeNodes");
+    }
+
+    @RequestMapping(value = "/queryShortcut", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String queryShortcut(@RequestParam(value = "pageIndex", defaultValue = "1") int currPage,
+                                @RequestParam(value = "pageSize", defaultValue = "10") int pageSize) throws Exception {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("userId", UserUtils.getCurrent().getId());
+        PageHelper.startPage(currPage, pageSize);
+        List list = menuService.queryShortcutBySelective(params);
+        PageInfo<Menu> pageInfo = createPagination(list);
+        return success(list, pageInfo.getTotal(), "items");
     }
 
     @RequestMapping(value = "/loadOutlookTreeNodes", produces = Constants.MediaType_APPLICATION_JSON)
@@ -118,5 +141,19 @@ public class MenuController extends AbstractSuperController {
         FileUtils.exportFile(response, "application/vnd.ms-excel", filePath, file.getName());
         // 导出后删除临时文件
         FileUtils.deleteFile(templateDir + File.separator + "temp", file.getName());
+    }
+
+    @RequestMapping(value = "/saveShortcut", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String saveShortcut() {
+        String saveJSON = request.getParameter("submitData");
+        return success(menuService.saveShortcut(saveJSON));
+    }
+
+    @RequestMapping(value = "/deleteShortcut", produces = Constants.MediaType_APPLICATION_JSON)
+    @ResponseBody
+    public String deleteShortcut() {
+        String ids = request.getParameter("ids");
+        return success(menuService.deleteShortcut(ids));
     }
 }
