@@ -248,15 +248,15 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>iplat4j</groupId>
+            <groupId>com.baosight</groupId>
             <artifactId>iplat4j</artifactId>
             <version>3.9</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/main/webapp/WEB-INF/lib/iplat4j-3.9.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>qrcode-core</groupId>
-            <artifactId>qrcode-core</artifactId>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
             <version>3.2.0</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/main/webapp/WEB-INF/lib/core_3.2.0.jar</systemPath>
@@ -269,9 +269,9 @@
             <systemPath>${pom.basedir}/src/main/webapp/WEB-INF/lib/java_memcached-release_2.6.6.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>json-lib</groupId>
+            <groupId>net.sf.json</groupId>
             <artifactId>json-lib</artifactId>
-            <version>2.2.3</version>
+            <version>2.2.3-jdk13</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/main/webapp/WEB-INF/lib/json-lib-2.2.3-jdk13.jar</systemPath>
         </dependency>
@@ -331,6 +331,18 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>../db-sql/src/lib</directory>
+                            <targetPath>WEB-INF/lib</targetPath>
+                        </resource>
+                    </webResources>
+                </configuration>
             </plugin>
         </plugins>
     </build>
