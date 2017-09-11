@@ -2,11 +2,10 @@ package com.fui.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.fui.common.AbstractSuperService;
 import com.fui.common.GsonUtils;
 import com.fui.dao.project.ProjectMapper;
 import com.fui.model.Project;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,7 @@ import java.util.List;
  * @Author sf.xiong on 2017/4/13.
  */
 @Service("projectService")
-public class ProjectService {
-    private final Logger logger = LoggerFactory.getLogger(ProjectService.class);
-
+public class ProjectService extends AbstractSuperService {
     @Autowired
     private ProjectMapper projectMapper;
 

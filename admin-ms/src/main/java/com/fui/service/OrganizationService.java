@@ -1,6 +1,7 @@
 package com.fui.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fui.common.AbstractSuperService;
 import com.fui.common.JsonUtils;
 import com.fui.common.StringUtils;
 import com.fui.dao.organization.OrganizationMapper;
@@ -20,9 +21,7 @@ import java.util.Map;
  * @Author sf.xiong on 2017/6/28.
  */
 @Service("organizationService")
-public class OrganizationService {
-    private final Logger logger = LoggerFactory.getLogger(OrganizationService.class);
-
+public class OrganizationService extends AbstractSuperService {
     @Autowired
     private OrganizationMapper organizationMapper;
     @Autowired

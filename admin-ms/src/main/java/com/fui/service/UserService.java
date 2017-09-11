@@ -23,9 +23,7 @@ import java.io.IOException;
 import java.util.*;
 
 @Service("userService")
-public class UserService {
-    private final Logger logger = LoggerFactory.getLogger(UserService.class);
-
+public class UserService extends AbstractSuperService {
     @Autowired
     private TokenUtils tokenUtils;
     @Autowired

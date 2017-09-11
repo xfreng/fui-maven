@@ -1,13 +1,12 @@
 package com.fui.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fui.common.AbstractSuperService;
 import com.fui.common.JsonUtils;
 import com.fui.common.StringUtils;
 import com.fui.dao.shiro.PermissionsMapper;
 import com.fui.model.Permissions;
 import com.fui.model.Roles;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("rightService")
-public class RightService {
-    private final Logger logger = LoggerFactory.getLogger(RightService.class);
-
+public class RightService extends AbstractSuperService {
     @Autowired
     private PermissionsMapper rightMapper;
 

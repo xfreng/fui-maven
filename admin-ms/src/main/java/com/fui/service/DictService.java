@@ -1,5 +1,6 @@
 package com.fui.service;
 
+import com.fui.common.AbstractSuperService;
 import com.fui.common.GsonUtils;
 import com.fui.dao.dict.DictEntryMapper;
 import com.fui.dao.dict.DictTypeMapper;
@@ -14,9 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("dictService")
-public class DictService {
-    private final Logger logger = LoggerFactory.getLogger(DictService.class);
-
+public class DictService extends AbstractSuperService {
     @Autowired
     private DictTypeMapper dictTypeMapper;
     @Autowired

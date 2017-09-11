@@ -2,10 +2,7 @@ package com.fui.service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.baosight.iplat4j.util.DateUtils;
-import com.fui.common.Constants;
-import com.fui.common.GsonUtils;
-import com.fui.common.JsonUtils;
-import com.fui.common.UserUtils;
+import com.fui.common.*;
 import com.fui.dao.menu.MenuMapper;
 import com.fui.dao.menu.MenuShortcutMapper;
 import com.fui.model.Menu;
@@ -13,8 +10,6 @@ import com.fui.model.MenuShortcut;
 import com.fui.model.User;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("menuService")
-public class MenuService {
-    private final Logger logger = LoggerFactory.getLogger(MenuService.class);
-
+public class MenuService extends AbstractSuperService {
     @Autowired
     private MenuMapper menuMapper;
     @Autowired

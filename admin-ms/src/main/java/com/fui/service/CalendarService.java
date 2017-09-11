@@ -1,5 +1,6 @@
 package com.fui.service;
 
+import com.fui.common.AbstractSuperService;
 import com.fui.dao.calendar.CalendarMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,9 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("calendarService")
-public class CalendarService {
-    private final Logger logger = LoggerFactory.getLogger(CalendarService.class);
-
+public class CalendarService extends AbstractSuperService {
     @Autowired
     private CalendarMapper calendarMapper;
 
