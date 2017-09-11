@@ -40,7 +40,7 @@ public class FuiTask implements Job {
         JobKey jobKey = context.getJobDetail().getKey();
         String key = jobKey.getName();
         String group = jobKey.getGroup();
-        run();
         logger.info("缓存任务key：{},group：{}启动...", key, group);
+        run();
     }
 }

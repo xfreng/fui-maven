@@ -1,7 +1,7 @@
 package com.fui.spring;
 
-import com.fui.common.CommonConfiguration;
 import com.fui.common.QuartzManager;
+import com.fui.common.StringUtils;
 import com.fui.model.ScheduleJob;
 import com.fui.task.FuiTask;
 import org.apache.ibatis.io.Resources;
@@ -20,6 +20,8 @@ public class FuiEngineConfiguration {
 
     protected String databaseType;
     protected boolean databaseSchemaUpdate = false;
+    protected boolean quartzSwitch = false;
+    protected String cronExpression = "0/2 * * * * ?";
     protected DataSource dataSource;
     @Autowired
     private SchedulerFactoryBean schedulerFactoryBean;
@@ -38,14 +40,13 @@ public class FuiEngineConfiguration {
             runner.runScript(Resources.getResourceAsReader("db/" + databaseType + "/fui.sql"));
             runner.closeConnection();
         }
-        String quartzSwitch = CommonConfiguration.getValue("quartz.switch");
-        if (Boolean.parseBoolean(quartzSwitch)) {
+        if (quartzSwitch) {
             ScheduleJob scheduleJob = new ScheduleJob();
-            scheduleJob.setJobId(com.fui.common.StringUtils.getUUID());
-            scheduleJob.setJobName("memcached");
+            scheduleJob.setJobId(StringUtils.getUUID());
+            scheduleJob.setJobName("memCached");
             scheduleJob.setJobGroup("cachedWork");
             scheduleJob.setJobStatus("1");
-            scheduleJob.setCronExpression("0/2 * * * * ?");
+            scheduleJob.setCronExpression(cronExpression);
             scheduleJob.setDesc("缓存项目配置信息任务");
             QuartzManager.addJob(schedulerFactoryBean, scheduleJob, FuiTask.class);
         } else {
@@ -63,5 +64,13 @@ public class FuiEngineConfiguration {
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setQuartzSwitch(boolean quartzSwitch) {
+        this.quartzSwitch = quartzSwitch;
+    }
+
+    public void setCronExpression(String cronExpression) {
+        this.cronExpression = cronExpression;
     }
 }

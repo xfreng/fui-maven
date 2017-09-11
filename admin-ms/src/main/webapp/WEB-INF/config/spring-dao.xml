@@ -61,6 +61,8 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="databaseType" value="${mybatis.dbType}"/>
         <property name="databaseSchemaUpdate" value="${mybatis.databaseSchemaUpdate}"/>
+        <property name="quartzSwitch" value="${quartz.switch}" />
+        <property name="cronExpression" value="${quartz.cronExpression}" />
     </bean>
     <!-- Transaction manager for Spring JDBC -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
