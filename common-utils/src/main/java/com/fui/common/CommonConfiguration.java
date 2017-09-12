@@ -11,15 +11,16 @@ import java.util.Properties;
  * @Author sf.xiong on 2017/09/05.
  */
 public class CommonConfiguration {
-    private static Properties env = new Properties();
+    private static Properties env = null;
 
     private static ThreadLocal<Properties> currentThread = new ThreadLocal<Properties>();
 
     private static final Logger logger = LoggerFactory.getLogger(CommonConfiguration.class);
 
     static {
-        if (currentThread.get() != null) {
-            env = currentThread.get();
+        env = currentThread.get();
+        if (currentThread.get() == null) {
+            currentThread.set(env = new Properties());
         }
         BufferedReader inStream = null;
         try {
@@ -36,7 +37,6 @@ public class CommonConfiguration {
                     logger.error("close stream for configuration file exception!", e);
                 }
             }
-            currentThread.set(env);
         }
     }
 
