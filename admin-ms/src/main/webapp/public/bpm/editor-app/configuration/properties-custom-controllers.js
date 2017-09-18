@@ -21,20 +21,16 @@
  */
 var jsonStr = null;//定义全局变量，存放数据
 var formula = ""; //定义全局变量，表达式的值
-var conditionRows = null;//定义全局变量，存放配置全局参数
-var itemConditionRows = null;//定义全局变量，存放配置步骤参数
-var wendangController = ['$scope', '$modal', '$rootScope', function ($scope, $modal, $rootScope) {
+var documentController = ['$scope', '$modal', '$rootScope', function ($scope, $modal, $rootScope) {
     var opts = {
-        template: 'editor-app/configuration/properties/wendang-text.html?version=' + Date.now(),
+        template: 'editor-app/configuration/properties/document-text.html?version=' + Date.now(),
         scope: $scope
     };
     // Open the dialog
     $modal(opts);
 }];
-var wendangControllerCtrl = ['$scope', function ($scope) {
+var documentControllerCtrl = ['$scope', function ($scope) {
     jsonStr = $scope.property.value;
-    conditionRows = $scope.gridData;
-    itemConditionRows = $scope.itemGridData;
     var formEname = null;
     try {
         var jsonObject = eval("(" + jsonStr + ")");

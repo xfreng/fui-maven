@@ -35,7 +35,7 @@
 	    <div id="grid" class="fui-datagrid" style="width:100%;height:95%;" multiSelect="true"
 	       	url="${path}/supervisor/menu/loadMenuNodePage" idField="id" parentField="pid" pageSize="20"
 	        textField="text" dataField="treeNodes" showFilterRow="false" allowCellSelect="true" 
-	        allowCellEdit="true" onrowdblclick="toedit" oncellmousedown="onCellBeginEdit">
+	        allowCellEdit="true" onrowdblclick="toEdit" oncellmousedown="onCellBeginEdit">
 	        <div property="columns">
 				<div type="checkcolumn" ></div>    
 	            <div field="pid" width="85" headerAlign="center" allowSort="false" visible="true">上级菜单编号</div>      

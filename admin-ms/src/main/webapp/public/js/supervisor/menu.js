@@ -254,7 +254,7 @@ function edit() {
     }
 }
 
-function toedit(e) {
+function toEdit(e) {
     var row = grid.getSelected();
     fui.open({
         url: fui.contextPath + "/supervisor/menu/state",

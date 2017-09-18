@@ -558,8 +558,8 @@ app.controller('StencilController', ['$rootScope', '$scope', '$http', '$modal', 
 
                     // Update "no value" flag
                     event.property.noValue = (event.property.value === undefined
-                    || event.property.value === null
-                    || event.property.value.length == 0);
+                        || event.property.value === null
+                        || event.property.value.length == 0);
                 }
             });
 
@@ -678,61 +678,8 @@ app.controller('StencilController', ['$rootScope', '$scope', '$http', '$modal', 
 
     /* Click handler for clicking a property */
     $scope.propertyClicked = function (index) {
-        // 修改文档属性值为空时不能修改(不弹出空页面) -- edit by sf.xiong
         var itemClickSelectedProperty = $scope.selectedItem.properties[index];
         var key = itemClickSelectedProperty.key;
-        if (key == "oryx-documentation") {
-            if (itemClickSelectedProperty.value == null || itemClickSelectedProperty.value == "") {
-                return;
-            }
-        }
-        if (key == "oryx-documentation" || key == "oryx-conditionsequenceflow") {
-            var canvas = $scope.editor.getCanvas();
-            var shapes = canvas.getChildShapes(true);
-            shapes.each(function (shape) {
-                var stencil = shape.getStencil();
-                var properties = stencil.properties();
-                for (var i = 0; i < properties.length; i++) {
-                    var property = properties[i];
-                    if (property.popular() == false) continue;
-                    var pkey = property.prefix() + "-" + property.id();
-                    var value = shape.properties[pkey];
-                    var conditions = value.conditions;
-                    if (conditions != null && conditions != "" && typeof(conditions) != "undefined") {
-                        var bool = false;
-                        conditions.each(function (condition) {
-                            var name = condition.name;
-                            $scope.gridData.rows.each(function (row) {
-                                if (name == row.name) {// 过滤参数名相同的
-                                    bool = true;
-                                    return false;
-                                }
-                            });
-                            if (!bool) {
-                                $scope.gridData.rows.push(condition);
-                            }
-                        });
-                    }
-                }
-            });
-            var itemConditions = $scope.selectedShape.properties[key].itemConditions;
-            $scope.itemGridData.rows = [];
-            if (itemConditions != null && itemConditions != "" && typeof(itemConditions) != "undefined") {
-                var bool = false;
-                itemConditions.each(function (itemCondition) {
-                    var name = itemCondition.name;
-                    $scope.itemGridData.rows.each(function (row) {
-                        if (name == row.name) {// 过滤参数名相同的
-                            bool = true;
-                            return false;
-                        }
-                    });
-                    if (!bool) {
-                        $scope.itemGridData.rows.push(itemCondition);
-                    }
-                });
-            }
-        }
         // 修改流程启动key及类型不能修改 -- edit by sf.xiong
         if (!itemClickSelectedProperty.hidden && key != "oryx-process_id" && key != "oryx-process_namespace") {
             itemClickSelectedProperty.mode = "write";
@@ -1201,8 +1148,8 @@ app.controller('StencilController', ['$rootScope', '$scope', '$http', '$modal', 
 
                 var parentCandidate = aShapes.reverse().find(function (candidate) {
                     return (candidate instanceof ORYX.Core.Canvas
-                    || candidate instanceof ORYX.Core.Node
-                    || candidate instanceof ORYX.Core.Edge);
+                        || candidate instanceof ORYX.Core.Node
+                        || candidate instanceof ORYX.Core.Edge);
                 });
 
                 if (!parentCandidate) {
@@ -1393,8 +1340,8 @@ app.controller('StencilController', ['$rootScope', '$scope', '$http', '$modal', 
 
                 var parentCandidate = aShapes.reverse().find(function (candidate) {
                     return (candidate instanceof ORYX.Core.Canvas
-                    || candidate instanceof ORYX.Core.Node
-                    || candidate instanceof ORYX.Core.Edge);
+                        || candidate instanceof ORYX.Core.Node
+                        || candidate instanceof ORYX.Core.Edge);
                 });
 
                 if (!parentCandidate) {

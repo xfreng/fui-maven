@@ -49,7 +49,7 @@
 				<a class="fui-button" iconCls="icon-save" onclick="template()">保存为模板</a>
 				<a class="fui-button" iconCls="icon-remove" onclick="remove()">删除</a>
 			</div>
-			<div id="model" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true"
+			<div id="model" class="fui-datagrid" style="width:100%;height:95%;" allowResize="true" onrowdblclick="toEdit"
 				 url="${path}/supervisor/workflow/model/list" dataField="modelList" idField="id" multiSelect="true">
 				<div property="columns">
 					<div type="checkcolumn" ></div>

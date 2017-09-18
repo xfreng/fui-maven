@@ -17,6 +17,7 @@ function query() {
     var data = form.getData(true, false);
     model.load(data);
 }
+
 /**
  * 创建模型
  */
@@ -25,13 +26,14 @@ function create() {
     fui.get("category").setValue("6");
     createModelTemplateWindow.show();
 }
+
 /**
  * 复制模型
  */
 function copy() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
     } else {
         var json = {"modelIdArgs": modelIdArgs.join(',')};
         $.ajax({
@@ -39,19 +41,20 @@ function copy() {
             type: "post",
             data: json,
             success: function (text) {
-                fui.alert(text.message,'提示信息');
+                fui.alert(text.message, '提示信息');
                 model.reload();
             }
         });
     }
 }
+
 /**
  * 保存为模板
  */
 function template() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
     } else {
         var json = {"modelIdArgs": modelIdArgs.join(',')};
         $.ajax({
@@ -59,19 +62,20 @@ function template() {
             type: "post",
             data: json,
             success: function (text) {
-                fui.alert(text.message),'提示信息';
+                fui.alert(text.message), '提示信息';
                 model.reload();
             }
         });
     }
 }
+
 /**
  * 删除模型
  */
 function remove() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
         return;
     }
     fui.confirm("确定删除此模型及其所有子模型吗？", "提示信息", function (action) {
@@ -83,7 +87,7 @@ function remove() {
                 type: "post",
                 data: json,
                 success: function (text) {
-                    fui.alert(text.message,'提示信息');
+                    fui.alert(text.message, '提示信息');
                     model.reload();
                     model.clearSelect(true);
                 }
@@ -91,13 +95,14 @@ function remove() {
         }
     });
 }
+
 /**
  * 编辑流程模型
  */
 function edit() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
     } else {
         for (var index = 0; index < modelIdArgs.length; index++) {
             var modelId = modelIdArgs[index];
@@ -105,15 +110,24 @@ function edit() {
         }
     }
 }
+
+/**
+ * 双击进入编辑
+ * @param e
+ */
+function toEdit(e) {
+    edit();
+}
+
 /**
  * 部署选择的流程
  */
 function deploy() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
     } else if (modelIdArgs.length > 1) {
-        fui.alert('请选择一条数据！','提示信息');
+        fui.alert('请选择一条数据！', '提示信息');
     } else {
         fui.confirm("确定部署此模型及其所有子模型吗？", "提示信息", function (action) {
             if (action == "ok") {
@@ -122,7 +136,7 @@ function deploy() {
                     url: fui.contextPath + "/supervisor/workflow/model/deploy/" + modelIdArgs[0],
                     type: "post",
                     success: function (text) {
-                        fui.alert(text.message,'提示信息');
+                        fui.alert(text.message, '提示信息');
                         model.reload();
                         model.clearSelect(true);
                     }
@@ -131,15 +145,16 @@ function deploy() {
         });
     }
 }
+
 /**
  * 导出模型
  */
 function exportModel() {
     var modelIdArgs = getSelections();
     if (modelIdArgs.length == 0) {
-        fui.alert('请先选择数据！','提示信息');
+        fui.alert('请先选择数据！', '提示信息');
     } else if (modelIdArgs.length > 1) {
-        fui.alert('请选择一条数据！','提示信息');
+        fui.alert('请选择一条数据！', '提示信息');
     } else {
         model.loading("正在导出中...");
         window.open(fui.contextPath + "/supervisor/workflow/model/export/" + modelIdArgs[0] + "/bpmn");
@@ -147,6 +162,7 @@ function exportModel() {
         model.clearSelect(true);
     }
 }
+
 /**
  * 确认添加模型
  */
@@ -155,23 +171,23 @@ function ok() {
     var key = fui.get("key").getValue();
     var category = fui.get("category").getValue();
     if (!name) {
-        fui.alert("请填写名称！",'提示信息');
+        fui.alert("请填写名称！", '提示信息');
         fui.get("name").focus();
         return;
     }
     if (!key) {
-        fui.alert("请填写KEY！",'提示信息');
+        fui.alert("请填写KEY！", '提示信息');
         fui.get("key").focus();
         return;
     } else {
         if (!checkModelKey(key)) {
-            fui.alert("输入的key值[" + key + "]已经存在，请重新输入！",'提示信息');
+            fui.alert("输入的key值[" + key + "]已经存在，请重新输入！", '提示信息');
             fui.get("key").focus();
             return;
         }
     }
     if (!category) {
-        fui.alert("请选择流程类型！",'提示信息');
+        fui.alert("请选择流程类型！", '提示信息');
         fui.get("category").focus();
         return;
     }
@@ -194,6 +210,7 @@ function ok() {
         }
     });
 }
+
 /**
  * 检测模型key是否存在
  * @param key
@@ -216,6 +233,7 @@ function checkModelKey(key) {
     });
     return bool;
 }
+
 /**
  * 获取模型列表选择行的模型id
  * @returns {Array}

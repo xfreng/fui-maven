@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fui.common.AbstractSuperController;
 import com.fui.common.Constants;
+import com.fui.common.UserUtils;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.editor.constants.ModelDataJsonConstants;
@@ -111,7 +112,7 @@ public class ModelController extends AbstractSuperController {
             processNode.put("process_id", key);
             processNode.put("name", name);
             processNode.put("process_namespace", category);// 流程类型
-            processNode.put("process_author", UserSession.getLoginName());// 流程创建者
+            processNode.put("process_author", UserUtils.getCurrent().getEname());// 流程创建者
             editorNode.put("properties", processNode);
             ObjectNode stencilSetNode = objectMapper.createObjectNode();
             stencilSetNode.put("namespace", "http://b3mn.org/stencilset/bpmn2.0#");

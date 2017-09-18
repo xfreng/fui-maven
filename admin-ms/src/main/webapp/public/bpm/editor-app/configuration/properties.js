@@ -96,9 +96,9 @@ KISBPM.PROPERTY_CONFIG =
         "readModeTemplateUrl": "editor-app/configuration/properties/default-value-display-template.html",
         "writeModeTemplateUrl": "editor-app/configuration/properties/message-property-write-template.html"
     },
-    "wendang" : {
-    	"readModeTemplateUrl": "editor-app/configuration/properties/wendang-read.html",
-    	"writeModeTemplateUrl": "editor-app/configuration/properties/wendang-write.html"
+    "document" : {
+    	"readModeTemplateUrl": "editor-app/configuration/properties/document-read.html",
+    	"writeModeTemplateUrl": "editor-app/configuration/properties/document-write.html"
     },
     "callelement" : {
     	"readModeTemplateUrl": "editor-app/configuration/properties/callelement-read.html",
