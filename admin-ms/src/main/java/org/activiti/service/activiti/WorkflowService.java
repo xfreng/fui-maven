@@ -42,12 +42,12 @@ public class WorkflowService {
 
             ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(key, variables);
             String processInstanceId = processInstance.getId();
-            logger.debug("start process of {key={}, pid={}, variables={}}", new Object[]{key, processInstanceId, variables});
+            logger.debug("start process of {key={}, pid={}, variables={}}", key, processInstanceId, variables);
             json.put("message", "流程已启动，流程ID：" + processInstanceId);
         } catch (ActivitiException e) {
-            if (e.getMessage().indexOf("no processes deployed with key") != -1) {
-                logger.warn("没有部署流程!", e);
-                json.put("message", "没有部署流程，请重新部署流程");
+            if (e.getMessage().contains("no processes deployed with key")) {
+                logger.warn("没有部署流程！", e);
+                json.put("message", "没有部署流程，请重新部署流程！");
             } else {
                 logger.error("启动请假流程失败：", e);
                 json.put("message", "系统内部错误！");

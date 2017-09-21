@@ -73,7 +73,7 @@ public class RoleService extends AbstractSuperService {
      * @param userId
      * @return 用户权限
      */
-    public String getUserRights(Long userId) {
+    public List<String> getUserRights(Long userId) {
         return rolesMapper.getUserRights(userId);
     }
 }

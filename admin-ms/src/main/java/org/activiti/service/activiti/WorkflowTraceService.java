@@ -1,12 +1,14 @@
 package org.activiti.service.activiti;
 
+import com.fui.dao.shiro.RolesMapper;
+import com.fui.dao.user.UserMapper;
+import com.fui.model.Roles;
+import com.fui.model.User;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.delegate.Expression;
-import org.activiti.engine.identity.Group;
-import org.activiti.engine.identity.User;
 import org.activiti.engine.impl.RepositoryServiceImpl;
 import org.activiti.engine.impl.bpmn.behavior.UserTaskActivityBehavior;
 import org.activiti.engine.impl.persistence.entity.ProcessDefinitionEntity;
@@ -48,6 +50,12 @@ public class WorkflowTraceService {
 
     @Autowired
     protected IdentityService identityService;
+
+    @Autowired
+    protected UserMapper userMapper;
+
+    @Autowired
+    protected RolesMapper rolesMapper;
 
     /**
      * 流程跟踪图
@@ -151,11 +159,12 @@ public class WorkflowTraceService {
         String roles = "";
         for (Expression expression : candidateGroupIdExpressions) {
             String expressionText = expression.getExpressionText();
-            Group group = identityService.createGroupQuery().groupId(expressionText).singleResult();
+            //Group group = identityService.createGroupQuery().groupId(expressionText).singleResult();
+            Roles group = rolesMapper.findRolesByCode(expressionText);
             if (group == null) {
                 continue;
             }
-            String roleName = group.getName();
+            String roleName = group.getRoleName();
             roles += roleName;
         }
         vars.put("任务所属角色", roles);
@@ -170,8 +179,10 @@ public class WorkflowTraceService {
     private void setCurrentTaskAssignee(Map<String, Object> vars, Task currentTask) {
         String assignee = currentTask.getAssignee();
         if (assignee != null) {
-            User assigneeUser = identityService.createUserQuery().userId(assignee).singleResult();
-            String userInfo = assigneeUser.getFirstName() + " " + assigneeUser.getLastName();
+            //User assigneeUser = identityService.createUserQuery().userId(assignee).singleResult();
+            //String userInfo = assigneeUser.getFirstName() + " " + assigneeUser.getLastName();
+            User assigneeUser = userMapper.selectByPrimaryKey(Long.valueOf(assignee));
+            String userInfo = assigneeUser.getEname() + " " + assigneeUser.getCname();
             vars.put("当前处理人", userInfo);
         }
     }

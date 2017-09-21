@@ -3,7 +3,7 @@ package org.activiti.model;
 import java.io.Serializable;
 import java.util.Map;
 
-public class FlowItem implements Serializable {
+public class FlowItemEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String taskId;

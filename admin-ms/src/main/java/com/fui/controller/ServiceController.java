@@ -176,9 +176,9 @@ public class ServiceController extends AbstractSuperController {
 
     protected boolean checkUserRights(String id) {
         boolean bool = false;
-        String rights = roleService.getUserRights(UserUtils.getCurrent().getId());
-        if (StringUtils.isNotEmpty(rights)) {
-            String[] args = rights.split(",");
+        List<String> rights = roleService.getUserRights(UserUtils.getCurrent().getId());
+        for (String right : rights) {
+            String[] args = right.split(",");
             for (String rightId : args) {
                 if (rightId.equals(id)) {
                     bool = true;

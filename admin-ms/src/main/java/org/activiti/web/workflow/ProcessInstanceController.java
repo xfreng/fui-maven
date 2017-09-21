@@ -53,7 +53,7 @@ public class ProcessInstanceController extends AbstractSuperController {
         String flowKey = request.getParameter("flowKey");
         String flowCategory = request.getParameter("flowCategory");
 
-        ProcessInstanceQuery processInstanceQuery = runtimeService.createProcessInstanceQuery();
+        ProcessInstanceQuery processInstanceQuery = runtimeService.createProcessInstanceQuery().active();
         if (StringUtils.isNotBlank(flowKey)) {
             processInstanceQuery = processInstanceQuery.processDefinitionKey(flowKey);
         }

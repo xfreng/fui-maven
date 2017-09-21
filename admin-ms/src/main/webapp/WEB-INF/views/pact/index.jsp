@@ -127,7 +127,7 @@
 </ul>
 <div id="changeWindowTemplate" class="fui-window" title="窗口切换" closed="true" style="width:auto;"
 	 showModal="true" allowDrag="true">
-	<div id="rbl" class="fui-radiobuttonlist" repeatItems="2" repeatLayout="table" repeatDirection="horizontal"
+	<input id="rbl" class="fui-radiobuttonlist" repeatItems="2" repeatLayout="table" repeatDirection="horizontal"
 		 textField="text" valueField="id" onvaluechanged="changeOpenWindow"
 		 data="openTypes" style="text-align:center"/>
 </div>

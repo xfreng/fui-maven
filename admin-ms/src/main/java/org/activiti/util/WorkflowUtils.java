@@ -1,6 +1,8 @@
 package org.activiti.util;
 
+import com.alibaba.fastjson.JSONArray;
 import com.baosight.iplat4j.core.threadlocal.UserSession;
+import com.fui.common.GsonUtils;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.FlowElement;
 import org.activiti.engine.HistoryService;
@@ -23,7 +25,8 @@ import org.activiti.engine.impl.task.TaskDefinition;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import org.activiti.model.FlowItem;
+import org.activiti.model.FlowItemEntity;
+import org.activiti.model.VariableEntity;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -90,6 +93,22 @@ public class WorkflowUtils {
     }
 
     /**
+     * 获取页面传入参数
+     *
+     * @param vars
+     * @return 参数Map对象
+     */
+    public static Map<String, Object> getVariables(String vars) {
+        Map<String, Object> variables = new HashMap<String, Object>();
+        List varArray = GsonUtils.fromJson(vars, JSONArray.class);
+        for (Object obj : varArray) {
+            VariableEntity var = GsonUtils.fromJson(GsonUtils.toJson(obj), VariableEntity.class);
+            variables.putAll(var.getVariableMap());
+        }
+        return variables;
+    }
+
+    /**
      * 导出图片文件到硬盘
      *
      * @return 文件的全路径
@@ -141,8 +160,8 @@ public class WorkflowUtils {
      * @param processInstanceId
      * @return
      */
-    public static List<FlowItem> queryHistoryTaskInstance(RepositoryService repositoryService,
-                                                          HistoryService historyService, String processInstanceId) {
+    public static List<FlowItemEntity> queryHistoryTaskInstance(RepositoryService repositoryService,
+                                                                HistoryService historyService, String processInstanceId) {
         return queryHistoryTaskInstance(repositoryService, historyService, processInstanceId, null);
     }
 
@@ -172,9 +191,9 @@ public class WorkflowUtils {
      * @param processTaskDefinitionKey 不为空是返回单个对象（即list中存储一个元素）
      * @return
      */
-    public static List<FlowItem> queryHistoryTaskInstance(RepositoryService repositoryService,
-                                                          HistoryService historyService, String processInstanceId, String processTaskDefinitionKey) {
-        List<FlowItem> historyPageList = new ArrayList<FlowItem>();
+    public static List<FlowItemEntity> queryHistoryTaskInstance(RepositoryService repositoryService,
+                                                                HistoryService historyService, String processInstanceId, String processTaskDefinitionKey) {
+        List<FlowItemEntity> historyPageList = new ArrayList<FlowItemEntity>();
         String userId = UserSession.getLoginName();
         List<HistoricTaskInstance> historicTaskInstances = new ArrayList<HistoricTaskInstance>();
         if (StringUtils.isNotEmpty(processTaskDefinitionKey)) {
@@ -190,16 +209,16 @@ public class WorkflowUtils {
             String taskDefinitionKey = historicTaskInstance.getTaskDefinitionKey();
             String description = queryDocumentationByTaskDefinitionKey(repositoryService, processDefinitionId,
                     taskDefinitionKey);
-            FlowItem flowItem = new FlowItem();
-            flowItem.setId(taskDefinitionKey);
-            flowItem.setTaskId(historicTaskInstance.getId());
-            flowItem.setName(historicTaskInstance.getName());
-            flowItem.setDescription(description);
+            FlowItemEntity flowItemEntity = new FlowItemEntity();
+            flowItemEntity.setId(taskDefinitionKey);
+            flowItemEntity.setTaskId(historicTaskInstance.getId());
+            flowItemEntity.setName(historicTaskInstance.getName());
+            flowItemEntity.setDescription(description);
             String deleteReason = historicTaskInstance.getDeleteReason();
             if (StringUtils.isEmpty(deleteReason)) {
-                flowItem.setStatus("0");
+                flowItemEntity.setStatus("0");
             } else {
-                flowItem.setStatus("1");
+                flowItemEntity.setStatus("1");
             }
             Map<String, Object> formProperties = new HashMap<String, Object>();
             List<HistoricVariableInstance> historicVariableInstances = historyService
@@ -208,8 +227,8 @@ public class WorkflowUtils {
             for (HistoricVariableInstance historicVariableInstance : historicVariableInstances) {
                 formProperties.put(historicVariableInstance.getVariableName(), historicVariableInstance.getValue());
             }
-            flowItem.setFormProperties(formProperties);
-            historyPageList.add(flowItem);
+            flowItemEntity.setFormProperties(formProperties);
+            historyPageList.add(flowItemEntity);
         }
         return historyPageList;
     }
@@ -267,8 +286,8 @@ public class WorkflowUtils {
      * @param processInstanceId
      * @return 当前执行任务节点
      */
-    public static FlowItem getActiveTaskInstance(RepositoryService repositoryService, RuntimeService runtimeService,
-                                                 HistoryService historyService, String processDefinitionId, String processInstanceId) {
+    public static FlowItemEntity getActiveTaskInstance(RepositoryService repositoryService, RuntimeService runtimeService,
+                                                       HistoryService historyService, String processDefinitionId, String processInstanceId) {
         return getActiveTaskInstance(repositoryService, runtimeService, historyService, processDefinitionId,
                 processInstanceId, false);
     }
@@ -283,8 +302,8 @@ public class WorkflowUtils {
      * @param isCircle            是否是循环节点
      * @return 当前执行任务节点
      */
-    public static FlowItem getActiveTaskInstance(RepositoryService repositoryService, RuntimeService runtimeService,
-                                                 HistoryService historyService, String processDefinitionId, String processInstanceId, boolean isCircle) {
+    public static FlowItemEntity getActiveTaskInstance(RepositoryService repositoryService, RuntimeService runtimeService,
+                                                       HistoryService historyService, String processDefinitionId, String processInstanceId, boolean isCircle) {
         ProcessDefinitionEntity definitionEntity = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
                 .getDeployedProcessDefinition(processDefinitionId);
         // 当前实例的执行到哪个节点
@@ -298,22 +317,22 @@ public class WorkflowUtils {
             if (id.equals(activitiId)) {
                 HistoricTaskInstance historicTaskInstance = queryHistoryTaskInstanceByTaskDefinitionKey(historyService,
                         processInstanceId, id);
-                FlowItem flowItem = null;
+                FlowItemEntity flowItemEntity = null;
                 if (historicTaskInstance != null && !isCircle) {
-                    List<FlowItem> flowItemList = queryHistoryTaskInstance(repositoryService, historyService,
+                    List<FlowItemEntity> flowItemEntityList = queryHistoryTaskInstance(repositoryService, historyService,
                             processInstanceId, activitiId);
-                    flowItem = flowItemList.get(0);
+                    flowItemEntity = flowItemEntityList.get(0);
                 } else {
-                    flowItem = new FlowItem();
-                    flowItem.setId(activitiId);
+                    flowItemEntity = new FlowItemEntity();
+                    flowItemEntity.setId(activitiId);
                     if (historicTaskInstance != null) {
-                        flowItem.setTaskId(historicTaskInstance.getId());
+                        flowItemEntity.setTaskId(historicTaskInstance.getId());
                     }
-                    flowItem.setName(StringUtils.isNotEmpty(name) ? name : "");
-                    flowItem.setStatus("0");
-                    flowItem.setDescription(description);
+                    flowItemEntity.setName(StringUtils.isNotEmpty(name) ? name : "");
+                    flowItemEntity.setStatus("0");
+                    flowItemEntity.setDescription(description);
                 }
-                return flowItem;
+                return flowItemEntity;
             }
         }
         return null;
@@ -328,21 +347,21 @@ public class WorkflowUtils {
      * @param processInstanceId
      * @return 下一个任务节点信息
      */
-    public static FlowItem queryNextTask(RepositoryService repositoryService, RuntimeService runtimeService, Task task,
-                                         String processInstanceId) {
+    public static FlowItemEntity queryNextTask(RepositoryService repositoryService, RuntimeService runtimeService, Task task,
+                                               String processInstanceId) {
         TaskDefinition taskDefinition = nextTaskDefinition(repositoryService, runtimeService, task, processInstanceId);
-        FlowItem flowItem = null;
+        FlowItemEntity flowItemEntity = null;
         if (taskDefinition != null) {
-            flowItem = new FlowItem();
+            flowItemEntity = new FlowItemEntity();
             String id = taskDefinition.getKey();
             String name = taskDefinition.getNameExpression().getExpressionText();
             String description = taskDefinition.getDescriptionExpression().getExpressionText();
-            flowItem.setId(id);
-            flowItem.setName(name);
-            flowItem.setStatus("0");
-            flowItem.setDescription(description);
+            flowItemEntity.setId(id);
+            flowItemEntity.setName(name);
+            flowItemEntity.setStatus("0");
+            flowItemEntity.setDescription(description);
         }
-        return flowItem;
+        return flowItemEntity;
     }
 
     /**

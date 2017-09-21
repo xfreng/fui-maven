@@ -133,4 +133,7 @@
   <select id="getUserRights" parameterType="java.lang.Long" resultType="java.lang.String">
     SELECT permissions FROM fui_roles WHERE id IN ( SELECT role_id FROM fui_user_roles WHERE user_id = #{userId,jdbcType=BIGINT} )
   </select>
+  <select id="getRolesByUserId" parameterType="java.lang.Long" resultType="java.lang.String">
+    SELECT role_code FROM fui_roles WHERE id IN ( SELECT role_id FROM fui_user_roles WHERE user_id = #{userId,jdbcType=BIGINT} )
+  </select>
 </mapper>
