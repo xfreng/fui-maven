@@ -11,7 +11,7 @@
  Target Server Version : 50617
  File Encoding         : 65001
 
- Date: 21/09/2017 17:42:10
+ Date: 22/09/2017 09:06:21
 */
 
 SET NAMES utf8mb4;
@@ -101,7 +101,7 @@ INSERT INTO `fui_menu` VALUES ('admin', '20160830162252', ' ', ' ', ' ', '$', 'r
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170503131811', ' ', 'ACT', 'RACT01', '模型工作区', 1, '/supervisor/workflow/model/index', '2', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170605161921', ' ', 'ACT', 'RACT02', '流程定义及部署管理', 1, '/supervisor/workflow/process/index', '3', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105151340', 'admin', '20170605161921', ' ', 'ACT', 'RACT03', '运行中流程', 1, '/supervisor/workflow/processinstance/index', '4', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', 'admin', '20170920090847', ' ', 'ACT', 'RWPE01', '流程执行示例', 0, ' ', '1', ' ', ' ');
+INSERT INTO `fui_menu` VALUES ('admin', '20170105151207', 'admin', '20170920090847', ' ', 'ACT', 'RW', '流程执行示例', 0, ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20090729174958', 'admin', '20170617165439', ' ', 'ED', 'EDCM', '代码管理', 0, ' ', '3', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20070622161518', 'admin', '20170617165439', ' ', 'ED', 'EDPI', '菜单资源管理', 0, ' ', '2', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20110518112122', 'admin', '20170617165439', ' ', 'ED', 'EDPI00', '项目信息管理', 1, '/supervisor/project/index', '4', ' ', 'css:icon-cogs');
@@ -117,9 +117,9 @@ INSERT INTO `fui_menu` VALUES ('admin', '20170908154549', ' ', ' ', ' ', 'EDUM',
 INSERT INTO `fui_menu` VALUES ('admin', '20130422143551', 'admin', '20170617165541', ' ', 'EP', 'ED', '元数据管理', 0, ' ', '1', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20170105150848', ' ', ' ', ' ', 'root', 'ACT', '流程管理', 0, ' ', '6', ' ', ' ');
 INSERT INTO `fui_menu` VALUES ('admin', '20161225184150', 'admin', '20170524153632', ' ', 'root', 'EP', '系统平台', 0, ' ', '1', ' ', ' ');
-INSERT INTO `fui_menu` VALUES ('admin', '20170920084917', ' ', ' ', ' ', 'RWPE01', 'RWPE0101', '请假流程', 0, '', '1', ' ', '');
-INSERT INTO `fui_menu` VALUES ('admin', '20170920085006', 'admin', '20170920085242', ' ', 'RWPE0101', 'RWPE010101', '申请', 1, '/supervisor/oa/leave/index', '1', ' ', '');
-INSERT INTO `fui_menu` VALUES ('admin', '20170920085114', 'admin', '20170920145916', ' ', 'RWPE0101', 'RWPE010102', '任务列表', 1, '/supervisor/oa/leave/task/list', '2', ' ', '');
+INSERT INTO `fui_menu` VALUES ('admin', '20170920084917', ' ', ' ', ' ', 'RW', 'RWPE', '请假流程', 0, '', '1', ' ', '');
+INSERT INTO `fui_menu` VALUES ('admin', '20170920085006', 'admin', '20170920085242', ' ', 'RWPE', 'RWPE01', '申请', 1, '/supervisor/oa/leave/index', '1', ' ', '');
+INSERT INTO `fui_menu` VALUES ('admin', '20170920085114', 'admin', '20170920145916', ' ', 'RWPE', 'RWPE02', '任务列表', 1, '/supervisor/oa/leave/task/list', '2', ' ', '');
 
 -- ----------------------------
 -- Table structure for fui_menu_shortcut
@@ -201,7 +201,7 @@ CREATE TABLE `fui_permissions`  (
 INSERT INTO `fui_permissions` VALUES (1001, -1, 'root.EP', '系统平台', '', '0');
 INSERT INTO `fui_permissions` VALUES (1002, -1, 'root.ACT', '流程管理', '', '0');
 INSERT INTO `fui_permissions` VALUES (100101, 1001, 'EP.ED', '元数据管理', '', '0');
-INSERT INTO `fui_permissions` VALUES (100201, 1002, 'ACT.RWPE01', '流程执行示例', '', '0');
+INSERT INTO `fui_permissions` VALUES (100201, 1002, 'ACT.RW', '流程执行示例', '', '0');
 INSERT INTO `fui_permissions` VALUES (100202, 1002, 'ACT.RACT01', '模型工作区', '/supervisor/workflow/model/index', '0');
 INSERT INTO `fui_permissions` VALUES (100203, 1002, 'ACT.RACT02', '流程定义及部署管理', '/supervisor/workflow/process/index', '0');
 INSERT INTO `fui_permissions` VALUES (100204, 1002, 'ACT.RACT03', '运行中流程', '/supervisor/workflow/processinstance/index', '0');
@@ -209,7 +209,7 @@ INSERT INTO `fui_permissions` VALUES (10010101, 100101, 'ED.EDUM', '系统设置
 INSERT INTO `fui_permissions` VALUES (10010103, 100101, 'ED.EDPI', '菜单资源管理', '', '0');
 INSERT INTO `fui_permissions` VALUES (10010104, 100101, 'ED.EDCM', '代码管理', '', '0');
 INSERT INTO `fui_permissions` VALUES (10010105, 100101, 'ED.EDPI00', '项目信息管理', '/supervisor/project/index', '0');
-INSERT INTO `fui_permissions` VALUES (10020101, 100201, 'RWPE01.RWPE0101', '请假流程', '', '0');
+INSERT INTO `fui_permissions` VALUES (10020101, 100201, 'RW.RWPE', '请假流程', '', '0');
 INSERT INTO `fui_permissions` VALUES (10020201, 100202, 'RACT01.01', '首页', '/supervisor/workflow/model/index', '1');
 INSERT INTO `fui_permissions` VALUES (10020202, 100202, 'RACT01.02', '查询流程模型列表', '/supervisor/workflow/model/list', '1');
 INSERT INTO `fui_permissions` VALUES (10020203, 100202, 'RACT01.03', '创建模型', '/supervisor/workflow/model/create', '1');
@@ -252,8 +252,8 @@ INSERT INTO `fui_permissions` VALUES (1001010106, 10010101, 'EDUM.EDUM06', '皮�
 INSERT INTO `fui_permissions` VALUES (1001010107, 10010101, 'EDUM.EDUM07', '我的收藏', '/supervisor/menu/shortcut', '0');
 INSERT INTO `fui_permissions` VALUES (1001010301, 10010103, 'EDPI.EDPI10', '菜单信息管理', '/supervisor/menu/index', '0');
 INSERT INTO `fui_permissions` VALUES (1001010401, 10010104, 'EDCM.EDCM00', '字典管理', '/supervisor/dict/index', '0');
-INSERT INTO `fui_permissions` VALUES (1002010101, 10020101, 'RWPE0101.RWPE010101', '申请', '/supervisor/oa/leave/index', '0');
-INSERT INTO `fui_permissions` VALUES (1002010102, 10020101, 'RWPE0101.RWPE010102', '任务列表', '/supervisor/oa/leave/task/list', '0');
+INSERT INTO `fui_permissions` VALUES (1002010101, 10020101, 'RWPE.RWPE01', '申请', '/supervisor/oa/leave/index', '0');
+INSERT INTO `fui_permissions` VALUES (1002010102, 10020101, 'RWPE.RWPE02', '任务列表', '/supervisor/oa/leave/task/list', '0');
 INSERT INTO `fui_permissions` VALUES (10010101011, 1001010101, 'EDUM01.01', '首页', '/supervisor/user/index,/supervisor/user/state', '1');
 INSERT INTO `fui_permissions` VALUES (10010101012, 1001010101, 'EDUM01.02', '查询用户列表', '/supervisor/user/list', '1');
 INSERT INTO `fui_permissions` VALUES (10010101013, 1001010101, 'EDUM01.03', '新增', '/supervisor/right/add', '1');
@@ -341,7 +341,7 @@ CREATE TABLE `fui_roles`  (
 -- ----------------------------
 -- Records of fui_roles
 -- ----------------------------
-INSERT INTO `fui_roles` VALUES (1, 'supervisor', '超级管理员', '1001,100101,10010101,1001010101,10010101011,10010101012,10010101013,10010101014,10010101015,10010101016,10010101017,10010101018,1001010102,10010101021,10010101022,10010101023,10010101024,10010101025,1001010103,10010101031,10010101032,10010101033,10010101034,10010101035,10010101036,1001010104,10010101041,10010101042,10010101043,10010101044,10010101045,10010101046,10010101047,1001010105,10010101051,10010101052,10010101053,10010101054,1001010106,10010101061,1001010107,10010103,1001010301,10010103011,10010103012,10010103013,10010103014,10010103015,10010103016,10010103017,10010104,1001010401,10010104011,10010104012,10010104013,10010104014,10010104015,10010104016,10010104017,10010105,100101051,100101052,100101053,1002,100201,10020101,1002010101,1002010102,100202,10020201,10020202,10020203,10020204,10020205,10020206,10020207,10020208,10020209,10020210,10020211,10020212,10020213,10020214,100203,10020301,10020302,10020303,10020304,10020305,10020306,10020307,10020308,10020309,10020310,10020311,10020312,10020313,100204,10020401,10020402,10020403');
+INSERT INTO `fui_roles` VALUES (1, 'supervisor', '超级管理员', '1001,100101,10010101,1001010101,10010101011,10010101012,10010101013,10010101014,10010101015,10010101016,10010101017,10010101018,1001010102,10010101021,10010101022,10010101023,10010101024,10010101025,1001010103,10010101031,10010101032,10010101033,10010101034,10010101035,10010101036,1001010104,10010101041,10010101042,10010101043,10010101044,10010101045,10010101046,10010101047,1001010105,10010101051,10010101052,10010101053,10010101054,1001010106,10010101061,1001010107,10010103,1001010301,10010103011,10010103012,10010103013,10010103014,10010103015,10010103016,10010103017,10010104,1001010401,10010104011,10010104012,10010104013,10010104014,10010104015,10010104016,10010104017,10010105,100101051,100101052,100101053,1002,100201,10020101,1002010101,100201010101,1002010102,100201010201,100201010202,100201010203,100201010204,100202,10020201,10020202,10020203,10020204,10020205,10020206,10020207,10020208,10020209,10020210,10020211,10020212,10020213,10020214,100203,10020301,10020302,10020303,10020304,10020305,10020306,10020307,10020308,10020309,10020310,10020311,10020312,10020313,100204,10020401,10020402,10020403');
 INSERT INTO `fui_roles` VALUES (3, 'flower', '流程管理员', '1001010105,10010101051,10010101052,10010101053,10010101054,1001010106,10010101061,1002,100201,100202,10020201,10020202,10020203,10020204,10020205,10020206,10020207,10020208,10020209,10020210,10020211,10020212,10020213,10020214,100203,10020301,10020302,10020303,10020304,10020305,10020306,10020307,10020308,10020309,10020310,10020311,10020312,10020313,100204,10020401,10020402,10020403');
 INSERT INTO `fui_roles` VALUES (4, 'deptLeader', '部门领导', '1001010105');
 INSERT INTO `fui_roles` VALUES (5, 'hr', '人事', '1001010105');
@@ -367,7 +367,7 @@ CREATE TABLE `fui_user`  (
 -- ----------------------------
 -- Records of fui_user
 -- ----------------------------
-INSERT INTO `fui_user` VALUES (1, 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', b'0', 358, '2017-09-21 17:21:51', NULL);
+INSERT INTO `fui_user` VALUES (1, 'admin', '管理员', '5F4DCC3B5AA765D61D8327DEB882CF99', 'black', 'pact', b'0', 360, '2017-09-22 09:05:50', NULL);
 INSERT INTO `fui_user` VALUES (5, 'ls', '李四', '392FFAFA49FDE96C848704EBF013E7E8', 'default', 'default', b'0', 2, '2017-06-17 13:08:09', NULL);
 INSERT INTO `fui_user` VALUES (6, 'zhangsan', '张三', '01D7F40760960E7BD9443513F22AB9AF', 'black', 'pact', b'0', 27, '2017-09-06 10:01:09', NULL);
 
