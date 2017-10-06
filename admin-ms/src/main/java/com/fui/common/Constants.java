@@ -34,4 +34,7 @@ public interface Constants {
 
     // 前台分页json名
     String PAGE_KEY_NAME = "data";
+
+    // 图片上传请求参数
+    String UPLOADS = "file";
 }
