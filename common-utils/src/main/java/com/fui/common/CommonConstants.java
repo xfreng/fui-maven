@@ -6,7 +6,7 @@ package com.fui.common;
  */
 public interface CommonConstants {
     // 项目配置文件
-    String CONFIG_FILE_NAME = "project.properties";
+    String CONFIG_FILE_NAME = "conf/application.properties";
     /**
      * 日期格式
      */
