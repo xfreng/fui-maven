@@ -1,12 +1,16 @@
 package com.fui.portal.service.appservice.common;
 
+import com.fui.common.CommonConfiguration;
+
 /**
  * @Title 前段常量
- * @Author sf.xiong on 2016/10/26.
+ * @Author sf.xiong on 2017/10/24.
  */
 public interface PortalConstants {
 
-    String SESSION_USER_KEY = "CURRENT_SESSION_LOGIN_USER";
+    //APP请求传输是否加密
+    boolean YN_ENCRYPTION = "1".equals(CommonConfiguration.getValue("yn.encryption"));
 
-    Integer LOGIN_TIME_OUT_CODE = 520; //会话登录超时
+    //APP请求传输是否解密
+    boolean YN_DECRYPT = "1".equals(CommonConfiguration.getValue("yn.decrypt"));
 }

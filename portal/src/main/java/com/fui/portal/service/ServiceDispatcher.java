@@ -1,9 +1,6 @@
 package com.fui.portal.service;
 
-import com.fui.portal.service.appservice.common.APPServiceConstants;
-import com.fui.portal.service.appservice.common.AbstractSuperService;
-import com.fui.portal.service.appservice.common.ErrCodeAndMsg;
-import com.fui.portal.service.appservice.common.NetworkUtils;
+import com.fui.portal.service.appservice.common.*;
 import com.fui.portal.service.appservice.message.APPMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -72,7 +69,7 @@ public class ServiceDispatcher {
 
         /**
          * 根据接口交易码 去服务提供商中获取对应实例
-         *              具体请参考 applicationContext-bean.xml 文件中   <!-- App接口服务注册 -->
+         *              具体请参考 applicationContext-bean.xml 文件中   --   App接口服务注册
          *
          */
         AbstractSuperService appService =
@@ -100,8 +97,12 @@ public class ServiceDispatcher {
             responseMsg = new APPMessage(requestMsg.getTranscode());
             responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.FAIL);
         }
-        logger.info("response: " + responseMsg.toJson());
-        logger.info("response(加密): " + responseMsg.toJsonEncrypt());
-        return responseMsg.toJsonEncrypt();
+        if (PortalConstants.YN_ENCRYPTION) {//需要加密
+            logger.info("response(加密): " + responseMsg.toJsonEncrypt());
+            return responseMsg.toJsonEncrypt();
+        } else {
+            logger.info("response: " + responseMsg.toJson());
+            return responseMsg.toJson();
+        }
     }
 }
