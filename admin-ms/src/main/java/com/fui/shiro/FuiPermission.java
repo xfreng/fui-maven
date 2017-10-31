@@ -2,6 +2,10 @@ package com.fui.shiro;
 
 import com.fui.common.StringUtils;
 import org.apache.shiro.authz.Permission;
+import org.apache.shiro.util.AntPathMatcher;
+import org.apache.shiro.util.PatternMatcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @Title 自定义权限解析及授权匹配
@@ -9,6 +13,9 @@ import org.apache.shiro.authz.Permission;
  * @Author sf.xiong on 2017/04/25.
  */
 public class FuiPermission implements Permission {
+
+    private static final Logger logger = LoggerFactory.getLogger(FuiPermission.class);
+
     private String code;  //权限编码
     private String url;   //权限对应的资源url
 
@@ -19,9 +26,9 @@ public class FuiPermission implements Permission {
 
     public FuiPermission(String permissionStr) {
         if (permissionStr.startsWith("/")) {  //url以/开头
-            url = permissionStr;
+            this.url = permissionStr;
         } else {
-            code = permissionStr;
+            this.code = permissionStr;
         }
     }
 
@@ -42,21 +49,24 @@ public class FuiPermission implements Permission {
         if (StringUtils.isNullOrEmpty(mp.code)) {// 解决oracle下会报npe异常
             mp = new FuiPermission("", mp.url);
         }
-        if (StringUtils.isNullOrEmpty(url)) {// 解决oracle下会报npe异常
+        if (StringUtils.isNullOrEmpty(this.url)) {// 解决oracle下会报npe异常
             this.url = "";
         }
         //编码及url匹配其一，即认为成功
-        if (code.equals(mp.code) || url.equals(mp.url)) {
+        if (this.code.equals(mp.code) || this.url.equals(mp.url)) {
             return true;
         }
-        return false;
+        PatternMatcher patternMatcher = new AntPathMatcher();
+        boolean matches = patternMatcher.matches(this.url, mp.url);
+        logger.debug("matches => {}", matches);
+        return matches;
     }
 
     @Override
     public String toString() {
         return "FuiPermission{" +
-                "code='" + code + '\'' +
-                ", url='" + url + '\'' +
+                "code='" + this.code + '\'' +
+                ", url='" + this.url + '\'' +
                 '}';
     }
 }
