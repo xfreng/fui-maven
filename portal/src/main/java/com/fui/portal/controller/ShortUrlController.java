@@ -14,6 +14,6 @@ public class ShortUrlController extends AbstractSuperController {
     @RequestMapping("/{shortUrl}")
     public String index(@PathVariable("shortUrl") String shortUrl) {
         logger.info("shortUrl = [" + shortUrl + "]");
-        return "redirect:https://www.ftoul.com";
+        return "redirect:https://www.baidu.com";
     }
 }
