@@ -1,6 +1,7 @@
 package com.fui.portal.service.appservice;
 
 import com.fui.portal.service.appservice.common.AbstractSuperService;
+import com.fui.portal.service.appservice.common.ErrCodeAndMsg;
 import com.fui.portal.service.appservice.message.APPMessage;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,9 @@ public class UserLoginService extends AbstractSuperService {
     @Override
     public void handleRequest(APPMessage requestMsg, APPMessage responseMsg) {
         logger.info("in...");
+
+        responseMsg.addBodyParam("message","请求成功");
+
+        responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.SUCCESS);
     }
 }

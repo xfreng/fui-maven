@@ -11,7 +11,8 @@
       	<form id="loginForm" class="fui-form" method="post">
 	    	<div><img src="${path}/public/mainframe/images/login/${logo}" class="pos_rel l_186 t_-31"></div>
 	        <div class="mg_0_auto w_510 pos_rel l_255">
-	            <div style="text-align: center;">
+				<div style="text-align: center;"><b style="color: red;">测试用户： </b><span style="color: green;">zhangsan/888888</span> </div>
+				<div style="text-align: center;">
 	               	<span style="font-weight:bold;font-size:20px">${projectName}</span>
 	                <span style="font-size:12px">${dev}</span>
 	            </div>
