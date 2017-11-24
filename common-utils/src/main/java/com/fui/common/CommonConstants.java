@@ -17,6 +17,8 @@ public interface CommonConstants {
     String PARTTERN_YYYYMMDD = "yyyyMMdd";
     String PARTTERN_YYYY_MM_DD_HH_MM_SS_SSS = "yyyyMMddHHmmssSSS";
 
+    //分布式环境下的服务器ID
+    String CONFIG_ENV_SERVER_ID = "ENV.SERVER.ID";
     //系统默认字符集
     String DEFAULT_CHARACTER = "UTF-8";
 }

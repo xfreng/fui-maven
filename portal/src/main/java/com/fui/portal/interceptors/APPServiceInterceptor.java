@@ -30,13 +30,12 @@ public class APPServiceInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         boolean flag = true;
         boolean encrypt = false;
-        boolean isH5 = false;
 
         //接收客户端请求消息（JSON）
         String requestUrl = String.valueOf(request.getRequestURL());
 
-        String reqJsonEncrypt = request.getParameter("data");// H5接收请求数据
-        if (StringUtils.isBlank(reqJsonEncrypt)) {//原生app接收请求数据
+        String reqJsonEncrypt = request.getParameter("data");//H5的jQuery Ajax接收请求数据
+        if (StringUtils.isBlank(reqJsonEncrypt)) {//原生app或非jQuery Ajax的H5接收请求数据
             StringBuilder requestJsonBuilder = new StringBuilder();
             BufferedReader in = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
             String inputLine = null;
@@ -45,8 +44,6 @@ public class APPServiceInterceptor extends HandlerInterceptorAdapter {
             }
             in.close();
             reqJsonEncrypt = requestJsonBuilder.toString();
-        } else {
-            isH5 = true;
         }
         logger.info("APP请求 => url:{} \t params:{} ", requestUrl, reqJsonEncrypt);
 
@@ -63,7 +60,7 @@ public class APPServiceInterceptor extends HandlerInterceptorAdapter {
         //消息解密
         String dataJson = null;
         String key = "";
-        if (PortalConstants.YN_DECRYPT) {//需要解密
+        if (PortalConstants.IS_DECRYPTION) {//需要解密
             key = reqJsonEncrypt.substring(0, KEY_LENGTH);
             String dataJsonEncrypt = reqJsonEncrypt.substring(KEY_LENGTH);
             logger.info("key: " + key);
@@ -83,11 +80,11 @@ public class APPServiceInterceptor extends HandlerInterceptorAdapter {
         //转换为消息对象
         APPMessage requestMsg = null;
         try {
-            if (isH5) {
-                requestMsg = GsonUtils.fromJson(dataJson, APPMessage.class);
-            } else {
-                JSONObject json = GsonUtils.fromJson(dataJson, JSONObject.class);
+            JSONObject json = GsonUtils.fromJson(dataJson, JSONObject.class);
+            if (json.get("data") != null) {
                 requestMsg = GsonUtils.fromJson(json.getJSONObject("data").toJSONString(), APPMessage.class);
+            } else {
+                requestMsg = GsonUtils.fromJson(dataJson, APPMessage.class);
             }
             requestMsg.setKey(key);
         } catch (Exception e) {

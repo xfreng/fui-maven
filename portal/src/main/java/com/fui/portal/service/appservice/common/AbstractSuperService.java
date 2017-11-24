@@ -8,6 +8,7 @@ import com.google.common.cache.LoadingCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
@@ -27,13 +28,22 @@ public abstract class AbstractSuperService {
     }
 
     /**
-     * 处理APP请求<br>
+     * 处理APP请求
      * 所有需登录接口的服务类可调用此方法进行公共参数校验
      *
      * @param requestMsg  请求消息对象
      * @param responseMsg 响应消息对象
      */
     public void handleRequest(APPMessage requestMsg, APPMessage responseMsg) {
+    }
+
+    /**
+     * 处理APP上传文件请求
+     *
+     * @param request     请求对象
+     * @param responseMsg 响应消息对象
+     */
+    public void handleRequest(MultipartHttpServletRequest request, APPMessage responseMsg) {
     }
 
     /**

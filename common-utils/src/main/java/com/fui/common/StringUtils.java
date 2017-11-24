@@ -93,4 +93,25 @@ public class StringUtils {
         }
         return new String[]{age, sex};
     }
+
+    /**
+     * 根据当前日期创建子目录
+     *
+     * @return
+     */
+    public static String generatorSubDir() {
+        Calendar c = Calendar.getInstance();
+        Integer year = c.get(Calendar.YEAR);
+        Integer month = c.get(Calendar.MONTH) + 1;
+        Integer date = c.get(Calendar.DAY_OF_MONTH);
+
+        StringBuilder dir = new StringBuilder();
+        dir.append(year);
+        dir.append("/");
+        dir.append(month);
+        dir.append("/");
+        dir.append(date);
+        dir.append("/");
+        return dir.toString();
+    }
 }

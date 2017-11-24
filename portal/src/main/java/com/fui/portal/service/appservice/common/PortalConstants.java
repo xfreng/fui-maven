@@ -9,8 +9,13 @@ import com.fui.common.CommonConfiguration;
 public interface PortalConstants {
 
     //APP请求传输是否加密
-    boolean YN_ENCRYPTION = "1".equals(CommonConfiguration.getValue("yn.encryption"));
+    boolean IS_ENCRYPTION = "1".equals(CommonConfiguration.getValue("yn.encryption"));
 
     //APP请求传输是否解密
-    boolean YN_DECRYPT = "1".equals(CommonConfiguration.getValue("yn.decrypt"));
+    boolean IS_DECRYPTION = "1".equals(CommonConfiguration.getValue("yn.decryption"));
+
+    //文件上传目录
+    String FILE_UPLOAD_DIR = CommonConfiguration.getValue("file.upload.dir");
+    String FILE_UPLOAD_CONTEXT_PATH = CommonConfiguration.getValue("file.upload.context.path");
+    String SERVER_HOST = CommonConfiguration.getValue("server.host");
 }

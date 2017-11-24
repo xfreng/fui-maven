@@ -6,9 +6,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -31,7 +33,7 @@ public class ServiceDispatcher {
      *
      * @return 响应消息（JSON）
      */
-    @RequestMapping(value = "/appservice", produces = APPServiceConstants.MEDIATYPE_APPLICATION_JSON)
+    @RequestMapping(value = "/appService", produces = APPServiceConstants.MEDIATYPE_APPLICATION_JSON)
     @ResponseBody
     public String appServiceHandle(HttpServletRequest request) {
         //获取拦截器预处理后的请求消息对象
@@ -44,8 +46,8 @@ public class ServiceDispatcher {
         }
 
         //初始化响应消息对象
-        String transcode = requestMsg.getTranscode();
-        APPMessage responseMsg = new APPMessage(transcode);
+        String transCode = requestMsg.getTranscode();
+        APPMessage responseMsg = new APPMessage(transCode);
         responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.FAIL);
 
         //请求消息公共参数校验
@@ -55,7 +57,7 @@ public class ServiceDispatcher {
             responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.DEVICE_REQUIRED);
             return responseMsg.toJsonEncrypt();
         }
-        if (APPServiceConstants.DEVICE_IOS.equals(device) && APPServiceConstants.DEVICE_ANDROID.equals(device)) {
+        if (!(APPServiceConstants.DEVICE_IOS.equals(device) || APPServiceConstants.DEVICE_ANDROID.equals(device))) {
             logger.error("device error: " + device);
             responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.DEVICE_ERROR);
             return responseMsg.toJsonEncrypt();
@@ -73,9 +75,9 @@ public class ServiceDispatcher {
          *
          */
         AbstractSuperService appService =
-                serviceConfig.getServiceConfigInstance(transcode);
+                serviceConfig.getServiceConfigInstance(transCode);
         if (appService == null) {
-            logger.error("transcode error: " + transcode);
+            logger.error("transCode error: " + transCode);
             responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.TRANSCODE_ERROR);
             return responseMsg.toJsonEncrypt();
         }
@@ -97,11 +99,49 @@ public class ServiceDispatcher {
             responseMsg = new APPMessage(requestMsg.getTranscode());
             responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.FAIL);
         }
-        if (PortalConstants.YN_ENCRYPTION) {//需要加密
+        if (PortalConstants.IS_ENCRYPTION) {//需要加密
             logger.info("response(加密): " + responseMsg.toJsonEncrypt());
             return responseMsg.toJsonEncrypt();
         } else {
             logger.info("response: " + responseMsg.toJson());
+            return responseMsg.toJson();
+        }
+    }
+
+    /**
+     * APP上传接口服务处理
+     *
+     * @return 响应消息（JSON）
+     */
+    @RequestMapping(value = "/appUpload", produces = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    public String appUploadServiceHandle(MultipartHttpServletRequest request) {
+        String transCode = request.getParameter("transcode"); //接口交易码
+        APPMessage responseMsg = new APPMessage(transCode);
+        AbstractSuperService appService =
+                serviceConfig.getServiceConfigInstance(transCode);
+        if (appService == null) {
+            logger.error("transCode error: " + transCode);
+            responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.TRANSCODE_ERROR);
+            if (PortalConstants.IS_ENCRYPTION) {//需要加密
+                logger.info("response(加密): " + responseMsg.toJsonEncrypt());
+                return responseMsg.toJsonEncrypt();
+            } else {
+                return responseMsg.toJson();
+            }
+        }
+
+        try {
+            appService.handleRequest(request, responseMsg);
+        } catch (Exception e) {
+            logger.error("Exception: " + e);
+            responseMsg.setErrCodeAndMsg(ErrCodeAndMsg.FAIL);
+        }
+        logger.info("response: " + responseMsg.toJson());
+        if (PortalConstants.IS_ENCRYPTION) {//需要加密
+            logger.info("response(加密): " + responseMsg.toJsonEncrypt());
+            return responseMsg.toJsonEncrypt();
+        } else {
             return responseMsg.toJson();
         }
     }

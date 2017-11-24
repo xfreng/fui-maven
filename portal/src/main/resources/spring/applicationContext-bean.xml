@@ -30,7 +30,7 @@
     <mvc:interceptors>
         <!--APP接口服务拦截器-->
         <mvc:interceptor>
-            <mvc:mapping path="/service/appservice"/>
+            <mvc:mapping path="/service/appService"/>
             <bean id="appServiceInterceptor" class="com.fui.portal.interceptors.APPServiceInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
@@ -47,6 +47,13 @@
         <property name="queueCapacity" value="30"/>
     </bean>
 
+    <!--spring mvc file upload -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- 最大上传文件 5MB -->
+        <property name="maxUploadSize" value="5048576"/>
+    </bean>
+
     <!-- App接口服务注册 -->
     <bean id="serviceConfig" class="com.fui.portal.service.AppServiceProvider">
         <property name="serviceConfig">
@@ -56,6 +63,10 @@
                 </entry>
                 <entry key="1002"> <!-- 注册 -->
                     <bean class="com.fui.portal.service.appservice.UserRegisterService"/>
+                </entry>
+
+                <entry key="8083"> <!-- 文件上传 -->
+                    <bean class="com.fui.portal.service.appservice.FileUploadService"/>
                 </entry>
             </map>
         </property>
