@@ -87,7 +87,7 @@
 	}
     
     function loadImage(e){
-    	e.src = fui.contextPath + "/supervisor/image?"+Math.random();
+    	e.src = fui.contextPath + "/supervisor/image?" + new Date().getTime();
     }
 </script>
 </html>
