@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<td align="center">
-		    	<a class="fui-button"  iconCls="icon-upload" onclick="dictAllImport();" />上传</a>
+		    	<a class="fui-button" iconCls="icon-upload" onclick="dictAllImport();" >上传</a>
 		    </td>
 		</tr>
 		<tr>
