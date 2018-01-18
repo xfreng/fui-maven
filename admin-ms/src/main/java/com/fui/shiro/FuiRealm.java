@@ -46,7 +46,7 @@ public class FuiRealm extends AuthorizingRealm {
         //从DB获取当前用户的认证信息
         User user = userMapper.findUserByCode(userCode);
         if (user != null) {
-            if (!user.getErased()) {
+            if (user.getErased()) {
                 return new SimpleAuthenticationInfo(user, user.getPassword(), getName());
             } else {
                 throw new LockedAccountException(); //账户被禁用
