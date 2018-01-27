@@ -15260,7 +15260,7 @@ fui.MessageBox = {
         });
         fui.on(m.el, "keydown", function (i) {
         });
-		if (e.timeout) setTimeout(function () {
+        if (e.timeout) setTimeout(function () {
             fui.MessageBox.hide(m)
         }, e.timeout);
         return m.uid
@@ -15273,11 +15273,13 @@ fui.MessageBox = {
         if (!d) {
             return
         }
-        for (var c = 0, a = d._Buttons.length; c < a; c++) {
-            var b = d._Buttons[c];
-            b.destroy()
+        if (d._Buttons && d._Buttons.length > 0) {
+            for (var c = 0, a = d._Buttons.length; c < a; c++) {
+                var b = d._Buttons[c];
+                b.destroy()
+            }
+            d._Buttons = null;
         }
-        d._Buttons = null;
         d.destroy()
     },
     alert: function (a, b, c) {
